@@ -1,0 +1,14 @@
+.loginBox {
+	margin: auto;
+	margin-top: 2%;
+	border: 3px solid #30475E;
+	padding: 50px;
+	max-width: 600px;
+	max-height: 600px;
+    clear: both;
+    color: #30475E;
+}
+
+.ppHomepageArtBox {
+	margin-top: 5%;
+}
