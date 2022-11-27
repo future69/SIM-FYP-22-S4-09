@@ -11,9 +11,9 @@
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
-					src="CSS/SuperDentalLogo.png"
+					src="images/SuperDentalLogo.png"
 					width="50" height="40"/>
-					SuperDental
+					DiamondDental™
 					</a>
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">

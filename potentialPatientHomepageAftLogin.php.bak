@@ -10,9 +10,9 @@
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
-					src="CSS/SuperDentalLogo.png"
+					src="images/SuperDentalLogo.png"
 					width="50" height="40"/>
-					SuperDental
+					Diamond Dental™
 					</a>
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
@@ -50,6 +50,7 @@
 	<body>
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
+			<!-- Tablehead can put caption-top -->
 			<div class="column">
 				<div class="col-md-5 text-start pt-5">
 					<div class="display-6">Welcome Mr West</div>

@@ -9,9 +9,9 @@
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
-					src="CSS/SuperDentalLogo.png"
+					src="images/SuperDentalLogo.png"
 					width="50" height="40"/>
-					SuperDental
+					DiamondDental™
 					</a>
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
@@ -62,7 +62,7 @@
 					</p>
 				</div>
 				<div class="col-md-5 text-center d-none d-md-block pb-5">
-					<img class="img-fluid" src="CSS/happyDentist.jpg">
+					<img class="img-fluid" src="images/happyDentist.jpg">
 				</div>
 				<div class="col-md-5 text-center text-md-start pb-5">
 					<p class="lead">Get your clinic on the map!</p>
@@ -74,7 +74,7 @@
 					</p>
 				</div>
 				<div class="col-md-5 text-center d-none d-md-block pb-5">
-					<img class="img-fluid" src="CSS/cuteMap.jpg">
+					<img class="img-fluid" src="images/cuteMap.jpg">
 				</div>
 				<div class="col-md-5 text-center text-md-start pb-5">
 					<p class="lead">Best clinics for braces!</p>
@@ -86,7 +86,7 @@
 					</p>
 				</div>
 				<div class="col-md-5 text-center d-none d-md-block pb-5">
-					<img class="img-fluid" src="CSS/kidBraces.jpg">
+					<img class="img-fluid" src="images/kidBraces.jpg">
 				</div>
 				<div class="col-md-5 text-center text-md-start pb-5">
 					<p class="lead">Toothache? Identify the problem!</p>
@@ -98,7 +98,7 @@
 					</p>
 				</div>
 				<div class="col-md-5 text-center d-none d-md-block pb-5">
-					<img class="img-fluid" src="CSS/toothache.jpg">
+					<img class="img-fluid" src="images/toothache.jpg">
 				</div>
 			</div>
 		</div>

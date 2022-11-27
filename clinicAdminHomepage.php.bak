@@ -51,44 +51,41 @@
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
 			<!-- Tablehead can put caption-top -->
-			<div class="column">
-				<div class="col-md-5 text-start pt-5">
-					<div class="display-6">Welcome Mr West</div>
-				</div>
-				<div class="col-md-5 text-start pt-4">
-					<h5>You have <strong>2</strong> outstanding payments</h5>
+			<div class="row justify-content-center align-items-center pt-5">
+				<div class="col-md-5 text-center text-md-start">
+					<div class="display-6">Welcome Toa Payoh Dental</div>
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
-					<div class="display-6 pb-3">Your next appointments(s)</div>
+					<div class="display-6 pb-3">Employee Account(s) Status</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
-								<th scope="col">Clinic Name</th>
-								<th scope="col">Location</th>
-								<th scope="col">Date</th>
-								<th scope="col">Time</th>
+								<th scope="col">Name</th>
+								<th scope="col">NRIC</th>
+								<th scope="col">Role</th>
+								<th scope="col">Status</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td> Charlie's Clinic </td>
-								<td> Hougang Ave 7 567234 </td>
-								<td> 28/7/22 </td>
-								<td> 14:30 </td>
+								<td> Kenneth Toh </td>
+								<td> S6523836H </td>
+								<td> Clinic Assistant </td>
+								<td> Active </td>
 							</tr>
 							<tr>
-								<td> Mustard and Sons </td>
-								<td> Tampines Hub 654234 </td>
-								<td> 5/11/22 </td>
-								<td> 17:30 </td>
+								<td> Christian Dior </td>
+								<td> S1234567C </td>
+								<td> Clinic Assistant </td>
+								<td> Suspended </td>
 							</tr>
 							<tr>
-								<td> Lim's Surgery </td>
-								<td> Toa Payoh Lorong 7 543647 </td>
-								<td> 22/4/23 </td>
-								<td> 08:30 </td>
+								<td> Michael Myers </td>
+								<td> S3334567C </td>
+								<td> Dentist </td>
+								<td> Active </td>
 							</tr>
 						</tbody>
 				</div>

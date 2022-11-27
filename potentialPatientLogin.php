@@ -13,7 +13,7 @@
 					class="d-inline-block align-top"
 					src="images/SuperDentalLogo.png"
 					width="50" height="40"/>
-					SuperDental
+					DiamondDental™
 					</a>
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
@@ -38,7 +38,7 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="#">Register</a>
+								<a class="nav-link" href="potentialPatientRegistration.php">Register</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link active" aria-current="page" href="potentialPatientLogin.php">Login</a>
