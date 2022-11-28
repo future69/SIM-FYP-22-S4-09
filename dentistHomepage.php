@@ -17,19 +17,16 @@
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientHomepageAftLogin.php">Home</a>
+								<a class="nav-link active" aria-current="page" href="dentistHomepage.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Current Appointments</a>
+								<a class="nav-link" href="#">Appointment</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBookAppointment">Book Appointment</a>
+								<a class="nav-link" href="#">Patient</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Clinics</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Bills</a>
+								<a class="nav-link" href="#">Services</a>
 							</li>
 						</ul>
 					</div>
@@ -52,42 +49,38 @@
 			<!-- Tablehead can put caption-top -->
 			<div class="column">
 				<div class="col-md-5 text-start pt-5">
-					<div class="display-6">Welcome Mr West</div>
+					<div class="display-6">Welcome Dr. Lee</div>
 				</div>
 				<div class="col-md-5 text-start pt-4">
-					<h5>You have <strong>2</strong> outstanding payments</h5>
+					<h5>You have <strong>3</strong> appointments today</h5>
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
-					<div class="display-6 pb-3">Your next appointments(s)</div>
+					<div class="display-6 pb-3">Today's appointments (28/11/2022)</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
-								<th scope="col">Clinic Name</th>
-								<th scope="col">Location</th>
+								<th scope="col">Patient Name</th>
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td> Charlie's Clinic </td>
-								<td> Hougang Ave 7 567234 </td>
-								<td> 28/7/22 </td>
+								<td> Long Tai Wat </td>
+								<td> 28/11/2022 </td>
 								<td> 14:30 </td>
 							</tr>
 							<tr>
-								<td> Mustard and Sons </td>
-								<td> Tampines Hub 654234 </td>
-								<td> 5/11/22 </td>
-								<td> 17:30 </td>
+								<td> Paddy Lee </td>
+								<td> 28/11/2022 </td>
+								<td> 15:30 </td>
 							</tr>
 							<tr>
 								<td> Lim's Surgery </td>
-								<td> Toa Payoh Lorong 7 543647 </td>
-								<td> 22/4/23 </td>
-								<td> 08:30 </td>
+								<td> 28/11/2022 </td>
+								<td> 17:30 </td>
 							</tr>
 						</tbody>
 				</div>

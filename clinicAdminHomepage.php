@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 	</head>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a class="navbar-brand mb-0 h1" href="">
 					<img

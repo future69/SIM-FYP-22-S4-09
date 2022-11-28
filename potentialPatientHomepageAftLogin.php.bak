@@ -5,19 +5,19 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 	</head>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
 					src="images/SuperDentalLogo.png"
 					width="50" height="40"/>
-					Diamond Dental™
+					DiamondDental™
 					</a>
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientHomepage.php">Home</a>
+								<a class="nav-link active" aria-current="page" href="potentialPatientHomepageAftLogin.php">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#">Current Appointments</a>
@@ -31,7 +31,6 @@
 							<li class="nav-item">
 								<a class="nav-link" href="#">Bills</a>
 							</li>
-
 						</ul>
 					</div>
 					<div class="me-auto">
