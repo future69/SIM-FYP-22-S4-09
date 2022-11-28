@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
     <title>Clinic Assistant</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="images/superDentalLogo.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
@@ -43,41 +43,44 @@
         </div>
     </nav>
 <body>  
-    
-        <span class="border">
-            <div class="container row align-item-start">
-                <h2>Welcome Clinic Assistant</h2>
-                <p>Appointment as of DD/MM/YYYY</P>
+        <div class="container-lg">
+            <div class="column">
+            <div class="col-md-5 text-start pt-5">
+                <div class="container row align-item-start">
+                        <h2>Welcome Clinic Assistant</h2>
+                        <p>Appointment as of DD/MM/YYYY</P>
+                    </div>
+                </div>
             </div>
-        </span>
-        <div class="container">
-        <p>List of Current Appointment </p>
-        <table class="table table table-striped table-hover table-bordered border-dark table-sm justify-content-center">
-            <thead>
-                <tr>
-                    <th scope="col">Types of Services</td>
-                    <th scope="col">Patient Name</td>
-                    <th scope="col">Date & Time</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Service 1</td>
-                    <td>Patient 1</td>
-                    <td>10/10/2022</td>
-                </tr>
-                <tr>
-                    <td>Service 2</td>
-                    <td>Patient 2</td>
-                    <td>11/11/2022</td>
-                </tr>
-                <tr>
-                    <td>Service 3</td>
-                    <td>Patient 3</td>
-                    <td>12/12/2022</td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
+                <div class="container">
+                <p>List of Current Appointment </p>
+                <table class="table table table-striped table-hover table-bordered border-dark justify-content-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Types of Services</td>
+                            <th scope="col">Patient Name</td>
+                            <th scope="col">Date & Time</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Service 1</td>
+                            <td>Patient 1</td>
+                            <td>10/10/2022</td>
+                        </tr>
+                        <tr>
+                            <td>Service 2</td>
+                            <td>Patient 2</td>
+                            <td>11/11/2022</td>
+                        </tr>
+                        <tr>
+                            <td>Service 3</td>
+                            <td>Patient 3</td>
+                            <td>12/12/2022</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
     </body>
 </html>
