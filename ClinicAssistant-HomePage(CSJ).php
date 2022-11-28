@@ -31,7 +31,7 @@
                         <a class="nav-link" href="#">Billing</a>
                     </li>
                  </ul>
-                 <ul class="navbar d-flex mb-2 mb-md-0">
+                 <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="#">Register</a>
                     </li>
