@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
     <title>Clinic Assistant</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="images/superDentalLogo.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
