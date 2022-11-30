@@ -17,19 +17,19 @@
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientHomepageAftLogin.php">Home</a>
+								<a class="nav-link" href="potentialPatientHomepageAftLogin.php">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBookAppointment.php">Book Appointment</a>
+								<a class="nav-link" href="potentialPatientBookAppointment">Book Appointment</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientView&SearchClinic.php">Clinics</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBills.php">Bills</a>
+								<a class="nav-link active" aria-current="page" href="potentialPatientBills.php">Bills</a>
 							</li>
 						</ul>
 					</div>
@@ -52,42 +52,44 @@
 			<!-- Tablehead can put caption-top -->
 			<div class="column">
 				<div class="col-md-5 text-start pt-5">
-					<div class="display-6">Welcome Mr West</div>
-				</div>
-				<div class="col-md-5 text-start pt-4">
-					<h5>You have <strong>2</strong> outstanding payments</h5>
+					<div class="display-6">View Bills</div>
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
-				<div class="column">
-					<div class="display-6 pb-3">Your next appointments(s)</div>
-					<table class="table table-hover table-secondary table-striped ">
+				<div class="row">
+					<div class="col-12 display-6 pb-3">List of bill(s)</div>
+					<div class="col-2 form-check">
+					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrentBills" checked>
+					  <label class="form-check-label" for="flexRadioDefaultCurrentBills"><strong>Current Bills</strong></label>
+					</div>
+					<div class="col-2 form-check pb-2">
+					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPastBills">
+					  <label class="form-check-label" for="flexRadioDefaultPastBills"><strong>Past Bills</strong></label>
+					</div>
+					<table class="table table-hover table-secondary table-striped">
 						<thead>
 							<tr>
+								<th scope="col">Amount Owed</th>
 								<th scope="col">Clinic Name</th>
-								<th scope="col">Location</th>
 								<th scope="col">Date</th>
-								<th scope="col">Time</th>
+								<th scope="col">Service Provided</th>
+								<th scope="col">Status (Paid/Unpaid)</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td> Charlie's Clinic </td>
-								<td> Hougang Ave 7 567234 </td>
+								<td> $100 </td>
+								<td> Lim's Clinic </td>
 								<td> 28/7/22 </td>
-								<td> 14:30 </td>
+								<td> Fillings, Polishing </td>
+								<td> Unpaid </td>
 							</tr>
 							<tr>
-								<td> Mustard and Sons </td>
-								<td> Tampines Hub 654234 </td>
-								<td> 5/11/22 </td>
-								<td> 17:30 </td>
-							</tr>
-							<tr>
-								<td> Lim's Surgery </td>
-								<td> Toa Payoh Lorong 7 543647 </td>
-								<td> 22/4/23 </td>
-								<td> 08:30 </td>
+								<td> $200 </td>
+								<td> Lim's Clinic </td>
+								<td> 08/04/22 </td>
+								<td> Extraction </td>
+								<td> Unpaid </td>
 							</tr>
 						</tbody>
 				</div>
