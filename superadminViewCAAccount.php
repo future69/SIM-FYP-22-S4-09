@@ -18,7 +18,7 @@
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="superadminHomepage.php">Home</a>
+                        <a class="nav-link " href="superadminHomepage.php">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">About Us</a>
@@ -30,7 +30,7 @@
 						<a class="nav-link" href="#">For Patients</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" href="superadminViewCAAccount.php">For Clinics</a>
+						<a class="nav-link active" aria-current="page" href="superadminViewCAAccount.php">For Clinics</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link " href="superadminViewServices.php">Services</a>
@@ -66,7 +66,7 @@
                     <div class="row">
                         <div class="col-6 col-sm-3">Username:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Add a Service" aria-label="Add a Service" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                         <!-- Force next columns to break to new line -->

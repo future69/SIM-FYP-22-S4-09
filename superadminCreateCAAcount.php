@@ -18,7 +18,7 @@
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="superadminHomepage.php">Home</a>
+                        <a class="nav-link " href="superadminHomepage.php">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">About Us</a>
@@ -30,7 +30,7 @@
 						<a class="nav-link" href="#">For Patients</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" href="superadminViewCAAccount.php">For Clinics</a>
+						<a class="nav-link active" aria-current="page" href="superadminViewCAAccount.php">For Clinics</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link " href="superadminViewServices.php">Services</a>
