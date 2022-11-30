@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 	</head>
 	<header>
+	
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
@@ -17,19 +18,19 @@
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" aria-current="page" href="potentialPatientHomepageAftLogin.php">Home</a>
+								<a class="nav-link" href="potentialPatientHomepageAftLogin.php">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientBookAppointment">Book Appointment</a>
+								<a class="nav-link" href="potentialPatientBookAppointment.php">Book Appointment</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientView&SearchClinic.php">Clinics</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBills.php">Bills</a>
+								<a class="nav-link"  href="potentialPatientBills.php">Bills</a>
 							</li>
 						</ul>
 					</div>
@@ -44,13 +45,17 @@
 						</ul>
 					</div>
 				</div>
+				</div>
 		<nav>
 		<?php 
 			if (isset($_POST['submit'])) {
 				
 			}
 			else if (isset($_POST['back'])) {
-				header("Location:potentialPatientHomepageAftLogin.php");
+				header("Location:potentialPatientView&SearchClinic.php");
+			}
+			else if (isset($_POST['book'])) {
+				header("Location:potentialPatientBookAppointment.php");
 			}
 		?>
 	</header>
@@ -58,58 +63,44 @@
 		<div class="registrationBoxPatient container">
 			<div class="row justify-content-center align-items-center">
 				<form method="POST">
-					<div class="row justify-content-center ps-5">
-						<div class="col-4">
-							<h1>Book appointment</h1>
+					<div class="row justify-content-center">
+						<div class="row col-3">
+							<h1>Clinic Details</h1>
 						</div>
 					</div>
-					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Name:</label>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Name of Clinic:</label>
 						<div class="col-lg-4">
-						  <input type="text" class="form-control" id="usernameTB">
+						  <input class="form-control" id="usernameTB" value="Charlie's Clinic" disabled>
 						</div>
 					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Location:</label>
 						<div class="col-lg-4">
-						  <input type="text" class="form-control" id="passwordTB">
+						  <input class="form-control" id="passwordTB" value="Hougang Ave 7 567234" disabled>
 						</div>
 					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="clinicNameSL" class="col-lg-1 col-form-label">Clinic Name:</label>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label" >Operating hours:</label>
 						<div class="col-lg-4">
-						  <select name="clinicNameSL" id="clinicNameSL">
-						    <option value="plceaholder">Lim's Clinic</option>
-							<option value="plceaholder">Joe's Surgery</option>
-							<option value="plceaholder">Tan Tock Seng Hospital</option>
-						  </select>
+						  <input class="form-control" id="usernameTB" value="08:30-20:00" disabled>
 						</div>
 					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Calendar:</label>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Dentist(s):</label>
 						<div class="col-lg-4">
-						  <input type="date" class="form-control" id="datePicker">
+						  <input class="form-control" id="passwordTB" value="Dr.Charlie Chaplin" disabled>
 						</div>
 					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Time Slot:</label>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Services Offered:</label>
 						<div class="col-lg-4">
-						  <select name="timeSlotSL" id="timeSlotSL">
-						    <option value="plceaholder">8:00</option>
-							<option value="plceaholder">9:00</option>
-							<option value="plceaholder">10:00</option>
-						  </select>
-						</div>
-					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Reason:</label>
-						<div class="col-lg-4">
-						  <input type="text" class="form-control" id="passwordTB">
+						  <input class="form-control" id="usernameTB" value="Polishing, Wisdom tooth extraction, Fillings" disabled>
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
-						<button type="submit" class="btn btn-primary" name="submit" value="submit">Confirm</button>
+						<button class="btn btn-primary" name="book" value="book">Book Appointment</button>
 					  </div>
 					</form>
 				</div>

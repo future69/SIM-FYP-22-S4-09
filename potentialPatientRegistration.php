@@ -86,19 +86,19 @@
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB">
+						  <input class="form-control" id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">DOB:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
+							<input type="date" class="form-control" id="datePicker">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Address:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB">
+						  <input class="form-control" id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
@@ -107,16 +107,20 @@
 						  <input class="form-control" id="usernameTB">
 						</div>
 					  </div>
-					  <div class="row justify-content-center py-2">
+					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Gender:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB">
+							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
+								<option value="plceaholder">Male</option>
+								<option value="plceaholder">Female</option>
+								<option value="plceaholder">Others</option>
+							</select>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB">
+						  <input class="form-control" id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
@@ -128,7 +132,7 @@
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Medical History:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB">
+						  <input class="form-control" id="passwordTB">
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">

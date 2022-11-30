@@ -17,19 +17,19 @@
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientHomepageAftLogin.php">Home</a>
+								<a class="nav-link" href="potentialPatientHomepageAftLogin.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
+								<a class="nav-link active" aria-current="page" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBookAppointment.php">Book Appointment</a>
+								<a class="nav-link" href="potentialPatientBookAppointment">Book Appointment</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientView&SearchClinic.php">Clinics</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBills.php">Bills</a>
+								<a class="nav-link" href="#">Bills</a>
 							</li>
 						</ul>
 					</div>
@@ -50,13 +50,26 @@
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
 			<!-- Tablehead can put caption-top -->
-			<div class="column">
-				<div class="col-md-5 text-start pt-5">
-					<div class="display-6">Welcome Mr West</div>
+			<div class="row">
+				<div class="row col-4 text-start pt-5">
+					<div class="display-6">View Appointment(s)</div>
 				</div>
-				<div class="col-md-5 text-start pt-4">
-					<h5>You have <strong>2</strong> outstanding payments</h5>
-				</div>
+				<form class="row col-8 justify-content-end align-items-center pt-5" method="POST">
+					<label for="searchClinicName" class="row col-2 col-form-label"><h4>Search :</h4></label>
+						<div class="row col-6">
+							<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Clinic Name">
+						</div>
+						<div class="row col-2">
+							<select name="timeSlotSL" id="timeSlotSL">
+								<option value="plceaholder">Date</option>
+								<option value="plceaholder">1 week</option>
+								<option value="plceaholder">1 month</option>
+								<option value="plceaholder">3 months</option>
+								<option value="plceaholder">6 months</option>
+								<option value="plceaholder">1 year</option>
+							</select>
+						</div>
+				</form>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
