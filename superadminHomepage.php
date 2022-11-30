@@ -12,7 +12,7 @@
 					<img
 					class="d-inline-block align-top"
 					src="images/SuperDentalLogo.png"
-					width="50" height="40"/>
+					width="50" height="50"/>
 					DiamondDental™
 					</a>
 					<div class="collapse navbar-collapse" id="navigationBar">
@@ -30,16 +30,16 @@
 								<a class="nav-link" href="#">For Patients</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">For Clinics</a>
+								<a class="nav-link" href="superadminViewCAAccount.php">For Clinics</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Services</a>
+								<a class="nav-link" href="superadminViewServices.php">Services</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#">Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Application</a>
+								<a class="nav-link " href="superadminClinicAccountApplication.php">Application</a>
 							</li>
 						</ul>
 					</div>
@@ -59,11 +59,13 @@
 			<!-- Tablehead can put caption-top -->
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="col-md-5 text-center text-md-start">
-					<div class="display-6">Welcome Super Admin</div>
+					<!--original spot-->
+					<!--<div class="display-6">Welcome Super Admin</div>-->
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
+					<div class="display-6">Welcome Super Admin</div>
 					<div class="display-6 pb-3">Current clinic admin applications</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
