@@ -81,14 +81,22 @@
 
                         <div class="col-6 col-sm-3">Status:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Status" aria-label="Status" aria-describedby="basic-addon1">
+                            <div class="form-check me-5">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Open   
+                                </label>
+                            </div>
+                                <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Suspend
+                                </label>
+                            </div>
                             </div>
 
-                        <div class="mt-4 text-center p-3 col-sm-6">
+                        <div class="mt-4 text-center">
                             <a href="superadminViewCAAccount.php" class="btn btn-secondary" onclick="alert('Account Updated!')">Update Account</a>
-                        </div>
-                        <div class="mt-4 text-center p-3 col-sm-6">
-                            <a href="superadminViewCAAccount.php" class="btn btn-secondary" onclick="alert('Account Suspended!')">Suspend Account</a>
                         </div>
                     </div>
                 </div>
