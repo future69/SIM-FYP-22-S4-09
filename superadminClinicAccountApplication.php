@@ -30,13 +30,13 @@
 						<a class="nav-link" href="#">For Patients</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="superadminViewCAAccount.php">For Clinics</a>
+						<a class="nav-link " href="">For Clinics</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link " href="superadminViewServices.php">Services</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Accounts</a>
+						<a class="nav-link" href="superadminViewCAAccount.php">Accounts</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link active" href="superadminClinicAccountApplication.php">Application</a>
@@ -54,7 +54,6 @@
         </div>
      </nav>
      <div class="container-lg">
-        <div class="fw-bold pt-5">Welcome Admin</div>
         <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Clinic Account Application</div>
         <div class="">
             <div class="row">
@@ -80,21 +79,21 @@
                                         <a href="superadminUpdateCAAcount.php">John</a>
                                     </td>
                                     <td>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckOpen">
-                                        <label class="form-check-label" for="flexCheckOpen">
-                                            Open
+                                    <div class="form-check me-5" >
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Open   
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckSuspend">
-                                        <label class="form-check-label" for="flexCheckSuspend" >
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
                                             Suspend
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckReview">
-                                        <label class="form-check-label" for="flexCheckReview">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
                                             In Review
                                         </label>
                                     </div>
@@ -105,21 +104,21 @@
                                         <a href="superadminUpdateCAAcount.php">Mary</a>
                                     </td>
                                     <td>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckOpen">
-                                        <label class="form-check-label" for="flexCheckOpen" >
-                                            Open
+                                    <div class="form-check me-5" >
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Open   
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckSuspend">
-                                        <label class="form-check-label" for="flexCheckSuspend">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
                                             Suspend
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckReview">
-                                        <label class="form-check-label" for="flexCheckReview">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
                                             In Review
                                         </label>
                                     </div>
@@ -131,21 +130,21 @@
                                         <a href="superadminUpdateCAAcount.php">Doe</a>
                                     </td>
                                     <td>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckOpen" >
-                                        <label class="form-check-label" for="flexCheckOpen" >
-                                            Open
+                                    <div class="form-check me-5" >
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                        <label class="form-check-label" for="flexRadioDefault3">
+                                            Open   
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckSuspend">
-                                        <label class="form-check-label" for="flexCheckSuspend">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                        <label class="form-check-label" for="flexRadioDefault3">
                                             Suspend
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckReview">
-                                        <label class="form-check-label" for="flexCheckReview">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                        <label class="form-check-label" for="flexRadioDefault3">
                                             In Review
                                         </label>
                                     </div>

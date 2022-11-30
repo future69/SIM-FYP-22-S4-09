@@ -30,13 +30,13 @@
 						<a class="nav-link" href="#">For Patients</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link " href="superadminViewCAAccount.php">For Clinics</a>
+						<a class="nav-link " href="#">For Clinics</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link active" href="superadminViewServices.php">Services</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Accounts</a>
+						<a class="nav-link" href="superadminViewCAAccount.php">Accounts</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="superadminClinicAccountApplication.php">Application</a>
@@ -54,7 +54,6 @@
         </div>
      </nav>
     <div class="container-lg">
-        <div class="fw-bold pt-5">Welcome Admin</div>
         <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold"> Services</div>
             <table class="table table-hover table-secondary table-striped border border-3">
                 <thead>

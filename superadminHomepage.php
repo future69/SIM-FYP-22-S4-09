@@ -30,13 +30,13 @@
 								<a class="nav-link" href="#">For Patients</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="superadminViewCAAccount.php">For Clinics</a>
+								<a class="nav-link" href="#">For Clinics</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="superadminViewServices.php">Services</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Accounts</a>
+								<a class="nav-link" href="superadminViewCAAccount.php">Accounts</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link " href="superadminClinicAccountApplication.php">Application</a>
