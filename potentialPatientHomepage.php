@@ -36,7 +36,7 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientRegistration.php">Register</a>
+								<a class="nav-link" href="homepageRegisterAs.php">Register</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientLogin.php">Login</a>
