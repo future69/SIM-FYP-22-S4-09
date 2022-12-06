@@ -26,9 +26,6 @@
                         <a class="nav-link" href="clinicassistant-ATL.php">Appointment Treatment list</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-PastAppointment.php">Appointment History</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">
@@ -51,7 +48,7 @@
     </nav>
 <body>
 <div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient Account</div>
+        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Personal Account</div>
             <div class="row">
                 <div class="col-md-3">
                     <!--Contatiner control-->

@@ -26,9 +26,6 @@
                         <a class="nav-link" href="clinicassistant-ATL.php">Appointment Treatment list</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-PastAppointment.php">Appointment History</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">
@@ -51,7 +48,7 @@
     </nav>
 <body>
 <div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Appointment List</div>
+        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Update Appointment</div>
         <div class=""></div>
             <div class="row">
                 <div class="col-md-3">
@@ -74,31 +71,35 @@
                             </div>
                         <div class="col-6 col-sm-3 pt-3">Date and Time:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="datetime-local" class="form-control" placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">
+                            <input type="date" class="form-control" placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">Contact Number:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Number" aria-label="Number" aria-describedby="basic-addon1">
+                            <div class="col-6 col-sm-3 pt-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Time
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">10am to 11am</a></li>
+                                <li><a class="dropdown-item" href="#">1pm to 2pm</a></li>
+                                <li><a class="dropdown-item" href="#">3pm to 4pm</a></li>
+                                <li><a class="dropdown-item" href="#">4pm to 5pm</a></li>
+                                <li><a class="dropdown-item" href="#">5pm to 6pm</a></li>
+                            </ul>
                             </div>
                         <div class="col-6 col-sm-3 pt-3">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Clinic
+                                Reason for Appointment
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Clinic 1</a></li>
-                                <li><a class="dropdown-item" href="#">Clinic 2</a></li>
-                                <li><a class="dropdown-item" href="#">Clinic 3</a></li>
+                                <li><a class="dropdown-item" href="#">Service 1</a></li>
+                                <li><a class="dropdown-item" href="#">Service 2</a></li>
+                                <li><a class="dropdown-item" href="#">Service 3</a></li>
                             </ul>
-                            </div>
-                        <div class="pt-3">
-                            <label for="ClinicVisit" class="form-label">Reason of Visit</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                         <div class="col mt-3 d-flex">Email Reminder
                             <div class="form-check me-5 ms-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                    subscribe to email reminder 
+                                    subscribe to email reminder  
                                 </label>
                             </div>
                         </div>
