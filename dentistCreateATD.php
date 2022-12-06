@@ -51,14 +51,14 @@
 <body>
 <div class="container-lg">
         <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Create Appointment Treatment Details</div>
+        <div class="row">
                 <div class="col-md-3">
                     <!--Contatiner control-->
-                </div>
-            <div class="col-md-6 border border-3 p-3">
+            </div>
+            <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row">
-                    <div class="w-100"></div>
-                        <p>Appointment Treatment Details for (Patient Name)</p>
+                    <p>Appointment Treatment Details for (Patient Name)</p>
                             <table class=" col-3 table table-hover border border-2 border-secondary">
                                 <thead>
                                     <tr>
@@ -128,13 +128,12 @@
                                 <a class="btn btn-secondary"  href="dentistViewnSearchAppointment.php" onclick="alert('Treatment details Created!')">Confirm</a>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-                <div class="col-md-3">
-                    <!--Contatiner control-->
-                </div>
             </div>
     </div>
 </body>
 </html>
+
+
+
+
+
