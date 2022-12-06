@@ -20,20 +20,23 @@
 								<a class="nav-link active" aria-current="page" href="dentistHomepage.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Appointment</a>
+								<a class="nav-link" href="dentistViewnSearchAppointment.php">Appointment</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Patient</a>
+								<a class="nav-link" href="dentistPastAppointment.php">Past Appointment</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Services</a>
+								<a class="nav-link" href="dentistSearchPatient.php">Patient</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="dentistViewService.php">Services</a>
 							</li>
 						</ul>
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="#">Profile</a>
+								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
