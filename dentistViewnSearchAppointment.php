@@ -51,9 +51,10 @@
 <body>
 <div class="container-lg">
         <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Existing Appointment</div>
-                <div class="col-md-2">
+        <div class="row">
+                <div class="col-md-1">
                     <!--Contatiner control-->
-                </div>
+            </div>
             <div class="col border border-3 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row">
@@ -127,7 +128,7 @@
                     </div>
                 </div>
             </div>
-                <div class="col-md-2">
+                <div class="col-md-1">
                     <!--Contatiner control-->
                 </div>
             </div>
