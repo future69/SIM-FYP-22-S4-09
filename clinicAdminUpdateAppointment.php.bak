@@ -23,7 +23,7 @@
 								<a class="nav-link" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="clinicAdminAppointments.php">Appointment(s)</a>
+								<a class="nav-link active" aria-current="page" href="clinicAdminAppointments.php">Appointments</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="clinicAdminServices.php">Services</a>
