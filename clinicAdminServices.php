@@ -17,7 +17,7 @@
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="clinicAdminHomepage.php">Home</a>
+								<a class="nav-link" href="clinicAdminHomepage.php">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="clinicAdminUserAccounts.php">User Accounts</a>
@@ -26,7 +26,7 @@
 								<a class="nav-link" href="clinicAdminAppointments.php">Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="clinicAdminServices.php">Services</a>
+								<a class="nav-link active" aria-current="page" href="clinicAdminServices.php">Services</a>
 							</li>
 						</ul>
 					</div>
@@ -39,48 +39,52 @@
 					</div>
 				</div>
 		</nav>
+		<?php 
+			if (isset($_POST['updateService'])) {
+				echo '<script>alert("Services updated!")</script>';
+			}
+
+		?>
 	</header>
 	<body>
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
 			<!-- Tablehead can put caption-top -->
 			<div class="row justify-content-center align-items-center pt-5">
-				<div class="col-md-5 text-center text-md-start">
+				<div class="col-12 text-start text-md-start">
 					<div class="display-6">Welcome Toa Payoh Dental</div>
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
-				<div class="column">
-					<div class="display-6 pb-3">Employee Account(s) Status</div>
+				<div class="row">
+					<div class="col-6 display-6 pb-3">Services(s)</div>
+					<div class="col-6 text-end display-6 pb-3">
+						<form class="justify-content-end align-items-end" method="POST">
+							<button type="submit" class="btn btn-warning" name="updateService">Update</button>
+						</form>
+					</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
-								<th scope="col">Name</th>
-								<th scope="col">NRIC</th>
-								<th scope="col">Role</th>
-								<th scope="col">Status</th>
+								<th scope="col">Service Name</th>
+								<th scope="col">Offered</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td> Kenneth Toh </td>
-								<td> S6523836H </td>
-								<td> Clinic Assistant </td>
-								<td> Active </td>
+								<td> Polishing </td>
+								<td><input class="form-check-input" type="checkbox" value="" id="emailReminderCB" checked></td>
 							</tr>
 							<tr>
-								<td> Christian Dior </td>
-								<td> S1234567C </td>
-								<td> Clinic Assistant </td>
-								<td> Suspended </td>
+								<td> Braces </td>
+								<td><input class="form-check-input" type="checkbox" value="" id="emailReminderCB" checked></td>
 							</tr>
 							<tr>
-								<td> Michael Myers </td>
-								<td> S3334567C </td>
-								<td> Dentist </td>
-								<td> Active </td>
+								<td> Fillings </td>
+								<td><input class="form-check-input" type="checkbox" value="" id="emailReminderCB" checked></td>
 							</tr>
 						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

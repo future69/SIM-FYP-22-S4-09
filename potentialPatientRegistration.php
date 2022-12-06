@@ -49,7 +49,7 @@
 		<nav>
 		<?php 
 			if (isset($_POST['submit'])) {
-				
+				echo '<script>alert("Account created!")</script>';
 			}
 			else if (isset($_POST['back'])) {
 				header("Location:potentialPatientHomepage.php");

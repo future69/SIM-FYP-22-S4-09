@@ -20,13 +20,13 @@
 								<a class="nav-link" href="clinicAdminHomepage.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="clinicAdminUserAccounts.php">User Accounts</a>
+								<a class="nav-link" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="clinicAdminAppointments.php">Appointment(s)</a>
+								<a class="nav-link active" aria-current="page" href="clinicAdminAppointments.php">Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="clinicAdminServices.php">Services</a>
+								<a class="nav-link" href="#">Services</a>
 							</li>
 						</ul>
 					</div>
@@ -45,6 +45,9 @@
 			}
 			else if (isset($_POST['createNewPatient'])) {
 				header("Location:clinicAdminCreatePatient.php");
+			}
+			else if (isset($_POST['bookAppointment'])) {
+				header("Location:clinicAdminBookAppointment.php");
 			}
 		?>
 	</header>
@@ -65,64 +68,73 @@
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="row">
-					<div class="col-6 display-6 pb-3">Account(s) Status</div>
+					<div class="col-6 display-6 pb-3">Appointment(s)</div>
 					<div class="col-6 text-end display-6 pb-3">
 						<form class="justify-content-end align-items-end" method="POST">
-							<button type="submit" class="btn btn-warning" name="createNewEmployee">Create Employee</button>
-							<button type="submit" class="btn btn-info" name="createNewPatient">Create Patient</button>
+							<button type="submit" class="btn btn-warning" name="bookAppointment">Book Appointment</button>
 						</form>
 					</div>
 					<div class="col-2 form-check">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultEmployeeAcc" checked>
-					  <label class="form-check-label" for="flexRadioDefaultEmployeeAcc"><strong>Employees</strong></label>
+					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" checked>
+					  <label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
 					</div>
 					<div class="col-2 form-check pb-2">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPatientAcc">
-					  <label class="form-check-label" for="flexRadioDefaultPatientAcc"><strong>Patients</strong></label>
+					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast">
+					  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 					</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
 								<th scope="col">Name</th>
 								<th scope="col">NRIC</th>
-								<th scope="col">Role</th>
-								<th scope="col">Status</th>
+								<th scope="col">Date</th>
+								<th scope="col">Time</th>
+								<th scope="col">Phone Number</th>
 								<th scope="col">Action</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td> Kenneth Toh </td>
-								<td> S6523836H </td>
-								<td> Clinic Assistant </td>
-								<td> Active </td>
-								<td><button type="submit" class="btn btn-primary" name="submit" onclick="location.href='clinicAdminView&UpdateEmployeeAccount.php'">View Account Details</button></td>
-							</tr>
-							<tr>
-								<td> Christian Dior </td>
-								<td> S1234567C </td>
-								<td> Clinic Assistant </td>
-								<td> Suspended </td>
-								<td class="col-6">
-								<button type="submit" class="btn btn-primary" name="submit">View Account Details</button>
+								<td> name1 </td>
+								<td> S2234567C </td>
+								<td> 20/11/2022 </td>
+								<td> 15:00 </td>
+								<td> 12345678 </td>
+								<td>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicAdminUpdateAppointment.php'">Update Appointment</button>
+								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
 								</td>
 							</tr>
 							<tr>
-								<td> Michael Myers </td>
-								<td> S3334567C </td>
-								<td> Dentist </td>
-								<td> Active </td>
-								<td class="col-6">
-								<button type="submit" class="btn btn-primary" name="submit">View Account Details</button>
+								<td> name2 </td>
+								<td> S5847913C </td>
+								<td> 23/11/2022 </td>
+								<td> 17:00 </td>
+								<td> 12345678 </td>
+								<td>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicAdminUpdateAppointment.php'">Update Appointment</button>
+								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
 								</td>
 							</tr>
 							<tr>
-								<td> James Loh </td>
-								<td> S8795156G </td>
-								<td> Patient </td>
-								<td> Active </td>
-								<td class="col-6">
-								<button type="submit" class="btn btn-primary" name="submit" onclick="location.href='clinicAdminViewPatientAccount.php'">View Account Details</button>
+								<td> name3 </td>
+								<td> S8825463G </td>
+								<td> 20/12/2022 </td>
+								<td> 20:00 </td>
+								<td> 12345678 </td>
+								<td>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicAdminUpdateAppointment.php'">Update Appointment</button>
+								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								</td>
+							</tr>
+							<tr>
+								<td> name3(past appointment) </td>
+								<td> S8825463G </td>
+								<td> 10/12/2022 </td>
+								<td> 20:00 </td>
+								<td> 12345678 </td>
+								<td>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicAdminPastAppointmentTreatmentdetails.php'">View Appointment Treatment Details</button>
 								</td>
 							</tr>
 						</tbody>

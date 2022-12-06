@@ -56,7 +56,7 @@
 	<body>
 		<div class="loginBox container d-flex justify-content-center align-items-center">
 			<form method="POST">
-				<h1>Patient Login</h1>
+				<h1>Login</h1>
 				  <div class="row mb-3">
 					<label for="usernameTB" class="col-sm-4 col-form-label">Username : </label>
 					<div class="col-sm-8">

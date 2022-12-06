@@ -46,10 +46,10 @@
 						</ul>
 					</div>
 				</div>
-		<nav>
+		</nav>
 		<?php 
 			if (isset($_POST['submit'])) {
-				alert("Application Received");
+				echo '<script>alert("Application Received")</script>';
 			}
 			else if (isset($_POST['back'])) {
 				header("Location:potentialPatientHomepage.php");
