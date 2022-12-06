@@ -25,9 +25,6 @@
 							<li class="nav-item">
 								<a class="nav-link" href="dentistViewnSearchAppointment.php">Appointment</a>
 							</li>
-                            <li class="nav-item">
-								<a class="nav-link active"  aria-current="page" href="dentistPastAppointment.php">Past Appointment</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link"  href="dentistSearchPatient.php">Patient</a>
 							</li>
@@ -67,6 +64,13 @@
 
                         <!-- Force next columns to break to new line -->
                         <div class="w-100"></div>
+                        <div class="btn-group col-md-4" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-outline-Primary" for="btnradio1">Existing Appointment</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" >
+                        <label class="btn btn-outline-danger" for="btnradio2">Past Appointment</label>
+                        </div>
 
                         <div class="justify-content-center d-flex mt-4 p-2">Result(s)</div>
                             <div class="input-group col-3 col-sm-3 border border-2 border-secondary">
