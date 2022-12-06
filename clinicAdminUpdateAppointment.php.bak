@@ -7,7 +7,7 @@
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
-					<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
+					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
 					src="images/SuperDentalLogo.png"
@@ -17,40 +17,34 @@
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" aria-current="page" href="potentialPatientHomepageAftLogin.php">Home</a>
+								<a class="nav-link" href="clinicAdminHomepage.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
+								<a class="nav-link" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientBookAppointment.php">Book Appointment</a>
+								<a class="nav-link active" aria-current="page" href="clinicAdminAppointments.php">Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientView&SearchClinic.php">Clinics</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBills.php">Bills</a>
+								<a class="nav-link" href="#">Services</a>
 							</li>
 						</ul>
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
-							</li>
-							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-		<nav>
+		</nav>
 		<?php 
 			if (isset($_POST['submit'])) {
-				
+				echo '<script>alert("Appointment updated!")</script>';
 			}
 			else if (isset($_POST['back'])) {
-				header("Location:potentialPatientHomepageAftLogin.php");
+				header("Location:clinicAdminAppointments.php");
 			}
 		?>
 	</header>
@@ -60,41 +54,37 @@
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
 						<div class="col-4">
-							<h1>Book appointment</h1>
+							<h1>Update appointment</h1>
 						</div>
 					</div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Name:</label>
 						<div class="col-lg-4">
-						  <input type="text" class="form-control" id="usernameTB" placeholder="John De Jesus Doe" disabled>
+						  <input type="text" class="form-control" id="usernameTB" value="name1" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
+						<label for="nricTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input type="text" class="form-control" id="passwordTB" placeholder="S1234567G" disabled>
+						  <input type="text" class="form-control" id="nricTB" value="S2234567C" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="clinicNameSL" class="col-lg-1 col-form-label">Clinic Name:</label>
+						<label for="clinicNameTB" class="col-lg-1 col-form-label">Clinic Name:</label>
 						<div class="col-lg-4">
-						  <select name="clinicNameSL" id="clinicNameSL">
-						    <option value="plceaholder">Lim's Clinic</option>
-							<option value="plceaholder">Joe's Surgery</option>
-							<option value="plceaholder">Tan Tock Seng Hospital</option>
-						  </select>
+						  <input type="text" class="form-control" id="clinicNameTB" value="Toa Payoh Dental" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Calendar:</label>
+						<label for="datePicker" class="col-lg-1 col-form-label">Calendar:</label>
 						<div class="col-lg-4">
 						  <input type="date" class="form-control" id="datePicker">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Time Slot:</label>
+						<label for="timeSlotSL" class="col-lg-1 col-form-label">Time Slot:</label>
 						<div class="col-lg-4">
-						  <select name="timeSlotSL" id="timeSlotSL">
+						  <select class="form-select" name="timeSlotSL" id="timeSlotSL">
 						    <option value="plceaholder">8:00</option>
 							<option value="plceaholder">9:00</option>
 							<option value="plceaholder">10:00</option>
@@ -102,9 +92,9 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Reason:</label>
+						<label for="reasonTB" class="col-lg-1 col-form-label">Reason:</label>
 						<div class="col-lg-4">
-						  <input type="text" class="form-control" id="passwordTB">
+						  <input type="text" class="form-control" id="reasonTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">

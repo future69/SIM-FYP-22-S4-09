@@ -5,7 +5,6 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 	</head>
 	<header>
-	
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a class="navbar-brand mb-0 h1" href="">
@@ -18,30 +17,23 @@
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Home</a>
+								<a class="nav-link" href="clinicAdminHomepage.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">About Us</a>
+								<a class="nav-link active" aria-current="page" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Our Partners</a>
+								<a class="nav-link" href="clinicAdminAppointments.php">Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">For Patients</a>
+								<a class="nav-link" href="#">Services</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">For Clinics</a>
-							</li>
-
 						</ul>
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientRegistration.php">Register</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientLogin.php">Login</a>
+								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -49,10 +41,10 @@
 		</nav>
 		<?php 
 			if (isset($_POST['submit'])) {
-				echo '<script>alert("Application Received")</script>';
+				echo '<script>alert("Account updated!")</script>';
 			}
 			else if (isset($_POST['back'])) {
-				header("Location:potentialPatientHomepage.php");
+				header("Location:clinicAdminUserAccounts.php");
 			}
 		?>
 	</header>
@@ -61,8 +53,8 @@
 			<div class="row justify-content-center align-items-center">
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
-						<div class="col-4">
-							<h1>Clinic Registration</h1>
+						<div class="col-5">
+							<h1>Update Employee Account</h1>
 						</div>
 					</div>
 					  <div class="row justify-content-center py-2">
@@ -78,9 +70,25 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Clinic Name:</label>
+						<label for="fullnameTB" class="col-lg-1 col-form-label">Full name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="clinicNameTB">
+						  <input class="form-control" id="fullnameTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="genderSL" class="col-lg-1 col-form-label">Gender:</label>
+						<div class="col-lg-4">
+							<select class="form-select" class="form-select" aria-label="Select gender" name="genderSL">
+								<option value="plceaholder">Male</option>
+								<option value="plceaholder">Female</option>
+								<option value="plceaholder">Others</option>
+							</select>
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="nricTB" class="col-lg-1 col-form-label">NRIC:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="nricTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
@@ -102,64 +110,38 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Area:</label>
+						<label for="roleSL" class="col-lg-1 col-form-label">Role:</label>
 						<div class="col-lg-4">
-							<select class="form-select" class="form-select" aria-label="Select area" name="clinicAreaSL" id="clinicAreaSL">
-								<option value="plceaholder">North</option>
-								<option value="plceaholder">South</option>
-								<option value="plceaholder">East</option>
-								<option value="plceaholder">West</option>
-								<option value="plceaholder">Central</option>
+							<select class="form-select" class="form-select" aria-label="Select role" name="roleSL">
+								<option value="plceaholder">Clinic Assistant</option>
+								<option value="plceaholder">Dentist</option>
 							</select>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
+						<label for="formFileQualification" class="col-1 col-form-label">Qualifications:</label>
+						<div class="col-lg-4">
+							<input class="form-control" type="file" id="formFileQualification" multiple>	
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Practitioner Number:</label>
 						<div class="col-lg-4">
 						  <input class="form-control" id="phoneNumberTB">
 						</div>
 					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">ACRA:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" id="acraTB">
-						</div>
-					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Dental Services:</label>
+						<label for="statusSL" class="col-lg-1 col-form-label">Status:</label>
 						<div class="col-lg-4">
-							<select class="form-select" multiple aria-label="Select Services">
-								<option selected>Select Multiple</option>
-								<option value="1">Braces</option>
-								<option value="2">Extraction</option>
-								<option value="3">Fillings</option>
-							</select>
-						</div>
-					  </div>
-					  <div class="row justify-content-center align-items-center py-2">
-						<label for="clinicOpeningTime" class="col-1 col-form-label">Operating Hours:</label>
-						<div class="col-2">
-							<select class="form-select" class="form-select" aria-label="Opening" name="clinicOpeningTime" id="clinicOpeningTime">
-								<option value="plceaholder">Opening Hour</option>
-								<option value="plceaholder">08:00</option>
-								<option value="plceaholder">08:30</option>
-								<option value="plceaholder">09:00</option>
-								<option value="plceaholder">09:30</option>
-							</select>
-						</div>
-						<div class="col-2">
-							<select class="form-select" class="form-select" aria-label="Closing" name="clinicClosingTime" id="clinicClosingTime">
-								<option value="plceaholder">Closing Hour</option>
-								<option value="plceaholder">18:30</option>
-								<option value="plceaholder">19:00</option>
-								<option value="plceaholder">19:30</option>
-								<option value="plceaholder">20:00</option>
+							<select class="form-select" class="form-select" aria-label="Select status" name="statusSL">
+								<option value="plceaholder">Active</option>
+								<option value="plceaholder">Suspended</option>
 							</select>
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
-						<button type="submit" class="btn btn-primary" name="submit" value="submit">Confirm</button>
+						<button type="submit" class="btn btn-primary" name="submit" value="submit">Update</button>
 					  </div>
 					</form>
 				</div>

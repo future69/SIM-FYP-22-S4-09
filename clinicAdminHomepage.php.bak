@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 	</head>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
@@ -20,10 +20,10 @@
 								<a class="nav-link active" aria-current="page" href="clinicAdminHomepage.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">User Accounts</a>
+								<a class="nav-link" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">View User Appointment(s)</a>
+								<a class="nav-link" href="clinicAdminAppointments.php">Appointment(s)</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#">Services</a>
@@ -38,7 +38,7 @@
 						</ul>
 					</div>
 				</div>
-		<nav>
+		</nav>
 	</header>
 	<body>
 		<div class="container-lg">

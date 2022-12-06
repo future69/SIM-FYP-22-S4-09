@@ -5,10 +5,9 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 	</head>
 	<header>
-	
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
-					<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
+					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
 					src="images/SuperDentalLogo.png"
@@ -18,38 +17,32 @@
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepageAftLogin.php">Home</a>
+								<a class="nav-link" href="clinicAdminHomepage.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
+								<a class="nav-link active" aria-current="page" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBookAppointment.php">Book Appointment</a>
+								<a class="nav-link" href="clinicAdminAppointments.php">Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientView&SearchClinic.php">Clinics</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link"  href="potentialPatientBills.php">Bills</a>
+								<a class="nav-link" href="#">Services</a>
 							</li>
 						</ul>
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientProfile.php">Profile</a>
-							</li>
-							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-				</div>
-		<nav>
+		</nav>
 		<?php 
+
 			if (isset($_POST['back'])) {
-				header("Location:potentialPatientHomepageAftLogin.php");
+				header("Location:clinicAdminUserAccounts.php");
 			}
 		?>
 	</header>
@@ -58,74 +51,78 @@
 			<div class="row justify-content-center align-items-center">
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
-						<div class="col-4">
-							<h1>Your Profile</h1>
+						<div class="col-5">
+							<h1>View Patient Account</h1>
 						</div>
 					</div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB" value="superBoy12" disabled>
+						  <input class="form-control" id="usernameTB" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB" value="12345667" disabled>
+						  <input type="password" class="form-control" id="passwordTB" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
+						<label for="fullnameTB" class="col-lg-1 col-form-label">Full name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB" value="John de Jesus Doe" disabled>
-						</div>
-					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="S1234567G" disabled>
-						</div>
-					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">DOB:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB" value="12/04/2001" disabled>
-						</div>
-					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Address:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="Hougang Ave 7" disabled>
+						  <input class="form-control" id="fullnameTB" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Postal Code:</label>
+						<label for="genderSL" class="col-lg-1 col-form-label">Gender:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB" value="567234" disabled>
+							<select class="form-select" class="form-select" aria-label="Select gender" name="genderSL"disabled >
+								<option value="plceaholder">Male</option>
+								<option value="plceaholder">Female</option>
+								<option value="plceaholder">Others</option>
+							</select>
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Gender:</label>
+						<label for="nricTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="Male" disabled>
-						</div>
-					  </div>
-					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="96541254" disabled>
+						  <input class="form-control" id="nricTB" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
+						<label for="emailTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input type="email" class="form-control" id="usernameTB" value="johnnyBoy@gmail.com" disabled>
+						  <input type="email" class="form-control" id="emailTB" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Medical History:</label>
+						<label for="phoneNumTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="All 4 wisdom teeth removed" disabled>
+						  <input class="form-control" id="phoneNumTB" disabled>
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="dobTB" class="col-lg-1 col-form-label">DOB:</label>
+						<div class="col-lg-4">
+							<input type="date" class="form-control" id="dobTB" disabled>
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="clinicAddress" class="col-lg-1 col-form-label">Address:</label>
+						<div class="col-lg-4">
+							<input class="form-control" id="clinicAddress" disabled>
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="postalCodeTB" class="col-lg-1 col-form-label">Postal Code:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="postalCodeTB" disabled>
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="formFileMedicalHistory" class="col-1 col-form-label">Medical history:</label>
+						<div class="col-lg-4">
+							<input class="form-control" type="file" id="formFileMedicalHistory" multiple disabled>	
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
@@ -135,4 +132,5 @@
 				</div>
 			</div>
 	</body>
+</html>
 </html>
