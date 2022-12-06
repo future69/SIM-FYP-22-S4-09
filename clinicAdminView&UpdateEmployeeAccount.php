@@ -23,7 +23,7 @@
 								<a class="nav-link active" aria-current="page" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="clinicAdminAppointments.php">Appointment(s)</a>
+								<a class="nav-link" href="clinicAdminAppointments.php">Appointments</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="clinicAdminServices.php">Services</a>
@@ -32,6 +32,9 @@
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
+							<li class="nav-item">
+								<span class="navbar-brand text-center">Toa Payoh Dental</span>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
 							</li>
@@ -95,6 +98,12 @@
 						<label for="passwordTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
 						  <input type="email" class="form-control" id="emailTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="phoneNumTB" class="col-lg-1 col-form-label">Phone Number:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="phoneNumTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">

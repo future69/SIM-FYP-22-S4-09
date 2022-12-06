@@ -23,7 +23,7 @@
 								<a class="nav-link active" aria-current="page" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="clinicAdminAppointments.php">Appointment(s)</a>
+								<a class="nav-link" href="clinicAdminAppointments.php">Appointments</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="clinicAdminServices.php">Services</a>
@@ -32,6 +32,9 @@
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
+							<li class="nav-item">
+								<span class="navbar-brand text-center">Toa Payoh Dental</span>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
 							</li>
@@ -52,33 +55,35 @@
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
 			<!-- Tablehead can put caption-top -->
-			<div class="row justify-content-center align-items-center pt-5">
+			<div class="row justify-content-start align-items-center pt-5">
 				<div class="col-4 text-center text-md-start">
-					<div class="display-6">Welcome Toa Payoh Dental</div>
+					<div class="display-5">Accounts</div>
 				</div>
-				<form class="row col-8 justify-content-end align-items-center pt-5" method="POST">
-					<label for="searchClinicName" class="row col-2 col-form-label"><h4>Search :</h4></label>
-						<div class="row col-6">
-							<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Name or NRIC">
-						</div>
-				</form>
+
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="row">
-					<div class="col-6 display-6 pb-3">Account(s) Status</div>
-					<div class="col-6 text-end display-6 pb-3">
+					<form class="row col-8 justify-content-start align-items-center" method="POST">
+						<label for="searchClinicName" class="row col-2 col-form-label"><h4>Search :</h4></label>
+							<div class="row col-6">
+								<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Name or NRIC">
+							</div>
+					</form>
+					<div class="col-4 text-end display-6 pb-3">
 						<form class="justify-content-end align-items-end" method="POST">
 							<button type="submit" class="btn btn-warning" name="createNewEmployee">Create Employee</button>
 							<button type="submit" class="btn btn-info" name="createNewPatient">Create Patient</button>
 						</form>
 					</div>
-					<div class="col-2 form-check">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultEmployeeAcc" checked>
-					  <label class="form-check-label" for="flexRadioDefaultEmployeeAcc"><strong>Employees</strong></label>
-					</div>
-					<div class="col-2 form-check pb-2">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPatientAcc">
-					  <label class="form-check-label" for="flexRadioDefaultPatientAcc"><strong>Patients</strong></label>
+					<div class="row py-3">
+						<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultEmployeeAcc" checked>
+						  <label class="form-check-label" for="flexRadioDefaultEmployeeAcc"><strong>Employees</strong></label>
+						</div>
+						<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPatientAcc">
+						  <label class="form-check-label" for="flexRadioDefaultPatientAcc"><strong>Patients</strong></label>
+						</div>
 					</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>

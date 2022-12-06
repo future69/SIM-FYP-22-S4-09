@@ -23,7 +23,7 @@
 								<a class="nav-link" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="clinicAdminAppointments.php">Appointment(s)</a>
+								<a class="nav-link" href="clinicAdminAppointments.php">Appointments</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link active" aria-current="page" href="clinicAdminServices.php">Services</a>
@@ -32,6 +32,9 @@
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
+							<li class="nav-item">
+								<span class="navbar-brand text-center">Toa Payoh Dental</span>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
 							</li>
@@ -52,7 +55,7 @@
 			<!-- Tablehead can put caption-top -->
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="col-12 text-start text-md-start">
-					<div class="display-6">Welcome Toa Payoh Dental</div>
+					<div class="display-6"></div>
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">

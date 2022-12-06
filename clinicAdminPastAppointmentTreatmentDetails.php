@@ -23,7 +23,7 @@
 								<a class="nav-link" href="clinicAdminUserAccounts.php">User Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="clinicAdminAppointments.php">Appointment(s)</a>
+								<a class="nav-link active" aria-current="page" href="clinicAdminAppointments.php">Appointments</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="clinicAdminServices.php">Services</a>
@@ -32,6 +32,9 @@
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
+							<li class="nav-item">
+								<span class="navbar-brand text-center">Toa Payoh Dental</span>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
 							</li>
@@ -61,13 +64,15 @@
 							<tr>
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
-								<th scope="col">Service(s)</th>
+								<th scope="col">Reason</th>
+								<th scope="col">Service(s) provided</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td> 20/11/2022 </td>
 								<td> 15:00 </td>
+								<td> smelly breath and dirty teeth </td>
 								<td> Polishing, Fillings </td>
 							</tr>
 						</tbody>
