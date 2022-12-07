@@ -45,7 +45,7 @@
 					</div>
 				</div>
         </nav>
-<body>
+        <body>
 <div class="container-lg">
         <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Existing Appointment</div>
         <div class="row">
@@ -55,32 +55,23 @@
             <div class="col border border-3 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row">
-                    <p class="">
-                        Can't find your patients appointment? Create an appointment for them here:
-                        <a href="dentistCreateAppointment.php" class="btn btn-secondary btn-block">Create Appointment</a>
-                    </p>
 
                     <div class="w-100"></div>
                         <div class="col-6">Search Appointment:</div>
                             <div class="input-group col-3 col-sm-3 pt-1">
                             <input type="text" class="form-control" placeholder="Search by Name" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
-                        <div class="mt-4 text-center p-3">
-                            <!--<a href="dentistCreateAppointment.php" class="btn btn-secondary">Create Appointment</a>-->
-                        </div>
 
                         <!-- Force next columns to break to new line -->
                         <div class="w-100"></div>
-                        <div class="btn-group col-md-4" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                        <label class="btn btn-outline-Primary" for="btnradio1">Existing Appointment</label>
-
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" >
-                        <label class="btn btn-outline-danger" for="btnradio2">Past Appointment</label>
                         </div>
-                        
-                        <div class="justify-content-center d-flex mt-4 p-2">Result(s)</div>
-                            <div class="input-group col-3 col-sm-3 border border-2 border-secondary">
+                        <div class="col pt-3">
+                                <a href="dentistViewnSearchAppointment.php" class="btn btn-Primary">Existing Appointment</a>
+                                <a href="dentistPastAppointment.php" class="btn btn-Danger">Past Appointment</a>
+                                <a href="dentistCreateAppointment.php" class="btn btn-Warning">Create Appointment</a>
+                        </div>
+                    
+                            <div class="input-group col-3 col-sm-3 mt-3 border border-2 border-secondary">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -98,37 +89,29 @@
                                     <td>John</td>
                                     <td>S12345678G</td>
                                     <td>12/03/2022</td>
-                                    <td>1:20pm</td>
+                                    <td>1pm to 2pm</td>
                                     <td>85264317</td>
                                     <td>Ongoing</td>
                                     <td> 
-                                        <a href="dentistUpdateAppointment.php" class="btn btn-secondary btn-block col">Update Appointment</a>
-                                        <a href="dentistViewATD.php" class="btn btn-secondary btn-block col" onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-                                        <div class="w-100 p-2"></div>
-                                        <a href="dentistViewATD.php" class="btn btn-secondary btn-block">View Appointment Treatment Details</a>
+                                        <a href="dentistUpdateAppointment.php" class="btn btn-primary btn-block col">Update Appointment</a>
+                                        <a href="#" class="btn btn-danger btn-block col" onclick="alert('Appointment Deleted!')">Delete Appointment</a>
                                     </td>
                                     </tr>
                                     <tr>
                                     <td>Mary</td>
                                     <td>S87654321C</td>
                                     <td>22/10/2022</td>
-                                    <td>3:20pm</td>
+                                    <td>3pm to 4pm</td>
                                     <td>85242517</td>
                                     <td>Today</td>
                                     <td> 
-                                        <a href="dentistUpdateAppointment.php" class="btn btn-secondary btn-block col">Update Appointment</a>
-                                        <a href="#" class="btn btn-secondary btn-block col" onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-                                        <div class="w-100 p-2"></div>
-                                        <a href="#" class="btn btn-secondary btn-block">View Appointment Treatment Details</a>
+                                        <a href="dentistUpdateAppointment.php" class="btn btn-primary btn-block col">Update Appointment</a>
+                                        <a href="#" class="btn btn-danger btn-block col" onclick="alert('Appointment Deleted!')">Delete Appointment</a>
                                     </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </div>
-                            <p class="mt-3">
-                                Can't find your patients appointment treatment details? Create an appointment details for them here:
-                                <a href="dentistCreateATD.php" class="btn btn-secondary btn-block">Create Appointment Treatment Details</a>
-                                </p>
                     </div>
                 </div>
             </div>

@@ -25,9 +25,6 @@
 							<li class="nav-item">
 								<a class="nav-link" href="dentistViewnSearchAppointment.php">Appointment</a>
 							</li>
-                            <li class="nav-item">
-								<a class="nav-link" href="dentistPastAppointment.php">Past Appointment</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="dentistSearchPatient.php">Patient</a>
 							</li>
@@ -66,7 +63,6 @@
                                     <th scope="col">S/N</th>
                                     <th scope="col">Name of Services</th>
                                     <th scope="col">Quotation of Services</th>
-                                    <th scope="col">Dentists performing</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,25 +70,21 @@
                                         <td>1</td>
                                         <td>Service 1</td>
                                         <td>$100-$150</td>
-                                        <td>Dentist A</td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td>Service 2</td>
                                         <td>$200-$250</td>
-                                        <td>Dentist B</td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
                                         <td>Service 3</td>
                                         <td>$300-$350</td>  
-                                        <td>Dentist C</td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
                                         <td>Service 4</td>
                                         <td>$400-$450</td>  
-                                        <td>Dentist D</td>
                                     </tr>
                                 </tbody>
                                 </table>

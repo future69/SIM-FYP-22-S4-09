@@ -25,9 +25,6 @@
 							<li class="nav-item">
 								<a class="nav-link" href="dentistViewnSearchAppointment.php">Appointment</a>
 							</li>
-                            <li class="nav-item">
-								<a class="nav-link" href="dentistPastAppointment.php">Past Appointment</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link active"  aria-current="page" href="dentistSearchPatient.php">Patient</a>
 							</li>
@@ -62,16 +59,11 @@
                             <div class="input-group col-3 col-sm-3">
                             <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
                             </div>
-                        <div class="col-6 col-sm-3 mt-3">NRIC:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="NRIC" aria-label="NRIC" aria-describedby="basic-addon1">
-                            </div>
 
                         <!-- Force next columns to break to new line -->
                         <div class="w-100"></div>
 
-                        <div class="justify-content-center d-flex mt-4 p-2">Result(s)</div>
-                            <div class="input-group col-3 col-sm-3 text-center border border-2 border-secondary">
+                            <div class="input-group col-3 col-sm-3 mt-4 p-2 text-center border border-2 border-secondary">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>

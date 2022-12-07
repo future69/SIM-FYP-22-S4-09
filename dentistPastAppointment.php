@@ -58,21 +58,14 @@
                             <div class="input-group col-3 col-sm-3 pt-1">
                             <input type="text" class="form-control" placeholder="Search by Name or NRIC" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
-                        <div class="mt-4 text-center p-3">
-                            <a href="dentistCreateAppointment.php" class="btn btn-secondary">Create Appointment</a>
-                        </div>
 
                         <!-- Force next columns to break to new line -->
                         <div class="w-100"></div>
-                        <div class="btn-group col-md-4" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                        <label class="btn btn-outline-Primary" for="btnradio1">Existing Appointment</label>
-
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" >
-                        <label class="btn btn-outline-danger" for="btnradio2">Past Appointment</label>
+                        <div class="btn-group col-md-4 mt-4 mb-4" role="group" aria-label="Basic radio toggle button group">
+                        <a href="dentistViewnSearchAppointment.php" class="btn btn-Primary">Existing Appointment</a>
+                            <a href="dentistPastAppointment.php" class="btn btn-Danger">Past Appointment</a>
                         </div>
 
-                        <div class="justify-content-center d-flex mt-4 p-2">Result(s)</div>
                             <div class="input-group col-3 col-sm-3 border border-2 border-secondary">
                             <table class="table table-hover">
                                 <thead>

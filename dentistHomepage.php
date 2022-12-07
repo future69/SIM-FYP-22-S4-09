@@ -23,9 +23,6 @@
 								<a class="nav-link" href="dentistViewnSearchAppointment.php">Appointment</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="dentistPastAppointment.php">Past Appointment</a>
-							</li>
-							<li class="nav-item">
 								<a class="nav-link" href="dentistSearchPatient.php">Patient</a>
 							</li>
 							<li class="nav-item">

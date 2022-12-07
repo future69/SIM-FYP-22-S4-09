@@ -25,9 +25,6 @@
 							<li class="nav-item">
 								<a class="nav-link active"  aria-current="page" href="dentistViewnSearchAppointment.php">Appointment</a>
 							</li>
-                            <li class="nav-item">
-								<a class="nav-link" href="dentistPastAppointment.php">Past Appointment</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link"  href="dentistSearchPatient.php">Patient</a>
 							</li>
@@ -49,6 +46,11 @@
 				</div>
         </nav>
 <body>
+		<?php 
+			if (isset($_POST['back'])) {
+				header("Location:dentistViewnSearchAppointment.php");
+			}
+		?>
 <div class="registrationBoxPatient container">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
@@ -91,7 +93,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<form class="row justify-content-center align-items-center">
+					<form method="POST" class="row justify-content-center align-items-center">
 					<div class="row col-6 align-items-center py-2">
 						<label for="dentistSL" class="col-2 col-form-label">Dentist:</label>
 						<div class="col-6">
