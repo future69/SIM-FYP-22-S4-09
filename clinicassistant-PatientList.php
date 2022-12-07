@@ -23,9 +23,6 @@
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-ATL.php">Appointment Treatment list</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">
@@ -62,14 +59,12 @@
                             <input type="text" class="form-control" placeholder="Search by Name or NRIC" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                         <div class="mt-4 text-center p-3">
-                            <a href="clinicassistant-CreatePatient.php" class="btn btn-secondary">Create Patient Account</a>
+                            <a href="clinicassistant-CreatePatient.php" class="btn btn-Primary">Create Patient Account</a>
                         </div>
 
                         <!-- Force next columns to break to new line -->
                         <div class="w-100"></div>
-
-                        <div class="justify-content-center d-flex mt-4 p-2">Result(s)</div>
-                            <div class="input-group col-3 col-sm-3 border border-2 border-secondary">
+                            <div class="input-group col-3 col-sm-3 mt-4 p-2 border border-2 border-secondary">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>

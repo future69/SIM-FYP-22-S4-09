@@ -23,9 +23,6 @@
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-ATL.php">Appointment Treatment list</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">

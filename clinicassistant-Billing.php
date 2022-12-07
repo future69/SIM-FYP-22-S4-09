@@ -23,9 +23,6 @@
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-ATL.php">Appointment Treatment list</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">
@@ -59,19 +56,26 @@
                     <div class="row"></div>
                     <div class="col-6 col-sm-3">Patient Name:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Patient Name" aria-label="Name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Patient Name" disabled aria-label="Name" aria-describedby="basic-addon1">
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">Amount:</div>
+                        <div class="col-6 col-sm-3">NRIC:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Amount" aria-label="Amount" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="NRIC" aria-label="Name" aria-describedby="basic-addon1">
                             </div>
                         <div class="col-6 col-sm-3 pt-3">Date and Time:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="datetime-local" class="form-control" placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">
+                            <input type="datetime-local" class="form-control" disabled placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">Email:</div>
+						<label for="servicelist" class="col-6 col-sm-3 pt-3">Service List:</label>
+						<div class="col-lg-4">
+							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
+								<option value="plceaholder">Service 1</option>
+								<option value="plceaholder">Service 2</option>
+								<option value="plceaholder">Service 3</option>
+							</select>
+						</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+                            <textarea class="form-control" disabled id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                         <div class="pt-3">
                             <label for="ClinicVisit" class="form-label">Bill Description</label>
@@ -79,10 +83,10 @@
                             </div>
                     <div class="row align-items-center mt-3">
                         <div class="col-3">
-                        <a class="btn btn-secondary"  href="clinicassistant-Homepage.php" onclick="alert('Bill Send!')">Confirm</a>
+                        <a class="btn btn-primary"  href="clinicassistant-Homepage.php" onclick="alert('Bill Send!')">Confirm</a>
                         </div>
                         <div class="col-3">
-                        <a class="btn btn-secondary"  href="clinicassistant-Homepage.php"  onclick="alert('Bill Cancelled Canceled!')">Back</a>
+                        <a class="btn btn-danger"  href="clinicassistant-Homepage.php"  onclick="alert('Bill Cancelled Canceled!')">Back</a>
                         </div>
                     </div>
                 </div>

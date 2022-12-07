@@ -23,9 +23,6 @@
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-ATL.php">Appointment Treatment list</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">
@@ -47,9 +44,8 @@
         </div>
     </nav>
 <body>
-<div class="container-lg">
+    <div class="container-lg">
         <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Appointment Treatment Details</div>
-        <div class=""></div>
             <div class="row">
                 <div class="col-md-3">
                     <!--Contatiner control-->
@@ -63,7 +59,7 @@
                             </div>
                             <div class="input-group col pb-4 pt-4">
                             <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle me-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Role
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -71,13 +67,8 @@
                                 <li><a class="dropdown-item" href="#">Employee</a></li>
                             </ul>
                             </div>
-                            </div>
-                            <div class="btn-group btn-sm col pb-4 pt-4" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                            <label class="btn btn-outline-Primary" for="btnradio1">Existing Appointment</label>
-
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" >
-                            <label class="btn btn-outline-danger" for="btnradio2">Past Appointment</label>
+                            <a href="clinicassistant-AppointmentList.php" class="btn btn-Primary">Existing Appointment</a>
+                            <a href="clinicassistant-ATL.php" class="btn btn-Danger">Past Appointment</a>
                             </div>
                         <!-- Force next columns to break to new line -->
                         <div class="w-100"></div>
@@ -126,7 +117,6 @@
                 <div class="col-md-3">
                     <!--Contatiner control-->
                 </div>
-            </div>
     </div>
 </body>
 </html>

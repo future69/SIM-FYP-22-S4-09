@@ -23,9 +23,6 @@
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-ATL.php">Appointment Treatment list</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">
@@ -46,67 +43,99 @@
             </div>
         </div>
     </nav>
+    <?php 
+			if (isset($_POST['submit'])) {
+				echo '<script>alert("Account created!")</script>';
+			}
+			else if (isset($_POST['back'])) {
+				header("Location:clinicassistant-PatientList.php");
+			}
+		?>
 <body>
-<div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient Account Creation</div>
-        <div class="">
-            <div class="row">
-                <div class="col-md-3">
-                    <!--Contatiner control-->
-                </div>
-            <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-6 col-sm-3">Username:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        <div class="col-6 col-sm-3">Password:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-                            </div>
-                        <div class="col-6 col-sm-3">NRIC:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="NRIC" aria-label="NRIC" aria-describedby="basic-addon1">
-                            </div>
-                        <div class="col-6 col-sm-3">Date of Births:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="DOB" aria-label="DOB" aria-describedby="basic-addon1">
-                            </div>
-                            <div class="col-6 col-sm-3">Gender</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <div class="form-check me-5">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Male   
-                                </label>
-                            </div>
-                                <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Female
-                                </label>
-                            </div>
-                            </div>
-                    </div>
-                        <div class="col-6 col-sm-3">Email:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
-                            </div>
-                        <div class="mt-4 text-center p-3">
-                            <a href="clinicassistant-PatientList.php" class="btn btn-secondary" onclick="alert('Patient Account Created!')">Create Account</a>
-                        </div>
-
-                        <!-- Force next columns to break to new line -->
-                        <div class="w-100"></div>
-                    </div>
-                </div>
-            </div>
-            </div>
-                <div class="col-md-3">
-                    <!--Contatiner control-->
-                </div>
-            </div>
-        </div>
+<div class="registrationBoxPatient container">
+			<div class="row justify-content-center align-items-center border border-5 m-3">
+				<form method="POST">
+					<div class="row justify-content-center ps-5">
+						<div class="col-4">
+							<h1>Patient Registration</h1>
+						</div>
+					</div>
+					  <div class="row justify-content-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="usernameTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
+						<div class="col-lg-4">
+						  <input type="password" class="form-control" id="passwordTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="usernameTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="passwordTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">DOB:</label>
+						<div class="col-lg-4">
+							<input type="date" class="form-control" id="datePicker">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Address:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="passwordTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Postal Code:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="usernameTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Gender:</label>
+						<div class="col-lg-4">
+							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
+								<option value="plceaholder">Male</option>
+								<option value="plceaholder">Female</option>
+								<option value="plceaholder">Others</option>
+							</select>
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="passwordTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="usernameTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Medical History:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="passwordTB">
+						</div>
+					  </div>
+					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
+						<button class="btn btn-danger" name="back" value="back">Back</button>
+						<button type="submit" class="btn btn-primary" name="submit" value="submit">Confirm</button>
+					  </div>
+					</form>
+				</div>
+			</div>
 </body>
 </html>

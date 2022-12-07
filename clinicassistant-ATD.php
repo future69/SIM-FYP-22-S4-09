@@ -23,9 +23,6 @@
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-ATL.php">Appointment Treatment list</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">
@@ -46,8 +43,17 @@
             </div>
         </div>
     </nav>
+	<?php 
+			if (isset($_POST['submit'])) {
+				echo '<script>alert("Appointment updated!")</script>';
+			}
+			else if (isset($_POST['back'])) {
+				header("Location:clinicassistant-AppointmentList.php");
+			}
+		?>
 <body>
 <div class="registrationBoxPatient container">
+	<form method="POST">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
 					<div class="display-6">Appointment treatment details for name3</div>
@@ -122,6 +128,7 @@
 					</form>
 				</div>
 			</div>
+		</form>
 		</div>
 </body>
 </html>

@@ -23,9 +23,6 @@
                         <a class="nav-link active" aria-current="page" href="clinicassistant-AppointmentList.php">Appointment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-ATL.php">Appointment Treatment list</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">
@@ -59,22 +56,22 @@
                     <div class="row"></div>
                     <div class="col-6 col-sm-3">Patient Name:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Patient Name" aria-label="Name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Patient Name" disabled aria-label="Name" aria-describedby="basic-addon1">
                             </div>
                         <div class="col-6 col-sm-3 pt-3">NRIC:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="NRIC" aria-label="NRIC" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="NRIC" disabled aria-label="NRIC" aria-describedby="basic-addon1">
                             </div>
                         <div class="col-6 col-sm-3 pt-3">Contact Number:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Number" aria-label="Number" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Number" disabled aria-label="Number" aria-describedby="basic-addon1">
                             </div>
                         <div class="col-6 col-sm-3 pt-3">Date and Time:</div>
                             <div class="input-group col-3 col-sm-3">
                             <input type="date" class="form-control" placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">
                             </div>
-                            <div class="col-6 col-sm-3 pt-3">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="col pt-3">
+                            <button class="btn btn-secondary dropdown-toggle col" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Time
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -84,9 +81,8 @@
                                 <li><a class="dropdown-item" href="#">4pm to 5pm</a></li>
                                 <li><a class="dropdown-item" href="#">5pm to 6pm</a></li>
                             </ul>
-                            </div>
-                        <div class="col-6 col-sm-3 pt-3">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <button class="btn btn-secondary dropdown-toggle col" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Reason for Appointment
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -104,11 +100,14 @@
                             </div>
                         </div>
                     <div class="row align-items-center mt-3">
-                        <div class="col-6">
-                        <a class="btn btn-secondary"  href="clinicassistant-AppointmentList.php" onclick="alert('Appointment Updated!')">Confirm</a>
+                        <div class="col-md-3">
+                        <a class="btn btn-Primary"  href="clinicassistant-AppointmentList.php" onclick="alert('Appointment Updated!')">Confirm</a>
                         </div>
-                        <div class="col-6">
-                        <a class="btn btn-secondary"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Canceled!')">Back</a>
+                        <div class="col-md-3">
+                        <a class="btn btn-danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Canceled!')">Back</a>
+                        </div>
+                        <div class="col-md-6">
+                        <a href="clinicassistant-ATD.php" class="btn btn-secondary btn-block">View Appointment Treatment Details</a>
                         </div>
                     </div>
                 </div>

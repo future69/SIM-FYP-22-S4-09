@@ -23,9 +23,6 @@
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-ATL.php">Appointment Treatment list</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
                     </li>
                     <li class="nav-item">
@@ -61,26 +58,21 @@
                 <table class="table table table-striped table-hover table-bordered border-dark justify-content-center">
                     <thead>
                         <tr>
-                            <th scope="col">Types of Services</td>
                             <th scope="col">Patient Name</td>
+                            <th scope="col">NRIC</td>
                             <th scope="col">Date & Time</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Service 1</td>
                             <td>Patient 1</td>
-                            <td>10/10/2022</td>
+                            <td>NRIC 1</td>
+                            <td>10/10/2022 : 1pm to 2pm</td>
                         </tr>
                         <tr>
-                            <td>Service 2</td>
                             <td>Patient 2</td>
-                            <td>11/11/2022</td>
-                        </tr>
-                        <tr>
-                            <td>Service 3</td>
-                            <td>Patient 3</td>
-                            <td>12/12/2022</td>
+                            <td>NRIC 2</td>
+                            <td>11/11/2022 : 3pm to 4pm</td>
                         </tr>
                     </tbody>
                 </table>
