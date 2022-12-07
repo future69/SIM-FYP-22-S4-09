@@ -108,7 +108,6 @@
 								<td> Dirty teeth </td>
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicAdminUpdateAppointment.php'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
 								</td>
 							</tr>
 							<tr>

@@ -50,7 +50,7 @@
 				
 			}
 			else if (isset($_POST['back'])) {
-				header("Location:potentialPatientHomepageAftLogin.php");
+				header("Location:potentialPatientView&SearchAppointment.php");
 			}
 		?>
 	</header>
@@ -60,7 +60,7 @@
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
 						<div class="col-4">
-							<h1>Book appointment</h1>
+							<h1>Update appointment</h1>
 						</div>
 					</div>
 					  <div class="row justify-content-center py-2">
@@ -78,7 +78,7 @@
 					  <div class="row justify-content-center py-2">
 						<label for="clinicNameSL" class="col-lg-1 col-form-label">Clinic Name:</label>
 						<div class="col-lg-4">
-						  <select name="clinicNameSL" id="clinicNameSL">
+						  <select class="form-select" name="clinicNameSL" id="clinicNameSL">
 						    <option value="plceaholder">Lim's Clinic</option>
 							<option value="plceaholder">Joe's Surgery</option>
 							<option value="plceaholder">Tan Tock Seng Hospital</option>
@@ -86,7 +86,7 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Calendar:</label>
+						<label for="passwordTB" class="col-lg-1 col-form-label">Date:</label>
 						<div class="col-lg-4">
 						  <input type="date" class="form-control" id="datePicker">
 						</div>
@@ -94,7 +94,7 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Time Slot:</label>
 						<div class="col-lg-4">
-						  <select name="timeSlotSL" id="timeSlotSL">
+						  <select class="form-select" name="timeSlotSL" id="timeSlotSL">
 						    <option value="plceaholder">8:00</option>
 							<option value="plceaholder">9:00</option>
 							<option value="plceaholder">10:00</option>
