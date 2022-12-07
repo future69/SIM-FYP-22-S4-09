@@ -43,41 +43,84 @@
             </div>
         </div>
     </nav>
-<body>
-<div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Personal Account</div>
-            <div class="row">
-                <div class="col-md-3">
-                    <!--Contatiner control-->
-                </div>
-            <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
-                <div class="container">
-                    <div class="row">
-                            <p class="m-0 ">Name:</p>
-                            <div class="input-group col-3 col-sm-3">
-                                <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                            <p class="m-0 mt-3">Date of Birth:</p>
-                            <div class="input-group col-3 col-sm-3"> 
-
-                                <input type="text" class="form-control" placeholder="DOB" aria-label="DOB" aria-describedby="basic-addon1">
-                            </div>
-                            <p class="m-0 mt-3">Certification:</p>
-                            <div class="input-group col-3 col-sm-3">
-                                <input type="text" class="form-control" placeholder="Certification" aria-label="Certification" aria-describedby="basic-addon1">
-                            </div>
-                            <p class="m-0 mt-3">Date Join:</p>
-                            <div class="input-group col-3 col-sm-3 ">
-                                <input type="text" class="form-control" placeholder="DD/MM/YYYY" aria-label="DD/MM/YYYY" aria-describedby="basic-addon1">
-                            </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-                <div class="col-md-3">
-                    <!--Contatiner control-->
-                </div>
-        </div>
-    </div>
+    <body>
+<div class="registrationBoxPatient container">
+			<div class="row justify-content-center align-items-center border border-5 m-3">
+				<form method="POST">
+					<div class="row justify-content-center ps-5">
+						<div class="col-4">
+							<h1>Patient Registration</h1>
+						</div>
+					</div>
+					  <div class="row justify-content-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="usernameTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
+						<div class="col-lg-4">
+						  <input type="password" class="form-control" id="passwordTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" disabled id="usernameTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" disabled id="passwordTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">DOB:</label>
+						<div class="col-lg-4">
+							<input type="date" class="form-control" disabled id="datePicker">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Address:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="passwordTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Postal Code:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="usernameTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="passwordTB" disabled class="col-lg-1 col-form-label">Gender:</label>
+						<div class="col-lg-4">
+							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
+								<option value="plceaholder">Male</option>
+								<option value="plceaholder">Female</option>
+								<option value="plceaholder">Others</option>
+							</select>
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="passwordTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
+						<div class="col-lg-4">
+						  <input class="form-control" id="usernameTB">
+						</div>
+					  </div>
+					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
+						<button class="btn btn-danger" name="back" value="back">Return</button>
+					  </div>
+					</form>
+				</div>
+			</div>
 </body>
 </html>

@@ -60,15 +60,11 @@
                             <input type="text" class="form-control" placeholder="Search by Name" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
-                        <!-- Force next columns to break to new line -->
-                        <div class="w-100"></div>
+                        <div class="btn-group col-md-6 mt-4 mb-4" role="group" aria-label="Basic radio toggle button group">
+                        <a href="#" class="btn btn-Primary">Existing Appointment</a>
+                            <a href="#" class="btn btn-Danger">Past Appointment</a>
+                            <a href="clinicassistant-CreateAppointment.php" class="btn btn-Warning">Create Appointment</a>
                         </div>
-                        <div class="col pt-3">
-                                <a href="clinicassistant-AppointmentList.php" class="btn btn-Primary">Existing Appointment</a>
-                                <a href="clinicassistant-ATL.php" class="btn btn-Danger">Past Appointment</a>
-                                <a href="clinicassistant-CreateAppointment.php" class="btn btn-Warning">Create Appointment</a>
-                        </div>
-                    
                             <div class="input-group col-3 col-sm-3 mt-3 border border-2 border-secondary">
                             <table class="table table-hover">
                                 <thead>
@@ -105,6 +101,17 @@
                                     <td> 
                                         <a href="clinicassistant-UpdateAppointment.php" class="btn btn-primary btn-block col">Update Appointment</a>
                                         <a href="#" class="btn btn-danger btn-block col" onclick="alert('Appointment Deleted!')">Delete Appointment</a>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>Mary</td>
+                                    <td>S87654321C</td>
+                                    <td>19/10/2022</td>
+                                    <td>3pm to 4pm</td>
+                                    <td>85242517</td>
+                                    <td>Completed</td>
+                                    <td> 
+                                        <a href="dentistViewATD.php" class="btn btn-primary btn-block">View Appointment Treatment Details</a>
                                     </td>
                                     </tr>
                                 </tbody>

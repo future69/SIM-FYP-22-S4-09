@@ -121,9 +121,9 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Medical History:</label>
+						<label for="formFileMedicalHistory" class="col-1 col-form-label">Medical history:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB">
+							<input class="form-control" type="file" id="formFileMedicalHistory" multiple>	
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
