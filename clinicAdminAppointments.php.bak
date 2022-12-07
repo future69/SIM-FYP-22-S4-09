@@ -107,8 +107,7 @@
 								<td> 12345678 </td>
 								<td> Dirty teeth </td>
 								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicAdminUpdateAppointment.php'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicAdminUpdateAppointment.php'">Update Appointment</button>
 								</td>
 							</tr>
 							<tr>
@@ -141,7 +140,7 @@
 								<td> 10/12/2022 </td>
 								<td> 20:00 </td>
 								<td> 12345678 </td>
-								<td class="overflow-auto"> want to enquire about braces</td>
+								<td class="overflow-auto"> smelly breath and dirty teeth</td>
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicAdminPastAppointmentTreatmentdetails.php'">View Appointment Treatment Details</button>
 								</td>

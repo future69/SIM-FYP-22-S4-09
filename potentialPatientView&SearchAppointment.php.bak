@@ -7,7 +7,7 @@
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
-					<a class="navbar-brand mb-0 h1" href="">
+					<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
 					<img
 					class="d-inline-block align-top"
 					src="images/SuperDentalLogo.png"
@@ -60,8 +60,8 @@
 							<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Clinic Name">
 						</div>
 						<div class="row col-2">
-							<select name="timeSlotSL" id="timeSlotSL">
-								<option value="plceaholder">Date</option>
+							<select class="form-select" name="timeSlotSL" id="timeSlotSL">
+								<option value="plceaholder">All Dates</option>
 								<option value="plceaholder">1 week</option>
 								<option value="plceaholder">1 month</option>
 								<option value="plceaholder">3 months</option>
@@ -81,6 +81,7 @@
 								<th scope="col">Location</th>
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
+								<th scope="col">Action</th>
 							<tr>
 						</thead>
 						<tbody>
@@ -89,18 +90,21 @@
 								<td> Hougang Ave 7 567234 </td>
 								<td> 28/7/22 </td>
 								<td> 14:30 </td>
+								<td><button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='potentialPatientUpdateAppointment.php'">Update Appointment</button></td>
 							</tr>
 							<tr>
 								<td> Mustard and Sons </td>
 								<td> Tampines Hub 654234 </td>
 								<td> 5/11/22 </td>
 								<td> 17:30 </td>
+								<td><button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='potentialPatientUpdateAppointment.php'">Update Appointment</button></td>
 							</tr>
 							<tr>
 								<td> Lim's Surgery </td>
 								<td> Toa Payoh Lorong 7 543647 </td>
 								<td> 22/4/23 </td>
 								<td> 08:30 </td>
+								<td>Appointments can only be updated/deleted <br> more than 2 days before the appointment</td>
 							</tr>
 						</tbody>
 				</div>
