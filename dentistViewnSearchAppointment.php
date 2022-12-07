@@ -57,20 +57,18 @@
                     <div class="row">
 
                     <div class="w-100"></div>
-                        <div class="col-6">Search Appointment:</div>
-                            <div class="input-group col-3 col-sm-3 pt-1">
-                            <input type="text" class="form-control" placeholder="Search by Name" aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="row col-2 col-form-label">Search Appointment:</div>
+                            <div class="row col-6">
+                            <input type="text" class="row col-3 form-control" placeholder="Search by Name" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
+                        </div>
+                        
+                        <div class="btn-group col-md-6 mt-4 mb-4" role="group" aria-label="Basic radio toggle button group">
+                        <a href="#" class="btn btn-Primary">Existing Appointment</a>
+                            <a href="#" class="btn btn-Danger">Past Appointment</a>
+                            <a href="dentistCreateAppointment.php" class="btn btn-Warning">Create Appointment</a>
+                        </div>
 
-                        <!-- Force next columns to break to new line -->
-                        <div class="w-100"></div>
-                        </div>
-                        <div class="col pt-3">
-                                <a href="dentistViewnSearchAppointment.php" class="btn btn-Primary">Existing Appointment</a>
-                                <a href="dentistPastAppointment.php" class="btn btn-Danger">Past Appointment</a>
-                                <a href="dentistCreateAppointment.php" class="btn btn-Warning">Create Appointment</a>
-                        </div>
-                    
                             <div class="input-group col-3 col-sm-3 mt-3 border border-2 border-secondary">
                             <table class="table table-hover">
                                 <thead>
@@ -107,6 +105,17 @@
                                     <td> 
                                         <a href="dentistUpdateAppointment.php" class="btn btn-primary btn-block col">Update Appointment</a>
                                         <a href="#" class="btn btn-danger btn-block col" onclick="alert('Appointment Deleted!')">Delete Appointment</a>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>Mary</td>
+                                    <td>S87654321C</td>
+                                    <td>22/10/2022</td>
+                                    <td>3:20pm</td>
+                                    <td>85242517</td>
+                                    <td>Completed</td>
+                                    <td> 
+                                        <a href="dentistViewATD.php" class="btn btn-primary btn-block">View Appointment Treatment Details</a>
                                     </td>
                                     </tr>
                                 </tbody>

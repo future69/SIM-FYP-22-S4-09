@@ -105,10 +105,10 @@
                         </div>
                     <div class="row align-items-center mt-3">
                         <div class="col-6">
-                        <a class="btn btn-secondary"  href="dentistViewnSearchAppointment.php" onclick="alert('Appointment Created!')">Confirm</a>
+                        <a class="btn btn-primary"  href="dentistViewnSearchAppointment.php" onclick="alert('Appointment Created!')">Confirm</a>
                         </div>
                         <div class="col-6">
-                        <a class="btn btn-secondary"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Canceled!')">Back</a>
+                        <a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Canceled!')">Back</a>
                         </div>
                     </div>
                 </div>
