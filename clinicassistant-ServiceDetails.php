@@ -29,7 +29,7 @@
                         <a class="nav-link active" aria-current="page" href="clinicassistant-ViewService.php">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-Billing.php">Billing</a>
+                        <a class="nav-link active" aria-current="page" href="clinicassistant-bills.php">Billing</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">

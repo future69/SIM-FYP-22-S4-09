@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
-    <title>Clinic Assistant Create Appointment</title>
+    <title>Clinic Assistant Billing</title>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -20,7 +20,7 @@
                         <a class="nav-link" href="clinicassistant-HomePage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-AppointmentList.php">Appointment</a>
+                        <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
@@ -29,7 +29,7 @@
                         <a class="nav-link" href="clinicassistant-ViewService.php">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-bills.php">Billing</a>
+                        <a class="nav-link active" aria-current="page" href="clinicassistant-Billing.php">Billing</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
@@ -48,7 +48,7 @@
     </nav>
 <body>
 <div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Create Appointment</div>
+        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Billing List</div>
         <div class=""></div>
             <div class="row">
                 <div class="col-md-3">
@@ -59,57 +59,37 @@
                     <div class="row"></div>
                     <div class="col-6 col-sm-3">Patient Name:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Patient Name" aria-label="Name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Patient Name" disabled aria-label="Name" aria-describedby="basic-addon1">
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">NRIC:</div>
+                        <div class="col-6 col-sm-3">NRIC:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="NRIC" aria-label="NRIC" aria-describedby="basic-addon1">
-                            </div>
-                        <div class="col-6 col-sm-3 pt-3">Contact Number:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Number" aria-label="Number" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="NRIC" aria-label="Name" aria-describedby="basic-addon1">
                             </div>
                         <div class="col-6 col-sm-3 pt-3">Date and Time:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="date" class="form-control" placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">
+                            <input type="datetime-local" class="form-control" disabled placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">
                             </div>
-                            <div class="col-6 col-sm-3 pt-3">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Time
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">10am to 11am</a></li>
-                                <li><a class="dropdown-item" href="#">1pm to 2pm</a></li>
-                                <li><a class="dropdown-item" href="#">3pm to 4pm</a></li>
-                                <li><a class="dropdown-item" href="#">4pm to 5pm</a></li>
-                                <li><a class="dropdown-item" href="#">5pm to 6pm</a></li>
-                            </ul>
+						<label for="servicelist" class="col-6 col-sm-3 pt-3">Service List:</label>
+						<div class="col-lg-4">
+							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
+								<option value="plceaholder">Service 1</option>
+								<option value="plceaholder">Service 2</option>
+								<option value="plceaholder">Service 3</option>
+							</select>
+						</div>
+                            <div class="input-group col-3 col-sm-3">
+                            <textarea class="form-control" disabled id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Reason for Appointment
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Service 1</a></li>
-                                <li><a class="dropdown-item" href="#">Service 2</a></li>
-                                <li><a class="dropdown-item" href="#">Service 3</a></li>
-                            </ul>
+                        <div class="pt-3">
+                            <label for="ClinicVisit" class="form-label">Bill Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
-                        <div class="col mt-3 d-flex">Email Reminder
-                            <div class="form-check me-5 ms-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    subscribe to email reminder  
-                                </label>
-                            </div>
-                        </div>
-
                     <div class="row align-items-center mt-3">
                         <div class="col-3">
-                        <a class="btn btn-Primary"  href="clinicassistant-AppointmentList.php" onclick="alert('Appointment Created!')">Confirm</a>
+                        <a class="btn btn-primary"  href="clinicassistant-Homepage.php" onclick="alert('Bill Send!')">Confirm</a>
                         </div>
                         <div class="col-3">
-                        <a class="btn btn-Danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Canceled!')">Back</a>
+                        <a class="btn btn-danger"  href="clinicassistant-Homepage.php"  onclick="alert('Bill Cancelled Canceled!')">Back</a>
                         </div>
                     </div>
                 </div>
