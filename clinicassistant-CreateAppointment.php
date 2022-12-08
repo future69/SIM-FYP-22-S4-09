@@ -100,11 +100,16 @@
                                 </label>
                             </div>
                         </div>
+
+                    <div class="col-md-7 pt-3">
+                     <a href="clinicassistant-ATD.php" class="btn btn-Warning btn-block">Create Appointment Treatment Details</a>
+                     </div>
+
                     <div class="row align-items-center mt-3">
-                        <div class="col-6">
+                        <div class="col-3">
                         <a class="btn btn-Primary"  href="clinicassistant-AppointmentList.php" onclick="alert('Appointment Created!')">Confirm</a>
                         </div>
-                        <div class="col-6">
+                        <div class="col-3">
                         <a class="btn btn-Danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Canceled!')">Back</a>
                         </div>
                     </div>

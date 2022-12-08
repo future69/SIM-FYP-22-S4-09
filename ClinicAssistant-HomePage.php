@@ -55,7 +55,7 @@
             </div>
                 <div class="container">
                 <p>List of Current Appointment </p>
-                <table class="table table table-striped table-hover table-bordered border-dark justify-content-center">
+                <table class="table table-hover table-secondary table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Patient Name</td>
