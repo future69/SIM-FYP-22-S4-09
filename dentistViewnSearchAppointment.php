@@ -36,7 +36,7 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
+								<a class="nav-link" href="dentistPersonalProfile.php">Welcome Dr. Lee</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
@@ -52,11 +52,6 @@
 		?>
         <body>
 		<div class="container-lg">
-		<div class="column">
-				<div class="col-md-5 text-start pt-5">
-					<div class="display-6">Welcome Dr. Lee</div>
-				</div>
-			</div>
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
 			<!-- Tablehead can put caption-top -->
 			<div class="row justify-content-center align-items-center pt-3">

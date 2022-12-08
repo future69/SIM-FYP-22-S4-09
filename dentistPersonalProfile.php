@@ -36,7 +36,7 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="dentistPersonalProfile.php">Profile</a>
+								<a class="nav-link active" aria-current="page" href="dentistPersonalProfile.php">Welcome Dr. Lee</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
@@ -48,11 +48,6 @@
 		<body>
 			
 <div class="registrationBoxPatient container">
-<div class="column">
-				<div class="col-md-5 text-start pt-5">
-					<div class="display-6">Welcome Dr. Lee</div>
-				</div>
-			</div>
 			<div class="row justify-content-center align-items-center border border-5 m-3">
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
@@ -63,13 +58,13 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
+						  <input class="form-control" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB">
+						  <input type="password" disabled class="form-control" id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
@@ -99,13 +94,13 @@
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB">
+						  <input class="form-control" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
+						  <input class="form-control" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
