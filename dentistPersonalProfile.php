@@ -46,7 +46,13 @@
 				</div>
         </nav>
 		<body>
+			
 <div class="registrationBoxPatient container">
+<div class="column">
+				<div class="col-md-5 text-start pt-5">
+					<div class="display-6">Welcome Dr. Lee</div>
+				</div>
+			</div>
 			<div class="row justify-content-center align-items-center border border-5 m-3">
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
@@ -87,7 +93,7 @@
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Practitioner Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <button type="submit" class="btn btn-primary col-md-3" name="downloadFile">Download</button>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">

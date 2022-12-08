@@ -47,6 +47,11 @@
         </nav>
 <body>
 <div class="container-lg">
+    <div class="column">
+				<div class="col-md-5 text-start pt-5">
+					<div class="display-6">Welcome Dr. Lee</div>
+				</div>
+			</div>
         <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Update Appointment</div>
         <div class=""></div>
             <div class="row">

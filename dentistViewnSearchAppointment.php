@@ -52,9 +52,14 @@
 		?>
         <body>
 		<div class="container-lg">
+		<div class="column">
+				<div class="col-md-5 text-start pt-5">
+					<div class="display-6">Welcome Dr. Lee</div>
+				</div>
+			</div>
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
 			<!-- Tablehead can put caption-top -->
-			<div class="row justify-content-center align-items-center pt-5">
+			<div class="row justify-content-center align-items-center pt-3">
 				<div class="col-12 text-start">
 					<div class="display-5">Appointments</div>
 				</div>
