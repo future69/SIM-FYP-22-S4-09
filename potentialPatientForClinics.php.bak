@@ -57,7 +57,7 @@
 					</p>
 				</div>
 				<div class="col-10 text-center pb-5">
-					<img class="img-fluid" src="images/all-smiles.jpg">
+					<img class="img-fluid" src="images/dentistWoo.jpg">
 				</div>
 				<div class="row col-6 text-center justify-content-center align-items-center pb-5">
 					<img class="col-6 w-25 img-fluid" src="images/loudspeaker.png">
@@ -76,7 +76,7 @@
 					<p class="col-6 text-center fst-italic fs-3">Gain access to database of 3000 customers</p>
 				</div>
 				<div class="row col-6 text-center justify-content-center align-items-center pb-5">
-					<img class="col-6 w-25 img-fluid" src="images/peopleQueue.png">
+					<img class="col-6 w-25 img-fluid" src="images/pastAppt.png">
 					<p class="col-6 text-center fst-italic fs-3">View records of past appointments</p>
 				</div>
 				<div class="row col-6 text-center justify-content-center align-items-center pb-5">
