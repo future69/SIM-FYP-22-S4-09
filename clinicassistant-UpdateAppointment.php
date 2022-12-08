@@ -81,7 +81,8 @@
                                 <li><a class="dropdown-item" href="#">4pm to 5pm</a></li>
                                 <li><a class="dropdown-item" href="#">5pm to 6pm</a></li>
                             </ul>
-
+                            </div>
+                            <div class="col pt-3">
                             <button class="btn btn-secondary dropdown-toggle col" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Reason for Appointment
                             </button>
@@ -99,6 +100,10 @@
                                 </label>
                             </div>
                         </div>
+
+                    <div class="col-md-7 pt-3">
+                     <a href="clinicassistant-ATD.php" class="btn btn-Warning btn-block">Update Appointment Treatment Details</a>
+                     </div>
                     <div class="row align-items-center mt-3">
                         <div class="col-md-3">
                         <a class="btn btn-Primary"  href="clinicassistant-AppointmentList.php" onclick="alert('Appointment Updated!')">Confirm</a>
@@ -106,9 +111,7 @@
                         <div class="col-md-3">
                         <a class="btn btn-danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Canceled!')">Back</a>
                         </div>
-                        <div class="col-md-6">
-                        <a href="clinicassistant-ATD.php" class="btn btn-secondary btn-block">View Appointment Treatment Details</a>
-                        </div>
+
                     </div>
                 </div>
             </div>

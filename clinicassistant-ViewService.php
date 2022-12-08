@@ -50,38 +50,44 @@
                 <div class="col-md-3">
                     <!--Contatiner control-->
                 </div>
-            <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
+            <div class="col-md-6 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row">
                         <!-- Force next columns to break to new line -->
                             <div class="input-group col-3 col-sm-3 ">
-                            <table class="table table-hover">
+                            <table class="table table-hover table-secondary table-striped">
                                 <thead>
                                     <tr>
                                     <th scope="col">Service</th>
                                     <th scope="col">Types of Services available</th>
+                                    <th scope="col">Quotation of Services</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td><a href="clinicassistant-ServiceDetails.php">Service 1</a></td>
+                                        <td>Service 1</td>
+                                        <td>$100 - $150</td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td><a href="clinicassistant-ServiceDetails.php">Service 2</a></td>
+                                        <td>Service 2</td>
+                                        <td>$200 - $250</td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td><a href="clinicassistant-ServiceDetails.php">Service 3</a></td>
+                                        <td>Service 3</td>
+                                        <td>$300 - $350</td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td><a href="clinicassistant-ServiceDetails.php">Service 4</a></td>
+                                        <td>Service 4</td>
+                                        <td>$400 - $450</td>
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td><a href="clinicassistant-ServiceDetails.php">Service 5</a></td>
+                                        <td>Service 5</td>
+                                        <td>$500 - $550</td>
                                     </tr>
                                 </tbody>
                                 </table>

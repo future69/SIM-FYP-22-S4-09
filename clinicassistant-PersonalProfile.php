@@ -49,7 +49,7 @@
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
 						<div class="col-4">
-							<h1>Patient Registration</h1>
+							<h1>Peronsal Profile</h1>
 						</div>
 					</div>
 					  <div class="row justify-content-center py-2">
@@ -76,32 +76,10 @@
 						  <input class="form-control" disabled id="passwordTB">
 						</div>
 					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">DOB:</label>
-						<div class="col-lg-4">
-							<input type="date" class="form-control" disabled id="datePicker">
-						</div>
-					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Address:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB">
-						</div>
-					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Postal Code:</label>
+						<label for="passwordTB"  class="col-lg-1 col-form-label">Clinic Location:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
-						</div>
-					  </div>
-					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB" disabled class="col-lg-1 col-form-label">Gender:</label>
-						<div class="col-lg-4">
-							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
-								<option value="plceaholder">Male</option>
-								<option value="plceaholder">Female</option>
-								<option value="plceaholder">Others</option>
-							</select>
+						  <input class="form-control" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">

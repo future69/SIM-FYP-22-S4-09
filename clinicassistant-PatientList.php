@@ -54,7 +54,7 @@
             <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row">
-                        <div class="col-6 col-sm-3">Patient Search:</div>
+                        <div class="col-6 col-sm-3">Search:</div>
                             <div class="input-group col-3 col-sm-3">
                             <input type="text" class="form-control" placeholder="Search by Name or NRIC" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
