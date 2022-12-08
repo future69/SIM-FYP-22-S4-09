@@ -115,7 +115,7 @@
                         <a class="btn btn-Primary"  href="dentistViewnSearchAppointment.php" onclick="alert('Appointment Updated!')">Confirm</a>
                         </div>
                         <div class="col-md-3">
-                        <a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Canceled!')">Back</a>
+                        <a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Update Cancelled!')">Back</a>
                         </div>
                     </div>
 

@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         <div class="col-md-7 pt-3">
-                        <a href="dentistViewATD.php" class="btn btn-info btn-block">Create Appointment Treatment Details</a>
+                        <a href="dentistViewATD.php" class="btn btn-Warning btn-block">Create Appointment Treatment Details</a>
                         </div>
                     <div class="row align-items-center mt-3">
                         <div class="col-md-3">
