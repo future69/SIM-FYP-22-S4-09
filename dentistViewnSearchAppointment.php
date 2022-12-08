@@ -105,6 +105,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistViewATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>
@@ -117,6 +118,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistViewATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>
@@ -129,6 +131,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistViewATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>
