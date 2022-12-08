@@ -47,17 +47,17 @@
         </nav>
 <body>
 <div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Clinic Admin Account</div>
+        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Services</div>
         <div class="row">
                 <div class="col-md-3">
                     <!--Contatiner control-->
                 </div>
-            <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
+            <div class="col-md-6 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row">
                         <!-- Force next columns to break to new line -->
                             <div class="input-group col-3 col-sm-3 ">
-                            <table class="table table-hover">
+                            <table class="table table-hover  table-secondary table-striped">
                                 <thead>
                                     <tr>
                                     <th scope="col">S/N</th>

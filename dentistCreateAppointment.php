@@ -103,11 +103,14 @@
                                 </label>
                             </div>
                         </div>
+                        <div class="col-md-7 pt-3">
+                        <a href="dentistViewATD.php" class="btn btn-info btn-block">Create Appointment Treatment Details</a>
+                        </div>
                     <div class="row align-items-center mt-3">
-                        <div class="col-6">
+                        <div class="col-md-3">
                         <a class="btn btn-primary"  href="dentistViewnSearchAppointment.php" onclick="alert('Appointment Created!')">Confirm</a>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-3">
                         <a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Canceled!')">Back</a>
                         </div>
                     </div>

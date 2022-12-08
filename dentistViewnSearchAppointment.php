@@ -45,89 +45,107 @@
 					</div>
 				</div>
         </nav>
+        <?php 
+			if (isset($_POST['bookAppointment'])) {
+				header("Location:dentistCreateAppointment.php");
+			}
+		?>
         <body>
-<div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Existing Appointment</div>
-        <div class="row">
-                <div class="col-md-1">
-                    <!--Contatiner control-->
-            </div>
-            <div class="col border border-3 p-3 justify-content-center d-flex">
-                <div class="container">
-                    <div class="row">
-
-                    <div class="w-100"></div>
-                        <div class="row col-2 col-form-label">Search Appointment:</div>
-                            <div class="row col-6">
-                            <input type="text" class="row col-3 form-control" placeholder="Search by Name" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </div>
-                        
-                        <div class="btn-group col-md-6 mt-4 mb-4" role="group" aria-label="Basic radio toggle button group">
-                        <a href="#" class="btn btn-Primary">Existing Appointment</a>
-                            <a href="#" class="btn btn-Danger">Past Appointment</a>
-                            <a href="dentistCreateAppointment.php" class="btn btn-Warning">Create Appointment</a>
-                        </div>
-
-                            <div class="input-group col-3 col-sm-3 mt-3 border border-2 border-secondary">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">NRIC</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Phone Number</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    <td>John</td>
-                                    <td>S12345678G</td>
-                                    <td>12/03/2022</td>
-                                    <td>1pm to 2pm</td>
-                                    <td>85264317</td>
-                                    <td>Ongoing</td>
-                                    <td> 
-                                        <a href="dentistUpdateAppointment.php" class="btn btn-primary btn-block col">Update Appointment</a>
-                                        <a href="#" class="btn btn-danger btn-block col" onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                    <td>Mary</td>
-                                    <td>S87654321C</td>
-                                    <td>22/10/2022</td>
-                                    <td>3pm to 4pm</td>
-                                    <td>85242517</td>
-                                    <td>Today</td>
-                                    <td> 
-                                        <a href="dentistUpdateAppointment.php" class="btn btn-primary btn-block col">Update Appointment</a>
-                                        <a href="#" class="btn btn-danger btn-block col" onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                    <td>Mary</td>
-                                    <td>S87654321C</td>
-                                    <td>22/10/2022</td>
-                                    <td>3:20pm</td>
-                                    <td>85242517</td>
-                                    <td>Completed</td>
-                                    <td> 
-                                        <a href="dentistViewATD.php" class="btn btn-primary btn-block">View Appointment Treatment Details</a>
-                                    </td>
-                                    </tr>
-                                </tbody>
-                                </table>
-                            </div>
-                    </div>
-                </div>
-            </div>
-                <div class="col-md-1">
-                    <!--Contatiner control-->
-                </div>
-            </div>
-    </div>
+		<div class="container-lg">
+			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
+			<!-- Tablehead can put caption-top -->
+			<div class="row justify-content-center align-items-center pt-5">
+				<div class="col-12 text-start">
+					<div class="display-5">Appointments</div>
+				</div>
+			</div>
+			<div class="row justify-content-center align-items-center pt-5">
+				<div class="row">
+					<form class="row col-8 justify-content-start align-items-center" method="POST">
+						<label for="searchClinicName" class="row col-2 col-form-label"><h4>Search :</h4></label>
+							<div class="row col-6">
+								<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Name or NRIC">
+							</div>
+					</form>
+					<div class="col-4 text-end display-6 pb-3">
+						<form class="justify-content-end align-items-end" method="POST">
+							<button type="submit" class="btn btn-warning" name="bookAppointment">Book Appointment</button>
+						</form>
+					</div>
+					<div class="row py-3">
+						<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" checked>
+						  <label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
+						</div>
+						<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast">
+						  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
+						</div>
+					</div>
+					<table class="table table-hover table-secondary table-striped ">
+						<thead>
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col">NRIC</th>
+								<th scope="col">Date</th>
+								<th scope="col">Time</th>
+								<th scope="col">Phone Number</th>
+								<th scope="col">Reason</th>
+								<th scope="col">Action</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td> name1 </td>
+								<td> S2234567C </td>
+								<td> 20/11/2022 </td>
+								<td> 15:00 </td>
+								<td> 12345678 </td>
+								<td> Dirty teeth </td>
+								<td>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
+								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								</td>
+							</tr>
+							<tr>
+								<td> name2 </td>
+								<td> S5847913C </td>
+								<td> 23/11/2022 </td>
+								<td> 17:00 </td>
+								<td> 12345678 </td>
+								<td> Toothache in molar </td>
+								<td>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
+								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								</td>
+							</tr>
+							<tr>
+								<td> name3 </td>
+								<td> S8825463G </td>
+								<td> 20/12/2022 </td>
+								<td> 20:00 </td>
+								<td> 12345678 </td>
+								<td> Bad breath </td>
+								<td>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
+								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								</td>
+							</tr>
+							<tr>
+								<td> name3(past appointment) </td>
+								<td> S8825463G </td>
+								<td> 10/12/2022 </td>
+								<td> 20:00 </td>
+								<td> 12345678 </td>
+								<td class="overflow-auto"> smelly breath and dirty teeth</td>
+								<td>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistViewATD.php'">View Appointment Treatment Details</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 </body>
 </html>

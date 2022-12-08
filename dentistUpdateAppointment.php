@@ -72,8 +72,8 @@
                             <div class="input-group col-3 col-sm-3">
                             <input type="date" class="form-control" placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">
                             </div>
-                            <div class="col pt-3">
-                            <button class="btn btn-secondary dropdown-toggle col" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="pt-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Time
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -83,8 +83,9 @@
                                 <li><a class="dropdown-item" href="#">4pm to 5pm</a></li>
                                 <li><a class="dropdown-item" href="#">5pm to 6pm</a></li>
                             </ul>
-
-                            <button class="btn btn-secondary dropdown-toggle col" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            </div>
+                            <div class="pt-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Reason for Appointment
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -101,6 +102,9 @@
                                 </label>
                             </div>
                         </div>
+                    <div class="col-md-7 pt-3">
+                        <a href="dentistViewATD.php" class="btn btn-warning btn-block">Update Appointment Treatment Details</a>
+                    </div>
                     <div class="row align-items-center mt-3">
                         <div class="col-md-3">
                         <a class="btn btn-Primary"  href="dentistViewnSearchAppointment.php" onclick="alert('Appointment Updated!')">Confirm</a>
@@ -108,10 +112,8 @@
                         <div class="col-md-3">
                         <a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Canceled!')">Back</a>
                         </div>
-                        <div class="col-md-6">
-                        <a href="dentistViewATD.php" class="btn btn-info btn-block">View Appointment Treatment Details</a>
-                        </div>
                     </div>
+
                 </div>
             </div>
                 <div class="col-md-3">

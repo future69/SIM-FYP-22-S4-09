@@ -57,7 +57,7 @@
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
 						<div class="col-4">
-							<h1>Patient Registration</h1>
+							<h1>Patient Account</h1>
 						</div>
 					</div>
 					  <div class="row justify-content-center py-2">
@@ -103,9 +103,9 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB" disabled class="col-lg-1 col-form-label">Gender:</label>
+						<label for="passwordTB"  class="col-lg-1 col-form-label">Gender:</label>
 						<div class="col-lg-4">
-							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
+							<select class="form-select" disabled class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
 								<option value="plceaholder">Male</option>
 								<option value="plceaholder">Female</option>
 								<option value="plceaholder">Others</option>

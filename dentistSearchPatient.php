@@ -47,7 +47,7 @@
         </nav>
 <body>
 <div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient Account</div>
+        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient List</div>
             <div class="row">
                 <div class="col-md-3">
                     <!--Contatiner control-->
@@ -55,9 +55,9 @@
             <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row">
-                        <div class="col-6 col-sm-3">Patient Name:</div>
+                        <div class="col-6 col-sm-3">Search:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Name or NRIC" aria-label="Name" aria-describedby="basic-addon1">
                             </div>
 
                         <!-- Force next columns to break to new line -->
