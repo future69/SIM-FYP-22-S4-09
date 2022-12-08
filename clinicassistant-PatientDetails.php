@@ -53,7 +53,7 @@
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
 						<div class="col-4">
-							<h1>Patient Registration</h1>
+							<h1>Patient Account</h1>
 						</div>
 					</div>
 					  <div class="row justify-content-center py-2">

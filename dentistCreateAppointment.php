@@ -47,6 +47,11 @@
         </nav>
 <body>
 <div class="container-lg">
+        <div class="column">
+				<div class="col-md-5 text-start pt-5">
+					<div class="display-6">Welcome Dr. Lee</div>
+				</div>
+			</div>
         <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Create Appointment</div>
         <div class=""></div>
             <div class="row">
@@ -66,7 +71,7 @@
                             </div>
                         <div class="col-6 col-sm-3 pt-3">Clinic Name:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Number" aria-label="Number" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Name" aria-label="Number" aria-describedby="basic-addon1">
                             </div>
                         <div class="col-6 col-sm-3 pt-3">Date and Time:</div>
                             <div class="input-group col-3 col-sm-3">
@@ -104,7 +109,7 @@
                             </div>
                         </div>
                         <div class="col-md-7 pt-3">
-                        <a href="dentistViewATD.php" class="btn btn-info btn-block">Create Appointment Treatment Details</a>
+                        <a href="dentistViewATD.php" class="btn btn-Warning btn-block">Create Appointment Treatment Details</a>
                         </div>
                     <div class="row align-items-center mt-3">
                         <div class="col-md-3">

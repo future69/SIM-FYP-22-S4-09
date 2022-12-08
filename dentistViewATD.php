@@ -52,6 +52,11 @@
 			}
 		?>
 <div class="registrationBoxPatient container">
+	<div class="column">
+				<div class="col-md-5 text-start pt-5">
+					<div class="display-6">Welcome Dr. Lee</div>
+				</div>
+			</div>
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
 					<div class="display-6">Appointment treatment details for name3</div>
