@@ -34,7 +34,7 @@
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="clinicassistant-PersonalProfile.php">Welcome Clinic Assistant Sam</a>
                     </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="#">Logout</a>

@@ -34,7 +34,7 @@
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-PersonalProfile.php">Profile</a>
+                        <a class="nav-link active" aria-current="page" href="clinicassistant-PersonalProfile.php">Welcome Clinic Assistant Sam</a>
                     </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="#">Logout</a>
@@ -55,13 +55,13 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
+						  <input class="form-control" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB">
+						  <input type="password" class="form-control" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
@@ -85,13 +85,13 @@
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB">
+						  <input class="form-control" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
+						  <input class="form-control" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
