@@ -32,11 +32,14 @@
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a class="nav-link" href="dentistPersonalProfile.php">Welcome Dr. Lee</a>
+						<li class="nav-item">
+								<a class="nav-link" href="#">Welcome Dr. Lee</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+								<a class="nav-link active" aria-current="page" href="dentistPersonalProfile.php">Profile</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Logout</a>
 							</li>
 						</ul>
 					</div>
