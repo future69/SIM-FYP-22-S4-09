@@ -78,11 +78,13 @@
 
                         <div class="col-6 col-sm-3">Status:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <div class="form-check me-5">
+                            <div class="form-check me-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Active   
                                 </label>
+                            </div>
+                            <div class="form-check me-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Suspend   
