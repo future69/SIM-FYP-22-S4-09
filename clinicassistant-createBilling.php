@@ -29,7 +29,7 @@
                         <a class="nav-link" href="clinicassistant-ViewService.php">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-Billing.php">Billing</a>
+                        <a class="nav-link active" aria-current="page" href="clinicassistant-bills.php">Billing</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
@@ -57,39 +57,40 @@
             <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row"></div>
-                    <div class="col-6 col-sm-3">Patient Name:</div>
+                    <div class="col-6 col-sm-3 pt-2">Patient Name:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Patient Name" disabled aria-label="Name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" value="name3" disabled>
                             </div>
-                        <div class="col-6 col-sm-3">NRIC:</div>
+                        <div class="col-6 col-sm-3 pt-2">NRIC:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="NRIC" aria-label="Name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" value="S8825463G" disabled>
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">Date and Time:</div>
+                        <div class="col-6 col-sm-3 pt-2">Date:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="datetime-local" class="form-control" disabled placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" value="10/12/2022" disabled>
                             </div>
-						<label for="servicelist" class="col-6 col-sm-3 pt-3">Service List:</label>
+                        <div class="col-6 col-sm-3 pt-2">Time:</div>
+                            <div class="input-group col-3 col-sm-3">
+                            <input type="text" class="form-control" value="20:00" disabled>
+                            </div>
+						<label for="servicelist" class="col-6 col-sm-3 pt-2">Services:</label>
 						<div class="col-lg-4">
-							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
-								<option value="plceaholder">Service 1</option>
-								<option value="plceaholder">Service 2</option>
-								<option value="plceaholder">Service 3</option>
-							</select>
+							<input type="text" class="form-control" aria-label="Services Done" value="Braces" disabled>
 						</div>
+							<div class="col-6 col-sm-3 pt-2">Total Cost:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <textarea class="form-control" disabled id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <input type="text" class="form-control" aria-label="Name">
                             </div>
                         <div class="pt-3">
                             <label for="ClinicVisit" class="form-label">Bill Description</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
-                    <div class="row align-items-center mt-3">
-                        <div class="col-3">
-                        <a class="btn btn-primary"  href="clinicassistant-Homepage.php" onclick="alert('Bill Send!')">Confirm</a>
+                    <div class="row align-items-center justify-content-center pt-2">
+                        <div class="col-2">
+                        <a class="btn btn-danger" href="clinicassistant-bills.php">Back</a>
                         </div>
-                        <div class="col-3">
-                        <a class="btn btn-danger"  href="clinicassistant-Homepage.php"  onclick="alert('Bill Cancelled Canceled!')">Back</a>
+                        <div class="col-2">
+                        <a class="btn btn-primary" href="clinicassistant-bills.php" onclick="alert('Bill Send!')">Confirm</a>
                         </div>
                     </div>
                 </div>
