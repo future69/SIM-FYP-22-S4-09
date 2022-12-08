@@ -60,7 +60,7 @@
 							<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Clinic Name">
 						</div>
 						<div class="row col-2">
-							<select name="timeSlotSL" id="timeSlotSL">
+							<select class="form-select" name="timeSlotSL" id="timeSlotSL">
 								<option value="plceaholder">All Areas</option>
 								<option value="plceaholder">North</option>
 								<option value="plceaholder">South</option>
