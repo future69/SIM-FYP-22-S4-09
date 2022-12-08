@@ -79,7 +79,7 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
-						<label for="datePicker" class="col-lg-1 col-form-label">Calendar:</label>
+						<label for="datePicker" class="col-lg-1 col-form-label">Date:</label>
 						<div class="col-lg-4">
 						  <input type="date" class="form-control" id="datePicker">
 						</div>

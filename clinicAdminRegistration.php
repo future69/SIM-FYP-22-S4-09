@@ -3,6 +3,7 @@
 	<head>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	</head>
 	<header>
 	
@@ -157,6 +158,7 @@
 							</select>
 						</div>
 					  </div>
+					  <div class="row justify-content-center align-items-center g-recaptcha" data-sitekey="6LcZnF0jAAAAAMSnSnEJF4o3T4K9QWsM29jnFUJQ"></div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
 						<button type="submit" class="btn btn-primary" name="submit" value="submit">Confirm</button>

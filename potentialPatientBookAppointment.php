@@ -78,10 +78,19 @@
 					  <div class="row justify-content-center py-2">
 						<label for="clinicNameSL" class="col-lg-1 col-form-label">Clinic Name:</label>
 						<div class="col-lg-4">
-						  <select name="clinicNameSL" id="clinicNameSL">
+						  <select class="form-select" name="clinicNameSL" id="clinicNameSL">
 						    <option value="plceaholder">Lim's Clinic</option>
 							<option value="plceaholder">Joe's Surgery</option>
 							<option value="plceaholder">Tan Tock Seng Hospital</option>
+						  </select>
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="dentistNameSL" class="col-lg-1 col-form-label">Dentist Name:</label>
+						<div class="col-lg-4">
+						  <select class="form-select" name="clinicNameSL" id="dentistNameSL">
+						    <option value="plceaholder">Dr. Dick Tan</option>
+							<option value="plceaholder">Dr. Chloe Tay</option>
 						  </select>
 						</div>
 					  </div>
@@ -94,7 +103,7 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Time Slot:</label>
 						<div class="col-lg-4">
-						  <select name="timeSlotSL" id="timeSlotSL">
+						  <select class="form-select" name="timeSlotSL" id="timeSlotSL">
 						    <option value="plceaholder">8:00</option>
 							<option value="plceaholder">9:00</option>
 							<option value="plceaholder">10:00</option>

@@ -86,6 +86,15 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
+						<label for="dentistNameSL" class="col-lg-1 col-form-label">Dentist Name:</label>
+						<div class="col-lg-4">
+						  <select class="form-select" name="clinicNameSL" id="dentistNameSL">
+						    <option value="plceaholder">Dr. Dick Tan</option>
+							<option value="plceaholder">Dr. Chloe Tay</option>
+						  </select>
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Date:</label>
 						<div class="col-lg-4">
 						  <input type="date" class="form-control" id="datePicker">
