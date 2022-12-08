@@ -81,7 +81,7 @@
 					<p class="col-6 text-center fst-italic fs-3">View records of past appointments</p>
 				</div>
 				<div class="row col-6 text-center justify-content-center align-items-center pb-5">
-					<img class="col-6 w-25 img-fluid" src="images/docPlus.png">
+					<img class="col-6 w-25 img-fluid" src="images/payment.png">
 					<p class="col-6 text-center fst-italic fs-3">View records of past bills</p>
 				</div>
 			</div>

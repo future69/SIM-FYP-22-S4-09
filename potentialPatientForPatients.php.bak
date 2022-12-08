@@ -19,13 +19,13 @@
 								<a class="nav-link" href="potentialPatientHomepage.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientAboutUs.php">About Us</a>
+								<a class="nav-link" href="potentialPatientAboutUs.php">About Us</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientOurPartners.php">Our Partners</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientforPatients.php">For Patients</a>
+								<a class="nav-link active" aria-current="page" href="potentialPatientforPatients.php">For Patients</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientforClinics.php">For Clinics</a>
