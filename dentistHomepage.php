@@ -33,7 +33,7 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
+								<a class="nav-link" href="dentistPersonalProfile.php">Welcome Dr. Lee</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>

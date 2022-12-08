@@ -71,18 +71,12 @@
 						<thead>
 							<tr>
 								<th scope="col">Username</th>
-								<th scope="col">Clinic Name</th>
-								<th scope="col">ACRA</th>
-								<th scope="col">Area</th>
 								<th scope="col">Status</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td> <a href="#" class="link-primary"> kennethTheGoat234 </a></td>
-								<td> clinic1 </td>
-								<td> <a href="#" class="link-primary"> acra1.pdf </a></td>
-								<td> West </td>
 								<td> 
 									<div class="btn-group dropend">
 									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,9 +91,6 @@
 							</tr>
 							<tr>
 								<td> <a href="#" class="link-primary"> turtleBoy232 </a></td>
-								<td> clinic2 </td>
-								<td> <a href="#" class="link-primary"> acra2.pdf </a></td>
-								<td> East </td> 
 								<td>
 									<div class="btn-group dropend">
 									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -114,9 +105,6 @@
 							</tr>
 							<tr>
 								<td> <a href="#" class="link-primary"> lohkintat22 </a></td>
-								<td> clinic3 </td>
-								<td> <a href="#" class="link-primary"> acra3.pdf </a></td>
-								<td> Central </td>
 								<td>
 									<div class="btn-group dropend">
 									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">

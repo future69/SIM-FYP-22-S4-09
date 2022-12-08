@@ -34,7 +34,7 @@
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
+                        <a class="nav-link" href="clinicassistant-PersonalProfile.php">Welcome Clinic Assistant Sam</a>
                     </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="#">Logout</a>
@@ -109,6 +109,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>
@@ -121,6 +122,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>
@@ -133,6 +135,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>
