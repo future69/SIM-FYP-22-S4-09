@@ -29,7 +29,7 @@
                         <a class="nav-link"  href="clinicassistant-ViewService.php">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-bills.php">Billing</a>
+                        <a class="nav-link" href="clinicassistant-bills.php">Billing</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
@@ -37,10 +37,10 @@
 						<a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
                     </li>
 					<li class="nav-item d-flex">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-PersonalProfile.php">Profile</a>
+                        <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="potentialPatientLogin.php">Logout</a>
                     </li>
                  </ul>
             </div>

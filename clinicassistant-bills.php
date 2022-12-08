@@ -37,7 +37,7 @@
 						<a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
                     </li>
 					<li class="nav-item d-flex">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-PersonalProfile.php">Profile</a>
+                        <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="#">Logout</a>
