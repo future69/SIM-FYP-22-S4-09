@@ -49,7 +49,7 @@
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
 						<div class="col-4">
-							<h1>Peronsal Profile</h1>
+							<h1>Personal Profile</h1>
 						</div>
 					</div>
 					  <div class="row justify-content-center py-2">
