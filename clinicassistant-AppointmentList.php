@@ -112,7 +112,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
 								<a class="btn btn-danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Create Appointment Treatment Details</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Update Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>
@@ -125,7 +125,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
 								<a class="btn btn-danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Create Appointment Treatment Details</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Update Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>
@@ -138,7 +138,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
 								<a class="btn btn-danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Create Appointment Treatment Details</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Update Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>
@@ -149,7 +149,7 @@
 								<td> 12345678 </td>
 								<td class="overflow-auto"> smelly breath and dirty teeth</td>
 								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-ATD.php'">View Appointment Treatment Details</button>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-ViewATD.php'">View Appointment Treatment Details</button>
 								</td>
 							</tr>
 						</tbody>
