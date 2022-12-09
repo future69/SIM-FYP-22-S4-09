@@ -100,7 +100,7 @@
 					<div class="row col-6 align-items-center py-2">
 						<label for="dentistSL" class="col-2 col-form-label">Dentist:</label>
 						<div class="col-6">
-						  <select class="form-select" name="dentistSL" disabled id="dentistSL">
+						  <select class="form-select" name="dentistSL" id="dentistSL">
 						    <option value="plceaholder">Dr. John Tan</option>
 							<option value="plceaholder">Dr. Kimberley Wexler</option>
 							<option value="plceaholder">Dr. Andy Ruiz</option>
@@ -110,7 +110,7 @@
 					<div class="row col-6 align-items-center py-2">
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
-						  <select class="form-select" name="assistantSL" disabled id="assistantSL" size="2" multiple>
+						  <select class="form-select" name="assistantSL" id="assistantSL" size="2" multiple>
 						    <option value="plceaholder">Jacob Lee</option>
 							<option value="plceaholder">John Adams</option>
 							<option value="plceaholder">Michelle Lee</option>
@@ -120,7 +120,7 @@
 					<div class="row col-12  py-2">
 						<label for="remarksTA" class="col-1 col-form-label">Remarks:</label>
 						<div class="col-10">
-							<textarea class="form-control" placeholder="Patient has a tooth decay at the crown on the last tooth on the botton right " aria-label="With textarea" disabled id="remarksTA"></textarea>
+							<textarea class="form-control" aria-label="With textarea" id="remarksTA"></textarea>
 						</div>
 					</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
