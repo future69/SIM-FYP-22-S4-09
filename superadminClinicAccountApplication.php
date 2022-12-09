@@ -92,6 +92,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                         <a href="superadminClinicAAProfile.php">John</a>
 =======
                                         <a href="superadminUpdateCAAcount.php">John</a>
@@ -99,6 +100,9 @@
 =======
                                         <a href="superadminUpdateCAAcount.php">John</a>
 >>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
+=======
+                                        <a href="superadminUpdateCAAcount.php">John</a>
+>>>>>>> parent of f5422c0 (Update to the super admin)
 =======
                                         <a href="superadminUpdateCAAcount.php">John</a>
 >>>>>>> parent of f5422c0 (Update to the super admin)
@@ -141,6 +145,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                         <a href="superadminClinicAAProfile.php">Mary</a>
 =======
                                         <a href="superadminUpdateCAAcount.php">Mary</a>
@@ -148,6 +153,9 @@
 =======
                                         <a href="superadminUpdateCAAcount.php">Mary</a>
 >>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
+=======
+                                        <a href="superadminUpdateCAAcount.php">Mary</a>
+>>>>>>> parent of f5422c0 (Update to the super admin)
 =======
                                         <a href="superadminUpdateCAAcount.php">Mary</a>
 >>>>>>> parent of f5422c0 (Update to the super admin)
@@ -191,6 +199,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                         <a href="superadminClinicAAProfile.php">Doe</a>
 =======
                                         <a href="superadminUpdateCAAcount.php">Doe</a>
@@ -198,6 +207,9 @@
 =======
                                         <a href="superadminUpdateCAAcount.php">Doe</a>
 >>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
+=======
+                                        <a href="superadminUpdateCAAcount.php">Doe</a>
+>>>>>>> parent of f5422c0 (Update to the super admin)
 =======
                                         <a href="superadminUpdateCAAcount.php">Doe</a>
 >>>>>>> parent of f5422c0 (Update to the super admin)

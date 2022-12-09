@@ -46,12 +46,15 @@
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="#">Register</a>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="#">Register</a>
                     </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="#">Register</a>
+=======
+>>>>>>> parent of f5422c0 (Update to the super admin)
 =======
 >>>>>>> parent of f5422c0 (Update to the super admin)
                     </li>
