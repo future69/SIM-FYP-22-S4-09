@@ -6,13 +6,13 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 	</head>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-light">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
 					src="images/SuperDentalLogo.png"
-					width="50" height="40"/>
+					width="50" height="50"/>
 					DiamondDental™
 					</a>
 					<div class="collapse navbar-collapse" id="navigationBar">
@@ -33,13 +33,13 @@
 								<a class="nav-link" href="#">For Clinics</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Services</a>
+								<a class="nav-link" href="superadminViewServices.php">Services</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Accounts</a>
+								<a class="nav-link" href="superadminViewCAAccount.php">Accounts</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Application</a>
+								<a class="nav-link " href="superadminClinicAccountApplication.php">Application</a>
 							</li>
 						</ul>
 					</div>
@@ -59,22 +59,30 @@
 			<!-- Tablehead can put caption-top -->
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="col-md-5 text-center text-md-start">
-					<div class="display-6">Welcome Super Admin</div>
+					<!--original spot-->
+					<!--<div class="display-6">Welcome Super Admin</div>-->
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
+					<div class="display-6">Welcome Super Admin</div>
 					<div class="display-6 pb-3">Current clinic admin applications</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
 								<th scope="col">Username</th>
+								<th scope="col">Clinic Name</th>
+								<th scope="col">ACRA</th>
+								<th scope="col">Area</th>
 								<th scope="col">Status</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td> <a href="#" class="link-primary"> kennethTheGoat234 </a></td>
+								<td> clinic1 </td>
+								<td> <a href="#" class="link-primary"> acra1.pdf </a></td>
+								<td> West </td>
 								<td> 
 									<div class="btn-group dropend">
 									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -89,6 +97,10 @@
 							</tr>
 							<tr>
 								<td> <a href="#" class="link-primary"> turtleBoy232 </a></td>
+								<td> clinic2 </td>
+								<td> <a href="#" class="link-primary"> acra2.pdf </a></td>
+								<td> East </td>
+								<td> 
 								<td>
 									<div class="btn-group dropend">
 									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -103,6 +115,10 @@
 							</tr>
 							<tr>
 								<td> <a href="#" class="link-primary"> lohkintat22 </a></td>
+								<td> clinic3 </td>
+								<td> <a href="#" class="link-primary"> acra3.pdf </a></td>
+								<td> Central </td>
+								<td> 
 								<td>
 									<div class="btn-group dropend">
 									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">

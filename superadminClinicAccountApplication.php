@@ -44,126 +44,104 @@
                 </ul>
                 <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                    <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                      </li>
                  </ul>
             </div>
         </div>
      </nav>
-     <div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Clinic Account Application</div>
-        <div class="">
-            <div class="row">
-                <div class="col-md-3">
-                    <!--Contatiner control-->
-                </div>
-            <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="justify-content-center d-flex mt-4 p-2 fw-bold">List of Clinic Account Application</div>
-                            <div class="input-group col-3 col-sm-3 border border-2 border-secondary p-5">
-                            <table class="table table-striped table-hover border border-2 border-secondary">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Clinic Admin Account</th>
-                                    <th scope="col">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    <td>
-                                        <a href="superadminUpdateCAAcount.php">John</a>
-                                    </td>
-                                    <td>
-                                    <div class="form-check me-5" >
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            Active   
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            Suspend
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            In Review
-                                        </label>
-                                    </div>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                    <td>
-                                        <a href="superadminUpdateCAAcount.php">Mary</a>
-                                    </td>
-                                    <td>
-                                    <div class="form-check me-5" >
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                        Active   
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            Suspend
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            In Review
-                                        </label>
-                                    </div>
-                                    </td>
-                                    </tr>
-                                    </tr>
-                                    <tr>
-                                    <td>
-                                        <a href="superadminUpdateCAAcount.php">Doe</a>
-                                    </td>
-                                    <td>
-                                    <div class="form-check me-5" >
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                        Active   
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Suspend
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            In Review
-                                        </label>
-                                    </div>
-                                    </td>
-                                    </tr>
-                                </tbody>
-                                </table>
-                            </div>
-                    </div>
-                    <div class="mt-4 text-center p-3">
-                        <a href="#" class="btn btn-secondary" onclick="alert('Status Updated')">Update</a>
-                    </div>
-                </div>
-            </div>
-            </div>
-                <div class="col-md-3">
-                    <!--Contatiner control-->
-                </div>
-            </div>
-        </div>
+		<div class="container-lg">
+			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
+			<!-- Tablehead can put caption-top -->
+			<div class="row justify-content-center align-items-center pt-3">
+				<div class="col-md-5 text-center text-md-start">
+					<!--original spot-->
+					<!--<div class="display-6">Welcome Super Admin</div>-->
+				</div>
+			</div>
+			<div class="row justify-content-center align-items-center pt-5">
+				<div class="row">
+					<div class="row display-6 justify-content-center align-items-center pb-5  display-6 fw-bold">Applications</div>
+					<div class="row py-1">
+					<div class="col-1 form-check fw-bold">Sort By :</div>
+						<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultEmployeeAcc" checked>
+						  <label class="form-check-label" for="flexRadioDefaultEmployeeAcc"><strong>In-Review</strong></label>
+						</div>
+						<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPatientAcc">
+						  <label class="form-check-label" for="flexRadioDefaultPatientAcc"><strong>Approved</strong></label>
+						</div>
+						<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPatientAcc">
+						  <label class="form-check-label" for="flexRadioDefaultPatientAcc"><strong>Rejected</strong></label>
+						</div>
+					</div>
+					<table class="table table-hover table-secondary table-striped ">
+						<thead>
+							<tr>
+								<th scope="col">Username</th>
+								<th scope="col">Clinic Name</th>
+								<th scope="col">ACRA</th>
+								<th scope="col">Area</th>
+								<th scope="col">Status</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td> <a href="#" class="link-primary"> kennethTheGoat234 </a></td>
+								<td> clinic1 </td>
+								<td> <a href="#" class="link-primary"> acra1.pdf </a></td>
+								<td> West </td>
+								<td> 
+									<div class="btn-group dropend">
+									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+										To be reviewed
+									  </button>
+									  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+										<li><a class="dropdown-item" href="#">Approve</a></li>
+										<li><a class="dropdown-item" href="#">Reject</a></li>
+									  </ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td> <a href="#" class="link-primary"> turtleBoy232 </a></td>
+								<td> clinic2 </td>
+								<td> <a href="#" class="link-primary"> acra2.pdf </a></td>
+								<td> East </td> 
+								<td>
+									<div class="btn-group dropend">
+									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+										To be reviewed
+									  </button>
+									  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+										<li><a class="dropdown-item" href="#">Approve</a></li>
+										<li><a class="dropdown-item" href="#">Reject</a></li>
+									  </ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td> <a href="#" class="link-primary"> lohkintat22 </a></td>
+								<td> clinic3 </td>
+								<td> <a href="#" class="link-primary"> acra3.pdf </a></td>
+								<td> Central </td>
+								<td>
+									<div class="btn-group dropend">
+									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+										To be reviewed
+									  </button>
+									  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+										<li><a class="dropdown-item" href="#">Approve</a></li>
+										<li><a class="dropdown-item" href="#">Reject</a></li>
+									  </ul>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+				</div>
+			</div>
+		</div>
 </body>
 </html>

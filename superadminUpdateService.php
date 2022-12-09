@@ -44,10 +44,7 @@
                 </ul>
                 <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                    <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                      </li>
                  </ul>
             </div>
@@ -65,7 +62,7 @@
                     <div class="row">
                         <div class="col-6 col-sm-3">Services</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Add a Service" aria-label="Add a Service" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" value="Braces" disabled>
                             </div>
 
                         <!-- Force next columns to break to new line -->
@@ -74,9 +71,9 @@
                         <div class="col-6 col-sm-3">Status</div>
                             <div class="input-group col-3 col-sm-3">
                             <div class="form-check me-5">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                Active   
+                                    Open   
                                 </label>
                             </div>
                                 <div class="form-check">
@@ -88,7 +85,8 @@
                             </div>
                     </div>
                     <div class="mt-4 text-center p-3">
-                        <a href="superadminViewServices.php" class="btn btn-secondary" onclick="alert('Services Updated!')">Submit</a>
+						<a href="superadminViewServices.php" class="btn btn-secondary" onclick="window.location.href='superAdminViewServices.php'">Back</a>
+                        <a href="superadminViewServices.php" class="btn btn-primary" onclick="alert('Services Updated!')">Submit</a>
                     </div>
                 </div>
             </div>

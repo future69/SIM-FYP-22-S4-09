@@ -44,10 +44,7 @@
                 </ul>
                 <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                    <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                      </li>
                  </ul>
             </div>
@@ -86,7 +83,7 @@
                                     <td>
                                         <a href="superadminUpdateCAAcount.php">John</a>
                                     </td>
-                                    <td>Active</td>
+                                    <td>Open</td>
                                     </tr>
                                     <tr>
                                     <td>
