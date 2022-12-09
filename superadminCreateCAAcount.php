@@ -84,6 +84,12 @@
                                     Active   
                                 </label>
                             </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Suspend   
+                                </label>
+                            </div>
                             </div>
 
                         <div class="mt-4 text-center p-3">
