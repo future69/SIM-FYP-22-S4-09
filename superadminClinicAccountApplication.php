@@ -83,11 +83,7 @@
                                         <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
                                         <label class="form-check-label" for="flexRadioDefault1">
 <<<<<<< HEAD
-<<<<<<< HEAD
                                             Active   
-=======
-                                            Open   
->>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
 =======
                                             Open   
 >>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
@@ -116,11 +112,7 @@
                                         <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
                                         <label class="form-check-label" for="flexRadioDefault2">
 <<<<<<< HEAD
-<<<<<<< HEAD
                                         Active   
-=======
-                                            Open   
->>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
 =======
                                             Open   
 >>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
@@ -150,11 +142,7 @@
                                         <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
                                         <label class="form-check-label" for="flexRadioDefault3">
 <<<<<<< HEAD
-<<<<<<< HEAD
                                         Active   
-=======
-                                            Open   
->>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
 =======
                                             Open   
 >>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
