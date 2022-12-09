@@ -134,7 +134,7 @@
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
 								<a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistUpdateATD.php'">Update Appointment Treatment Details</button>
+								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistCreateATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
 							<tr>

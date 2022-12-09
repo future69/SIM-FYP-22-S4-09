@@ -53,8 +53,8 @@
 			if (isset($_POST['back'])) {
 				header("Location:dentistViewnSearchAppointment.php");
 			}
-			else if (isset($_POST['create'])) {
-				echo '<script>alert("Appointment Treatment Details Created!")</script>';
+			else if (isset($_POST['update'])) {
+				echo '<script>alert("Appointment Treatment Details Updated!")</script>';
 			}
 		?>
 <div class="registrationBoxPatient container">
@@ -130,7 +130,7 @@
 					</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
-						<button class="btn btn-Primary" name="create" value="create">Create</button>
+						<button class="btn btn-Primary" name="update" value="update">Updated</button>
 					</div>
 					</form>
 				</div>
