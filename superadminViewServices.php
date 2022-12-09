@@ -70,11 +70,7 @@
                         <tr>
                             <td>Service 2</td>
 <<<<<<< HEAD
-<<<<<<< HEAD
                             <td>Active</td>
-=======
-                            <td>Open</td>
->>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
 =======
                             <td>Open</td>
 >>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
@@ -86,11 +82,7 @@
                         <tr>
                             <td>Service 4</td>
 <<<<<<< HEAD
-<<<<<<< HEAD
                             <td>Active</td>
-=======
-                            <td>Open</td>
->>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
 =======
                             <td>Open</td>
 >>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
