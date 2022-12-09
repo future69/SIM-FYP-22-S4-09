@@ -21,18 +21,6 @@
                         <a class="nav-link " href="superadminHomepage.php">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About Us</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Our Partners</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">For Patients</a>
-					</li>
-					<li class="nav-item">
-                        <a class="nav-link" href="#">For Clinics</a>
-					</li>
-					<li class="nav-item">
 						<a class="nav-link " href="superadminViewServices.php">Services</a>
 					</li>
 					<li class="nav-item">
@@ -43,6 +31,9 @@
 					</li>
                 </ul>
                 <ul class="navbar-nav d-flex mb-2 mb-md-0">
+                    <li class="nav-item d-flex">
+                        <a class="nav-link" href="#">Welcome Superadmin</a>
+                    </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                      </li>
@@ -83,7 +74,7 @@
                                     <td>
                                         <a href="superadminUpdateCAAcount.php">John</a>
                                     </td>
-                                    <td>Open</td>
+                                    <td>Active</td>
                                     </tr>
                                     <tr>
                                     <td>

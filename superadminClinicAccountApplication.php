@@ -21,18 +21,6 @@
                         <a class="nav-link " aria-current="page" href="superadminHomepage.php">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About Us</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Our Partners</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">For Patients</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link " href="">For Clinics</a>
-					</li>
-					<li class="nav-item">
 						<a class="nav-link " href="superadminViewServices.php">Services</a>
 					</li>
 					<li class="nav-item">
@@ -43,6 +31,9 @@
 					</li>
                 </ul>
                 <ul class="navbar-nav d-flex mb-2 mb-md-0">
+					<li class="nav-item d-flex">
+                        <a class="nav-link" href="#">Welcome Superadmin</a>
+                    </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                      </li>
@@ -89,7 +80,7 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td> <a href="#" class="link-primary"> kennethTheGoat234 </a></td>
+								<td> <a href="superadminClinicAAProfile.php" class="link-primary"> kennethTheGoat234 </a></td>
 								<td> clinic1 </td>
 								<td> <a href="#" class="link-primary"> acra1.pdf </a></td>
 								<td> West </td>
@@ -106,7 +97,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td> <a href="#" class="link-primary"> turtleBoy232 </a></td>
+								<td> <a href="superadminClinicAAProfile.php" class="link-primary"> turtleBoy232 </a></td>
 								<td> clinic2 </td>
 								<td> <a href="#" class="link-primary"> acra2.pdf </a></td>
 								<td> East </td> 
@@ -123,7 +114,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td> <a href="#" class="link-primary"> lohkintat22 </a></td>
+								<td> <a href="superadminClinicAAProfile.php" class="link-primary"> lohkintat22 </a></td>
 								<td> clinic3 </td>
 								<td> <a href="#" class="link-primary"> acra3.pdf </a></td>
 								<td> Central </td>

@@ -21,18 +21,6 @@
                         <a class="nav-link " href="superadminHomepage.php">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About Us</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Our Partners</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">For Patients</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link " href="">For Clinics</a>
-					</li>
-					<li class="nav-item">
 						<a class="nav-link " href="superadminViewServices.php">Services</a>
 					</li>
 					<li class="nav-item">
@@ -56,6 +44,9 @@
 </header>   
         <?php
             if (isset($_POST['Update'])) {
+                header("Location:superadminClinicAccountApplication.php");
+			}
+			if (isset($_POST['back'])) {
                 header("Location:superadminClinicAccountApplication.php");
 			}
         ?>
@@ -125,13 +116,13 @@
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Opening Hours:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="openingtime" disabled>
+						  <input class="form-control" id="passwordTB" value="08:00" disabled>
 						</div>
 					  </div>
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Closing Hours:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="closingtime" disabled>
+						  <input class="form-control" id="passwordTB" value="15:00" disabled>
 						</div>
 					  </div>
 
@@ -141,17 +132,17 @@
                         <div class="form-check me-5" >
                                         <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
                                         <label class="form-check-label" for="flexRadioDefault3">
-                                        Active   
+                                        	Approve   
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
                                         <label class="form-check-label" for="flexRadioDefault3">
-                                            Suspend
+                                            Reject
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3" checked>
                                         <label class="form-check-label" for="flexRadioDefault3">
                                             In Review
                                         </label>
@@ -159,6 +150,7 @@
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
+					  <button class="btn btn-Primary" name="back" value="back">Back</button>
 						<button class="btn btn-Primary" name="Update" value="Update">Update</button>
 					  </div>
 					</form>
