@@ -20,10 +20,10 @@
 								<a class="nav-link" aria-current="page" href="potentialPatientHomepageAftLogin.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
+								<a class="nav-link active" aria-current="page" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientBookAppointment.php">Book Appointment</a>
+								<a class="nav-link" href="potentialPatientBookAppointment.php">Book Appointment</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientView&SearchClinic.php">Clinics</a>
