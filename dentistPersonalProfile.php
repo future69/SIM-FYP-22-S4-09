@@ -39,10 +39,10 @@
 								<a class="nav-link" href="#">Welcome Dr. Lee</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="dentistPersonalProfile.php">Profile</a>
+								<a class="nav-link active" aria-current="page"	 href="dentistPersonalProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Logout</a>
+								<a class="nav-link" href="potentialPatientHomepage">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -61,31 +61,31 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="Sue" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" disabled class="form-control" id="passwordTB">
+						  <input type="password" placeholder="Sue1" disabled  class="form-control" id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="Mary Sue" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control" placeholder="S12354677C" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Clinic Name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control" placeholder="Tan Tock Seng" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
@@ -97,13 +97,13 @@
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control" placeholder="99876543" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="Sue@email.com" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">

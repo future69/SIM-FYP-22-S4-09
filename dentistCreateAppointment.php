@@ -39,10 +39,10 @@
 								<a class="nav-link" href="#">Welcome Dr. Lee</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="dentistPersonalProfile.php">Profile</a>
+								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Logout</a>
+								<a class="nav-link" href="potentialPatientHomepage">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -67,36 +67,37 @@
                             <div class="input-group col-3 col-sm-3">
                             <input type="text" class="form-control" placeholder="NRIC" aria-label="NRIC" aria-describedby="basic-addon1">
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">Clinic Name:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Name" aria-label="Number" aria-describedby="basic-addon1">
+                            <div class="col-6 col-sm-3 pt-3">
+                            <label for="timeSlotSL" class="col-lg col-form-label">Dentist name:</label>
+                        <select class="form-select" name="timeSlotSL" id="timeSlotSL">
+						    <option value="plceaholder">Dr.Lee</option>
+							<option value="plceaholder">Dr.Doe</option>
+							<option value="plceaholder">Dr.Sue</option>
+						  </select>
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">Date and Time:</div>
+                        <div class="col-6 col-sm-3 pt-3">
+                            <label for="timeSlotSL" class="col-lg col-form-label">Clinic name:</label>
+                        <select class="form-select" name="timeSlotSL" id="timeSlotSL">
+						    <option value="plceaholder">Tan Tock Seng</option>
+							<option value="plceaholder">St John Dental</option>
+							<option value="plceaholder">A & E Dental</option>
+						  </select>
+                            </div>
+                        <div class="col-6 col-sm-3 pt-3">Date:</div>
                             <div class="input-group col-3 col-sm-3">
                             <input type="date" class="form-control" placeholder="date" aria-label="datetime " aria-describedby="basic-addon1">
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Time
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">10am to 11am</a></li>
-                                <li><a class="dropdown-item" href="#">1pm to 2pm</a></li>
-                                <li><a class="dropdown-item" href="#">2pm to 3pm</a></li>
-                                <li><a class="dropdown-item" href="#">4pm to 5pm</a></li>
-                                <li><a class="dropdown-item" href="#">5pm to 6pm</a></li>
-                            </ul>
+                            <div class="col-6 col-sm-3 pt-3">
+                            <label for="timeSlotSL" class="col-lg col-form-label">Time Slot:</label>
+                        <select class="form-select" name="timeSlotSL" id="timeSlotSL">
+						    <option value="plceaholder">8:00</option>
+							<option value="plceaholder">9:00</option>
+							<option value="plceaholder">10:00</option>
+						  </select>
                             </div>
-
-                        <div class="col-6 col-sm-3 pt-3">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Reason of Appointment
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Service 1</a></li>
-                                <li><a class="dropdown-item" href="#">Service 2</a></li>
-                                <li><a class="dropdown-item" href="#">Service 3</a></li>
-                            </ul>
+                            <div class="col-6 col-sm-3 pt-2">Reason:</div>
+                            <div class="input-group col-3 col-sm-3">
+                            <input type="text" class="form-control" placeholder="" aria-label="Reason" aria-describedby="basic-addon1">
                             </div>
                         <div class="col mt-3 d-flex">Email Reminder
                             <div class="form-check me-5 ms-3">
@@ -108,10 +109,10 @@
                         </div>
                     <div class="row align-items-center mt-3">
                         <div class="col-md-3">
-                        <a class="btn btn-primary"  href="dentistViewnSearchAppointment.php" onclick="alert('Appointment Created!')">Confirm</a>
+                        <a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Canceled!')">Back</a>
                         </div>
                         <div class="col-md-3">
-                        <a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Canceled!')">Back</a>
+                        <a class="btn btn-primary"  href="dentistViewnSearchAppointment.php" onclick="alert('Appointment Created!')">Confirm</a>
                         </div>
                     </div>
                 </div>

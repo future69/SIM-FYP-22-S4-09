@@ -39,10 +39,10 @@
 								<a class="nav-link" href="#">Welcome Dr. Lee</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="dentistPersonalProfile.php">Profile</a>
+								<a class="nav-link"  href="dentistPersonalProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Logout</a>
+								<a class="nav-link" href="potentialPatientHomepage">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -107,7 +107,7 @@
 								<td> Dirty teeth </td>
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
 								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistViewATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
@@ -120,7 +120,7 @@
 								<td> Toothache in molar </td>
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
 								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistViewATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
@@ -133,7 +133,7 @@
 								<td> Bad breath </td>
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
 								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistViewATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
