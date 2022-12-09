@@ -91,6 +91,12 @@
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Practitioner Number:</label>
 						<div class="col-lg-4">
+						  <input class="form-control" placeholder="D091222" disabled id="passwordTB">
+						</div>
+					  </div>
+					  <div class="row justify-content-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Qualification:</label>
+						<div class="col-lg-4">
 						  <button type="submit" class="btn btn-primary col-md-3" name="downloadFile">Download</button>
 						</div>
 					  </div>
