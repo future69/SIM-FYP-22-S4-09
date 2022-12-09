@@ -48,6 +48,12 @@
                     </li>
                     <li class="nav-item d-flex">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                        <a class="nav-link" href="#">Register</a>
+                    </li>
+                    <li class="nav-item d-flex">
+>>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
 =======
                         <a class="nav-link" href="#">Register</a>
                     </li>
