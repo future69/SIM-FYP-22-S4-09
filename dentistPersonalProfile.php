@@ -67,7 +67,7 @@
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" placeholder="Sue1" disabled  class="form-control" id="passwordTB">
+						  <input type="password" value="Sue112356" disabled  class="form-control" id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
