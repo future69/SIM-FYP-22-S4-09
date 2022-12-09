@@ -39,7 +39,7 @@
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientLogin.php">Logout</a>
+                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                     </li>
                  </ul>
             </div>
@@ -62,25 +62,25 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
+						  <input class="form-control" placeholder="John" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB">
+						  <input type="password" placeholder="12345" class="form-control" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="John Doe" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control" placeholder="S12345678I" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
@@ -92,19 +92,19 @@
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Address:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB">
+						  <input class="form-control"  placeholder="11 Spring run" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Postal Code:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
+						  <input class="form-control" placeholder="352467" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" disabled class="col-lg-1 col-form-label">Gender:</label>
 						<div class="col-lg-4">
-							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL" id="clinicNameSL">
+							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL"  disabled id="clinicNameSL">
 								<option value="plceaholder">Male</option>
 								<option value="plceaholder">Female</option>
 								<option value="plceaholder">Others</option>
@@ -114,19 +114,19 @@
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB">
+						  <input class="form-control" placeholder="876543221" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
+						  <input class="form-control" placeholder="John@email.com" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="formFileMedicalHistory" class="col-1 col-form-label">Medical history:</label>
 						<div class="col-lg-4">
-							<input class="form-control" type="file" id="formFileMedicalHistory" multiple>	
+							<button type="submit" class="btn btn-primary col-md-3" name="downloadFile">Download</button>	
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">

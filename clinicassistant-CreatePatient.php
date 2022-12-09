@@ -40,7 +40,7 @@
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientLogin.php">Logout</a>
+                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                     </li>
                  </ul>
             </div>
@@ -54,6 +54,8 @@
 				header("Location:clinicassistant-PatientList.php");
 			}
 		?>
+
+
 <body>
 <div class="registrationBoxPatient container">
 			<div class="row justify-content-center align-items-center border border-5 m-3">

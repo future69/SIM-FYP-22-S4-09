@@ -40,15 +40,15 @@
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientLogin.php">Logout</a>
+                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                     </li>
                  </ul>
             </div>
         </div>
     </nav>
 	<?php 
-			if (isset($_POST['createNewEmployee'])) {
-				header("Location:clinicAdminCreateEmployee.php");
+			if (isset($_POST['delete'])) {
+				echo '<script>alert("Booking Deleted!")</script>';
 			}
 			else if (isset($_POST['createNewPatient'])) {
 				header("Location:clinicAdminCreatePatient.php");
@@ -111,7 +111,7 @@
 								<td> Dirty teeth </td>
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<a class="btn btn-danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
 								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
@@ -124,7 +124,7 @@
 								<td> Toothache in molar </td>
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<a class="btn btn-danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
 								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
@@ -137,7 +137,7 @@
 								<td> Bad breath </td>
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<a class="btn btn-danger"  href="clinicassistant-AppointmentList.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
 								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Create Appointment Treatment Details</button>
 								</td>
 							</tr>
@@ -156,6 +156,7 @@
 					</table>
 				</div>
 			</div>
+
 		</div>
 </body>
 </html>
