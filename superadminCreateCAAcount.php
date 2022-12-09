@@ -47,10 +47,7 @@
                         <a class="nav-link" href="#">Welcome Superadmin</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                    <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                      </li>
                  </ul>
             </div>
