@@ -39,10 +39,10 @@
 								<a class="nav-link" href="#">Welcome Dr. Lee</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="dentistPersonalProfile.php">Profile</a>
+								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Logout</a>
+								<a class="nav-link" href="potentialPatientHomepage">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -55,7 +55,7 @@
 			}
 		?>
         <body>
-<div class="registrationBoxPatient container">
+		<div class="registrationBoxPatient container">
 			<div class="row justify-content-center align-items-center border border-5 m-3">
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
@@ -66,49 +66,49 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="John" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password"  class="form-control" disabled id="passwordTB">
+						  <input type="password" placeholder="12345" class="form-control" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="John Doe" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control" placeholder="S12345678I" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">DOB:</label>
 						<div class="col-lg-4">
-							<input type="date"  class="form-control" disabled id="datePicker">
+							<input type="date" class="form-control" disabled id="datePicker">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Address:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control"  placeholder="11 Spring run" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Postal Code:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="352467" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB"  class="col-lg-1 col-form-label">Gender:</label>
+						<label for="passwordTB" disabled class="col-lg-1 col-form-label">Gender:</label>
 						<div class="col-lg-4">
-							<select class="form-select" disabled class="form-select" aria-label="Select gender" name="clinicNameSL" disabled id="clinicNameSL">
+							<select class="form-select" class="form-select" aria-label="Select gender" name="clinicNameSL"  disabled id="clinicNameSL">
 								<option value="plceaholder">Male</option>
 								<option value="plceaholder">Female</option>
 								<option value="plceaholder">Others</option>
@@ -118,13 +118,13 @@
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control" placeholder="876543221" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="John@email.com" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">

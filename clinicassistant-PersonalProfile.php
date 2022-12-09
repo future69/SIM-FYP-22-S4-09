@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
     <title>Clinic Assistant Personal Profile</title>
 </head>
+<header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -40,12 +41,18 @@
                         <a class="nav-link active" aria-current="page" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientLogin.php">Logout</a>
+                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
                     </li>
                  </ul>
             </div>
         </div>
     </nav>
+	<?php 
+			if (isset($_POST['back'])) {
+				header("Location:clinicassistant-Homepage.php");
+			}
+		?>
+</header>
     <body>
 <div class="registrationBoxPatient container">
 			<div class="row justify-content-center align-items-center border border-5 m-3">
@@ -58,43 +65,43 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="John" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" disabled id="passwordTB">
+						  <input type="password" class="form-control" placeholder="12345678" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" disabled placeholder="John Doe" id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control" disabled placeholder="S12345678I" id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB"  class="col-lg-1 col-form-label">Clinic Location:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control" disabled placeholder="St John Clinic" id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="passwordTB">
+						  <input class="form-control" placeholder="87654321" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled id="usernameTB">
+						  <input class="form-control" placeholder="John@email.com" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
