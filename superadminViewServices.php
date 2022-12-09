@@ -47,6 +47,9 @@
                         <a class="nav-link" href="#">Welcome Superadmin</a>
                     </li>
                     <li class="nav-item d-flex">
+                        <a class="nav-link" href="#">Register</a>
+                    </li>
+                    <li class="nav-item d-flex">
                         <a class="nav-link" href="#">Logout</a>
                      </li>
                  </ul>
@@ -69,7 +72,11 @@
                         </tr>
                         <tr>
                             <td>Service 2</td>
+<<<<<<< HEAD
                             <td>Active</td>
+=======
+                            <td>Open</td>
+>>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
                         </tr>
                         <tr>
                             <td>Service 3</td>
@@ -77,7 +84,11 @@
                         </tr>
                         <tr>
                             <td>Service 4</td>
+<<<<<<< HEAD
                             <td>Active</td>
+=======
+                            <td>Open</td>
+>>>>>>> parent of f41d0f7 (Merge branch 'main' of https://github.com/future69/SIM-FYP-22-S4-09)
                         </tr>
                 </tbody>
             </table>
