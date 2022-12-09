@@ -68,12 +68,14 @@
 							<tr>
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
+								<th scope="col">Dentist</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td> 20/11/2022 </td>
 								<td> 15:00 </td>
+								<td> Dr. John Tan </td>							
 							</tr>
 						</tbody>
 					</table>
@@ -100,13 +102,9 @@
 					</table>
 					<form class="row justify-content-center align-items-center">
 					<div class="row col-6 align-items-center py-2">
-						<label for="dentistSL" class="col-2 col-form-label">Dentist:</label>
+						<label for="serviceSL" class="col-2 col-form-label">Service:</label>
 						<div class="col-6">
-						  <select class="form-select" disabled name="dentistSL" id="dentistSL">
-						    <option value="plceaholder">Dr. John Tan</option>
-							<option value="plceaholder">Dr. Kimberley Wexler</option>
-							<option value="plceaholder">Dr. Andy Ruiz</option>
-						  </select>
+						<input type="text" class="form-control" placeholder="Tooth Remover" disabled aria-label="serviceSL" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">

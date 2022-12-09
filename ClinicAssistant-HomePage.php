@@ -63,19 +63,22 @@
                         <tr>
                             <th scope="col">Patient Name</td>
                             <th scope="col">NRIC</td>
-                            <th scope="col">Date & Time</td>
+                            <th scope="col">Date</td>
+                            <th scope="col">Time</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Patient 1</td>
                             <td>NRIC 1</td>
-                            <td>10/10/2022 : 1pm to 2pm</td>
+                            <td>10/10/2022</td>
+                            <td>14:30</td>
                         </tr>
                         <tr>
                             <td>Patient 2</td>
                             <td>NRIC 2</td>
-                            <td>11/11/2022 : 3pm to 4pm</td>
+                            <td>10/10/2022</td>
+                            <td>15:30</td>
                         </tr>
                     </tbody>
                 </table>

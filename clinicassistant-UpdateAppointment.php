@@ -65,10 +65,11 @@
                             <div class="input-group col-3 col-sm-3">
                             <input type="text" class="form-control" placeholder="NRIC" disabled aria-label="NRIC" aria-describedby="basic-addon1">
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">Contact Number:</div>
-                            <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Number" disabled aria-label="Number" aria-describedby="basic-addon1">
+                             <div class="col-6 col-sm-3 pt-3">
+                            <label for="timeSlotSL" class="col-lg col-form-label">Clinic name:</label>
+                          <input type="text" class="form-control" placeholder="Tan Tock Seng" disabled aria-label="NRIC" aria-describedby="basic-addon1">
                             </div>
+
                         <div class="col-6 col-sm-3 pt-3">
                             <label for="timeSlotSL" class="col-lg col-form-label">Dentist name:</label>
                         <select class="form-select" name="timeSlotSL" id="timeSlotSL">
@@ -77,14 +78,7 @@
 							<option value="plceaholder">Dr.Sue</option>
 						  </select>
                             </div>
-                        <div class="col-6 col-sm-3 pt-3">
-                            <label for="timeSlotSL" class="col-lg col-form-label">Clinic name:</label>
-                        <select class="form-select" name="timeSlotSL" id="timeSlotSL">
-						    <option value="plceaholder">Tan Tock Seng</option>
-							<option value="plceaholder">St John Dental</option>
-							<option value="plceaholder">A & E Dental</option>
-						  </select>
-                            </div>
+
                         <div class="col-6 col-sm-3 pt-3">Date:</div>
                             <div class="input-group col-3 col-sm-3">
                             <input type="date" class="form-control" placeholder="datetime" aria-label="datetime " aria-describedby="basic-addon1">

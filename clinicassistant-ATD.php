@@ -47,8 +47,8 @@
         </div>
     </nav>
 	<?php 
-			if (isset($_POST['submit'])) {
-				echo '<script>alert("Appointment updated!")</script>';
+			if (isset($_POST['update'])) {
+				echo '<script>alert("Appointment Treatment Details updated!")</script>';
 			}
 			else if (isset($_POST['back'])) {
 				header("Location:clinicassistant-AppointmentList.php");
@@ -68,12 +68,14 @@
 							<tr>
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
+								<th scope="col">Dentist</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td> 20/11/2022 </td>
 								<td> 15:00 </td>
+								<td> Dr. John Tan </td>
 							</tr>
 						</tbody>
 					</table>
@@ -100,12 +102,12 @@
 					</table>
 					<form class="row justify-content-center align-items-center">
 					<div class="row col-6 align-items-center py-2">
-						<label for="dentistSL" class="col-2 col-form-label">Dentist:</label>
+						<label for="serviceSL" class="col-2 col-form-label">Service:</label>
 						<div class="col-6">
-						  <select class="form-select" name="dentistSL" id="dentistSL">
-						    <option value="plceaholder">Dr. John Tan</option>
-							<option value="plceaholder">Dr. Kimberley Wexler</option>
-							<option value="plceaholder">Dr. Andy Ruiz</option>
+						  <select class="form-select" name="serviceSL" id="serviceSL">
+						    <option value="plceaholder">Decay Remover</option>
+							<option value="plceaholder">Polishing</option>
+							<option value="plceaholder">Tooth Remover</option>
 						  </select>
 						</div>
 					</div>
@@ -127,6 +129,7 @@
 					</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
+						<button class="btn btn-Primary" name="update" value="update">Update</button>
 					</div>
 					</form>
 				</div>
