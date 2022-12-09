@@ -120,7 +120,7 @@
 					<div class="row col-12  py-2">
 						<label for="remarksTA" class="col-1 col-form-label">Remarks:</label>
 						<div class="col-10">
-							<textarea class="form-control" placeholder="Patient has a tooth decay at the crown on the last tooth on the botton right " aria-label="With textarea" disabled id="remarksTA"></textarea>
+							<textarea class="form-control" placeholder="Patient has a tooth decay at the crown on the last tooth on the bottom right " aria-label="With textarea" disabled id="remarksTA"></textarea>
 						</div>
 					</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
