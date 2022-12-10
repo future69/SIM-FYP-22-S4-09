@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col-6 col-sm-3">Username:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="John" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                         <!-- Force next columns to break to new line -->
@@ -61,7 +61,7 @@
 
                         <div class="col-6 col-sm-3">Password:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                            <input type="password" class="form-control" value="Password" aria-label="Password" aria-describedby="basic-addon1">
                             </div>
 
                          <!-- Force next columns to break to new line -->
