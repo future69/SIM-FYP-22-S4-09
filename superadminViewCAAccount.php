@@ -51,9 +51,9 @@
             <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row">
-                        <div class="col-6 col-sm-3">Username:</div>
+                        <div class="col-6 col-sm-5">Search Clinic Admin Account:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Search by Name" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                         <!-- Force next columns to break to new line -->
