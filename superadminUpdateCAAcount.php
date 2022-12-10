@@ -84,7 +84,8 @@
                             </div>
 
                         <div class="mt-4 text-center">
-                            <a href="superadminViewCAAccount.php" class="btn btn-secondary" onclick="alert('Account Updated!')">Update Account</a>
+                            <a href="superadminViewCAAccount.php" class="btn btn-danger">Back</a>
+                            <a href="superadminViewCAAccount.php" class="btn btn-primary" onclick="alert('Account Updated!')">Update Account</a>
                         </div>
                     </div>
                 </div>

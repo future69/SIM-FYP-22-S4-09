@@ -76,7 +76,7 @@
                             </div>
                     </div>
                     <div class="mt-4 text-center p-3">
-						<a href="superadminViewServices.php" class="btn btn-secondary" onclick="window.location.href='superAdminViewServices.php'">Back</a>
+						<a href="superadminViewServices.php" class="btn btn-danger" onclick="window.location.href='superAdminViewServices.php'">Back</a>
                         <a href="superadminViewServices.php" class="btn btn-primary" onclick="alert('Services Updated!')">Submit</a>
                     </div>
                 </div>

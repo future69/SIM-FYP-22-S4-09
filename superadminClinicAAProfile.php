@@ -150,7 +150,7 @@
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
-					  <button class="btn btn-Primary" name="back" value="back">Back</button>
+					  <button class="btn btn-Danger" name="back" value="back">Back</button>
 						<button class="btn btn-Primary" name="Update" value="Update">Update</button>
 					  </div>
 					</form>
