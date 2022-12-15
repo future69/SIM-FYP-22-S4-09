@@ -34,7 +34,7 @@
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-						<a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
+						<a class="nav-link" href="#">Welcome Sam</a>
                     </li>
 					<li class="nav-item d-flex">
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
@@ -62,7 +62,6 @@
                     <thead>
                         <tr>
                             <th scope="col">Patient Name</td>
-                            <th scope="col">NRIC</td>
                             <th scope="col">Date</td>
                             <th scope="col">Time</td>
                         </tr>
@@ -70,13 +69,11 @@
                     <tbody>
                         <tr>
                             <td>Patient 1</td>
-                            <td>NRIC 1</td>
                             <td>10/10/2022</td>
                             <td>14:30</td>
                         </tr>
                         <tr>
                             <td>Patient 2</td>
-                            <td>NRIC 2</td>
                             <td>10/10/2022</td>
                             <td>15:30</td>
                         </tr>

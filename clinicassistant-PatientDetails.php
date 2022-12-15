@@ -33,7 +33,7 @@
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-						<a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
+						<a class="nav-link" href="#">Welcome Sam</a>
                     </li>
 					<li class="nav-item d-flex">
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
@@ -51,7 +51,7 @@
 			}
 		?>
 <body>
-<div class="registrationBoxPatient container">
+<div class="clinicassistant container">
 			<div class="row justify-content-center align-items-center border border-5 m-3">
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
