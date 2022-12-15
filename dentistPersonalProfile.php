@@ -50,7 +50,7 @@
         </nav>
 		<body>
 			
-<div class="registrationBoxPatient container">
+<div class="dentistProfile container">
 			<div class="row justify-content-center align-items-center border border-5 m-3">
 				<form method="POST">
 					<div class="row justify-content-center ps-5">
