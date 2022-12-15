@@ -110,7 +110,7 @@
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">ACRA:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="acra1.png" disabled>
+						  <input class="form-control" id="passwordTB" value="CD199012345D" disabled>
 						</div>
 					  </div>
                       <div class="row justify-content-center align-items-center py-2">

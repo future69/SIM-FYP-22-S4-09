@@ -72,7 +72,7 @@
 							<tr>
 								<td> <a href="superadminClinicAAProfile.php" class="link-primary"> kennethTheGoat234 </a></td>
 								<td> clinic1 </td>
-								<td> <a href="#" class="link-primary"> acra1.pdf </a></td>
+								<td> <a href="#" class="link-primary"> CD199012345D </a></td>
 								<td> West </td>
 								<td> 
 									<div class="btn-group dropend">
@@ -89,7 +89,7 @@
 							<tr>
 								<td> <a href="superadminClinicAAProfile.php" class="link-primary"> turtleBoy232 </a></td>
 								<td> clinic2 </td>
-								<td> <a href="#" class="link-primary"> acra2.pdf </a></td>
+								<td> <a href="#" class="link-primary"> CD200313425D </a></td>
 								<td> East </td> 
 								<td>
 									<div class="btn-group dropend">
@@ -106,7 +106,7 @@
 							<tr>
 								<td> <a href="superadminClinicAAProfile.php" class="link-primary"> lohkintat22 </a></td>
 								<td> clinic3 </td>
-								<td> <a href="#" class="link-primary"> acra3.pdf </a></td>
+								<td> <a href="#" class="link-primary"> CD201554231D </a></td>
 								<td> Central </td>
 								<td>
 									<div class="btn-group dropend">
