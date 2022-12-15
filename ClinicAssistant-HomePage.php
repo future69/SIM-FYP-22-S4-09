@@ -34,7 +34,7 @@
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-						<a class="nav-link" href="#">Welcome Sam</a>
+						<a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
                     </li>
 					<li class="nav-item d-flex">
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
@@ -47,39 +47,47 @@
         </div>
     </nav>
 <body>  
-        <div class="container-lg">
-            <div class="column">
-            <div class="col-md-5 text-start pt-5">
-                <div class="container row align-item-start">
-                        <h2>Welcome Clinic Assistant</h2>
-                        <p>Appointment as of DD/MM/YYYY</P>
-                    </div>
-                </div>
-            </div>
-                <div class="container">
-                <p>List of Current Appointment </p>
-                <table class="table table-hover table-secondary table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Patient Name</td>
-                            <th scope="col">Date</td>
-                            <th scope="col">Time</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Patient 1</td>
-                            <td>10/10/2022</td>
-                            <td>14:30</td>
-                        </tr>
-                        <tr>
-                            <td>Patient 2</td>
-                            <td>10/10/2022</td>
-                            <td>15:30</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-            </div>
+<div class="container-lg">
+			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
+			<!-- Tablehead can put caption-top -->
+			<div class="column">
+				<div class="col-md-5 text-start pt-5">
+					<div class="display-6">Welcome Sam</div>
+				</div>
+				<div class="col-md-5 text-start pt-4">
+					<h5>You have <strong>3</strong> appointments today</h5>
+				</div>
+			</div>
+			<div class="row justify-content-center align-items-center pt-5">
+				<div class="column">
+					<div class="display-6 pb-3">Today's appointments (28/11/2022)</div>
+					<table class="table table-hover table-secondary table-striped ">
+						<thead>
+							<tr>
+								<th scope="col">Patient Name</th>
+								<th scope="col">Date</th>
+								<th scope="col">Time</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td> Long Tai Wat </td>
+								<td> 28/11/2022 </td>
+								<td> 14:30 </td>
+							</tr>
+							<tr>
+								<td> Paddy Lee </td>
+								<td> 28/11/2022 </td>
+								<td> 15:30 </td>
+							</tr>
+							<tr>
+								<td> Lim's Surgery </td>
+								<td> 28/11/2022 </td>
+								<td> 17:30 </td>
+							</tr>
+						</tbody>
+				</div>
+			</div>
+		</div>
     </body>
 </html>
