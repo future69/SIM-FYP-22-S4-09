@@ -19,3 +19,21 @@
 	max-width: 80%;
 	max-height: auto;
 }
+
+.dentistProfile {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	border: 3px ;
+	padding: 20px;
+	max-width: 80%;
+	max-height: auto;
+}
+
+.clinicassistant {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	border: 3px;
+	padding: 20px;
+	max-width: 80%;
+	max-height: auto;
+}
