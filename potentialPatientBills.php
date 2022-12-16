@@ -73,6 +73,7 @@
 								<th scope="col">Clinic Name</th>
 								<th scope="col">Date</th>
 								<th scope="col">Service Provided</th>
+								<th scope="col">Description</th>
 								<th scope="col">Status (Paid/Unpaid)</th>
 							<tr>
 						</thead>
@@ -82,6 +83,7 @@
 								<td> Lim's Clinic </td>
 								<td> 28/7/22 </td>
 								<td> Fillings, Polishing </td>
+								<td> Nil </td>
 								<td> Unpaid </td>
 							</tr>
 							<tr>
@@ -89,6 +91,7 @@
 								<td> Lim's Clinic </td>
 								<td> 08/04/22 </td>
 								<td> Extraction </td>
+								<td> Nil </td>
 								<td> Unpaid </td>
 							</tr>
 						</tbody>

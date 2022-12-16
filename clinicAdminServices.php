@@ -70,20 +70,24 @@
 						<thead>
 							<tr>
 								<th scope="col">Service Name</th>
+								<th scope="col">Price</th>
 								<th scope="col">Offered</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td> Polishing </td>
+								<td> $100 </td>
 								<td><input class="form-check-input" type="checkbox" value="" id="emailReminderCB" checked></td>
 							</tr>
 							<tr>
 								<td> Braces </td>
+								<td> $2200 </td>
 								<td><input class="form-check-input" type="checkbox" value="" id="emailReminderCB" checked></td>
 							</tr>
 							<tr>
 								<td> Fillings </td>
+								<td> $300 </td>
 								<td><input class="form-check-input" type="checkbox" value="" id="emailReminderCB" checked></td>
 							</tr>
 						</tbody>
