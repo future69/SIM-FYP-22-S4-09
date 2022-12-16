@@ -12,7 +12,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="images/superDentalLogo.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
+                <img src="images/superDentalLogo.png" alt="" width="50" height="40" class="d-inline-block align-text-top">
                 Diamond Dental
             </a>
             <div id="navbarCollapse" class="collapse navbar-collapse">
