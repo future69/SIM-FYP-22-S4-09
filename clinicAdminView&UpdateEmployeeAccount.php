@@ -63,19 +63,19 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB">
+						  <input class="form-control" id="usernameTB" value="Kenneth Toh">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" id="passwordTB">
+						  <input type="password" class="form-control" id="passwordTB" value="S6523836H">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="fullnameTB" class="col-lg-1 col-form-label">Full name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="fullnameTB">
+						  <input class="form-control" id="fullnameTB" value="Kenneth Toh Lim Leek">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
@@ -91,31 +91,31 @@
 					  <div class="row justify-content-center py-2">
 						<label for="nricTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="nricTB">
+						  <input class="form-control" id="nricTB" value="S6523836H">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input type="email" class="form-control" id="emailTB">
+						  <input type="email" class="form-control" id="emailTB" value="ktoh22@gmail.com">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="phoneNumTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="phoneNumTB">
+						  <input class="form-control" id="phoneNumTB" value="98642034">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Address:</label>
 						<div class="col-lg-4">
-							<input class="form-control" id="clinicAddress">
+							<input class="form-control" id="clinicAddress" value="7 Changi Village 07-22">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Postal Code:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="postalCodeTB">
+						  <input class="form-control" id="postalCodeTB" value="576428">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
@@ -136,7 +136,7 @@
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Practitioner Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="phoneNumberTB">
+						  <input class="form-control" id="phoneNumberTB" value="S2457D">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
