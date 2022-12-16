@@ -59,7 +59,7 @@
                     <div class="row"></div>
                     <div class="col-6 col-sm-3">Patient Name:</div>
                             <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Patient Name" aria-label="Name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Patient Name" aria-label="Name" aria-describedby="basic-addon1" disabled>
                             </div>
                         <div class="col-6 col-sm-3 pt-3">NRIC:</div>
                             <div class="input-group col-3 col-sm-3">
