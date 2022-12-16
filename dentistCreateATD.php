@@ -105,17 +105,18 @@
 					<div class="row col-6 align-items-center py-2">
 						<label for="dentistSL" class="col-2 col-form-label">Services:</label>
 						<div class="col-6">
-						  <select class="form-select" name="dentistSL" id="dentistSL">
-						    <option value="plceaholder">Decay Remover</option>
-							<option value="plceaholder">Polishing</option>
-							<option value="plceaholder">Tooth Removing</option>
-						  </select>
+						<select class="select" multiple data-mdb-clear-button="true" name="serviceSL" id="serviceSL" size="2" multiple>
+							<option value="1">Tooth Decay</option>
+							<option value="2">Polishing</option>
+							<option value="3">Tooth Remover</option>
+							<option value="4">Tooth Cleaning</option>
+							</select>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
-						  <select class="form-select" name="assistantSL" id="assistantSL" size="2" multiple>
+						  <select class="select" name="assistantSL" id="assistantSL" size="2" multiple>
 						    <option value="plceaholder">Jacob Lee</option>
 							<option value="plceaholder">John Adams</option>
 							<option value="plceaholder">Michelle Lee</option>
