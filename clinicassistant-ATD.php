@@ -104,7 +104,7 @@
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-2 col-form-label">Service:</label>
 						<div class="col-6">
-						  <select class="form-select" name="serviceSL" id="serviceSL">
+						  <select class="form-select" name="serviceSL" id="serviceSL" size="2" multiple>
 						    <option value="plceaholder">Decay Remover</option>
 							<option value="plceaholder">Polishing</option>
 							<option value="plceaholder">Tooth Remover</option>
