@@ -78,7 +78,7 @@
 					  <div class="row justify-content-center py-2">
 						<label for="clinicNameSL" class="col-lg-1 col-form-label">Clinic Name:</label>
 						<div class="col-lg-4">
-						  <select class="form-select" name="clinicNameSL" id="clinicNameSL">
+						  <select class="form-select" name="clinicNameSL" id="clinicNameSL" disabled>
 						    <option value="plceaholder">Lim's Clinic</option>
 							<option value="plceaholder">Joe's Surgery</option>
 							<option value="plceaholder">Tan Tock Seng Hospital</option>

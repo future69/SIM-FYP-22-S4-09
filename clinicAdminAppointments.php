@@ -107,7 +107,8 @@
 								<td> 12345678 </td>
 								<td> Dirty teeth </td>
 								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicAdminUpdateAppointment.php'">Update Appointment</button>
+								Appointments can only be updated/deleted
+								more than 2 days before the appointment
 								</td>
 							</tr>
 							<tr>
