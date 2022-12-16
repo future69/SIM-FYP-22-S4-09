@@ -87,7 +87,7 @@
                             </div>
                     </div>
                     <div class="mt-4 text-center p-3">
-                        <a href="superadminCreateCAAcount.php" class="btn btn-secondary">Create Clinic Admin Account</a>
+                        <!-- <a href="superadminCreateCAAcount.php" class="btn btn-secondary">Create Clinic Admin Account</a> -->
                     </div>
                 </div>
             </div>
