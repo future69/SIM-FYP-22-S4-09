@@ -131,9 +131,15 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="formFileMedicalHistory" class="col-lg-1 col-form-label">Medical History:</label>
+						<label for="medicalHistoryTB" class="col-lg-1 col-form-label">Medical History:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" type="file" id="formFileMedicalHistory" multiple>
+						  	<input class="form-control" id="medicalHistoryTB" aria-describedby="button-addon1" disabled>
+						</div>
+					  </div>
+					  <div class="row justify-content-center align-items-center py-2">
+						<label for="allergiesTB" class="col-lg-1 col-form-label">Allergies:</label>
+						<div class="col-lg-4">
+						  	<input class="form-control" id="allergiesTB" aria-describedby="button-addon1" disabled>
 						</div>
 					  </div>
 						<div class="row justify-content-center align-items-center g-recaptcha" data-sitekey="6LcZnF0jAAAAAMSnSnEJF4o3T4K9QWsM29jnFUJQ"></div>

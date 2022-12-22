@@ -74,6 +74,16 @@
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
 					<div class="display-6 pb-3">Your next appointments(s)</div>
+					<div class="row py-3">
+						<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" checked>
+						  <label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
+						</div>
+						<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast">
+						  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
+						</div>
+					</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
