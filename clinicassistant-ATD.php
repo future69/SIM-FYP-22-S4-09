@@ -102,8 +102,8 @@
 					</table>
 					<form class="row justify-content-center align-items-center">
 					<div class="row col-6 align-items-center py-2">
-						<label for="serviceSL" class="col-2 col-form-label">Service:</label>
-						<div class="col-6">
+						<label for="serviceSL" class="col-3 col-form-label">Service:</label>
+						<div class="col-7">
 						  <select class="form-select" name="serviceSL" id="serviceSL" size="2" multiple>
 						    <option value="plceaholder">Decay Remover</option>
 							<option value="plceaholder">Polishing</option>
@@ -121,9 +121,25 @@
 						  </select>
 						</div>
 					</div>
+					<div class="row col-6 align-items-center py-2">
+						<label for="serviceSL" class="col-3 col-form-label">Allergies:</label>
+						<div class="col-7">
+						<textarea class="form-control" aria-label="With textarea" id="remarksTA" size="3" ></textarea>
+						</div>
+					</div>
+					<div class="row col-6 align-items-center py-2">
+						<label for="assistantSL" class="col-3 col-form-label">Materials:</label>
+						<div class="col-9">
+						  <select class="form-select" name="assistantSL" id="assistantSL" size="3" multiple>
+						    <option value="plceaholder">Resin composites</option>
+							<option value="plceaholder">Amalgam alloys</option>
+							<option value="plceaholder">Glass ionomers</option>
+						  </select>
+						</div>
+					</div>
 					<div class="row col-12  py-2">
-						<label for="remarksTA" class="col-1 col-form-label">Remarks:</label>
-						<div class="col-10">
+						<label for="remarksTA" class="col-1 col-form-label">Medical History:</label>
+						<div class="col-10 ms-3">
 							<textarea class="form-control" aria-label="With textarea" id="remarksTA"></textarea>
 						</div>
 					</div>
