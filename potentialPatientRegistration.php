@@ -131,16 +131,20 @@
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
-						<label for="medicalHistoryTB" class="col-lg-1 col-form-label">Medical History:</label>
-						<div class="col-lg-4">
-						  	<input class="form-control" id="medicalHistoryTB" aria-describedby="button-addon1" disabled>
-						</div>
-					  </div>
-					  <div class="row justify-content-center align-items-center py-2">
 						<label for="allergiesTB" class="col-lg-1 col-form-label">Allergies:</label>
 						<div class="col-lg-4">
-						  	<input class="form-control" id="allergiesTB" aria-describedby="button-addon1" disabled>
+						  	<input class="form-control" id="allergiesTB" aria-describedby="button-addon1" placeholder="insulin, paracetamol, etc.">
 						</div>
+					  </div>
+					  <div class="input-group col-4 justify-content-center align-items-center py-2">
+					  <label for="familyTB" class="col-lg-1 col-form-label">Family Members:</label>
+					 	<div class="col-3 align-items-center">
+							<input type="text" class="form-control" placeholder="Family Member (NRIC)">
+						</div>
+						<div class="input-group-prepend ps-2">
+							<button class="btn btn-primary" type="button">+</button>
+						</div>
+						
 					  </div>
 						<div class="row justify-content-center align-items-center g-recaptcha" data-sitekey="6LcZnF0jAAAAAMSnSnEJF4o3T4K9QWsM29jnFUJQ"></div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">

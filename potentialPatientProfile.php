@@ -122,15 +122,15 @@
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
-					<label for="passwordTB" class="col-lg-1 col-form-label">Medical History:</label>
+					<label for="allergyTB" class="col-lg-1 col-form-label">Allergies:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="passwordTB" value="All 4 wisdom teeth removed" disabled>
+						<input class="form-control" id="allergyTB" value="Paracetamol" disabled>
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
-					<label for="allergyTB" class="col-lg-1 col-form-label">Allergies:</label>
-					<div class="col-lg-4">
-						<input class="form-control" id="allergyTB" value="Paracetamol allergy" disabled>
+						<label for="passwordTB" class="col-1 col-form-label">Medical History:</label>
+						<div class="col-lg-4">
+						<button class="btn btn-secondary" name="viewMHistory" value="viewMHistory">View Records</button>
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
