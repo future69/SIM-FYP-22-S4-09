@@ -138,8 +138,11 @@
 						</div>
 					</div>
 					<div class="row col-12  py-2">
-						<label for="remarksTA" class="col-1 col-form-label">Medical History:</label>
-						<div class="col-10 ms-3">
+						<label for="remarksTA" class="col-2 col-form-label">Medical History:</label>
+						<button type="submit" class="btn btn-primary col-3 m-2" name="downloadFile">Pull Records</button>
+						<button type="submit" class="btn btn-primary col-3 m-2" name="downloadFile">Add Records</button>
+						<button type="submit" class="btn btn-primary col-3 m-2" name="downloadFile">Edit Records</button>
+						<div class="col-12">
 							<textarea class="form-control" aria-label="With textarea" id="remarksTA"></textarea>
 						</div>
 					</div>
