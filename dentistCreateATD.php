@@ -103,29 +103,44 @@
 					</table>
 					<form method="POST" class="row justify-content-center align-items-center">
 					<div class="row col-6 align-items-center py-2">
-						<label for="dentistSL" class="col-2 col-form-label">Services:</label>
-						<div class="col-6">
-						<select class="select" multiple data-mdb-clear-button="true" name="serviceSL" id="serviceSL" size="2" multiple>
-							<option value="1">Tooth Decay</option>
-							<option value="2">Polishing</option>
-							<option value="3">Tooth Remover</option>
-							<option value="4">Tooth Cleaning</option>
-							</select>
+						<label for="serviceSL" class="col-3 col-form-label">Service:</label>
+						<div class="col-7">
+						  <select class="form-select" name="serviceSL" id="serviceSL" size="2" multiple>
+						    <option value="plceaholder">Decay Remover</option>
+							<option value="plceaholder">Polishing</option>
+							<option value="plceaholder">Tooth Remover</option>
+						  </select>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
-						  <select class="select" name="assistantSL" id="assistantSL" size="2" multiple>
+						  <select class="form-select" name="assistantSL" id="assistantSL" size="2" multiple>
 						    <option value="plceaholder">Jacob Lee</option>
 							<option value="plceaholder">John Adams</option>
 							<option value="plceaholder">Michelle Lee</option>
 						  </select>
 						</div>
 					</div>
+					<div class="row col-6 align-items-center py-2">
+						<label for="serviceSL" class="col-3 col-form-label">Allergies:</label>
+						<div class="col-7">
+						<textarea class="form-control" aria-label="With textarea" id="remarksTA" size="3" ></textarea>
+						</div>
+					</div>
+					<div class="row col-6 align-items-center py-2">
+						<label for="assistantSL" class="col-3 col-form-label">Materials:</label>
+						<div class="col-9">
+						  <select class="form-select" name="assistantSL" id="assistantSL" size="3" multiple>
+						    <option value="plceaholder">Resin composites</option>
+							<option value="plceaholder">Amalgam alloys</option>
+							<option value="plceaholder">Glass ionomers</option>
+						  </select>
+						</div>
+					</div>
 					<div class="row col-12  py-2">
-						<label for="remarksTA" class="col-1 col-form-label">Remarks:</label>
-						<div class="col-10">
+						<label for="remarksTA" class="col-1 col-form-label">Medical History:</label>
+						<div class="col-10 ms-3">
 							<textarea class="form-control" aria-label="With textarea" id="remarksTA"></textarea>
 						</div>
 					</div>
