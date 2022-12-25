@@ -125,7 +125,7 @@
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-3 col-form-label">Allergies:</label>
 						<div class="col-7">
-						<textarea class="form-control" aria-label="With textarea" id="remarksTA" size="3" ></textarea>
+						<textarea class="form-control" aria-label="With textarea" id="remarksTA" size="3" disabled></textarea>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
@@ -140,9 +140,7 @@
 					</div>
 					<div class="row col-12  py-2">
 						<label for="remarksTA" class="col-2 col-form-label">Medical History:</label>
-						<button type="submit" class="btn btn-primary col-3 m-2" name="downloadFile">Pull Records</button>
-						<button type="submit" class="btn btn-primary col-3 m-2" name="downloadFile">Add Records</button>
-						<button type="submit" class="btn btn-primary col-3 m-2" name="downloadFile">Edit Records</button>
+						<button type="submit" class="btn btn-primary col-3 m-2" name="downloadFile">Update Records</button>
 						<div class="col-12">
 							<textarea class="form-control" aria-label="With textarea" id="remarksTA"></textarea>
 						</div>
