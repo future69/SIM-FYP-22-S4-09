@@ -37,3 +37,8 @@
 	max-width: 80%;
 	max-height: auto;
 }
+
+.errorMessage {
+	color: red;
+
+}
