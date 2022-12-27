@@ -48,7 +48,7 @@
 		<nav>
 			<?php
 			//Declare error messages
-			$usernameError = $passwordError = $nricError = $fullNameError = $phoneNumError = $emailError = $addressError = $postalCodeError = $dobError = null;
+			$usernameError = $passwordError = $nricError = $fullNameError = $phoneNumError = $emailError = $addressError = $postalCodeError = $dobError = $medicalHistoryError = $allergiesError = $gCaptChaError = null;
 			$errorMessage = null;
 
 			if (isset($_POST['submitRegistration'])) {
@@ -70,6 +70,8 @@
 				$postalCode = stripslashes($_POST['postalCodeTB']);
 				$gender = stripslashes($_POST['genderTB']);
 				$dob = stripslashes($_POST['dobTB']);
+				$medicalHistory = stripslashes($_POST['medicalHistoryTB']);
+				$allergies = stripslashes($_POST['allergiesTB']);
 
 				//Remove whitespaces
 				$username = trim($_POST['usernameTB']);
@@ -82,6 +84,8 @@
 				$postalCode = trim($_POST['postalCodeTB']);
 				$gender = trim($_POST['genderTB']);
 				$dob = trim($_POST['dobTB']);
+				$medicalHistory = trim($_POST['medicalHistoryTB']);
+				$allergies = trim($_POST['allergiesTB']);
 
 				//Method to validate entries
 				function correctValidation(): int
@@ -94,7 +98,7 @@
 						$totalFalseCount++;
 					}
 
-					if (empty($GLOBALS['password'])) {
+					if (preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/', $GLOBALS['password']) == 0) {
 						$GLOBALS['passwordError'] = "Please enter a value";
 						$totalFalseCount++;
 					}
@@ -134,6 +138,16 @@
 						$totalFalseCount++;
 					}
 
+					if (empty($GLOBALS['medicalHistory'])) {
+						$GLOBALS['medicalHistoryError'] = "Please enter a value";
+						$totalFalseCount++;
+					}
+
+					if (empty($GLOBALS['allergies'])) {
+						$GLOBALS['allergiesError'] = "Please enter a value";
+						$totalFalseCount++;
+					}
+
 					return $totalFalseCount;
 				}
 
@@ -156,6 +170,17 @@
 						$SQLstringCheckNRIC = "SELECT username FROM $TableName" . " where nric='" . $nric . "'";
 						$queryResultCheckNRIC = mysqli_query($conn, $SQLstringCheckNRIC);
 
+						//Encrypt password
+						$encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+						//gCpatCha
+						$secretKey = "6LcZnF0jAAAAAK8eSCd4rAmkhkhNZ6hF4FKgLfLq";
+						$ip = $_SERVER['REMOTE_ADDR'];
+						$response = $_POST['g-recaptcha-response'];
+						$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$ip";
+						$getUrlContent = file_get_contents($url);
+						$data = json_decode($getUrlContent);
+
 						//If there are no results means no login info matches, good thing
 						if (mysqli_num_rows($queryResultCheckUsername) > 0) {
 							$errorMessage = "The username is already in use, please try another";
@@ -163,10 +188,13 @@
 						else if (mysqli_num_rows($queryResultCheckNRIC) > 0) {
 							$errorMessage = "The nric is already in use, please try another";
 						} 
+						else if ($data->success==false){
+							$errorMessage = "Please do recaptcha";
+						}
 						else {
 							//Inserts data into DB
-							$SQLstring = "INSERT INTO $TableName " . " (username, password, nric, fullName, roleName, phoneNum, email, address, postal, gender, accStatus) " . " VALUES( '$username', '$password', '$nric', '$fullName', '$roleName', '$phoneNum', '$email', '$address', '$postal, '$gender', '$accStatus' )";
-							$SQLstring2 = "INSERT INTO $TableName2 " . " (nric, dob, medHistory, allergies) " . " VALUES('$nric','$dob','$medHistory','$allergies')";
+							$SQLstring = "INSERT INTO $TableName " . " (username, password, nric, fullName, roleName, phoneNum, email, address, postal, gender, accStatus) " . " VALUES( '$username', '$encryptedPassword', '$nric', '$fullName', '$roleName', '$phoneNum', '$email', '$address', '$postalCode', '$gender', '$accStatus' )";
+							$SQLstring2 = "INSERT INTO $TableName2 " . " (nric, dob, medHistory, allergies) " . " VALUES('$nric','$dob','$medicalHistory','$allergies')";
 							mysqli_query($conn, $SQLstring);
 							mysqli_query($conn, $SQLstring2);
 							mysqli_close($conn);
@@ -174,12 +202,17 @@
 							$errorMessage = "Success!";
 
 							//Reset values after success
-							// $username = "";
-							// $password = "";
-							// $fName = "";
-							// $lName = "";
-							// $phoneNum = "";
-							// $email = "";
+							$username = "";
+							$password = "";
+							$fullName = "";
+							$nric = "";
+							$dob = "";
+							$address ="";
+							$postalCode ="";
+							$phoneNum = "";
+							$email = "";
+							$medicalHistory = "";
+							$allergies = "";
 						}
 					} catch (mysqli_sql_exception $e) {
 						echo "<p>Error: unable to connect/insert record in the database.</p>";
@@ -229,7 +262,7 @@
 				<div class="row justify-content-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 					<div class="col-lg-4">
-						<input type="password" class="form-control" id="passwordTB" name="passwordTB" value="<?php echo $password;?>">
+						<input type="password" class="form-control" id="passwordTB" name="passwordTB" placeholder="8 characters containing 1 letter and 1 number" value="<?php echo $password;?>">
 						<div class="errorMessage">
 							<?php echo $passwordError;?>
 						</div>
@@ -311,17 +344,24 @@
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="medicalHistoryTB" class="col-lg-1 col-form-label">Medical History:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="medicalHistoryTB" name="medicalHistoryTB" disabled>
+						<input class="form-control" id="medicalHistoryTB" name="medicalHistoryTB" value="<?php echo $medicalHistory;?>">
+						<div class="errorMessage">
+							<?php echo $medicalHistoryError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="allergiesTB" class="col-lg-1 col-form-label">Allergies:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="allergiesTB" name="allergiesTB" disabled>
+						<input class="form-control" id="allergiesTB" name="allergiesTB" value="<?php echo $allergies;?>">
+						<div class="errorMessage">
+							<?php echo $allergiesError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage;?></div>
-				<div class="row justify-content-center align-items-center g-recaptcha" data-sitekey="6LcZnF0jAAAAAMSnSnEJF4o3T4K9QWsM29jnFUJQ"></div>
+				<div class="row justify-content-center align-items-center g-recaptcha" name="gCaptCha" data-sitekey="6LcZnF0jAAAAAMSnSnEJF4o3T4K9QWsM29jnFUJQ"></div>
+				<?php echo $gCaptChaError;?>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					<button class="btn btn-danger" name="back" value="back">Back</button>
 					<button type="submit" class="btn btn-primary" name="submitRegistration" value="submit">Confirm</button>
