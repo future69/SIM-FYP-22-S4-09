@@ -130,7 +130,7 @@
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="formFileMedicalHistory" class="col-1 col-form-label">Medical history:</label>
 						<div class="col-lg-4">
-							<button type="submit" class="btn btn-primary col-md-3" name="downloadFile">Download</button>	
+							<button type="submit" class="btn btn-primary col-md-3" name="uploadFile">Upload</button>	
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
