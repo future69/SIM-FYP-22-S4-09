@@ -317,9 +317,9 @@
 					<label for="genderTB" class="col-lg-1 col-form-label">Gender:</label>
 					<div class="col-lg-4">
 						<select class="form-select" class="form-select" aria-label="Select gender" name="genderTB" id="genderTB" value="<?php echo $gender;?>">
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
-							<option value="Others">Others</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+							<option value="others">Others</option>
 						</select>
 					</div>
 				</div>
