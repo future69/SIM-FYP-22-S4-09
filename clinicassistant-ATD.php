@@ -8,7 +8,8 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
     <title>Clinic Assistant Appointment Treatment Details</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="images/superDentalLogo.png" alt="" width="50" height="40" class="d-inline-block align-text-top">
@@ -46,6 +47,7 @@
             </div>
         </div>
     </nav>
+</header>
 	<?php 
 			if (isset($_POST['update'])) {
 				echo '<script>alert("Appointment Treatment Details updated!")</script>';
@@ -87,7 +89,7 @@
 								<th scope="col">NRIC</th>
 								<th scope="col">Age</th>
 								<th scope="col">Gender</th>
-								<th scope="col">Medical History</th>
+								<th scope="col">X-Ray</th>
 							<tr>
 						</thead>
 						<tbody>
@@ -124,7 +126,7 @@
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-3 col-form-label">Allergies:</label>
 						<div class="col-7">
-						<textarea class="form-control" aria-label="With textarea" id="remarksTA" size="3" disabled></textarea>
+						<textarea class="form-control" aria-label="With textarea" id="remarksTA" size="3" ></textarea>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
@@ -137,13 +139,12 @@
 						  </select>
 						</div>
 					</div>
-					<div class="row col-12  py-2">
+					<div class="row col-2 py-2">
 						<label for="remarksTA" class="col-2 col-form-label">Medical History:</label>
-						<button type="submit" class="btn btn-primary col-3 m-2" name="downloadFile">Update Records</button>
-						<div class="col-12">
+					</div>
+					<div class="col-10 mt-2">
 							<textarea class="form-control" aria-label="With textarea" id="remarksTA"></textarea>
 						</div>
-					</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
 						<button class="btn btn-Primary" name="update" value="update">Update</button>
