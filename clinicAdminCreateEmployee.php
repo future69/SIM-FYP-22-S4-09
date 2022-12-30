@@ -4,6 +4,17 @@
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
+	<script>
+		//Function to disable the textbox for prac number when clinic assistant is selected
+		function disableTextBox() {
+			if (document.getElementById("roleSL").value == "dentist") {
+				document.getElementById("pracNumberTB").disabled = '';
+			} 
+			else {
+				document.getElementById("pracNumberTB").disabled = 'true';
+			}
+		}
+	</script>
 </head>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -52,8 +63,8 @@
 		$DBName = "dentalhealthapplicationdb";
 		$roleName = $_POST['roleSL'];
 		$gender = $_POST['genderSL'];
-		$qualification = $_POST['formFileQualification'];
 		$accStatus = "active";
+		$clinicName = "tempClinicName";
 
 		//Value is at the input boxes incase of wrong entry, dont have to retype 
 		//Declaring, removing backslashes and whitespaces
@@ -63,7 +74,7 @@
 		$fullName = stripslashes($_POST['fullNameTB']);
 		$phoneNum = stripslashes($_POST['phoneNumTB']);
 		$email = stripslashes($_POST['emailTB']);
-		$address = stripslashes($_POST['addressTB']);
+		$address = stripslashes($_POST['clinicAddressTB']);
 		$postalCode = stripslashes($_POST['postalCodeTB']);
 		$pracNumber = stripslashes($_POST['pracNumberTB']);
 
@@ -74,7 +85,7 @@
 		$fullName = trim($_POST['fullNameTB']);
 		$phoneNum = trim($_POST['phoneNumTB']);
 		$email = trim($_POST['emailTB']);
-		$address = trim($_POST['addressTB']);
+		$address = trim($_POST['clinicAddressTB']);
 		$postalCode = trim($_POST['postalCodeTB']);
 		$pracNumber = trim($_POST['pracNumberTB']);
 
@@ -129,7 +140,7 @@
 				$totalFalseCount++;
 			}
 
-			if (empty($GLOBALS['formFileQualification'])) {
+			if ($_FILES['formFileQualification']['size'] == 0) {
 				$GLOBALS['qualificationError'] = "Please upload a file";
 				$totalFalseCount++;
 			}
@@ -146,7 +157,8 @@
 
 				//Name of the table 
 				$TableName = "useraccount";
-				$TableName2 = "patientprofile";
+				$TableName2 = "clinicAssistantProfile";
+				$TableName3 = "dentistProfile";
 
 				//See if any existing username
 				$SQLstringCheckUsername = "SELECT username FROM $TableName" . " where username='" . $username . "'";
@@ -159,6 +171,26 @@
 				//Encrypt password
 				$encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+				//Store qualification file in upload folder
+				$file = $_FILES['formFileQualification'];
+
+				$fileName = $_FILES['formFileQualification']['name'];
+				$fileTmpName = $_FILES['formFileQualification']['tmp_name'];
+				$fileSize = $_FILES['formFileQualification']['size'];
+				$fileError = $_FILES['formFileQualification']['error'];
+				$fileType = $_FILES['formFileQualification']['type'];
+
+				//Gets the file extention etc jpg,pdf
+				$fileExtention = explode('.',$fileName);
+				$fileRealExtention = strtolower(end($fileExtention));
+
+				//File name to store in the database
+				$fileNameDB = $nric.".".$fileRealExtention;
+				$fileDestination = 'staffQualificationsFiles/'.$fileNameDB;
+
+				//Array of allowed file extentions
+				$allowedFileExtention = array('jpg','jpeg','png','pdf');
+
 				//If there are no results means no login info matches, good thing
 				if (mysqli_num_rows($queryResultCheckUsername) > 0) {
 					$errorMessage = "The username is already in use, please try another";
@@ -166,14 +198,35 @@
 				else if (mysqli_num_rows($queryResultCheckNRIC) > 0) {
 					$errorMessage = "The nric is already in use, please try another";
 				} 
+				//Checks if the file extention is one of the ones we allow
+				else if (in_array($fileRealExtention,$allowedFileExtention) == false){
+					$errorMessage = "wrong format";
+				}
+				//Checks if there was an error uploading file 
+				else if ($fileError !== 0){
+					$errorMessage = "Error uploading file";
+				}
+				//Checks if file size too big
+				else if ($fileSize > 10000000){
+					$errorMessage = "File too big, max 10mb";
+					printf($file);
+				}
 				else {
+					//Store file in staffQualificationsFiles (folder in local directory)
+					move_uploaded_file($fileTmpName, $fileDestination);
+
 					//Inserts data into DB
 					$SQLstring = "INSERT INTO $TableName " . " (username, password, nric, fullName, roleName, phoneNum, email, address, postal, gender, accStatus) " . " VALUES( '$username', '$encryptedPassword', '$nric', '$fullName', '$roleName', '$phoneNum', '$email', '$address', '$postalCode', '$gender', '$accStatus' )";
-					$SQLstring2 = "INSERT INTO $TableName2 " . " (nric, dob, medHistory, allergies) " . " VALUES('$nric','$dob','$medicalHistory','$allergies')";
+					if ($roleName == 'dentist'){
+						$SQLstring2 = "INSERT INTO $TableName3 " . " (nric, clinicName, qualification, practitionerNumber) " . " VALUES('$nric','$clinicName','$fileNameDB','$pracNumber')";
+					}
+					else if ($roleName == 'clinicAssistant'){
+						$SQLstring2 = "INSERT INTO $TableName2 " . " (nric, clinicName, qualification) " . " VALUES('$nric','$clinicName','$fileNameDB')";
+					}
 					mysqli_query($conn, $SQLstring);
 					mysqli_query($conn, $SQLstring2);
 					mysqli_close($conn);
-
+					
 					$errorMessage = "Success!";
 
 					//Reset values after success
@@ -186,15 +239,15 @@
 					$postalCode = "";
 					$phoneNum = "";
 					$email = "";
-					$medicalHistory = "";
-					$allergies = "";
+					$pracNumber = "";
+					
 				}
 			} catch (mysqli_sql_exception $e) {
 				echo "<p>Error: unable to connect/insert record in the database.</p>";
 			}
 		}
 	} else if (isset($_POST['back'])) {
-		header("Location:potentialPatientHomepage.php");
+		header("Location:clinicAdminHomepage.php");
 	} else {
 		$username = "";
 		$password = "";
@@ -205,8 +258,7 @@
 		$postalCode = "";
 		$phoneNum = "";
 		$email = "";
-		$medicalHistory = "";
-		$allergies = "";
+		$pracNumber = "";
 	}
 
 	?>
@@ -215,7 +267,7 @@
 <body>
 	<div class="registrationBoxPatient container">
 		<div class="row justify-content-center align-items-center">
-			<form method="POST">
+			<form method="POST" enctype="multipart/form-data">
 				<div class="row justify-content-center ps-5">
 					<div class="col-5">
 						<h1>Create Employee Account</h1>
@@ -224,7 +276,7 @@
 				<div class="row justify-content-center py-2">
 					<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 					<div class="col-lg-4">
-						<input class="form-control" name="usernameTB" id="usernameTB">
+						<input class="form-control" name="usernameTB" id="usernameTB" value="<?php echo $username;?>">
 						<div class="errorMessage">
 							<?php echo $usernameError;?>
 						</div>
@@ -233,16 +285,16 @@
 				<div class="row justify-content-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 					<div class="col-lg-4">
-						<input type="password" class="form-control" name="passwordTB" id="passwordTB">
+						<input type="password" class="form-control" name="passwordTB" id="passwordTB" value="<?php echo $password;?>">
 						<div class="errorMessage">
 							<?php echo $passwordError;?>
 						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
-					<label for="fullnameTB" class="col-lg-1 col-form-label">Full name:</label>
+					<label for="fullNameTB" class="col-lg-1 col-form-label">Full name:</label>
 					<div class="col-lg-4">
-						<input class="form-control" name="fullnameTB" id="fullnameTB">
+						<input class="form-control" name="fullNameTB" id="fullNameTB" value="<?php echo $fullName;?>">
 						<div class="errorMessage">
 							<?php echo $fullNameError;?>
 						</div>
@@ -261,7 +313,7 @@
 				<div class="row justify-content-center py-2">
 					<label for="nricTB" class="col-lg-1 col-form-label">NRIC:</label>
 					<div class="col-lg-4">
-						<input class="form-control" name="nricTB" id="nricTB">
+						<input class="form-control" name="nricTB" id="nricTB" value="<?php echo $nric;?>">
 						<div class="errorMessage">
 							<?php echo $nricError;?>
 						</div>
@@ -270,7 +322,7 @@
 				<div class="row justify-content-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Email:</label>
 					<div class="col-lg-4">
-						<input type="email" class="form-control" name="emailTB" id="emailTB">
+						<input type="email" class="form-control" name="emailTB" id="emailTB" value="<?php echo $email;?>">
 						<div class="errorMessage">
 							<?php echo $emailError;?>
 						</div>
@@ -279,7 +331,7 @@
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="phoneNumTB" class="col-lg-1 col-form-label">Phone Number:</label>
 					<div class="col-lg-4">
-						<input class="form-control" name="phoneNumTB" id="phoneNumTB">
+						<input class="form-control" name="phoneNumTB" id="phoneNumTB" value="<?php echo $phoneNum;?>">
 						<div class="errorMessage">
 							<?php echo $phoneNumError;?>
 						</div>
@@ -288,7 +340,7 @@
 				<div class="row justify-content-center py-2">
 					<label for="usernameTB" class="col-lg-1 col-form-label">Address:</label>
 					<div class="col-lg-4">
-						<input class="form-control" name="clinicAddress" id="clinicAddress">
+						<input class="form-control" name="clinicAddressTB" id="clinicAddressTB" value="<?php echo $address;?>">
 						<div class="errorMessage">
 							<?php echo $addressError;?>
 						</div>
@@ -297,7 +349,7 @@
 				<div class="row justify-content-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Postal Code:</label>
 					<div class="col-lg-4">
-						<input class="form-control" name="postalCodeTB" id="postalCodeTB">
+						<input class="form-control" name="postalCodeTB" id="postalCodeTB" value="<?php echo $postalCode;?>">
 						<div class="errorMessage">
 							<?php echo $postalCodeError;?>
 						</div>
@@ -306,16 +358,16 @@
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="roleSL" class="col-lg-1 col-form-label">Role:</label>
 					<div class="col-lg-4">
-						<select class="form-select" class="form-select" aria-label="Select role" name="roleSL">
-							<option value="clinicAssistant">Clinic Assistant</option>
+						<select class="form-select" class="form-select" id="roleSL" name="roleSL" onclick="disableTextBox()">
 							<option value="dentist">Dentist</option>
+							<option value="clinicAssistant">Clinic Assistant</option>
 						</select>
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="formFileQualification" class="col-1 col-form-label">Qualifications:</label>
 					<div class="col-lg-4">
-						<input class="form-control" type="file" name="formFileQualification" id="formFileQualification" multiple>
+						<input class="form-control" type="file" name="formFileQualification" id="formFileQualification">
 						<div class="errorMessage">
 							<?php echo $qualificationError;?>
 						</div>
@@ -324,12 +376,13 @@
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Practitioner Number:</label>
 					<div class="col-lg-4">
-						<input class="form-control" name="pracNumberTB" id="pracNumberTB">
+						<input class="form-control" name="pracNumberTB" id="pracNumberTB" value="<?php echo $pracNumber;?>">
 						<div class="errorMessage">
 							<?php echo $pracNumberError;?>
 						</div>
 					</div>
 				</div>
+				<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage;?></div>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					<button class="btn btn-danger" name="back" value="back">Back</button>
 					<button type="submit" class="btn btn-primary" name="createEmployee" value="submit">Submit</button>
