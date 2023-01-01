@@ -55,6 +55,7 @@
 			}
 		?>
 <div class="registrationBoxPatient container">
+<form method="POST" class="row justify-content-center align-items-center">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
 					<div class="display-6">Appointment treatment details for name3</div>
@@ -66,12 +67,14 @@
 							<tr>
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
+								<th scope="col">Dentist</th>
 							<tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td> 20/11/2022 </td>
 								<td> 15:00 </td>
+								<td> Dr. John Tan</td>
 							</tr>
 						</tbody>
 					</table>
@@ -83,7 +86,7 @@
 								<th scope="col">NRIC</th>
 								<th scope="col">Age</th>
 								<th scope="col">Gender</th>
-								<th scope="col">Medical History</th>
+								<th scope="col">X-Ray</th>
 							<tr>
 						</thead>
 						<tbody>
@@ -96,39 +99,57 @@
 							</tr>
 						</tbody>
 					</table>
-					<form method="POST" class="row justify-content-center align-items-center">
+
 					<div class="row col-6 align-items-center py-2">
-						<label for="dentistSL" class="col-2 col-form-label">Dentist:</label>
-						<div class="col-6">
-						  <select class="form-select" name="dentistSL" disabled id="dentistSL">
-						    <option value="plceaholder">Dr. John Tan</option>
-							<option value="plceaholder">Dr. Kimberley Wexler</option>
-							<option value="plceaholder">Dr. Andy Ruiz</option>
+						<label for="serviceSL" class="col-3 col-form-label">Service:</label>
+						<div class="col-7">
+						  <select class="form-select" name="serviceSL" id="serviceSL" size="2" multiple>
+						    <option value="plceaholder">Decay Remover</option>
+							<option value="plceaholder">Polishing</option>
+							<option value="plceaholder">Tooth Remover</option>
 						  </select>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
-						  <select class="form-select" name="assistantSL" disabled id="assistantSL" size="2" multiple>
+						  <select class="form-select" name="assistantSL" id="assistantSL" size="2" multiple>
 						    <option value="plceaholder">Jacob Lee</option>
 							<option value="plceaholder">John Adams</option>
 							<option value="plceaholder">Michelle Lee</option>
 						  </select>
 						</div>
 					</div>
-					<div class="row col-12  py-2">
-						<label for="remarksTA" class="col-1 col-form-label">Remarks:</label>
-						<div class="col-10">
-							<textarea class="form-control" placeholder="Patient has a tooth decay at the crown on the last tooth on the bottom right " aria-label="With textarea" disabled id="remarksTA"></textarea>
+					<div class="row col-6 align-items-center py-2">
+						<label for="serviceSL" class="col-3 col-form-label">Allergies:</label>
+						<div class="col-7">
+						<textarea class="form-control" aria-label="With textarea" id="remarksTA" size="3"></textarea>
 						</div>
 					</div>
+					<div class="row col-6 align-items-center py-2">
+						<label for="assistantSL" class="col-3 col-form-label">Materials:</label>
+						<div class="col-9">
+						  <select class="form-select" name="assistantSL" id="assistantSL" size="3" multiple>
+						    <option value="plceaholder">Resin composites</option>
+							<option value="plceaholder">Amalgam alloys</option>
+							<option value="plceaholder">Glass ionomers</option>
+						  </select>
+						</div>
+					</div>
+					<div class="row col-2 py-2">
+						<label for="remarksTA" class="col-2 col-form-label">Medical History:</label>
+					</div>
+					<div class="col-10 mt-2">
+							<textarea class="form-control" aria-label="With textarea" id="remarksTA"></textarea>
+						</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
+						<button class="btn btn-Primary" name="update" value="update">Confirm</button>
 					</div>
-					</form>
+
 				</div>
 			</div>
+			</form>
 		</div>
 </body>
 </html>

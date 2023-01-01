@@ -58,6 +58,7 @@
 			}
 		?>
 <div class="registrationBoxPatient container">
+	<form method="POST" class="row justify-content-center align-items-center">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
 					<div class="display-6">Appointment treatment details for name3</div>
@@ -101,7 +102,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<form method="POST" class="row justify-content-center align-items-center">
+
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-3 col-form-label">Service:</label>
 						<div class="col-7">
@@ -148,9 +149,10 @@
 						<button class="btn btn-danger" name="back" value="back">Back</button>
 						<button class="btn btn-Primary" name="update" value="update">Confirm</button>
 					</div>
-					</form>
+
 				</div>
 			</div>
+			</form>
 		</div>
 </body>
 </html>

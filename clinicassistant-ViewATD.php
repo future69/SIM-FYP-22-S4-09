@@ -56,7 +56,7 @@
 		?>
 <body>
 <div class="registrationBoxPatient container">
-	<form method="POST">
+<form method="POST">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
 					<div class="display-6">Appointment treatment details for name3</div>
@@ -75,7 +75,7 @@
 							<tr>
 								<td> 20/11/2022 </td>
 								<td> 15:00 </td>
-								<td> Dr. John Tan </td>							
+								<td> Dr. John Tan </td>
 							</tr>
 						</tbody>
 					</table>
@@ -87,7 +87,7 @@
 								<th scope="col">NRIC</th>
 								<th scope="col">Age</th>
 								<th scope="col">Gender</th>
-								<th scope="col">Medical History</th>
+								<th scope="col">X-Ray</th>
 							<tr>
 						</thead>
 						<tbody>
@@ -100,33 +100,53 @@
 							</tr>
 						</tbody>
 					</table>
-					<form class="row justify-content-center align-items-center">
+
 					<div class="row col-6 align-items-center py-2">
-						<label for="serviceSL" class="col-2 col-form-label">Service:</label>
-						<div class="col-6">
-						<input type="text" class="form-control" placeholder="Tooth Remover" disabled aria-label="serviceSL" aria-describedby="basic-addon1">
+						<label for="serviceSL" class="col-3 col-form-label">Service:</label>
+						<div class="col-7">
+						  <select class="form-select" name="serviceSL" id="serviceSL" size="2" multiple>
+						    <option value="plceaholder">Decay Remover</option>
+							<option value="plceaholder">Polishing</option>
+							<option value="plceaholder">Tooth Remover</option>
+						  </select>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
-						  <select class="form-select" disabled name="assistantSL" id="assistantSL" size="2" multiple>
+						  <select class="form-select" name="assistantSL" id="assistantSL" size="2" multiple>
 						    <option value="plceaholder">Jacob Lee</option>
 							<option value="plceaholder">John Adams</option>
 							<option value="plceaholder">Michelle Lee</option>
 						  </select>
 						</div>
 					</div>
-					<div class="row col-12  py-2">
-						<label for="remarksTA" class="col-1 col-form-label">Remarks:</label>
-						<div class="col-10">
-							<textarea class="form-control" disabled aria-label="With textarea" id="remarksTA"></textarea>
+					<div class="row col-6 align-items-center py-2">
+						<label for="serviceSL" class="col-3 col-form-label">Allergies:</label>
+						<div class="col-7">
+						<textarea class="form-control" aria-label="With textarea" id="remarksTA" size="3" ></textarea>
 						</div>
 					</div>
+					<div class="row col-6 align-items-center py-2">
+						<label for="assistantSL" class="col-3 col-form-label">Materials:</label>
+						<div class="col-9">
+						  <select class="form-select" name="assistantSL" id="assistantSL" size="3" multiple>
+						    <option value="plceaholder">Resin composites</option>
+							<option value="plceaholder">Amalgam alloys</option>
+							<option value="plceaholder">Glass ionomers</option>
+						  </select>
+						</div>
+					</div>
+					<div class="row col-2 py-2">
+						<label for="remarksTA" class="col-2 col-form-label">Medical History:</label>
+					</div>
+					<div class="col-10 mt-2">
+							<textarea class="form-control" aria-label="With textarea" id="remarksTA"></textarea>
+						</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
+						<button class="btn btn-Primary" name="update" value="update">Update</button>
 					</div>
-					</form>
 				</div>
 			</div>
 		</form>
