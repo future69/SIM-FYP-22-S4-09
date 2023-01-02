@@ -104,7 +104,7 @@
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-3 col-form-label">Service:</label>
 						<div class="col-7">
-						  <select class="form-select" name="serviceSL" id="serviceSL" size="2" multiple>
+						  <select class="form-select" name="serviceSL" id="serviceSL" disabled size="2" multiple>
 						    <option value="plceaholder">Decay Remover</option>
 							<option value="plceaholder">Polishing</option>
 							<option value="plceaholder">Tooth Remover</option>
@@ -114,7 +114,7 @@
 					<div class="row col-6 align-items-center py-2">
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
-						  <select class="form-select" name="assistantSL" id="assistantSL" size="2" multiple>
+						  <select class="form-select" name="assistantSL" id="assistantSL" disabled size="2" multiple>
 						    <option value="plceaholder">Jacob Lee</option>
 							<option value="plceaholder">John Adams</option>
 							<option value="plceaholder">Michelle Lee</option>
@@ -124,13 +124,13 @@
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-3 col-form-label">Allergies:</label>
 						<div class="col-7">
-						<textarea class="form-control" aria-label="With textarea" id="remarksTA" size="3" ></textarea>
+						<textarea class="form-control" aria-label="With textarea" id="remarksTA" disabled size="3" ></textarea>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="assistantSL" class="col-3 col-form-label">Materials:</label>
 						<div class="col-9">
-						  <select class="form-select" name="assistantSL" id="assistantSL" size="3" multiple>
+						  <select class="form-select" name="assistantSL" id="assistantSL" size="3" disabled multiple>
 						    <option value="plceaholder">Resin composites</option>
 							<option value="plceaholder">Amalgam alloys</option>
 							<option value="plceaholder">Glass ionomers</option>
@@ -141,7 +141,7 @@
 						<label for="remarksTA" class="col-2 col-form-label">Medical History:</label>
 					</div>
 					<div class="col-10 mt-2">
-							<textarea class="form-control" aria-label="With textarea" id="remarksTA"></textarea>
+							<textarea class="form-control" aria-label="With textarea" disabled id="remarksTA"></textarea>
 						</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
