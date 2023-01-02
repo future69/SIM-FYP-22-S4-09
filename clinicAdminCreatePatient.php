@@ -201,7 +201,6 @@
 							$email = "";
 							$medicalHistory = "";
 							$allergies = "";
-							echo '<script>alert("Account created!")</script>';
 						}
 					} catch (mysqli_sql_exception $e) {
 						echo "<p>Error: unable to connect/insert record in the database.</p>";

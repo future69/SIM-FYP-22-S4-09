@@ -45,7 +45,7 @@
 				</ul>
 			</div>
 		</div>
-		<nav>
+</nav>
 			<?php
 			//Declare error messages
 			$usernameError = $passwordError = $nricError = $fullNameError = $phoneNumError = $emailError = $addressError = $postalCodeError = $dobError = $medicalHistoryError = $allergiesError = $gCaptChaError = null;

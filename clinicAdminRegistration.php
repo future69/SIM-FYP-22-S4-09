@@ -7,7 +7,6 @@
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <header>
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand mb-0 h1" href="">
@@ -51,11 +50,32 @@
 	$usernameError = $passwordError = $clinicNameError = $phoneNumError = $emailError = $addressError = $postalCodeError = $acraError = $dentalServiceError = $operatingHoursError = $gCaptChaError = null;
 	$errorMessage = null;
 
+	//This try block will be execute once the user enters the page, to load select list data
+	try {
+		$DBName = "dentalhealthapplicationdb";
+		$conn = mysqli_connect("localhost", "root", "", $DBName);
+		$servicesTable = "service";
+
+		//The lines to run in sql
+		$SQLstring = "SELECT serviceName FROM $servicesTable" . " where serviceStatus ='active'";
+
+		//Executing the sql
+		$queryResultListOfServices = mysqli_query($conn, $SQLstring);
+	} catch (mysqli_sql_exception $e) {
+		echo "Error";
+	}
+
 	if (isset($_POST['submitRegistration'])) {
 
 		$errors = 0;
 		$DBName = "dentalhealthapplicationdb";
 		$accStatus = "inreview";
+		$roleName = "clinicAdmin";
+		$values = $_POST['dentalServicesSL'];
+
+		foreach ($values as $a) {
+			echo $a;
+		}
 
 		//Value is at the input boxes incase of wrong entry, dont have to retype 
 		//Declaring, removing backslashes and whitespaces
@@ -63,7 +83,7 @@
 		$password = stripslashes($_POST['passwordTB']);
 		$clinicName = stripslashes($_POST['clinicNameTB']);
 		$email = stripslashes($_POST['emailTB']);
-		$address = stripslashes($_POST['addressTB']);
+		$address = stripslashes($_POST['clinicAddressTB']);
 		$postalCode = stripslashes($_POST['postalCodeTB']);
 		$phoneNum = stripslashes($_POST['phoneNumTB']);
 		$acra = stripslashes($_POST['acraTB']);
@@ -73,7 +93,7 @@
 		$password = trim($_POST['passwordTB']);
 		$clinicName = trim($_POST['clinicNameTB']);
 		$email = trim($_POST['emailTB']);
-		$address = trim($_POST['addressTB']);
+		$address = trim($_POST['clinicAddressTB']);
 		$postalCode = trim($_POST['postalCodeTB']);
 		$phoneNum = trim($_POST['phoneNumTB']);
 		$acra = trim($_POST['acraTB']);
@@ -198,6 +218,7 @@
 		}
 	} else if (isset($_POST['back'])) {
 		header("Location:potentialPatientHomepage.php");
+	} else {
 	}
 	?>
 </header>
@@ -214,37 +235,37 @@
 				<div class="row justify-content-center py-2">
 					<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="usernameTB">
+						<input class="form-control" id="usernameTB" name="usernameTB">
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 					<div class="col-lg-4">
-						<input type="password" class="form-control" id="passwordTB">
+						<input type="password" class="form-control" id="passwordTB" name="passwordTB">
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="clinicNameTB" class="col-lg-1 col-form-label">Clinic Name:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="clinicNameTB">
+						<input class="form-control" id="clinicNameTB" name="clinicNameTB">
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="emailTB" class="col-lg-1 col-form-label">Email:</label>
 					<div class="col-lg-4">
-						<input type="email" class="form-control" id="emailTB">
+						<input type="email" class="form-control" id="emailTB" name="emailTB">
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="addressTB" class="col-lg-1 col-form-label">Address:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="clinicAddress">
+						<input class="form-control" id="clinicAddressTB" name="clinicAddressTB">
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="postalCodeTB" class="col-lg-1 col-form-label">Postal Code:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="postalCodeTB">
+						<input class="form-control" id="postalCodeTB" name="postalCodeTB">
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
@@ -262,22 +283,26 @@
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="phoneNumTB" class="col-lg-1 col-form-label">Phone Number:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="phoneNumberTB">
+						<input class="form-control" id="phoneNumTB" name="phoneNumTB">
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="acraTB" class="col-lg-1 col-form-label">ACRA:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="acraTB">
+						<input class="form-control" id="acraTB" name="acraTB">
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
-					<label for="dentalServiceSL" class="col-lg-1 col-form-label">Dental Services:</label>
+					<label for="dentalServiceSL[]" class="col-lg-1 col-form-label">Dental Services:</label>
 					<div class="col-lg-4">
-						<select class="form-select" multiple aria-label="Select Services">
-							<option value="1">Braces</option>
-							<option value="2">Extraction</option>
-							<option value="3">Fillings</option>
+						<select class="form-select" multiple name="dentalServicesSL[]">
+							<?php
+							while ($listOfServices = mysqli_fetch_assoc($queryResultListOfServices)) {
+							?>
+								<option value="<?php echo $listOfServices['serviceName'];?>"><?php echo $listOfServices['serviceName'];?></option>
+							<?php
+							}
+							?>
 						</select>
 					</div>
 				</div>
@@ -285,7 +310,7 @@
 					<label for="clinicOpeningTimeSL" class="col-1 col-form-label">Operating Hours:</label>
 					<div class="col-2">
 						<select class="form-select" class="form-select" aria-label="Opening" name="clinicOpeningTimeSL" id="clinicOpeningTime">
-							<option value="plceaholder">Opening Hour</option>
+							<option value="placeholder">Opening Hour</option>
 							<option value="plceaholder">08:00</option>
 							<option value="plceaholder">08:30</option>
 							<option value="plceaholder">09:00</option>
@@ -294,7 +319,7 @@
 					</div>
 					<div class="col-2">
 						<select class="form-select" class="form-select" aria-label="Closing" name="clinicClosingTimeSL" id="clinicClosingTime">
-							<option value="plceaholder">Closing Hour</option>
+							<option value="placeholder">Closing Hour</option>
 							<option value="plceaholder">18:30</option>
 							<option value="plceaholder">19:00</option>
 							<option value="plceaholder">19:30</option>
@@ -302,10 +327,11 @@
 						</select>
 					</div>
 				</div>
+				<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage; ?></div>
 				<div class="row justify-content-center align-items-center g-recaptcha" data-sitekey="6LcZnF0jAAAAAMSnSnEJF4o3T4K9QWsM29jnFUJQ"></div>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					<button class="btn btn-danger" name="back" value="back">Back</button>
-					<button type="submit" class="btn btn-primary" name="submit" value="submit">Confirm</button>
+					<button type="submit" class="btn btn-primary" name="submitRegistration" value="submitRegistration">Confirm</button>
 				</div>
 			</form>
 		</div>
