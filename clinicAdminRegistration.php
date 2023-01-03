@@ -47,7 +47,7 @@
 	</nav>
 	<?php
 	//Declare error messages
-	$usernameError = $passwordError = $clinicNameError = $phoneNumError = $emailError = $addressError = $postalCodeError = $acraError = $dentalServiceError = $operatingHoursError = $gCaptChaError = null;
+	$usernameError = $passwordError = $clinicNameError = $phoneNumError = $emailError = $addressError = $postalCodeError = $acraError = $dentalServicesError = $gCaptChaError = null;
 	$errorMessage = null;
 
 	//This try block will be execute once the user enters the page, to load select list data
@@ -69,13 +69,11 @@
 
 		$errors = 0;
 		$DBName = "dentalhealthapplicationdb";
-		$accStatus = "inreview";
+		$clinicStatus = "inreview";
 		$roleName = "clinicAdmin";
-		$values = $_POST['dentalServicesSL'];
-
-		foreach ($values as $a) {
-			echo $a;
-		}
+		$area = $_POST['clinicAreaSL'];
+		$openingHour = $_POST['clinicOpeningTimeSL'];
+		$closingHour = $_POST['clinicClosingTimeSL'];
 
 		//Value is at the input boxes incase of wrong entry, dont have to retype 
 		//Declaring, removing backslashes and whitespaces
@@ -114,8 +112,8 @@
 				$totalFalseCount++;
 			}
 
-			if (preg_match('/(?i)^[STFG]\d{7}[A-Z]$/', $GLOBALS['clinicName']) == 0) {
-				$GLOBALS['cliniNameError'] = "Please enter a value";
+			if (empty($GLOBALS['clinicName'])) {
+				$GLOBALS['clinicNameError'] = "Please enter a value";
 				$totalFalseCount++;
 			}
 
@@ -144,8 +142,8 @@
 				$totalFalseCount++;
 			}
 
-			if (empty($GLOBALS['allergies'])) {
-				$GLOBALS['allergiesError'] = "Please enter a value";
+			if (isset($_POST['dentalServicesSL']) == false) {
+				$GLOBALS['dentalServicesError'] = "Please select at least 1 service";
 				$totalFalseCount++;
 			}
 
@@ -160,16 +158,20 @@
 				$conn = mysqli_connect("localhost", "root", "", $DBName);
 
 				//Name of the table 
-				$TableName = "useraccount";
-				$TableName2 = "patientprofile";
+				$TableNameUserAccount = "useraccount";
+				$TableNameClinic = "clinic";
 
 				//See if any existing username
-				$SQLstringCheckUsername = "SELECT username FROM $TableName" . " where username='" . $username . "'";
+				$SQLstringCheckUsername = "SELECT username FROM $TableNameUserAccount" . " where username='" . $username . "'";
 				$queryResultCheckUsername = mysqli_query($conn, $SQLstringCheckUsername);
 
-				//See if any existing nric
-				$SQLstringCheckNRIC = "SELECT username FROM $TableName" . " where nric='" . $nric . "'";
-				$queryResultCheckNRIC = mysqli_query($conn, $SQLstringCheckNRIC);
+				//See if any existing acra number
+				$SQLstringCheckAcra = "SELECT * FROM $TableNameClinic" . " where acraNum='" . $acra . "'";
+				$queryResultCheckAcra = mysqli_query($conn, $SQLstringCheckAcra);
+
+				//See if any existing clinic name
+				$SQLstringCheckClinicName = "SELECT * FROM $TableNameClinic" . " where clinicName='" . $clinicName . "'";
+				$queryResultClinicName = mysqli_query($conn, $SQLstringCheckClinicName);
 
 				//Encrypt password
 				$encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -182,17 +184,25 @@
 				$getUrlContent = file_get_contents($url);
 				$data = json_decode($getUrlContent);
 
+				//Gets selected services array and adds them together to form a string (to get each one we just explode the comma later on)
+				$values = $_POST['dentalServicesSL'];
+				foreach ($values as $a) {
+					$selectedServices = $a . ',';
+				}
+
 				//If there are no results means no login info matches, good thing
 				if (mysqli_num_rows($queryResultCheckUsername) > 0) {
 					$errorMessage = "The username is already in use, please try another";
-				} else if (mysqli_num_rows($queryResultCheckNRIC) > 0) {
-					$errorMessage = "The nric is already in use, please try another";
+				} else if (mysqli_num_rows($queryResultCheckAcra) > 0) {
+					$errorMessage = "Acra number is already registered";
+				} else if (mysqli_num_rows($queryResultClinicName) > 0) {
+					$errorMessage = "Clinic Name is already in use";
 				} else if ($data->success == false) {
 					$errorMessage = "Please do recaptcha";
 				} else {
 					//Inserts data into DB
-					$SQLstring = "INSERT INTO $TableName " . " (username, password, nric, fullName, roleName, phoneNum, email, address, postal, gender, accStatus) " . " VALUES( '$username', '$encryptedPassword', '$nric', '$fullName', '$roleName', '$phoneNum', '$email', '$address', '$postalCode', '$gender', '$accStatus' )";
-					$SQLstring2 = "INSERT INTO $TableName2 " . " (nric, dob, medHistory, allergies) " . " VALUES('$nric','$dob','$medicalHistory','$allergies')";
+					$SQLstring = "INSERT INTO $TableNameUserAccount " . " (username, password, rolename) " . " VALUES( '$username', '$encryptedPassword','$roleName')";
+					$SQLstring2 = "INSERT INTO $TableNameClinic " . " (acraNum, clinicName, clinicAddress, clinicPostal, clinicArea, clinicPhoneNum, clinicEmail, clinicOpeningHour, clinicClosingHour, clinicStatus, username) " . " VALUES('$acra','$clinicName','$address','$postalCode','$area','$phoneNum','$email','$openingHour','$closingHour','$clinicStatus','$username')";
 					mysqli_query($conn, $SQLstring);
 					mysqli_query($conn, $SQLstring2);
 					mysqli_close($conn);
@@ -202,15 +212,12 @@
 					//Reset values after success
 					$username = "";
 					$password = "";
-					$fullName = "";
-					$nric = "";
-					$dob = "";
+					$clinicName = "";
+					$email = "";
 					$address = "";
 					$postalCode = "";
 					$phoneNum = "";
-					$email = "";
-					$medicalHistory = "";
-					$allergies = "";
+					$acra = "";
 				}
 			} catch (mysqli_sql_exception $e) {
 				echo "<p>Error: unable to connect/insert record in the database.</p>";
@@ -219,6 +226,14 @@
 	} else if (isset($_POST['back'])) {
 		header("Location:potentialPatientHomepage.php");
 	} else {
+		$username = "";
+		$password = "";
+		$clinicName = "";
+		$email = "";
+		$address = "";
+		$postalCode = "";
+		$phoneNum = "";
+		$acra = "";
 	}
 	?>
 </header>
@@ -235,37 +250,55 @@
 				<div class="row justify-content-center py-2">
 					<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="usernameTB" name="usernameTB">
+						<input class="form-control" id="usernameTB" name="usernameTB" value="<?php echo $username;?>">
+						<div class="errorMessage">
+							<?php echo $usernameError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 					<div class="col-lg-4">
-						<input type="password" class="form-control" id="passwordTB" name="passwordTB">
+						<input type="password" class="form-control" placeholder="8 characters containing 1 letter and 1 number" id="passwordTB" name="passwordTB" value="<?php echo $password;?>">
+						<div class="errorMessage">
+							<?php echo $passwordError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="clinicNameTB" class="col-lg-1 col-form-label">Clinic Name:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="clinicNameTB" name="clinicNameTB">
+						<input class="form-control" id="clinicNameTB" name="clinicNameTB" value="<?php echo $clinicName;?>">
+						<div class="errorMessage">
+							<?php echo $clinicNameError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="emailTB" class="col-lg-1 col-form-label">Email:</label>
 					<div class="col-lg-4">
-						<input type="email" class="form-control" id="emailTB" name="emailTB">
+						<input type="email" class="form-control" id="emailTB" name="emailTB" value="<?php echo $email;?>">
+						<div class="errorMessage">
+							<?php echo $emailError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="addressTB" class="col-lg-1 col-form-label">Address:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="clinicAddressTB" name="clinicAddressTB">
+						<input class="form-control" id="clinicAddressTB" name="clinicAddressTB" value="<?php echo $address;?>">
+						<div class="errorMessage">
+							<?php echo $addressError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="postalCodeTB" class="col-lg-1 col-form-label">Postal Code:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="postalCodeTB" name="postalCodeTB">
+						<input class="form-control" id="postalCodeTB" name="postalCodeTB" value="<?php echo $postalCode;?>">
+						<div class="errorMessage">
+							<?php echo $postalCodeError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
@@ -283,19 +316,25 @@
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="phoneNumTB" class="col-lg-1 col-form-label">Phone Number:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="phoneNumTB" name="phoneNumTB">
+						<input class="form-control" id="phoneNumTB" name="phoneNumTB" value="<?php echo $phoneNum;?>">
+						<div class="errorMessage">
+							<?php echo $phoneNumError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="acraTB" class="col-lg-1 col-form-label">ACRA:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="acraTB" name="acraTB">
+						<input class="form-control" id="acraTB" name="acraTB" value="<?php echo $acra;?>">
+						<div class="errorMessage">
+							<?php echo $acraError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="dentalServiceSL[]" class="col-lg-1 col-form-label">Dental Services:</label>
 					<div class="col-lg-4">
-						<select class="form-select" multiple name="dentalServicesSL[]">
+						<select class="form-select" name="dentalServicesSL[]" multiple>
 							<?php
 							while ($listOfServices = mysqli_fetch_assoc($queryResultListOfServices)) {
 							?>
@@ -304,31 +343,31 @@
 							}
 							?>
 						</select>
+						<div class="errorMessage">
+							<?php echo $dentalServicesError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="clinicOpeningTimeSL" class="col-1 col-form-label">Operating Hours:</label>
 					<div class="col-2">
 						<select class="form-select" class="form-select" aria-label="Opening" name="clinicOpeningTimeSL" id="clinicOpeningTime">
-							<option value="placeholder">Opening Hour</option>
-							<option value="plceaholder">08:00</option>
-							<option value="plceaholder">08:30</option>
-							<option value="plceaholder">09:00</option>
-							<option value="plceaholder">09:30</option>
+							<option value="08:00">08:00</option>
+							<option value="09:00">09:00</option>
+							<option value="10:00">10:00</option>
 						</select>
 					</div>
 					<div class="col-2">
 						<select class="form-select" class="form-select" aria-label="Closing" name="clinicClosingTimeSL" id="clinicClosingTime">
-							<option value="placeholder">Closing Hour</option>
-							<option value="plceaholder">18:30</option>
-							<option value="plceaholder">19:00</option>
-							<option value="plceaholder">19:30</option>
-							<option value="plceaholder">20:00</option>
+							<option value="18:00">18:00</option>
+							<option value="19:00">19:00</option>
+							<option value="20:00">20:00</option>
 						</select>
 					</div>
 				</div>
 				<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage; ?></div>
 				<div class="row justify-content-center align-items-center g-recaptcha" data-sitekey="6LcZnF0jAAAAAMSnSnEJF4o3T4K9QWsM29jnFUJQ"></div>
+				<?php echo $gCaptChaError;?>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					<button class="btn btn-danger" name="back" value="back">Back</button>
 					<button type="submit" class="btn btn-primary" name="submitRegistration" value="submitRegistration">Confirm</button>
