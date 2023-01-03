@@ -44,8 +44,137 @@
 						</ul>
 					</div>
 				</div>
-		<nav>
+		</nav>	
 	</header>
+	<?php
+		//Set session variables from login
+		$patientFullName = "";
+		$patientNRIC = "";
+		$currentTime = "";
+		$currentDate ="";
+		
+		$patientFullName = $_SESSION["fullName"];
+		$patientNRIC = $_SESSION["nric"];
+		// set current date and time of query
+		date_default_timezone_set("Singapore");
+		$currentTime = date("h:i:sa");
+		$currentDate = date("y-m-d");
+	
+		//Declaration
+		$errorMessage = "";
+		$errorMessage2 = "";
+	
+		//This try block will be execute once the user enters the page
+		try	{
+		$DBName = "dentalhealthapplicationdb";
+	
+		$conn = mysqli_connect("localhost", "root", "",$DBName );
+					
+		//Name of the table 
+		$TableName = "appointment";
+
+		//The lines to run in sql (getting all records)
+		
+		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where nric='T0012345B'";
+		// $SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where nric='" . $patientNRIC . "'";
+					
+		//Executing the sql
+		$queryResult = mysqli_query($conn, $SQLstring);
+		
+		} 	
+		
+		catch(mysqli_sql_exception $e) {
+				echo "Error";
+		}
+		
+		if (isset($_POST['searchAppt'])) {
+
+			// search by clinic name
+			//Declaring, removing backslashes and whitespaces
+			$searchClinicName = stripslashes($_POST['searchClinicName']);
+			//Remove whitespaces
+			$searchClinicName = trim($_POST['searchClinicName']);
+
+			// search by filter period / status
+			//Declare selection values
+			$filterPeriod = $_POST['filterPeriod'];
+			$filterStatus = $_POST['filterStatus'];
+			$filterDateLower = "";
+			$filterDateUpper = "";
+			
+			if ($GLOBALS['searchClinicName'] == null){
+				$GLOBALS['searchClinicName'] = "%";
+			} else {
+				$GLOBALS['searchClinicName'] = "%" . $GLOBALS['searchClinicName'] . "%";
+			}
+			
+			// checking on filter status
+			if ($filterStatus == "flexRadioDefaultCurrent"){
+				//SQL string to search for current appointments
+				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptStatus='current'" ;
+			} 
+			else if ($filterStatus == "flexRadioDefaultPast"){
+				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptStatus='past'" ;
+			}
+			else if ($filterStatus == '1week'){
+				$filterDateLower = date('y-m-d', strtotime('-1 week'));
+				$filterDateUpper = date('y-m-d', strtotime('+1 week'));
+				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+			}
+			else if ($filterStatus == '1month'){
+				$filterDateLower = date('y-m-d', strtotime('-1 month'));
+				$filterDateUpper = date('y-m-d', strtotime('+1 month'));
+				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+			}
+			else if ($filterStatus == '3month'){
+				$filterDateLower = date('y-m-d', strtotime('-3 month'));
+				$filterDateUpper = date('y-m-d', strtotime('+3 month'));
+				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+			}
+			else if ($filterStatus == '6month'){
+				$filterDateLower = date('y-m-d', strtotime('-6 month'));
+				$filterDateUpper = date('y-m-d', strtotime('+6 month'));
+				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+			}
+			else if ($filterStatus == '1year'){
+				$filterDateLower = date('y-m-d', strtotime('-1 year'));
+				$filterDateUpper = date('y-m-d', strtotime('+1 year'));
+				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+			}
+			else {
+				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName";
+			}
+
+			//Executing the sql
+			$queryResult = mysqli_query($conn, $SQLstring);
+			$GLOBALS['searchClinicName'] = "";
+			$filterDateLower = "";
+			$filterDateUpper = "";
+		} 
+		
+		//to delete appt
+		else if (isset($_POST['deleteAppt'])) {
+			
+		//Declaring, removing backslashes and whitespaces
+		$apptID = stripslashes($_POST['apptID']);
+		//Remove whitespaces
+		$apptID = trim($_POST['apptID']);
+		
+			if (empty($apptID) == false){
+					//The lines to run in sql
+					$SQLdelAppt = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptID ='". $apptID ."'";
+					//Executing the sql
+					$queryResultAppt = mysqli_query($conn, $SQLdelAppt);
+					
+					if (mysqli_num_rows($queryResultAppt) == 0) {
+						$errorMessage2 = "Appointment does not exist";
+						} 
+					else {
+						header("Location:potentialPatientView&SearchAppointment.php?");
+					}
+			} 
+		}
+	?>
 	<body>
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
@@ -84,6 +213,10 @@
 						  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 						</div>
 					</div>
+					<?php
+						if (mysqli_num_rows($result) > 0) 
+						{
+					?>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
@@ -95,34 +228,30 @@
 							<tr>
 						</thead>
 						<tbody>
+							<?php
+								$i=0;
+								while($row = mysqli_fetch_array($result))
+								{
+							?>
 							<tr>
-								<td> Charlie's Clinic </td>
-								<td> Hougang Ave 7 567234 </td>
-								<td> 28/7/22 </td>
-								<td> 14:30 </td>
+								<td><?php echo $row["clinicName"]; ?></td>
+								<td>clinic address</td>
+								<td><?php echo $row["apptDate"]; ?></td>
+								<td><?php echo $row["apptTime"]; ?></td>
 								<td>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='potentialPatientUpdateAppointment.php'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
 								</td>
 							</tr>
-							<tr>
-								<td> Mustard and Sons </td>
-								<td> Tampines Hub 654234 </td>
-								<td> 5/11/22 </td>
-								<td> 17:30 </td>
-								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='potentialPatientUpdateAppointment.php'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
-								</td>
-							</tr>
-							<tr>
-								<td> Lim's Surgery </td>
-								<td> Toa Payoh Lorong 7 543647 </td>
-								<td> 22/4/23 </td>
-								<td> 08:30 </td>
-								<td>Appointments can only be updated/deleted <br> more than 2 days before the appointment</td>
-							</tr>
+							<?php $i++; } ?>
+							
 						</tbody>
+					</table>
+					<?php 
+					} 
+					else { 
+						echo "No results found";
+					} ?>
 				</div>
 			</div>
 		</div>
