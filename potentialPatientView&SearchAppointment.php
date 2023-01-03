@@ -53,8 +53,8 @@
 		$currentTime = "";
 		$currentDate ="";
 		
-		$patientFullName = $_SESSION["fullName"];
-		$patientNRIC = $_SESSION["nric"];
+		//$patientFullName = $_SESSION["fullName"];
+		//$patientNRIC = $_SESSION["nric"];
 		// set current date and time of query
 		date_default_timezone_set("Singapore");
 		$currentTime = date("h:i:sa");
@@ -76,6 +76,7 @@
 		//The lines to run in sql (getting all records)
 		
 		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where nric='T0012345B'";
+		$result = mysqli_query($conn, $SQLstring);
 		// $SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where nric='" . $patientNRIC . "'";
 					
 		//Executing the sql
