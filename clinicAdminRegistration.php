@@ -71,6 +71,7 @@
 		$DBName = "dentalhealthapplicationdb";
 		$clinicStatus = "inreview";
 		$roleName = "clinicAdmin";
+		$accStatus = "suspended";
 		$area = $_POST['clinicAreaSL'];
 		$openingHour = $_POST['clinicOpeningTimeSL'];
 		$closingHour = $_POST['clinicClosingTimeSL'];
@@ -199,7 +200,7 @@
 					$errorMessage = "Please do recaptcha";
 				} else {
 					//Inserts data into DB
-					$SQLstring = "INSERT INTO $TableNameUserAccount " . " (username, password, rolename) " . " VALUES( '$username', '$encryptedPassword','$roleName')";
+					$SQLstring = "INSERT INTO $TableNameUserAccount " . " (username, password, rolename, accStatus) " . " VALUES( '$username', '$encryptedPassword','$roleName','$accStatus')";
 					$SQLstring2 = "INSERT INTO $TableNameClinic " . " (acraNum, clinicName, clinicAddress, clinicPostal, clinicArea, clinicPhoneNum, clinicEmail, clinicOpeningHour, clinicClosingHour, clinicStatus, username, servicesSelected) " . " VALUES('$acra','$clinicName','$address','$postalCode','$area','$phoneNum','$email','$openingHour','$closingHour','$clinicStatus','$username','$selectedServices')";
 					mysqli_query($conn, $SQLstring);
 					mysqli_query($conn, $SQLstring2);
