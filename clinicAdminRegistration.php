@@ -160,6 +160,7 @@
 				//Name of the table 
 				$TableNameUserAccount = "useraccount";
 				$TableNameClinic = "clinic";
+				$TableNameServicesOffered = "servicesOffered";
 
 				//See if any existing username
 				$SQLstringCheckUsername = "SELECT username FROM $TableNameUserAccount" . " where username='" . $username . "'";
@@ -184,11 +185,8 @@
 				$getUrlContent = file_get_contents($url);
 				$data = json_decode($getUrlContent);
 
-				//Gets selected services array and adds them together to form a string (to get each one we just explode the comma later on)
-				$values = $_POST['dentalServicesSL'];
-				foreach ($values as $a) {
-					$selectedServices = $a . ',';
-				}
+				//Gets selected services array and adds them together to form a string 
+				$selectedServices = implode(" ",$_POST['dentalServicesSL']);
 
 				//If there are no results means no login info matches, good thing
 				if (mysqli_num_rows($queryResultCheckUsername) > 0) {
@@ -202,7 +200,7 @@
 				} else {
 					//Inserts data into DB
 					$SQLstring = "INSERT INTO $TableNameUserAccount " . " (username, password, rolename) " . " VALUES( '$username', '$encryptedPassword','$roleName')";
-					$SQLstring2 = "INSERT INTO $TableNameClinic " . " (acraNum, clinicName, clinicAddress, clinicPostal, clinicArea, clinicPhoneNum, clinicEmail, clinicOpeningHour, clinicClosingHour, clinicStatus, username) " . " VALUES('$acra','$clinicName','$address','$postalCode','$area','$phoneNum','$email','$openingHour','$closingHour','$clinicStatus','$username')";
+					$SQLstring2 = "INSERT INTO $TableNameClinic " . " (acraNum, clinicName, clinicAddress, clinicPostal, clinicArea, clinicPhoneNum, clinicEmail, clinicOpeningHour, clinicClosingHour, clinicStatus, username, servicesSelected) " . " VALUES('$acra','$clinicName','$address','$postalCode','$area','$phoneNum','$email','$openingHour','$closingHour','$clinicStatus','$username','$selectedServices')";
 					mysqli_query($conn, $SQLstring);
 					mysqli_query($conn, $SQLstring2);
 					mysqli_close($conn);
