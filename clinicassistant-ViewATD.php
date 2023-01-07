@@ -144,8 +144,7 @@
 							<textarea class="form-control" aria-label="With textarea" disabled id="remarksTA"></textarea>
 						</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
-						<button class="btn btn-danger" name="back" value="back">Back</button>
-						<button class="btn btn-Primary" name="update" value="update">Update</button>
+						<button class="btn btn-danger" name="back" value="back">Back</button>s
 					</div>
 				</div>
 			</div>
