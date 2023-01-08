@@ -5,6 +5,21 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script>
+		//AJAX function for onclick feature
+		function getHistory(inputNric){
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200){
+						var parts = xmlhttp.responseText.split('|');
+						document.getElementById("pastMedHistory").value = parts[0]; 
+						document.getElementById("pastAllergies").value = parts[1];
+					}
+				};
+				xmlhttp.open("GET", "potentialPatientRegistrationAjax.php?q=" + inputNric, true);
+				xmlhttp.send();
+			}
+		</script>
 </head>
 <header>
 
@@ -50,7 +65,6 @@
 			//Declare error messages
 			$usernameError = $passwordError = $nricError = $fullNameError = $phoneNumError = $emailError = $addressError = $postalCodeError = $dobError = $medicalHistoryError = $allergiesError = $gCaptChaError = null;
 			$errorMessage = null;
-
 			if (isset($_POST['submitRegistration'])) {
 
 				$errors = 0;
@@ -280,7 +294,7 @@
 				<div class="row justify-content-center py-2">
 					<label for="nricTB" class="col-lg-1 col-form-label">NRIC:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="nricTB" name="nricTB" value="<?php echo $nric;?>">
+						<input class="form-control" id="nricTB" oninput="getHistory(this.value)" name="nricTB" value="<?php echo $nric;?>">
 						<div class="errorMessage">
 							<?php echo $nricError;?>
 						</div>
@@ -344,7 +358,7 @@
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="medicalHistoryTB" class="col-lg-1 col-form-label">Medical History:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="medicalHistoryTB" name="medicalHistoryTB" value="<?php echo $medicalHistory;?>">
+						<input class="form-control" id="pastMedHistory" name="medicalHistoryTB" value="<?php echo $medicalHistory;?>">
 						<div class="errorMessage">
 							<?php echo $medicalHistoryError;?>
 						</div>
@@ -353,7 +367,7 @@
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="allergiesTB" class="col-lg-1 col-form-label">Allergies:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="allergiesTB" name="allergiesTB" value="<?php echo $allergies;?>">
+						<input class="form-control" id="pastAllergies" name="allergiesTB" value="<?php echo $allergies;?>">
 						<div class="errorMessage">
 							<?php echo $allergiesError;?>
 						</div>
