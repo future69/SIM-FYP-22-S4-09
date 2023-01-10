@@ -86,7 +86,6 @@ session_start();
 					} 
 				
 					else {
-
 						switch ($theResult['roleName']) {
 							case 'patient':
 								$_SESSION['patientNric'] = $theResult['username'];

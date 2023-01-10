@@ -43,8 +43,26 @@
      </nav>
 </header>   
         <?php
+		try	{
+			$applicationAcraNum = $_GET['acraNum'];
+			$DBName = "dentalhealthapplicationdb";
+			$conn = mysqli_connect("localhost", "root", "",$DBName );
+			//Name of the table 
+			$TableNameClinic = "clinic";
+			//The lines to run in sql (get current applications)
+			//$SQLstring = "SELECT useraccount.username, clinic.clinicName, clinic.acraNum, clinic.clinicArea FROM $TableNameUseraccount INNER JOIN $TableNameClinic ON useraccount.username = clinic.username WHERE clinic.clinicStatus = 'inreview'";	
+			$SQLstring = "SELECT * FROM $TableNameClinic WHERE acraNum='". $applicationAcraNum ."'";
+			//Executing the sql
+			$queryResult = mysqli_query($conn, $SQLstring);
+			$rows = mysqli_fetch_array($queryResult);
+			} 	
+			catch(mysqli_sql_exception $e) 
+			{
+					echo "Error";
+			}
+
             if (isset($_POST['Update'])) {
-                header("Location:superadminClinicAccountApplication.php");
+
 			}
 			if (isset($_POST['back'])) {
                 header("Location:superadminClinicAccountApplication.php");
@@ -62,67 +80,67 @@
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB" value="Username 1" disabled>
+						  <input class="form-control" id="usernameTB" value="<?php echo $rows['username'];?>" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Clinic Name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="Clinic 1" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $rows['clinicName'];?>" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label" >Clinic Address:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB" value="address 1" disabled>
+						  <input class="form-control" id="usernameTB" value="<?php echo $rows['clinicAddress'];?>" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Clinic Postal Code:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="6000" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $rows['clinicPostal'];?>" disabled>
 						</div>
 					  </div>
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Clinic Area:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="West" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $rows['clinicArea'];?>" disabled>
 						</div>
 					  </div>
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Clinic Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="8888 8888" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $rows['clinicPhoneNum'];?>" disabled>
 						</div>
 					  </div>
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Clinic Email:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="clinic1@email.com" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $rows['clinicEmail'];?>" disabled>
 						</div>
 					  </div>
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Service offered:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="Service1, Service2, Service 3" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $rows['servicesSelected'];?>" disabled>
 						</div>
 					  </div>
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">ACRA:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="CD199012345D" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $rows['acraNum'];?>" disabled>
 						</div>
 					  </div>
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Opening Hours:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="08:00" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $rows['clinicOpeningHour'];?>" disabled>
 						</div>
 					  </div>
                       <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Closing Hours:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="15:00" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $rows['clinicClosingHour'];?>" disabled>
 						</div>
 					  </div>
 
@@ -130,31 +148,34 @@
 						<label for="passwordTB" class="col-lg-1 col-form-label">Application Status:</label>
 						<div class="col-lg-4">
                         <div class="form-check me-5" >
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                        	Approve   
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Reject
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            In Review
-                                        </label>
-                                    </div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+								<label class="form-check-label" for="flexRadioDefault3">
+									Approve   
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+								<label class="form-check-label" for="flexRadioDefault3">
+									Reject
+								</label>
+							</div>
+							<div class="form-check"> 
+								<input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3" checked>
+								<label class="form-check-label" for="flexRadioDefault3">
+									In Review
+								</label>
+							</div>	
 						</div>
-					  </div>
+						</div>
+					</div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					  <button class="btn btn-Danger" name="back" value="back">Back</button>
-						<button class="btn btn-Primary" name="Update" value="Update">Update</button>
+					<button class="btn btn-Primary" name="Update" value="Update">Update</button>
 					  </div>
 					</form>
 				</div>
 			</div>
+		</div>
 	</body>
 </html>
