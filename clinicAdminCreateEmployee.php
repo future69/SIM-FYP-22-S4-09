@@ -135,11 +135,6 @@
 				$totalFalseCount++;
 			}
 
-			if (empty($GLOBALS['pracNumber'])) {
-				$GLOBALS['pracNumberError'] = "Please enter a value";
-				$totalFalseCount++;
-			}
-
 			if ($_FILES['formFileQualification']['size'] == 0) {
 				$GLOBALS['qualificationError'] = "Please upload a file";
 				$totalFalseCount++;
@@ -247,7 +242,7 @@
 			}
 		}
 	} else if (isset($_POST['back'])) {
-		header("Location:clinicAdminHomepage.php");
+		header("Location:clinicAdminUserAccounts.php");
 	} else {
 		$username = "";
 		$password = "";

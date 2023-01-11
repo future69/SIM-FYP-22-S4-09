@@ -176,9 +176,6 @@
 						else if (mysqli_num_rows($queryResultCheckNRIC) > 0) {
 							$errorMessage = "The nric is already in use, please try another";
 						} 
-						else if ($data->success==false){
-							$errorMessage = "Please do recaptcha";
-						}
 						else {
 							//Inserts data into DB
 							$SQLstring = "INSERT INTO $TableName " . " (username, password, nric, fullName, roleName, phoneNum, email, address, postal, gender, accStatus) " . " VALUES( '$username', '$encryptedPassword', '$nric', '$fullName', '$roleName', '$phoneNum', '$email', '$address', '$postalCode', '$gender', '$accStatus' )";
