@@ -97,14 +97,14 @@ session_start();
 								$_SESSION['clinicName'] = $theResult['nric'];
 								$_SESSION['clinicAdminAcraNum'] = $theResult['nric'];
 								break;
-							// case 'clinicAssistant':
-							// 	$_SESSION['patientNric'] = $theResult['username'];
-							// 	$_SESSION['patientFullname'] = $theResult['nric'];
-							// 	break;
-							// case 'dentist':
-							// 	$_SESSION['patientNric'] = $theResult['username'];
-							// 	$_SESSION['patientFullname'] = $theResult['nric'];
-							// 	break;
+							case 'clinicAssistant':
+								$_SESSION['clinicAssistantNric'] = $theResult['username'];
+								$_SESSION['clinicAssistantFullname'] = $theResult['fullName'];
+								break;
+							case 'dentist':
+								$_SESSION['dentistNric'] = $theResult['username'];
+								$_SESSION['dentistFullname'] = $theResult['fullName'];
+								break;
 							// case 'superAdmin':
 							// 	$_SESSION['patientNric'] = $theResult['username'];
 							// 	$_SESSION['patientFullname'] = $theResult['nric'];
