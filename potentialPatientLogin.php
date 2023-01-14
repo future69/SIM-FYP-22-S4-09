@@ -69,7 +69,7 @@ session_start();
 					$password = stripslashes($_POST['passwordTB']);
 
 					//The lines to run in sql
-					$SQLstring = "SELECT username, password, nric, roleName FROM $TableName" . " where username='" . $username . "'";
+					$SQLstring = "SELECT * FROM $TableName" . " where username='" . $username . "'";
 
 					//Executing the sql
 					$queryResult = mysqli_query($conn, $SQLstring);
@@ -88,26 +88,27 @@ session_start();
 					else {
 						switch ($theResult['roleName']) {
 							case 'patient':
-								$_SESSION['patientNric'] = $theResult['username'];
-								$_SESSION['patientFullname'] = $theResult['nric'];
+								$_SESSION['patientUsername'] = $theResult['username'];
+								$_SESSION['patientFullname'] = $theResult['fullName'];
+								$_SESSION['patientNric'] = $theResult['nric'];
 								header("Location:potentialPatientHomepageAftlogin.php?");
 								break;
 							case 'clinicAdmin':
 								$_SESSION['clinicAdminNric'] = $theResult['nric'];
 								$_SESSION['clinicAdminAcraNum'] = $theResult['nric'];
 								break;
-							case 'clinicAssistant':
-								$_SESSION['patientNric'] = $theResult['username'];
-								$_SESSION['patientFullname'] = $theResult['nric'];
-								break;
-							case 'dentist':
-								$_SESSION['patientNric'] = $theResult['username'];
-								$_SESSION['patientFullname'] = $theResult['nric'];
-								break;
-							case 'superAdmin':
-								$_SESSION['patientNric'] = $theResult['username'];
-								$_SESSION['patientFullname'] = $theResult['nric'];
-								break;
+							// case 'clinicAssistant':
+							// 	$_SESSION['patientNric'] = $theResult['username'];
+							// 	$_SESSION['patientFullname'] = $theResult['nric'];
+							// 	break;
+							// case 'dentist':
+							// 	$_SESSION['patientNric'] = $theResult['username'];
+							// 	$_SESSION['patientFullname'] = $theResult['nric'];
+							// 	break;
+							// case 'superAdmin':
+							// 	$_SESSION['patientNric'] = $theResult['username'];
+							// 	$_SESSION['patientFullname'] = $theResult['nric'];
+							// 	break;
 						}
 					}
 				} catch (mysqli_sql_exception $e) {

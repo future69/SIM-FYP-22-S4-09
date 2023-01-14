@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -44,6 +47,28 @@
 		</div>
 		<nav>
 </header>
+<?php
+//Set session variables from login
+$patientUsername = $_SESSION["patientUsername"];
+$patientFullname = $_SESSION["patientFullname"];
+$patientNric = $_SESSION["patientNric"];
+
+//This try block will be execute once the user enters the page
+try {
+	$DBName = "dentalhealthapplicationdb";
+	$conn = mysqli_connect("localhost", "root", "", $DBName);
+
+	//Name of the table 
+	$TableNameAppointment = "appointment";
+	$TableNameClinic = "clinic";
+	//The lines to run in sql (get current applications)
+	$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."'";	
+	//Executing the sql
+	$queryResult = mysqli_query($conn, $SQLstring);
+} catch (mysqli_sql_exception $e) {
+	echo "Error";
+}
+?>
 
 <body>
 	<div class="container-lg">
@@ -51,7 +76,7 @@
 		<!-- Tablehead can put caption-top -->
 		<div class="column">
 			<div class="col-md-5 text-start pt-5">
-				<div class="display-6">Welcome Mr West</div>
+				<div class="display-6">Welcome <?php echo $patientFullname ?></div>
 			</div>
 			<div class="col-md-5 text-start pt-4">
 				<h5>You have <strong>2</strong> outstanding payments</h5>
@@ -70,24 +95,18 @@
 						<tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td> Charlie's Clinic </td>
-							<td> Hougang Ave 7 567234 </td>
-							<td> 28/7/22 </td>
-							<td> 14:30 </td>
-						</tr>
-						<tr>
-							<td> Mustard and Sons </td>
-							<td> Tampines Hub 654234 </td>
-							<td> 5/11/22 </td>
-							<td> 17:30 </td>
-						</tr>
-						<tr>
-							<td> Lim's Surgery </td>
-							<td> Toa Payoh Lorong 7 543647 </td>
-							<td> 22/4/23 </td>
-							<td> 08:30 </td>
-						</tr>
+						<?php
+						while ($rows = mysqli_fetch_assoc($queryResult)) {
+						?>
+							<tr>
+								<td> <?php echo $rows['clinicName']; ?> </td>
+								<td> <?php echo $rows['clinicAddress']; ?> </td>
+								<td> <?php echo $rows['apptDate']; ?> </td>
+								<td> <?php echo $rows['apptTime']; ?> </td>
+							</tr>
+						<?php
+						}
+						?>
 					</tbody>
 			</div>
 		</div>
