@@ -76,7 +76,7 @@
 		$email = stripslashes($_POST['emailTB']);
 		$address = stripslashes($_POST['clinicAddressTB']);
 		$postalCode = stripslashes($_POST['postalCodeTB']);
-		$pracNumber = stripslashes($_POST['pracNumberTB']);
+		//$pracNumber = stripslashes($_POST['pracNumberTB']);
 
 		//Remove whitespaces
 		$username = trim($_POST['usernameTB']);
@@ -87,7 +87,7 @@
 		$email = trim($_POST['emailTB']);
 		$address = trim($_POST['clinicAddressTB']);
 		$postalCode = trim($_POST['postalCodeTB']);
-		$pracNumber = trim($_POST['pracNumberTB']);
+		//$pracNumber = trim($_POST['pracNumberTB']);
 
 		//Method to validate entries
 		function correctValidation(): int
@@ -132,6 +132,11 @@
 
 			if (preg_match('/[0-9]{6}/', $GLOBALS['postalCode']) == 0) {
 				$GLOBALS['postalCodeError'] = "Please enter a valid contact number";
+				$totalFalseCount++;
+			}
+
+			if (empty($_POST['pracNumberTB']) && $GLOBALS['roleName'] == 'dentist') {
+				$GLOBALS['pracNumberError'] = "Please enter a value";
 				$totalFalseCount++;
 			}
 
@@ -213,6 +218,8 @@
 					//Inserts data into DB
 					$SQLstring = "INSERT INTO $TableName " . " (username, password, nric, fullName, roleName, phoneNum, email, address, postal, gender, accStatus) " . " VALUES( '$username', '$encryptedPassword', '$nric', '$fullName', '$roleName', '$phoneNum', '$email', '$address', '$postalCode', '$gender', '$accStatus' )";
 					if ($roleName == 'dentist'){
+						$pracNumber = stripslashes($_POST['pracNumberTB']);
+						$pracNumber = trim($_POST['pracNumberTB']);
 						$SQLstring2 = "INSERT INTO $TableName3 " . " (nric, clinicName, qualification, practitionerNumber) " . " VALUES('$nric','$clinicName','$fileNameDB','$pracNumber')";
 					}
 					else if ($roleName == 'clinicAssistant'){
@@ -371,7 +378,7 @@
 				<div class="row justify-content-center align-items-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Practitioner Number:</label>
 					<div class="col-lg-4">
-						<input class="form-control" name="pracNumberTB" id="pracNumberTB" value="<?php echo $pracNumber;?>">
+						<input class="form-control" name="pracNumberTB" id="pracNumberTB" >
 						<div class="errorMessage">
 							<?php echo $pracNumberError;?>
 						</div>
