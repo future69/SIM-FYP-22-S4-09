@@ -80,54 +80,11 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td> <a href="superadminClinicAAProfile.php" class="link-primary"> kennethTheGoat234 </a></td>
-								<td> clinic1 </td>
-								<td> <a href="#" class="link-primary"> CD199012345D </a></td>
-								<td> West </td>
-								<td> 
-									<div class="btn-group dropend">
-									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-										To be reviewed
-									  </button>
-									  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-										<li><a class="dropdown-item" href="#">Approve</a></li>
-										<li><a class="dropdown-item" href="#">Reject</a></li>
-									  </ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td> <a href="superadminClinicAAProfile.php" class="link-primary"> turtleBoy232 </a></td>
-								<td> clinic2 </td>
-								<td> <a href="#" class="link-primary"> CD200313425D </a></td>
-								<td> East </td> 
-								<td>
-									<div class="btn-group dropend">
-									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-										To be reviewed
-									  </button>
-									  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-										<li><a class="dropdown-item" href="#">Approve</a></li>
-										<li><a class="dropdown-item" href="#">Reject</a></li>
-									  </ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
 								<td> <a href="superadminClinicAAProfile.php" class="link-primary"> lohkintat22 </a></td>
 								<td> clinic3 </td>
 								<td> <a href="#" class="link-primary"> CD201554231D </a></td>
 								<td> Central </td>
 								<td>
-									<div class="btn-group dropend">
-									  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-										To be reviewed
-									  </button>
-									  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-										<li><a class="dropdown-item" href="#">Approve</a></li>
-										<li><a class="dropdown-item" href="#">Reject</a></li>
-									  </ul>
-									</div>
 								</td>
 							</tr>
 						</tbody>

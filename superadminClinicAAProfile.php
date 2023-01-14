@@ -43,6 +43,8 @@
      </nav>
 </header>   
         <?php
+		$errorMessage = null;
+
 		try	{
 			$applicationAcraNum = $_GET['acraNum'];
 			$DBName = "dentalhealthapplicationdb";
@@ -61,8 +63,29 @@
 					echo "Error";
 			}
 
-            if (isset($_POST['Update'])) {
+            if (isset($_POST['updateClinicStatus'])) {
+				$cbValue = $_POST['flexRadioDefault1'];
+				echo $cbValue;
+				$DBName = "dentalhealthapplicationdb";
+				$conn = mysqli_connect("localhost", "root", "",$DBName );
+				//Name of the table 
+				$TableNameClinic = "clinic";
 
+				if($cbValue == "checkboxApprove") {
+					$clinicStatus = 'approved';
+					$SQLstring = "UPDATE $TableNameClinic SET clinicStatus='" . $clinicStatus . "' WHERE acraNum='" . $applicationAcraNum . "'";
+					mysqli_query($conn, $SQLstring);
+					$errorMessage = "Application approved!";
+				}
+				else if($cbValue == "checkboxReject"){
+					$clinicStatus = 'rejected';
+					$SQLstring = "UPDATE $TableNameClinic SET clinicStatus='" . $clinicStatus . "' WHERE acraNum='" . $applicationAcraNum . "'";
+					mysqli_query($conn, $SQLstring);
+					$errorMessage = "Application rejected!";
+				}
+				else {
+					$errorMessage = "No changes made";
+				}
 			}
 			if (isset($_POST['back'])) {
                 header("Location:superadminClinicAccountApplication.php");
@@ -149,29 +172,30 @@
 						<div class="col-lg-4">
                         <div class="form-check me-5" >
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
-								<label class="form-check-label" for="flexRadioDefault3">
+								<input class="form-check-input" type="radio" name="flexRadioDefault1" value="checkboxApprove">
+								<label class="form-check-label" for="flexRadioDefault1">
 									Approve   
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
-								<label class="form-check-label" for="flexRadioDefault3">
+								<input class="form-check-input" type="radio" name="flexRadioDefault1" value="checkboxReject">
+								<label class="form-check-label" for="flexRadioDefault1">
 									Reject
 								</label>
 							</div>
 							<div class="form-check"> 
-								<input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3" checked>
-								<label class="form-check-label" for="flexRadioDefault3">
+								<input class="form-check-input" type="radio" name="flexRadioDefault1" value="checkboxInReview" checked>
+								<label class="form-check-label" for="flexRadioDefault1">
 									In Review
 								</label>
 							</div>	
 						</div>
 						</div>
 					</div>
+					<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage;?></div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					  <button class="btn btn-Danger" name="back" value="back">Back</button>
-					<button class="btn btn-Primary" name="Update" value="Update">Update</button>
+					<button class="btn btn-Primary" name="updateClinicStatus" value="Update">Update</button>
 					  </div>
 					</form>
 				</div>
