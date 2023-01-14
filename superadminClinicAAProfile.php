@@ -68,13 +68,20 @@
 				echo $cbValue;
 				$DBName = "dentalhealthapplicationdb";
 				$conn = mysqli_connect("localhost", "root", "",$DBName );
+
 				//Name of the table 
 				$TableNameClinic = "clinic";
+				$TableNameUseraccount = "useraccount";
+
+				$username = $rows['username'];
 
 				if($cbValue == "checkboxApprove") {
 					$clinicStatus = 'approved';
+					$accStatus = 'active';
 					$SQLstring = "UPDATE $TableNameClinic SET clinicStatus='" . $clinicStatus . "' WHERE acraNum='" . $applicationAcraNum . "'";
+					$SQLstring2 = "UPDATE $TableNameUseraccount SET accStatus='" . $accStatus . "' WHERE username='" . $username . "'";
 					mysqli_query($conn, $SQLstring);
+					mysqli_query($conn, $SQLstring2);
 					$errorMessage = "Application approved!";
 				}
 				else if($cbValue == "checkboxReject"){
