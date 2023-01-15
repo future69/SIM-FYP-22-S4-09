@@ -53,7 +53,7 @@
 		$TableNameClinic = "clinic";
 		//The lines to run in sql (get current applications)
 		//$SQLstring = "SELECT useraccount.username, clinic.clinicName, clinic.acraNum, clinic.clinicArea FROM $TableNameUseraccount INNER JOIN $TableNameClinic ON useraccount.username = clinic.username WHERE clinic.clinicStatus = 'inreview'";	
-		$SQLstring = "SELECT username, clinicName, acraNum, clinicArea FROM $TableNameClinic WHERE clinicStatus='inreview'";
+		$SQLstring = "SELECT username, clinicName, acraNum, clinicArea, clinicStatus FROM $TableNameClinic WHERE clinicStatus='inreview'";
 		//Executing the sql
 		$queryResult = mysqli_query($conn, $SQLstring);
 		} 	
@@ -74,7 +74,7 @@
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
 					<div class="display-6">Welcome Super Admin</div>
-					<div class="display-6 pb-3">Current clinic admin applications</div>
+					<div class="display-6 pb-3">Pending Clinic Admin Applications</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
@@ -99,6 +99,7 @@
 							</td>
 							<td><?php echo $rows['clinicArea'];?>
 							</td>
+							<td><?php echo $rows['clinicStatus'];?>
 							</tr>
 							<?php
 								}

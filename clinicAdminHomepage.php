@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -43,6 +44,40 @@
 				</div>
 		</nav>
 	</header>
+	<?php
+	// set session variables from login
+	// $clinicName = $_SESSION["clinicName"];
+	$clinicName = "tempClinicName";
+
+	// try block execution upon entering the page
+	try {
+		$DBName = "dentalhealthapplicationdb";
+		$conn = mysqli_connect("localhost", "root", "", $DBName);
+
+		// table name
+		$TableNameClinic = "clinic";
+		$TableNameCAP = "clinicassistantprofile";
+		$TableNameDP = "dentistprofile";
+		$TableNameUA = "useraccount";
+
+		// sql query to get employees
+		$SQLstring = "SELECT useraccount.username, useraccount.nric, useraccount.fullName, useraccount.roleName, useraccount.accStatus, clinic.clinicName FROM $TableNameUA
+					INNER JOIN $TableNameCAP ON clinicassistantprofile.nric = useraccount.nric
+					INNER JOIN $TableNameClinic ON clinic.clinicName = clinicassistantprofile.clinicName
+					WHERE clinic.clinicName = '" . $clinicName . "'
+					UNION
+					SELECT useraccount.username, useraccount.nric, useraccount.fullName, useraccount.roleName, useraccount.accStatus, clinic.clinicName FROM useraccount
+					INNER JOIN $TableNameDP ON dentistprofile.nric = useraccount.nric
+					INNER JOIN $TableNameClinic ON clinic.clinicName = dentistprofile.clinicName
+					WHERE clinic.clinicName = '" . $clinicName . "'";
+
+		// execute sql
+		$queryResult = mysqli_query($conn, $SQLstring);
+		
+	} catch (mysqli_sql_exception $e) {
+		echo "Error in connection";
+	}
+	?>
 	<body>
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
@@ -54,7 +89,7 @@
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
-					<div class="display-6 pb-3">Employee Account(s) Status</div>
+					<div class="display-6 pb-3">Clinic Employee Account(s) Status</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
@@ -65,24 +100,16 @@
 							<tr>
 						</thead>
 						<tbody>
+						<?php
+						while ($rows = mysqli_fetch_assoc($queryResult)) {
+						?>
 							<tr>
-								<td> Kenneth Toh </td>
-								<td> S6523836H </td>
-								<td> Clinic Assistant </td>
-								<td> Active </td>
+								<td> <?php echo $rows['fullName'] ?> </td>
+								<td> <?php echo $rows['nric'] ?> </td>
+								<td> <?php echo $rows['roleName'] ?> </td>
+								<td> <?php echo $rows['accStatus'] ?> </td>
 							</tr>
-							<tr>
-								<td> Christian Dior </td>
-								<td> S1234567C </td>
-								<td> Clinic Assistant </td>
-								<td> Suspended </td>
-							</tr>
-							<tr>
-								<td> Michael Myers </td>
-								<td> S3334567C </td>
-								<td> Dentist </td>
-								<td> Active </td>
-							</tr>
+						<?php } ?>
 						</tbody>
 				</div>
 			</div>
