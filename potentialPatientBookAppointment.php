@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -46,6 +49,30 @@
 				</div>
 		<nav>
 		<?php 
+			//Set session variables from login
+			$patientUsername = $_SESSION["patientUsername"];
+			$patientFullname = $_SESSION["patientFullname"];
+			$patientNric = $_SESSION["patientNric"];
+			try {
+				//Load the list of clinics
+				$DBName = "dentalhealthapplicationdb";
+				$conn = mysqli_connect("localhost", "root", "",$DBName );
+				//Name of the table 
+				$TableNameClinic = "clinic";
+				//The lines to run in sql (getting all records that match patient nric from session)
+				$SQLstring = "SELECT * FROM $TableNameClinic WHERE clinicStatus='approved'";		
+				//Executing the sql
+				$queryResultListOfClinics = mysqli_query($conn, $SQLstring);
+
+				//Load list of dentists in each clinic
+				$TableNameDentistProfile = "dentistprofile";
+				$SQLstring2 = "SELECT * FROM $TableNameDentistProfile WHERE dentist='approved'";	
+
+
+				
+			} catch(mysqli_sql_exception $e){
+				echo "Error";
+			}
 			if (isset($_POST['submit'])) {
 				
 			}
@@ -66,22 +93,26 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Name:</label>
 						<div class="col-lg-4">
-						  <input type="text" class="form-control" id="usernameTB" placeholder="John De Jesus Doe" disabled>
+						  <input type="text" class="form-control" id="usernameTB" value="<?php echo $patientFullname; ?>" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input type="text" class="form-control" id="passwordTB" placeholder="S1234567G" disabled>
+						  <input type="text" class="form-control" id="passwordTB" value="<?php echo $patientNric; ?>" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="clinicNameSL" class="col-lg-1 col-form-label">Clinic Name:</label>
 						<div class="col-lg-4">
 						  <select class="form-select" name="clinicNameSL" id="clinicNameSL">
-						    <option value="plceaholder">Lim's Clinic</option>
-							<option value="plceaholder">Joe's Surgery</option>
-							<option value="plceaholder">Tan Tock Seng Hospital</option>
+						  <?php
+							while ($listOfClinics = mysqli_fetch_assoc($queryResultListOfClinics)) {
+							?>
+								<option value="<?php echo $listOfClinics['clinicName'];?>"><?php echo $listOfClinics['clinicName'];?></option>
+							<?php
+							}
+							?>
 						  </select>
 						</div>
 					  </div>
