@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -48,13 +51,10 @@
 	</header>
 	<?php
 		//Set session variables from login
-		$patientFullName = "";
-		$patientNRIC = "";
-		$currentTime = "";
-		$currentDate ="";
-		
-		//$patientFullName = $_SESSION["fullName"];
-		//$patientNRIC = $_SESSION["nric"];
+		$patientUsername = $_SESSION["patientUsername"];
+		$patientFullname = $_SESSION["patientFullname"];
+		$patientNric = $_SESSION["patientNric"];
+
 		// set current date and time of query
 		date_default_timezone_set("Singapore");
 		$currentTime = date("h:i:sa");
@@ -67,23 +67,16 @@
 		//This try block will be execute once the user enters the page
 		try	{
 		$DBName = "dentalhealthapplicationdb";
-	
 		$conn = mysqli_connect("localhost", "root", "",$DBName );
-					
 		//Name of the table 
-		$TableName = "appointment";
-
-		//The lines to run in sql (getting all records)
-		
-		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where nric='T0012345B'";
-		$result = mysqli_query($conn, $SQLstring);
-		// $SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where nric='" . $patientNRIC . "'";
-					
+		$TableNameAppointment = "appointment";
+		$TableNameClinic = "clinic";
+		//The lines to run in sql (getting all records that match patient nric from session)
+		$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."'";	
+		$result = mysqli_query($conn, $SQLstring);	
 		//Executing the sql
 		$queryResult = mysqli_query($conn, $SQLstring);
-		
 		} 	
-		
 		catch(mysqli_sql_exception $e) {
 				echo "Error";
 		}
@@ -230,21 +223,20 @@
 						</thead>
 						<tbody>
 							<?php
-								$i=0;
 								while($row = mysqli_fetch_array($result))
 								{
 							?>
 							<tr>
 								<td><?php echo $row["clinicName"]; ?></td>
-								<td>clinic address</td>
+								<td><?php echo $row["clinicAddress"]; ?></td>
 								<td><?php echo $row["apptDate"]; ?></td>
 								<td><?php echo $row["apptTime"]; ?></td>
 								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='potentialPatientUpdateAppointment.php'">Update Appointment</button>
+								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='potentialPatientUpdateAppointment.php?apptID=<?php echo $row['apptID'];?>'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
 								</td>
 							</tr>
-							<?php $i++; } ?>
+							<?php } ?>
 							
 						</tbody>
 					</table>
