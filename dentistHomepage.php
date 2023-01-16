@@ -1,9 +1,44 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 	</head>
+	<?php 
+	// setting session variables
+	//$dentistNRIC = $_SESSION['dentistNric'];
+	//$dentistFullName = $_SESSION['dentistFullname'];
+	//$dentistPracNum = $_SESSION['dentistPracNum'];
+	$dentistFullName = "Dr. Lee";
+	$dentistPracNum = "T128172";
+
+	// executing try block
+	try {
+		$DBName = "dentalhealthapplicationdb";
+		$conn = mysqli_connect("localhost", "root", "", $DBName);
+
+		// setting todayDate
+		date_default_timezone_set('Singapore');
+		$todayDate = date('Y-m-d'); 
+
+		// table name
+		$TableNameAppointment = "appointment";
+		//$TableNameClinic = "clinic";
+		$TableNameUA = "useraccount";
+
+		// sql query to get all appointments at clinic
+		$SQLstring = "SELECT * FROM  $TableNameAppointment INNER JOIN $TableNameUA on useraccount.nric = appointment.nric
+		WHERE appointment.practitionerNum = '" . $dentistPracNum . "' AND useraccount.roleName = 'patient' AND appointment.apptDate = '" . $todayDate . "'";
+
+		// executing sql
+		$queryResult = mysqli_query($conn, $SQLstring);
+
+	} catch (mysqli_sql_exception $e) {
+		echo "Error in retrieving or linking tables";
+	}
+
+	?>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
@@ -33,7 +68,7 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 						<li class="nav-item">
-								<a class="nav-link" href="#">Welcome Dr. Lee</a>
+								<a class="nav-link" href="#">Welcome <?php echo $dentistFullName ?></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
@@ -44,7 +79,7 @@
 						</ul>
 					</div>
 				</div>
-		<nav>
+		</nav>
 	</header>
 	<body>
 		<div class="container-lg">
@@ -52,7 +87,7 @@
 			<!-- Tablehead can put caption-top -->
 			<div class="column">
 				<div class="col-md-5 text-start pt-5">
-					<div class="display-6">Welcome Dr. Lee</div>
+					<div class="display-6">Welcome <?php echo $dentistFullName ?></div>
 				</div>
 				<div class="col-md-5 text-start pt-4">
 					<h5>You have <strong>3</strong> appointments today</h5>
@@ -60,31 +95,27 @@
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
-					<div class="display-6 pb-3">Today's appointments (28/11/2022)</div>
+					<div class="display-6 pb-3">Today's appointments (<?php echo $todayDate; ?>)</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
 								<th scope="col">Patient Name</th>
+								<th scope="col">Patient NRIC</th>
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
 							<tr>
 						</thead>
 						<tbody>
+							<?php
+								while ($rows = mysqli_fetch_assoc($queryResult)) {
+							?>
 							<tr>
-								<td> Long Tai Wat </td>
-								<td> 28/11/2022 </td>
-								<td> 14:30 </td>
+								<td> <?php echo $rows['fullName']; ?> </td>
+								<td> <?php echo $rows['nric']; ?> </td>
+								<td> <?php echo $rows['apptDate']; ?> </td>
+								<td> <?php echo $rows['apptTime']; ?> </td>
 							</tr>
-							<tr>
-								<td> Paddy Lee </td>
-								<td> 28/11/2022 </td>
-								<td> 15:30 </td>
-							</tr>
-							<tr>
-								<td> Lim's Surgery </td>
-								<td> 28/11/2022 </td>
-								<td> 17:30 </td>
-							</tr>
+							<?php } ?>
 						</tbody>
 				</div>
 			</div>

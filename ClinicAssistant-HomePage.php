@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +9,40 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
     <title>Clinic Assistant</title>
 </head>
+<?php
+	//setting session variables
+	//$clinicAssistantNric = $_SESSION['clinicAssistantNric'];
+	//$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+	//$clinicName = $_SESSION['clinicAssistantClinicName'];
+	$clinicAssistantFullname = "Sam";
+	$clinicName = "tempClinicName";
+
+	// executing try block
+	try {
+		$DBName = "dentalhealthapplicationdb";
+		$conn = mysqli_connect("localhost", "root", "", $DBName);
+
+		// setting todayDate
+		date_default_timezone_set('Singapore');
+		$todayDate = date('Y-m-d'); 
+
+		// table name
+		$TableNameAppointment = "appointment";
+		//$TableNameClinic = "clinic";
+		$TableNameUA = "useraccount";
+
+
+		// sql query to get all appointments at clinic
+		$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameUA ON useraccount.nric = appointment.nric
+		WHERE clinicName = '" . $clinicName . "' AND useraccount.roleName = 'patient' AND appointment.apptDate = '" . $todayDate ."'";
+
+		// executing sql
+		$queryResult = mysqli_query($conn, $SQLstring);
+
+	} catch (mysqli_sql_exception $e) {
+		echo "Error in retrieving or linking tables";
+	}
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -34,7 +69,7 @@
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-						<a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
+						<a class="nav-link" href="#">Welcome Clinic Assistant <?php echo $clinicAssistantFullname ?></a>
                     </li>
 					<li class="nav-item d-flex">
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
@@ -52,7 +87,7 @@
 			<!-- Tablehead can put caption-top -->
 			<div class="column">
 				<div class="col-md-5 text-start pt-5">
-					<div class="display-6">Welcome Sam</div>
+					<div class="display-6">Welcome <?php echo $clinicAssistantFullname ?></div>
 				</div>
 				<div class="col-md-5 text-start pt-4">
 					<h5>You have <strong>3</strong> appointments today</h5>
@@ -60,31 +95,27 @@
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="column">
-					<div class="display-6 pb-3">Today's appointments (28/11/2022)</div>
+					<div class="display-6 pb-3">Today's appointments (<?php echo $todayDate; ?>)</div>
 					<table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
 								<th scope="col">Patient Name</th>
+								<th scope="col">Patient NRIC</th>
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
 							<tr>
 						</thead>
 						<tbody>
+							<?php
+								while ($rows = mysqli_fetch_assoc($queryResult)) {
+							?>
 							<tr>
-								<td> Long Tai Wat </td>
-								<td> 28/11/2022 </td>
-								<td> 14:30 </td>
+								<td> <?php echo $rows['fullName']; ?> </td>
+								<td> <?php echo $rows['nric']; ?> </td>
+								<td> <?php echo $rows['apptDate']; ?> </td>
+								<td> <?php echo $rows['apptTime']; ?> </td>
 							</tr>
-							<tr>
-								<td> Paddy Lee </td>
-								<td> 28/11/2022 </td>
-								<td> 15:30 </td>
-							</tr>
-							<tr>
-								<td> Lim's Surgery </td>
-								<td> 28/11/2022 </td>
-								<td> 17:30 </td>
-							</tr>
+							<?php } ?>
 						</tbody>
 				</div>
 			</div>
