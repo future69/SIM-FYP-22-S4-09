@@ -6,20 +6,20 @@
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<script>
-		//AJAX function for onclick feature
-		function getHistory(inputNric){
-				var xmlhttp = new XMLHttpRequest();
-				xmlhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200){
-						var parts = xmlhttp.responseText.split('|');
-						document.getElementById("pastMedHistory").value = parts[0]; 
-						document.getElementById("pastAllergies").value = parts[1];
-					}
-				};
-				xmlhttp.open("GET", "potentialPatientRegistrationAjax.php?q=" + inputNric, true);
-				xmlhttp.send();
-			}
-		</script>
+	//AJAX function for onclick feature
+	function getHistory(inputNric){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200){
+					var parts = xmlhttp.responseText.split('|');
+					document.getElementById("pastMedHistory").value = parts[0]; 
+					document.getElementById("pastAllergies").value = parts[1];
+				}
+			};
+			xmlhttp.open("GET", "potentialPatientRegistrationAjax.php?q=" + inputNric, true);
+			xmlhttp.send();
+		}
+	</script>
 </head>
 <header>
 
