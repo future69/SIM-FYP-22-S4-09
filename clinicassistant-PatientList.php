@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
     <title>Clinic Assistant Patient List</title>
 </head>
 <header>
@@ -55,63 +57,90 @@ $servername = "dentalhealthapplicationdb";
 
 //Name of the table 
 $con = mysqli_connect("localhost", "root", "", $servername) or die("Connection Failed");
-$sqlquery = "SELECT ua.* , pp.* FROM 	useraccount ua, patientprofile pp WHERE ua.nric = pp.nric";
+$sqlquery = "SELECT ua.* , pp.* FROM useraccount ua, patientprofile pp WHERE ua.nric = pp.nric";
 $result = mysqli_query($con, $sqlquery);
+
+if (isset($_POST['createPatient'])) {
+    header("Location:clinicassistant-CreatePatient.php");
+}
 
 ?>
 
 <body>
-    <div class="container-lg">
-        <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient Account</div>
-        <div class=""></div>
-        <div class="row">
-            <div class="col-md-3">
-                <!--Contatiner control-->
-            </div>
-            <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-6 col-sm-3">Search:</div>
-                        <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" placeholder="Search by Name or NRIC" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="mt-4 text-center p-3">
-                            <a href="clinicassistant-CreatePatient.php" class="btn btn-Primary">Create Patient Account</a>
-                        </div>
+    <div id="ca-livesearch.php"></div>
 
-                        <!-- Force next columns to break to new line -->
-                        <div class="w-100"></div>
-                        <div class="input-group col-3 col-sm-3 mt-4 p-2 border border-2 border-secondary">
-                            <table class="table table-hover">
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">NRIC</th>
-                                    <th scope="col">Date of Birth</th>
-                                </tr>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#Psearch").keypress(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'ca-livesearch.php',
+                    data: {
+                        name: $("#Psearch").val(),
+                    },
+                    success: function(data) {
+                        $("#output").html(data);
+                    }
+                });
+            })
+        });
+    </script>
 
-                                <?php
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
-                                    <tr>
-                                        <td><a href="clinicassistant-PatientDetails.php"> <?php echo $row['fullName'] ?> </a> </td>
-                                        <td> <?php echo $row['nric'] ?> </td>
-                                        <td> <?php echo $row['dob'] ?> </td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
+    <form method="POST">
+        <div class="container-lg">
+            <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient Account</div>
+            <div class=""></div>
+            <div class="row">
+                <div class="col-md-3">
+                    <!--Contatiner control-->
+                </div>
+                <div class="col-md-6 border border-3 p-3 justify-content-center d-flex">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 col-sm-3">Search:</div>
+                            <div class="input-group col-3 col-sm-3">
+                                <input type="text" class="form-control" placeholder="Search by Name or NRIC" name="Psearch" id="Psearch" autocomplete="off">
+                            </div>
+                            <div class="mt-4 text-center p-3">
+                                <button type="submit" class="btn btn-Primary" name="createPatient">Create Patient Account</button>
+                            </div>
 
-                            </table>
+                            <!-- Force next columns to break to new line -->
+                            <div class="w-100"></div>
+                            <div class="input-group col-3 col-sm-3 mt-4 p-2 border border-2 border-secondary">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">NRIC</th>
+                                            <th scope="col">Date of Birth</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="output" name="output">
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                            <tr>
+                                                <td><a href="clinicassistant-PatientDetails.php"> <?php echo $row['fullName'] ?> </a> </td>
+                                                <td> <?php echo $row['nric'] ?> </td>
+                                                <td> <?php echo $row['dob'] ?> </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+                <!--Contatiner control-->
+            </div>
         </div>
-        <div class="col-md-3">
-            <!--Contatiner control-->
         </div>
-    </div>
-    </div>
+    </form>
 </body>
 
 </html>
