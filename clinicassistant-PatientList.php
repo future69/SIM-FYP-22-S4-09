@@ -67,25 +67,8 @@ if (isset($_POST['createPatient'])) {
 ?>
 
 <body>
-    <div id="ca-livesearch.php"></div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#Psearch").keypress(function() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'ca-livesearch.php',
-                    data: {
-                        name: $("#Psearch").val(),
-                    },
-                    success: function(data) {
-                        $("#output").html(data);
-                    }
-                });
-            })
-        });
-    </script>
-
+    <div id="result"></div>
     <form method="POST">
         <div class="container-lg">
             <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient Account</div>
@@ -99,7 +82,7 @@ if (isset($_POST['createPatient'])) {
                         <div class="row">
                             <div class="col-6 col-sm-3">Search:</div>
                             <div class="input-group col-3 col-sm-3">
-                                <input type="text" class="form-control" placeholder="Search by Name or NRIC" name="Psearch" id="Psearch" autocomplete="off">
+                                <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
                             </div>
                             <div class="mt-4 text-center p-3">
                                 <button type="submit" class="btn btn-Primary" name="createPatient">Create Patient Account</button>
@@ -141,6 +124,33 @@ if (isset($_POST['createPatient'])) {
         </div>
         </div>
     </form>
+    <script>
+        $(document).ready(function() {
+
+            load_data();
+
+            function load_data(query) {
+                $.ajax({
+                    url: "ca-livesearch.php",
+                    method: "POST",
+                    data: {
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#result').html(data);
+                    }
+                });
+            }
+            $('#search_text').keyup(function() {
+                var search = $(this).val();
+                if (search != '') {
+                    load_data(search);
+                } else {
+                    load_data();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
