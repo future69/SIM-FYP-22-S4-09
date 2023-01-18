@@ -68,7 +68,7 @@ if (isset($_POST['createPatient'])) {
 
 <body>
 
-    <div id="result"></div>
+
     <form method="POST">
         <div class="container-lg">
             <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient Account</div>
@@ -91,28 +91,8 @@ if (isset($_POST['createPatient'])) {
                             <!-- Force next columns to break to new line -->
                             <div class="w-100"></div>
                             <div class="input-group col-3 col-sm-3 mt-4 p-2 border border-2 border-secondary">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">NRIC</th>
-                                            <th scope="col">Date of Birth</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="output" name="output">
-                                        <?php
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                        ?>
-                                            <tr>
-                                                <td><a href="clinicassistant-PatientDetails.php"> <?php echo $row['fullName'] ?> </a> </td>
-                                                <td> <?php echo $row['nric'] ?> </td>
-                                                <td> <?php echo $row['dob'] ?> </td>
-                                            </tr>
-                                        <?php
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                            <div id="result" class="align-middle"></div>
+
                             </div>
                         </div>
                     </div>

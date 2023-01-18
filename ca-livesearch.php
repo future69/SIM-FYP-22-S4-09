@@ -23,7 +23,7 @@ $result = mysqli_query($connect, $query);
 if(mysqli_num_rows($result) > 0)
 {
  $output .= '
-  <div class="table-responsive">
+  <div class="table-responsive ">
    <table class="table table bordered">
     <tr>
      <th>Full Name</th>
@@ -35,7 +35,7 @@ if(mysqli_num_rows($result) > 0)
  {
   $output .= '
    <tr>
-    <td>'.$row["fullName"].'</td>
+    <td><a href="clinicassistant-PatientDetails.php">'.$row["fullName"].'</a></td>
     <td>'.$row["nric"].'</td>
     <td>'.$row["dob"].'</td>
    </tr>
