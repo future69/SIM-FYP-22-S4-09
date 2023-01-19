@@ -44,32 +44,20 @@ session_start();
 			console.log(selectedDate);
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
-				//console.log(this.readyState);
-				//console.log(this.status);
 				if (this.readyState == 4 && this.status == 200){
-					//not supposed to parse this array apparently, but array length = 1 so cant loop at the bottom zzz
 					var parts = JSON.parse(xmlhttp.responseText);
-					//var parts = xmlhttp.responseText;
+					console.log(parts);
+					//Got an object from the php file instead, so needed to convert it into an array
+					var parts = Object.keys(parts).map((key) => [ parts[key]]);
 					var theTimeSL = document.getElementById("timeSlotSL"); 
 					theTimeSL.innerHTML = "";
-					
-					console.log(parts);
 
-					// Populate list with options:
-					// for(var i = 0; i < parts.length; i++) {
-					// 	var timings = parts[i][i];
-					// 	console.log(typeof timings);
-					// 	theTimeSL.innerHTML += "<option value='" + timings + "'>" + timings + "</option>";
-					// }
+					//Populate list with options:
 					for(var i = 0; i < parts.length; i++) {
-					var cube = parts[i];
-					console.log(cube);
-					for(var j = 0; j < cube.length; j++) {
-						console.log(cube[j]);
-
-						display("cube[" + i + "][" + j + "] = " + cube[j]);
-					}
-				}
+						var timings = parts[i];
+						console.log(typeof timings);
+						theTimeSL.innerHTML += "<option value='" + timings + "'>" + timings + "</option>";
+					};
 				}
 			};
 			xmlhttp.open("GET", "potentialPatientBookAppointmentAjaxTiming.php?q=" + inputClinicName + "&w=" + selectedDate, true);

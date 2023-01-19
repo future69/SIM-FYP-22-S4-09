@@ -4,7 +4,7 @@ try	{
     // $theClinic = $_REQUEST["q"];
     // $theDate = $_REQUEST["w"];
     $theClinic = 'Toa Payoh Family Clinic';
-    $theDate = '2023-05-21';
+    $theDate = '2024-05-21';
     $DBName = "dentalhealthapplicationdb";
     $conn = mysqli_connect("localhost", "root", "",$DBName);
     //Load list of dentists in each clinic
@@ -41,9 +41,20 @@ try	{
             $timeArray[] = date('H:i', $time);
             $time = strtotime('+60 minutes', $time);
         }
-        $availableTimings = array_diff($timeArray, $takenAppointmentTimes);
-        //print_r($takenAppointmentTimes);
-        echo json_encode($availableTimings);
+
+        if ($takenAppointmentTimes != null){
+            $availableTimings = array_diff($timeArray, $takenAppointmentTimes);
+            //print_r(array($timeArray));
+            echo json_encode($availableTimings);
+        } 
+        else{
+            // for ($x = 0; $x <= count($timeArray); $x++) {
+            //     $timeArray[] = $x;
+            //   }
+            //$result = array_reduce($arrayKeys, 'array_merge', array());
+            //$newtimeArray = array_combine($arrayKeys,$timeArray);
+            echo json_encode($timeArray);
+            }
         }
     else 
         {
