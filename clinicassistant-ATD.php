@@ -51,13 +51,19 @@
 </header>
 
 <?php
-
 $servername = "dentalhealthapplicationdb";
 
 //create connection
 $conn = mysqli_connect("localhost", "root", "", $servername);
 
-$queryATD = "select * from apptreatmentdetails where ID = 1";
+$sqlPatientInfo = "SELECT ua.* , appt.* FROM useraccount ua, appointment appt WHERE ua.nric = appt.nric";
+$sqlresult = mysqli_query($conn, $sqlPatientInfo);
+
+$dateofBirth = 
+
+$sqlPatientInfo2 = "SELECT ua.* , appt.* FROM useraccount ua, appointment appt WHERE ua.nric = appt.nric";
+$sqlresult2 = mysqli_query($conn, $sqlPatientInfo2);
+mysqli_close($conn);
 
 if (isset($_POST['btnUpdate'])) {
 
@@ -76,9 +82,12 @@ if (isset($_POST['btnUpdate'])) {
 	$material = trim($_POST['materialSL']);
 	$medhistory = trim($_POST['medhistoryTB']);
 
-	$SQLstring = "INSERT INTO apptreatmentdetail (service, assistant, allergies, material, medHistory) VALUES ('$servicelist', '$assistant', '$allergies', '$material', '$medhistory')";
+	$SQLstring = "INSERT INTO apptreatmentdetail (assistant, allergies, material, medHistory) VALUES ('$assistant', '$allergies', '$material', '$medhistory')";
+
+	$sqlService = "INSERT INTO appointment (serviceName) VALUES ('$servicelist')";
 
 	mysqli_query($conn, $SQLstring);
+	mysqli_query($conn, $sqlService);
 	mysqli_close($conn);
 }
 
@@ -102,11 +111,17 @@ if (isset($_POST['btnUpdate'])) {
 							<tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td> 20/11/2022 </td>
-								<td> 15:00 </td>
-								<td> Dr. John Tan </td>
-							</tr>
+							<?php
+							while ($row = mysqli_fetch_assoc($sqlresult)) {
+								?>
+								<tr>
+									<td><?php echo $row['apptDate']?></td>
+									<td><?php echo $row['apptTime']?></td>
+									<td><?php echo $row['apptDentist']?></td>
+								</tr>
+								<?php
+							}
+							?>
 						</tbody>
 					</table>
 					<table class="table caption-top table-hover table-secondary table-striped ">
@@ -121,13 +136,26 @@ if (isset($_POST['btnUpdate'])) {
 							<tr>
 						</thead>
 						<tbody>
-							<tr>
+						<?php
+							while ($row = mysqli_fetch_assoc($sqlresult2)) {
+								?>
+								<tr>
+									<td><?php echo $row['fullName']?></td>
+									<td><?php echo $row['nric']?></td>
+									<td><?php echo $row['#']?></td>
+									<td><?php echo $row['gender']?></td>
+									<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
+								</tr>
+								<?php
+							}
+							?>
+							<!-- <tr>
 								<td> name3 </td>
 								<td> S2234567C </td>
 								<td> 34 </td>
 								<td> Male </td>
 								<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 

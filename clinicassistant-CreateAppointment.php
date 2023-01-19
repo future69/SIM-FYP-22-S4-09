@@ -53,10 +53,11 @@
     $servername = "dentalhealthapplicationdb";
 
     //create connection
-    $con = new mysqli('localhost','root','',$servername);
+    $con = new mysqli('localhost', 'root', '', $servername);
 
-    if(!$con){
+    if (!$con) {
         die(mysqli_error($con));
+    } else {
     }
 
     if (isset($_POST['submitAppt'])) {
@@ -78,10 +79,14 @@
         $timeSlot = trim($_POST['timeSlotSL']);
         $Reason = trim($_POST['PReasonTB']);
 
-        $SQLstring = "INSERT INTO appointment " . " (apptDentist, nric,  apptDate, apptTime, apptReason) " . " VALUES('$DentistSlotSL', '$nric',  '$Date', '$timeSlot', '$Reason')";
+        $SQLstring = "INSERT INTO appointment " . " (nric, apptDentist, apptDate, apptTime, apptReason) " . " VALUES( '$nric', '$DentistSlotSL', '$Date', '$timeSlot', '$Reason')";
 
         mysqli_query($con, $SQLstring);
         mysqli_close($con);
+
+        echo "Appointment Creation Successfully";
+    } else {
+
     }
 
     ?>

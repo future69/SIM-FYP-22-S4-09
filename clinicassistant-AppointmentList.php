@@ -110,7 +110,7 @@
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
 								<th scope="col">Phone Number</th>
-								<th scope="col">Service</th>
+								<th scope="col">Reason</th>
 								<th scope="col">Action</th>
 							</tr>
 						</thead>
@@ -125,14 +125,10 @@
 									<td> <?php echo $row['apptDate'] ?> </td>
 									<td> <?php echo $row['apptTime'] ?> </td>
 									<td> <?php echo $row['phoneNum'] ?> </td>
-									<td> <?php echo $row['serviceName'] ?> </td>
+									<td> <?php echo $row['apptReason'] ?> </td>
 									<td>
 										<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
-										<?php if ($row['apptStatus'] == "Past") {
-										?>
-										<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
-										<?php }
-										?>
+										<button type="submit" class="btn btn-danger" name="deleteAppt">Deleted Appointment</button>
 										<button type="submit" class="btn btn-success" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Update Appointment Treatment Details</button>
 									</td>
 								</tr>
