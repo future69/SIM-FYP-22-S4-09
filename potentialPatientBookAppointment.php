@@ -3,7 +3,6 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
@@ -18,14 +17,16 @@ session_start();
 					var theTimeSL = document.getElementById("timeSlotSL"); 
 					theDentistSL.innerHTML = "";
 					theTimeSL.innerHTML = "";
+					theDentistSL.innerHTML += "<option value='placeholder'>" + "</option>";
+					theTimeSL.innerHTML += "<option value='placeholder'>" + "</option>";
 				}
 				if (this.readyState == 4 && this.status == 200){
 					var parts = JSON.parse(xmlhttp.responseText);
-					//console.log(parts[0]['fullName']);
 					var theDentistSL = document.getElementById("dentistNameSL"); 
+
 					//Clear all existing options first
 					theDentistSL.innerHTML = "";
-					console.log(parts);
+
 					// Populate list with options:
 					for(var i = 0; i < parts.length; i++) {
 						var dPracNum = parts[i]['practitionerNumber'];
@@ -41,27 +42,30 @@ session_start();
 	//AJAX function for onclick feature (Get timing)
 	function getTimings(selectedDate){
 			var inputClinicName = document.getElementById("clinicNameSL").value;
-			console.log(selectedDate);
+			var inputDentistPracNumber = document.getElementById("dentistNameSL").value;
+			console.log(inputDentistPracNumber);
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200){
 					var parts = JSON.parse(xmlhttp.responseText);
-					console.log(parts);
-					//Got an object from the php file instead, so needed to convert it into an array
+					//Got an object from the response text, so needed to convert it into an array
 					var parts = Object.keys(parts).map((key) => [ parts[key]]);
 					var theTimeSL = document.getElementById("timeSlotSL"); 
 					theTimeSL.innerHTML = "";
-
-					//Populate list with options:
 					for(var i = 0; i < parts.length; i++) {
 						var timings = parts[i];
-						console.log(typeof timings);
 						theTimeSL.innerHTML += "<option value='" + timings + "'>" + timings + "</option>";
 					};
 				}
 			};
-			xmlhttp.open("GET", "potentialPatientBookAppointmentAjaxTiming.php?q=" + inputClinicName + "&w=" + selectedDate, true);
+			xmlhttp.open("GET", "potentialPatientBookAppointmentAjaxTiming.php?q=" + inputClinicName + "&w=" + selectedDate + "&e=" + inputDentistPracNumber, true);
 			xmlhttp.send();
+	}
+
+	function resetTimeSlot(){
+		document.getElementById("timeSlotSL").innerHTML = "";
+		var theTimeSL = document.getElementById("timeSlotSL"); 
+		theTimeSL.innerHTML += "<option value='placeholder'>" + "</option>";
 	}
 	</script>
 </head>
@@ -104,6 +108,8 @@ session_start();
 		</div>
 		<nav>
 			<?php
+			$clinicNameError = $dentistNameError = $dateError = $timeSlotError = $reasonError = null;
+
 			//Set session variables from login
 			$patientUsername = $_SESSION["patientUsername"];
 			$patientFullname = $_SESSION["patientFullname"];
@@ -140,23 +146,68 @@ session_start();
 			} catch (mysqli_sql_exception $e) {
 				echo "Error";
 			}
+
+			//When confirmed is clicked
 			if (isset($_POST['submit'])) {
-				$clinicName = $_POST['clinicNameSL'];
+			$clinicName = $_POST['clinicNameSL'];
+			$dentistPracNum = $_POST['dentistNameSL'];
+			$date = $_POST['datePicker'];
+			$reason = $_POST['reasonTB'];
+			$timeSlot = $_POST['timeSlotSL'];
 
-				if ($clinicName != 'placeholder'){
-					$dentistName = $_POST['dentistNameSL'];
-					$date = $_POST['datePicker'];
+			//Method to validate entries
+			function correctValidation(): int
+			{
+				//Keep track of total false, the number represents the numbers of inputs failed
+				$totalFalseCount = 0;
+				if (($GLOBALS['clinicName']) == 'placeholder') {
+					$GLOBALS['clinicNameError'] = "Please select a clinic";
+					$totalFalseCount++;
+				}
+				if (($GLOBALS['dentistPracNum']) == 'placeholder') {
+					$GLOBALS['dentistNameError'] = "Please select a dentist";
+					$totalFalseCount++;
+				}
+				if (empty($GLOBALS['date'])) {
+					$GLOBALS['dateError'] = "Please select a date";
+					$totalFalseCount++;
+				}
+				if (($GLOBALS['timeSlot']) == 'placeholder') {
+					$GLOBALS['timeSlotError'] = "Please select a timeslot";
+					$totalFalseCount++;
+				}
+				if (empty($GLOBALS['reason'])) {
+					$GLOBALS['reasonError'] = "Please enter a reason";
+					$totalFalseCount++;
+				}
+					return $totalFalseCount;
+			}
+
+			if (correctValidation() > 0){
+				$errorMessage = "Please complete all fields";
+			}
+			else {
+				try {
+					//Appointment ID is created with the patient's nric plus current date + time(hour min second)
+					$apptID = $patientNric . date("Y-m-dH:i:s");
 					$timeSlot = $_POST['timeSlotSL'];
-					$reason = $_POST['reasonTB'];
+					$apptStatus = 'upcoming';
 
-					
-				}
+					$conn = mysqli_connect("localhost", "root", "", $DBName);
+					$TableNameAppointment = "appointment";
+					//Inserts data into DB
+					$SQLstring = "INSERT INTO $TableNameAppointment " . " (apptID, clinicName, nric, apptDate, apptTime, apptStatus, practitionerNum, reason) " . 
+					" VALUES('$apptID','$clinicName','$patientNric','$date','$timeSlot','$apptStatus','$dentistPracNum','$reason')";
+					mysqli_query($conn, $SQLstring);
+					mysqli_close($conn);
 
-				else {
-					$errorMessage = "Please input all values";
+					$errorMessage = "Success!";	
+				} catch (mysqli_sql_exception $e) {
+					echo "<p>Error: unable to connect/insert record in the database.</p>";
 				}
-				
-			} 
+			}
+		} 
+		
 			else if (isset($_POST['back'])) {
 				header("Location:potentialPatientHomepageAftLogin.php");
 			}
@@ -197,34 +248,49 @@ session_start();
 							}
 							?>
 						</select>
+						<div class="errorMessage">
+							<?php echo $clinicNameError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="dentistNameSL" class="col-lg-1 col-form-label">Dentist Name:</label>
 					<div class="col-lg-4">
-						<select class="form-select" name="dentistNameSL" id="dentistNameSL">
+						<select class="form-select" name="dentistNameSL" id="dentistNameSL" onchange="resetTimeSlot()">
 						<option value='placeholder'> </option>
 						</select>
+						<div class="errorMessage">
+							<?php echo $dentistNameError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
-					<label for="passwordTB" class="col-lg-1 col-form-label">Date:</label>
+					<label for="datePicker" class="col-lg-1 col-form-label">Date:</label>
 					<div class="col-lg-4">
 						<input type="date" class="form-control" name='datePicker' id="datePicker" oninput="getTimings(this.value)" min="<?php echo date('Y-m-d'); ?>">
+						<div class="errorMessage">
+							<?php echo $dateError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
-					<label for="usernameTB" class="col-lg-1 col-form-label">Time Slot:</label>
+					<label for="timeSlotSL" class="col-lg-1 col-form-label">Time Slot:</label>
 					<div class="col-lg-4">
 						<select class="form-select" name="timeSlotSL" id="timeSlotSL">
 						<option value='placeholder'> </option>
 						</select>
+						<div class="errorMessage">
+							<?php echo $timeSlotError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
 					<label for="reasonTB" class="col-lg-1 col-form-label">Reason:</label>
 					<div class="col-lg-4">
 						<input type="text" class="form-control" name="reasonTB" id="reasonTB">
+						<div class="errorMessage">
+							<?php echo $reasonError;?>
+						</div>
 					</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
