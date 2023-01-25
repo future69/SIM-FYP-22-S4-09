@@ -14,7 +14,7 @@ try	{
 
     //The lines to run in sql
     $SQLstring = "SELECT * FROM  $TableNameClinic WHERE clinicName = '" . $theClinic . "'";
-    $SQLstring2 = "SELECT apptTime FROM $TableNameAppointment WHERE apptDate = '" . $theDate . "' AND practitionerNum = '" . $theDentist . "'";
+    $SQLstring2 = "SELECT apptTime FROM $TableNameAppointment WHERE apptDate = '" . $theDate . "' AND practitionerNumber = '" . $theDentist . "'";
 
     //Executing the sql
     $queryResult = mysqli_query($conn, $SQLstring);

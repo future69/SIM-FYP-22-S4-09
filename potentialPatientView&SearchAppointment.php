@@ -232,8 +232,16 @@ session_start();
 								<td><?php echo $row["apptDate"]; ?></td>
 								<td><?php echo $row["apptTime"]; ?></td>
 								<td>
+									<?php 
+									//Convert appt and current date to datetime format
+									$dateAppt = new DateTime($row["apptDate"]);
+									$dateCurrent = new DateTime(date("Y-m-d"));
+									$dateDiff = $dateAppt->diff($dateCurrent);
+									if ($dateDiff->days > 3){
+									?>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='potentialPatientUpdateAppointment.php?apptID=<?php echo $row['apptID'];?>'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<?php } ?>
 								</td>
 							</tr>
 							<?php } ?>

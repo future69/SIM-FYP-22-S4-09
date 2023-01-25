@@ -197,7 +197,7 @@ session_start();
 					$conn = mysqli_connect("localhost", "root", "", $DBName);
 					$TableNameAppointment = "appointment";
 					//Inserts data into DB
-					$SQLstring = "INSERT INTO $TableNameAppointment " . " (apptID, clinicName, nric, apptDate, apptTime, apptStatus, practitionerNum, reason) " . 
+					$SQLstring = "INSERT INTO $TableNameAppointment " . " (apptID, clinicName, nric, apptDate, apptTime, apptStatus, practitionerNumber, reason) " . 
 					" VALUES('$apptID','$clinicName','$patientNric','$date','$timeSlot','$apptStatus','$dentistPracNum','$reason')";
 					mysqli_query($conn, $SQLstring);
 					mysqli_close($conn);
