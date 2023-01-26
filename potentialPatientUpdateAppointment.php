@@ -194,7 +194,7 @@ session_start();
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Date:</label>
 						<div class="col-lg-4">
-						  <input type="date" class="form-control" name="datePicker" id="datePicker" oninput="getTimings(this.value)" value="<?php echo date('Y-m-d', strtotime($rows['apptDate']));?>">
+						  <input type="date" class="form-control" name="datePicker" id="datePicker" oninput="getTimings(this.value)" min="<?php echo date('Y-m-d'); ?>">
 						  	<div class="errorMessage">
 								<?php echo $dateError;?>
 							</div>
