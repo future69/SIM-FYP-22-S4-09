@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html lang="en">
 
 <head>
@@ -60,16 +61,14 @@ $con = mysqli_connect("localhost", "root", "", $servername) or die("Connection F
 $sqlquery = "SELECT ua.* , pp.* FROM useraccount ua, patientprofile pp WHERE ua.nric = pp.nric";
 $result = mysqli_query($con, $sqlquery);
 
-if (isset($_POST['createPatient'])) {
+if (isset($_GET['createPatient'])) {
     header("Location:clinicassistant-CreatePatient.php");
 }
 
 ?>
 
 <body>
-
-
-    <form method="POST">
+    <form method="GET">
         <div class="container-lg">
             <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient Account</div>
             <div class=""></div>
@@ -88,22 +87,23 @@ if (isset($_POST['createPatient'])) {
                                 <button type="submit" class="btn btn-Primary" name="createPatient">Create Patient Account</button>
                             </div>
 
+
                             <!-- Force next columns to break to new line -->
                             <div class="w-100"></div>
-                            <div class="input-group col-3 col-sm-3 mt-4 p-2 border border-2 border-secondary">
-                            <div id="result" class="align-middle"></div>
-
+                            <div class="border border-2 border-secondary">
+                                <div id="result" class="align-middle"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <!--Contatiner control-->
-            </div>
-        </div>
-        </div>
     </form>
+    <div class="col-md-3">
+        <!--Contatiner control-->
+    </div>
+    </div>
+    </div>
+
     <script>
         $(document).ready(function() {
 
