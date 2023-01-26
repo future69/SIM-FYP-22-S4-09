@@ -51,21 +51,30 @@
 	<?php
 
 	$servername = "dentalhealthapplicationdb";
-
 	//Name of the table 
-	$con = mysqli_connect("localhost", "root", "", $servername) or die("Connection Failed");
-	$sqlquery = "SELECT ua.* , appt.* FROM 	useraccount ua, appointment appt WHERE ua.nric = appt.nric";
-	$result = mysqli_query($con, $sqlquery);
+	$clinicName = 'Toa Payoh Family Clinic';
+	$TableNameAppointment = "appointment";
+	$TableNameClinic = "clinic";
+	$TableNameUseraccount = "useraccount";
+	$con = mysqli_connect("localhost", "root", "",$servername );
 
-	if (isset($_POST['deleteAppt'])) {
-		echo '<script>alert("Appointment Deleted")</script>';
-	} else if (isset($_POST['updateAppt'])) {
-		header("Location:clinicassistant-UpdateAppointment.php");
-	} else if (isset($_POST['CreateATD'])) {
-		header("Location:clinicassistant-ATD.php");
-	} else if (isset($_POST['bookAppointment'])) {
-		header("Location:clinicassistant-CreateAppointment.php");
-	}
+	$SQLstring = "SELECT * FROM $TableNameAppointment 
+	INNER JOIN $TableNameClinic 
+	ON appointment.clinicName = clinic.clinicName 
+	INNER JOIN $TableNameUseraccount 
+	ON appointment.nric = useraccount.nric 
+	WHERE clinic.clinicName = '". $clinicName ."'";
+	$result = mysqli_query($con, $SQLstring);
+
+	// if (isset($_POST['deleteAppt'])) {
+	// 	echo '<script>alert("Appointment Deleted")</script>';
+	// } else if (isset($_POST['updateAppt'])) {
+	// 	header("Location:clinicassistant-UpdateAppointment.php");
+	// } else if (isset($_POST['CreateATD'])) {
+	// 	header("Location:clinicassistant-ATD.php");
+	// } else if (isset($_POST['bookAppointment'])) {
+	// 	header("Location:clinicassistant-CreateAppointment.php");
+	// }
 	?>
 </header>
 
@@ -117,19 +126,20 @@
 						<tbody>
 
 							<?php
-							while ($row = mysqli_fetch_assoc($result)) {
+							while ($row = mysqli_fetch_assoc($result)) 
+							{
 							?>
 								<tr>
-									<td> <?php echo $row['fullName'] ?> </td>
-									<td> <?php echo $row['nric'] ?> </td>
-									<td> <?php echo $row['apptDate'] ?> </td>
-									<td> <?php echo $row['apptTime'] ?> </td>
-									<td> <?php echo $row['phoneNum'] ?> </td>
-									<td> <?php echo $row['apptReason'] ?> </td>
+									<td> <?php echo $row['fullName']; ?> </td>
+									<td> <?php echo $row['nric']; ?> </td>
+									<td> <?php echo $row['apptDate']; ?> </td>
+									<td> <?php echo $row['apptTime']; ?> </td>
+									<td> <?php echo $row['phoneNum']; ?> </td>
+									<td> <?php echo $row['reason']; ?> </td>
 									<td>
 										<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
 										<button type="submit" class="btn btn-danger" name="deleteAppt">Deleted Appointment</button>
-										<button type="submit" class="btn btn-success" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Update Appointment Treatment Details</button>
+										<button type="submit" class="btn btn-success" name="CreateATD" onclick="location.href='clinicassistant-ATD.php?apptID=<?php echo $row['apptID'];?>'">Update Appointment Treatment Details</button>
 									</td>
 								</tr>
 							<?php
