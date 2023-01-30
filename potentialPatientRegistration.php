@@ -235,7 +235,7 @@
 			} 
 			
 			else if (isset($_POST['back'])) {
-				header("Location:potentialPatientHomepage.php");
+				header("Location:index.php");
 			} 
 			
 			else {
