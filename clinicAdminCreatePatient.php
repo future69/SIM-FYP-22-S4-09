@@ -36,7 +36,7 @@
 								<span class="navbar-brand text-center">Toa Payoh Dental</span>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+								<a class="nav-link" href="index.php">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -50,7 +50,7 @@
 			if (isset($_POST['submitRegistration'])) {
 
 				$errors = 0;
-				$DBName = "dentalhealthapplicationdb";
+				$DBName = "u418115598_dentalapp";
 				$roleName = "patient";
 				$accStatus = "active";
 
@@ -152,7 +152,7 @@
 					$errorMessage = "Please complete all fields";
 				} else {
 					try {
-						$conn = mysqli_connect("localhost", "root", "", $DBName);
+						$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM", $DBName);
 
 						//Name of the table 
 						$TableName = "useraccount";

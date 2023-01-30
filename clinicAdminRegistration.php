@@ -68,7 +68,7 @@
 	if (isset($_POST['submitRegistration'])) {
 
 		$errors = 0;
-		$DBName = "dentalhealthapplicationdb";
+		$DBName = "u418115598_dentalapp";
 		$clinicStatus = "inreview";
 		$roleName = "clinicAdmin";
 		$accStatus = "suspended";
