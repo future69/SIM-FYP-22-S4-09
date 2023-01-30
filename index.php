@@ -9,7 +9,7 @@
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
-					src="public_html/images/SuperDentalLogo.png"
+					src="/images/SuperDentalLogo.png"
 					width="50" height="40"/>
 					DiamondDental™
 					</a>
