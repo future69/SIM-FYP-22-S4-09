@@ -56,8 +56,8 @@ $patientNric = $_SESSION["patientNric"];
 
 //This try block will be execute once the user enters the page
 try {
-	$DBName = "dentalhealthapplicationdb";
-	$conn = mysqli_connect("localhost", "root", "", $DBName);
+	$DBName = "u418115598_dentalapp";
+	$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
 	//Name of the table 
 	$TableNameAppointment = "appointment";
