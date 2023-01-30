@@ -16,7 +16,7 @@
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Home</a>
+								<a class="nav-link" href="index.php">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link active" aria-current="page" href="potentialPatientAboutUs.php">About Us</a>
@@ -44,7 +44,7 @@
 						</ul>
 					</div>
 				</div>
-		<nav>
+</nav>
 	</header>
 	<body>
 		<div class="container-lg">

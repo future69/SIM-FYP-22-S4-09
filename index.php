@@ -44,7 +44,7 @@
 						</ul>
 					</div>
 				</div>
-		<nav>
+</nav>
 	</header>
 	<body>
 		<div class="container-lg">
