@@ -54,9 +54,9 @@ session_start();
 			if (isset($_POST['submit'])) {
 
 				$errors = 0;
-				$DBName = "dentalhealthapplicationdb";
+				$DBName = "u418115598_dentalapp";
 				try {
-					$conn = mysqli_connect("localhost", "root", "", $DBName);
+					$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
 					//Name of the table 
 					$TableName = "useraccount";
