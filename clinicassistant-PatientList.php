@@ -45,7 +45,7 @@
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+                        <a class="nav-link" href="index.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -56,10 +56,11 @@
 <?php
 $servername = "dentalhealthapplicationdb";
 
-//Name of the table 
-$con = mysqli_connect("localhost", "root", "", $servername) or die("Connection Failed");
+//Name of the table
+$DBName = "u418115598_dentalapp"; 
+$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
 $sqlquery = "SELECT ua.* , pp.* FROM useraccount ua, patientprofile pp WHERE ua.nric = pp.nric";
-$result = mysqli_query($con, $sqlquery);
+$result = mysqli_query($conn, $sqlquery);
 
 if (isset($_GET['createPatient'])) {
     header("Location:clinicassistant-CreatePatient.php");

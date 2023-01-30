@@ -1,12 +1,14 @@
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "dentalhealthapplicationdb");
+
+$DBName = "u418115598_dentalapp";
+$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 $output = '';
 
 //this will get the value from the search bar and will run the filtering 
 if(isset($_POST["query"]))
 {
- $search = mysqli_real_escape_string($connect, $_POST["query"]);
+ $search = mysqli_real_escape_string($conn, $_POST["query"]);
  $query = "
   SELECT * FROM useraccount INNER JOIN patientprofile ON useraccount.nric = patientprofile.nric
   WHERE useraccount.fullName LIKE '%".$search."%'
@@ -20,7 +22,7 @@ else
  SELECT * FROM useraccount INNER JOIN patientprofile ON useraccount.nric = patientprofile.nric
  ";
 }
-$result = mysqli_query($connect, $query);
+$result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0)
 {
  $output .= '
