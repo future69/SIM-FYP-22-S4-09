@@ -40,7 +40,7 @@
 								<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+								<a class="nav-link" href="index.php">Logout</a>
 							</li>
 						</ul>
 					</div>
