@@ -51,10 +51,18 @@
 </header>
 
 <?php
-$servername = "dentalhealthapplicationdb";
+$servername = "u418115598_dentalapp";
 
 //create connection
-$conn = mysqli_connect("localhost", "root", "", $servername);
+$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername);
+
+//The lines to run in sql (get current applications)
+$SQLstring = "SELECT * FROM $TableNameAppointment 
+INNER JOIN $TableNameDentist 
+ON appointment.practitionerNumber = dentistprofile.practitionerNumber 
+INNER JOIN $TableNameUseraccount 
+ON dentistprofile.nric = useraccount.nric 
+WHERE appointment.apptID = '". $apptID ."'";	
 
 $sqlPatientInfo = "SELECT ua.* , appt.* FROM useraccount ua, appointment appt WHERE ua.nric = appt.nric";
 $sqlresult = mysqli_query($conn, $sqlPatientInfo);
@@ -130,7 +138,7 @@ if (isset($_POST['btnUpdate'])) {
 							<tr>
 								<th scope="col">Name</th>
 								<th scope="col">NRIC</th>
-								<th scope="col">Age</th>
+								<th scope="col">DOB</th>
 								<th scope="col">Gender</th>
 								<th scope="col">X-Ray</th>
 							<tr>

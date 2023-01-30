@@ -16,19 +16,19 @@
 			<div class="collapse navbar-collapse" id="navigationBar">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="potentialPatientHomepage.php">Home</a>
+						<a class="nav-link" href="index.php">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About Us</a>
+						<a class="nav-link" href="potentialPatientAboutUs.php">About Us</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Our Partners</a>
+						<a class="nav-link" href="potentialPatientOurPartners.php">Our Partners</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">For Patients</a>
+						<a class="nav-link" href="potentialPatientForPatients.php">For Patients</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">For Clinics</a>
+						<a class="nav-link" href="potentialPatientForClinics.php">For Clinics</a>
 					</li>
 
 				</ul>
