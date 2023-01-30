@@ -51,26 +51,70 @@
 </header>
 
 <?php
+
+$clinicName = 'tempClinicName'; //get this from session in the future
+$apptID = $_GET['apptID'];
 $servername = "u418115598_dentalapp";
 
 //create connection
 $conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername);
+$TableNameAppointment = 'appointment';
+$TableNameDentist = 'dentistprofile';
+$TableNameUseraccount = 'useraccount';
+$TableNamePatientProfile = 'patientprofile';
+$TableNameClinic = 'clinic';
+$TableNameClinicAssistant = 'clinicassistantprofile';
 
-//The lines to run in sql (get current applications)
+//The lines to run in sql (get dentist info)
 $SQLstring = "SELECT * FROM $TableNameAppointment 
 INNER JOIN $TableNameDentist 
 ON appointment.practitionerNumber = dentistprofile.practitionerNumber 
 INNER JOIN $TableNameUseraccount 
 ON dentistprofile.nric = useraccount.nric 
-WHERE appointment.apptID = '". $apptID ."'";	
+WHERE appointment.apptID = '". $apptID ."'";
 
-$sqlPatientInfo = "SELECT ua.* , appt.* FROM useraccount ua, appointment appt WHERE ua.nric = appt.nric";
-$sqlresult = mysqli_query($conn, $sqlPatientInfo);
+//The lines to run in sql (get patient info)
+$SQLstring2 = "SELECT * FROM $TableNameAppointment 
+INNER JOIN $TableNamePatientProfile 
+ON appointment.nric = patientprofile.nric 
+INNER JOIN $TableNameUseraccount 
+ON appointment.nric = useraccount.nric 
+WHERE appointment.apptID = '". $apptID ."'";
 
-$dateofBirth = 
+//The lines to run in sql (get allergies and med history)
+$SQLstring3 = "SELECT * FROM $TableNameAppointment 
+INNER JOIN $TableNamePatientProfile 
+ON appointment.nric = patientprofile.nric 
+INNER JOIN $TableNameUseraccount 
+ON appointment.nric = useraccount.nric 
+WHERE appointment.apptID = '". $apptID ."'";
 
-$sqlPatientInfo2 = "SELECT ua.* , appt.* FROM useraccount ua, appointment appt WHERE ua.nric = appt.nric";
-$sqlresult2 = mysqli_query($conn, $sqlPatientInfo2);
+//The lines to run in sql (get services)
+$SQLstring4 = "SELECT servicesSelected FROM $TableNameClinic 
+WHERE clinicName = '". $clinicName ."'";
+
+//The lines to run in sql (get clinic assistants)
+$SQLstring5 = "SELECT * FROM $TableNameClinicAssistant 
+INNER JOIN $TableNameUseraccount 
+ON clinicassistantprofile.nric = useraccount.nric 
+WHERE clinicassistantprofile.clinicName = '". $clinicName ."'";
+
+//query results for dentist and patient info tables
+$queryResult = mysqli_query($conn, $SQLstring);
+$queryResult2 = mysqli_query($conn, $SQLstring2);
+
+//query results for allergies and med history
+$queryResult3 = mysqli_query($conn, $SQLstring3);
+$rowPatientInfo = mysqli_fetch_assoc($queryResult3);
+
+//Convert string from database to array
+$queryResultClinicServices = mysqli_query($conn, $SQLstring4);
+$rowClinicServices = mysqli_fetch_assoc($queryResultClinicServices);
+$listOfServices = explode(" ", $rowClinicServices['servicesSelected']);
+
+//query results for clinic assistants name
+$queryResult4 = mysqli_query($conn, $SQLstring5);
+
 mysqli_close($conn);
 
 if (isset($_POST['btnUpdate'])) {
@@ -120,12 +164,12 @@ if (isset($_POST['btnUpdate'])) {
 						</thead>
 						<tbody>
 							<?php
-							while ($row = mysqli_fetch_assoc($sqlresult)) {
+							while ($row = mysqli_fetch_assoc($queryResult)) {
 								?>
 								<tr>
 									<td><?php echo $row['apptDate']?></td>
 									<td><?php echo $row['apptTime']?></td>
-									<td><?php echo $row['apptDentist']?></td>
+									<td><?php echo $row['fullName']?></td>
 								</tr>
 								<?php
 							}
@@ -145,35 +189,37 @@ if (isset($_POST['btnUpdate'])) {
 						</thead>
 						<tbody>
 						<?php
-							while ($row = mysqli_fetch_assoc($sqlresult2)) {
+							while ($row = mysqli_fetch_assoc($queryResult2)) {
 								?>
 								<tr>
 									<td><?php echo $row['fullName']?></td>
 									<td><?php echo $row['nric']?></td>
-									<td><?php echo $row['#']?></td>
+									<td><?php echo $row['dob']?></td>
 									<td><?php echo $row['gender']?></td>
 									<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
 								</tr>
 								<?php
 							}
 							?>
-							<!-- <tr>
-								<td> name3 </td>
-								<td> S2234567C </td>
-								<td> 34 </td>
-								<td> Male </td>
-								<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
-							</tr> -->
 						</tbody>
 					</table>
-
+					<div class="row col-2 py-2">
+						<label for="medhistoryTB" class="col-2 col-form-label">Medical History: </label>
+					</div>
+					<div class="col-10 mt-2">
+						<textarea class="form-control" id="medhistoryTB" name="medhistoryTB" readonly><?php echo $rowPatientInfo['medHistory']?></textarea>
+					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-3 col-form-label">Service:</label>
 						<div class="col-7">
 							<select class="form-select" name="serviceSL" id="serviceSL" size="2" multiple>
-								<option value="Decay Remover">Decay Remover</option>
-								<option value="Polishing">Polishing</option>
-								<option value="Tooth Remover">Tooth Remover</option>
+							<?php
+							foreach($listOfServices as $serviceName) {
+							?>
+								<option value="<?php echo $serviceName;?>"><?php echo $serviceName;?></option>
+							<?php
+							}
+							?>
 							</select>
 						</div>
 					</div>
@@ -181,33 +227,33 @@ if (isset($_POST['btnUpdate'])) {
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
 							<select class="form-select" name="assistantSL" id="assistantSL" size="2" multiple>
-								<option value="Jacob Lee">Jacob Lee</option>
-								<option value="John Adams">John Adams</option>
-								<option value="Michelle Lee">Michelle Lee</option>
+							<?php
+							while ($assistantNames = mysqli_fetch_assoc($queryResult4)) {
+							?>
+								<option value="<?php echo $assistantNames['fullName'], ' '. $assistantNames['nric'];?>"><?php echo $assistantNames['fullName'], ' '. $assistantNames['nric'];?></option>
+							<?php
+							}
+							?>
 							</select>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="allergiesLabel" class="col-3 col-form-label">Allergies:</label>
 						<div class="col-7">
-							<textarea class="form-control" aria-label="With textarea" id="allergiesTB" name="allergiesTB" size="3"></textarea>
+							<textarea class="form-control" id="allergiesTB" name="allergiesTB" size="3"><?php echo $rowPatientInfo['allergies']?></textarea>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="materialSL" class="col-3 col-form-label">Materials:</label>
-						<div class="col-9">
-							<select class="form-select" name="materialSL" id="materialSL" size="3" multiple>
-								<option value="Resin composites">Resin composites</option>
-								<option value="Amalgam alloys">Amalgam alloys</option>
-								<option value="Glass ionomers">Glass ionomers</option>
-							</select>
+						<div class="col-7">
+							<textarea class="form-control" id="materialsTB" name="materialsTB" size="3"></textarea>
 						</div>
 					</div>
 					<div class="row col-2 py-2">
-						<label for="medhistoryLabel" class="col-2 col-form-label">Medical History:</label>
+						<label for="treatmentNotesTB" class="col-2 col-form-label">Treatment Notes:</label>
 					</div>
 					<div class="col-10 mt-2">
-						<textarea class="form-control" aria-label="With textarea" id="medhistoryTB" name="medhistoryTB"></textarea>
+						<textarea class="form-control" id="treatmentNotesTB" name="treatmentNotesTB"></textarea>
 					</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
 						<button class="btn btn-danger" id="btnBack" name="btnBack" value="btnBack">Back</button>
