@@ -49,8 +49,8 @@
 </nav>
 <?php
 //fetch.php
-
-$connect = mysqli_connect("localhost", "root", "", "dentalhealthapplicationdb") or die("Connection Failed");
+$DBName = "u418115598_dentalapp";
+$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
 
 
 if (isset($_POST['back'])) {
@@ -60,7 +60,7 @@ if (isset($_POST['back'])) {
 $Patientnric = $_GET['Patientnric'];
 
 $sqlquery = "SELECT * FROM useraccount INNER JOIN patientprofile ON useraccount.nric = patientprofile.nric WHERE useraccount.nric = '".$Patientnric."'";
-$result = mysqli_query($connect, $sqlquery);
+$result = mysqli_query($conn, $sqlquery);
 $row = mysqli_fetch_assoc($result);
 ?>
 <body>
