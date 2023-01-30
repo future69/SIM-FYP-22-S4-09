@@ -66,7 +66,7 @@ session_start();
 								<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+								<a class="nav-link" href="index.php">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -81,8 +81,8 @@ session_start();
 		$patientNric = $_SESSION["patientNric"];
 		try {
 			$apptID = $_GET['apptID'];
-			$DBName = "dentalhealthapplicationdb";
-			$conn = mysqli_connect("localhost", "root", "",$DBName );
+			$DBName = "u418115598_dentalapp";
+			$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 			//Name of the table 
 			$TableNameAppointment = "appointment";
 			$TableNameDentist = "dentistprofile";
@@ -133,7 +133,7 @@ session_start();
 				try {
 					//Appointment ID is created with the patient's nric plus current date + time(hour min second)
 
-					$conn = mysqli_connect("localhost", "root", "", $DBName);
+					$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 					$TableNameAppointment = "appointment";
 					//Inserts data into DB
 					$SQLstring = "UPDATE $TableNameAppointment

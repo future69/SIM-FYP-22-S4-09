@@ -42,7 +42,7 @@ session_start();
 								<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+								<a class="nav-link" href="index.php">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -66,8 +66,8 @@ session_start();
 	
 		//This try block will be execute once the user enters the page
 		try	{
-		$DBName = "dentalhealthapplicationdb";
-		$conn = mysqli_connect("localhost", "root", "",$DBName );
+		$DBName = "u418115598_dentalapp";
+		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 		//Name of the table 
 		$TableNameAppointment = "appointment";
 		$TableNameClinic = "clinic";

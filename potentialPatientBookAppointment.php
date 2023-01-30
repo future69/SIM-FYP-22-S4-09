@@ -102,7 +102,7 @@ session_start();
 						<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+						<a class="nav-link" href="index.php">Logout</a>
 					</li>
 				</ul>
 			</div>
@@ -119,8 +119,8 @@ session_start();
 			$errorMessage = "";
 			try {
 				//Load the list of clinics
-				$DBName = "dentalhealthapplicationdb";
-				$conn = mysqli_connect("localhost", "root", "", $DBName);
+				$DBName = "u418115598_dentalapp";
+				$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 				//Name of the table 
 				$TableNameClinic = "clinic";
 				$SQLstring = "SELECT * FROM $TableNameClinic WHERE clinicStatus='approved'";
@@ -194,7 +194,7 @@ session_start();
 					$timeSlot = $_POST['timeSlotSL'];
 					$apptStatus = 'upcoming';
 
-					$conn = mysqli_connect("localhost", "root", "", $DBName);
+					$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 					$TableNameAppointment = "appointment";
 					//Inserts data into DB
 					$SQLstring = "INSERT INTO $TableNameAppointment " . " (apptID, clinicName, nric, apptDate, apptTime, apptStatus, practitionerNumber, reason) " . 
