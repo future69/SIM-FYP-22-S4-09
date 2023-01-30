@@ -25,10 +25,10 @@
 								<a class="nav-link" href="potentialPatientOurPartners.php">Our Partners</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientforPatients.php">For Patients</a>
+								<a class="nav-link" href="potentialPatientForPatients.php">For Patients</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientforClinics.php">For Clinics</a>
+								<a class="nav-link active" aria-current="page" href="potentialPatientForClinics.php">For Clinics</a>
 							</li>
 
 						</ul>
