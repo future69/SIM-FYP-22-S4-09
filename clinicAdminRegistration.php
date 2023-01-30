@@ -52,8 +52,8 @@
 
 	//This try block will be execute once the user enters the page, to load select list data
 	try {
-		$DBName = "dentalhealthapplicationdb";
-		$conn = mysqli_connect("localhost", "root", "", $DBName);
+		$DBName = "u418115598_dentalapp";
+		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 		$servicesTable = "service";
 
 		//The lines to run in sql
@@ -156,7 +156,7 @@
 			$errorMessage = "Please complete all fields";
 		} else {
 			try {
-				$conn = mysqli_connect("localhost", "root", "", $DBName);
+				$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
 				//Name of the table 
 				$TableNameUserAccount = "useraccount";
@@ -223,7 +223,7 @@
 			}
 		}
 	} else if (isset($_POST['back'])) {
-		header("Location:potentialPatientHomepage.php");
+		header("Location:index.php");
 	} else {
 		$username = "";
 		$password = "";
