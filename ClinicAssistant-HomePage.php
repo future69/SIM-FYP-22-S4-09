@@ -13,10 +13,9 @@ session_start();
 </head>
 <?php
 	//setting session variables
-	//$clinicAssistantNric = $_SESSION['clinicAssistantNric'];
-	//$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
-	//$clinicName = $_SESSION['clinicAssistantClinicName'];
-	$clinicAssistantFullname = "Sam";
+	$clinicAssistantNric = $_SESSION['clinicAssistantNric'];
+	$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+	$clinicName = $_SESSION['clinicAssistantClinicName'];
 	$clinicName = "tempClinicName";
 
 	// executing try block
