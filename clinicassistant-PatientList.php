@@ -12,6 +12,10 @@
 
     <title>Clinic Assistant Patient List</title>
 </head>
+<?php
+$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+?>
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -39,7 +43,7 @@
                 </ul>
                 <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
+                        <a class="nav-link" href="#">Welcome Clinic Assistant <?php echo $clinicAssistantFullname ?></a>
                     </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
