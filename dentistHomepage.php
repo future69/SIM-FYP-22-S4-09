@@ -15,8 +15,8 @@
 
 	// executing try block
 	try {
-		$DBName = "dentalhealthapplicationdb";
-		$conn = mysqli_connect("localhost", "root", "", $DBName);
+		$DBName = "u418115598_dentalapp";
+		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
 
 		// setting todayDate
 		date_default_timezone_set('Singapore');
