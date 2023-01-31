@@ -100,9 +100,18 @@ session_start();
 								header("Location:clinicAdminHomepage.php");
 								break;
 							case 'clinicAssistant':
+								//SQL statement to get clinic name
+								$TableNameClinicAssistant = 'clinicassistantprofile';
+								$SQLstringClinicAss = "SELECT * FROM $TableName INNER JOIN $TableNameClinicAssistant 
+								ON useraccount.nric = clinicassistantprofile.nric WHERE useraccount.username = '".$theResult['username']."'";
+								//Executing the sql
+								$queryResultClinicAss = mysqli_query($conn, $SQLstringClinicAss);
+								//Make result into array
+								$theResultClinicAss = mysqli_fetch_assoc($queryResultClinicAss);
+
 								$_SESSION['clinicAssistantNric'] = $theResult['nric'];
 								$_SESSION['clinicAssistantFullname'] = $theResult['fullName'];
-								$_SESSION['clinicAssistantClinicName'] = $theResult['clinicName'];
+								$_SESSION['clinicAssistantClinicName'] = $theResultClinicAss['clinicName'];
 								header("Location:ClinicAssistant-HomePage.php");
 								break;
 							case 'dentist':
