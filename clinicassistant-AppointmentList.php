@@ -100,7 +100,7 @@ session_start();
 						<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Name or NRIC">
 					</div>
 					<div class="col-4 text-end display-6 pb-3">
-						<button type="submit" class="btn btn-warning" name="bookAppointment">Book Appointment</button>
+						<button type="submit" class="btn btn-warning" name="bookAppointment" onclick="location.href='clinicassistant-CreateAppointment.php'">Book Appointment</button>
 					</div>
 				</div>
 	

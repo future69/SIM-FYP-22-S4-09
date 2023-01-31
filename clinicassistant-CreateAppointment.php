@@ -50,10 +50,10 @@
     </nav>
     <?php
 
-    $servername = "dentalhealthapplicationdb";
-
+    $servername = "u418115598_dentalapp";
+	
     //create connection
-    $con = new mysqli('localhost', 'root', '', $servername);
+    $con = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername) or die("Connection Failed");
 
     if (!$con) {
         die(mysqli_error($con));
