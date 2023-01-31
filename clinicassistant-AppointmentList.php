@@ -106,6 +106,7 @@ session_start();
 				</div>
 			</div>
 	</form>
+	
 	<div class="row py-3">
 		<div class="col-2 form-check">
 			<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" checked>
@@ -115,6 +116,7 @@ session_start();
 			<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast">
 			<label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 		</div>
+	</div>
 	</div>
 
 	<?php
@@ -154,7 +156,6 @@ session_start();
 				?>
 			</tbody>
 		</table>
-		</div>
 	<?php
 	} else {
 		echo "No results found";
