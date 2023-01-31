@@ -83,7 +83,6 @@ session_start();
 </header>
 
 <body>
-	<form method="POST">
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
 			<!-- Tablehead can put caption-top -->
@@ -104,8 +103,6 @@ session_start();
 						<button type="submit" class="btn btn-warning" name="bookAppointment">Book Appointment</button>
 					</div>
 				</div>
-			</div>
-	</form>
 	
 	<div class="row py-3">
 		<div class="col-2 form-check">
@@ -117,7 +114,7 @@ session_start();
 			<label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 		</div>
 	</div>
-	</div>
+
 
 	<?php
 	if (mysqli_num_rows($result) > 0) {
@@ -162,8 +159,8 @@ session_start();
 	} ?>
 
 
-
-
+			</div>
+		</div>
 </body>
 
 </html>
