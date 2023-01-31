@@ -19,7 +19,7 @@
 			<div id="navbarCollapse" class="collapse navbar-collapse">
 				<ul class="navbar-nav me-auto mb-2 mb-md-0">
 					<li class="nav-item">
-						<a class="nav-link" href="clinicassistant-HomePage.php">Home</a>
+						<a class="nav-link" href="ClinicAssistant-HomePage.php">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
