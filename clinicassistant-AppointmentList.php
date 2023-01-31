@@ -53,13 +53,14 @@ session_start();
 	</nav>
 	<?php
 
-	$servername = "dentalhealthapplicationdb";
+	$servername = "u418115598_dentalapp";
 	//Name of the table 
 	$clinicName = 'Toa Payoh Family Clinic';
 	$TableNameAppointment = "appointment";
 	$TableNameClinic = "clinic";
 	$TableNameUseraccount = "useraccount";
-	$con = mysqli_connect("localhost", "root", "", $servername);
+	$con = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername) or die("Connection Failed");
+
 
 	$SQLstring = "SELECT * FROM $TableNameAppointment 
 	INNER JOIN $TableNameClinic 
