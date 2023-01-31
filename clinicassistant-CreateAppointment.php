@@ -53,6 +53,7 @@
     $servername = "u418115598_dentalapp";
 	
     //create connection
+	
     $con = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername) or die("Connection Failed");
 
     if (!$con) {
@@ -85,9 +86,10 @@
         mysqli_close($con);
 
         echo "Appointment Creation Successfully";
-    } else {
-
-    }
+    } else if (isset($_POST['back'])) {
+				header("Location:clinicassistant-AppointmentList.php");
+			}
+    
 
     ?>
 </header>
