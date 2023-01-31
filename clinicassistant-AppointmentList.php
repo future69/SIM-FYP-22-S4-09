@@ -116,7 +116,6 @@ session_start();
 			<label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 		</div>
 	</div>
-	</div>
 
 	<?php
 	if (mysqli_num_rows($result) > 0) {
@@ -155,6 +154,7 @@ session_start();
 				?>
 			</tbody>
 		</table>
+		</div>
 	<?php
 	} else {
 		echo "No results found";
