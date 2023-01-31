@@ -157,8 +157,8 @@
 
 				//Name of the table 
 				$TableName = "useraccount";
-				$TableName2 = "clinicAssistantProfile";
-				$TableName3 = "dentistProfile";
+				$TableName2 = "clinicassistantprofile";
+				$TableName3 = "dentistprofile";
 
 				//See if any existing username
 				$SQLstringCheckUsername = "SELECT username FROM $TableName" . " where username='" . $username . "'";
