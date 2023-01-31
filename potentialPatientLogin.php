@@ -97,21 +97,23 @@ session_start();
 							case 'clinicAdmin':
 								$_SESSION['clinicName'] = $theResult['nric'];
 								$_SESSION['clinicAdminAcraNum'] = $theResult['acraNum'];
+								header("Location:clinicAdminHomepage.php");
 								break;
 							case 'clinicAssistant':
 								$_SESSION['clinicAssistantNric'] = $theResult['nric'];
 								$_SESSION['clinicAssistantFullname'] = $theResult['fullName'];
 								$_SESSION['clinicAssistantClinicName'] = $theResult['clinicName'];
+								header("Location:ClinicAssistant-HomePage.php");
 								break;
 							case 'dentist':
 								$_SESSION['dentistNric'] = $theResult['nric'];
 								$_SESSION['dentistFullname'] = $theResult['fullName'];
 								$_SESSION['dentistPracNum'] = $theResult['practitionerNumber'];
+								header("Location:dentistHomepage.php");
 								break;
-							// case 'superAdmin':
-							// 	$_SESSION['patientNric'] = $theResult['username'];
-							// 	$_SESSION['patientFullname'] = $theResult['nric'];
-							// 	break;
+							case 'superAdmin':
+								header("Location:superadminHomepage.php");
+								break;
 						}
 					}
 				} catch (mysqli_sql_exception $e) {
