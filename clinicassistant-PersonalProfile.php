@@ -56,7 +56,7 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
     </nav>
 	<?php 
 			if (isset($_POST['back'])) {
-				header("Location:clinicassistant-Homepage.php");
+				header("Location:ClinicAssistant-HomePage.php");
 			}
 		?>
 </header>
