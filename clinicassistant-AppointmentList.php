@@ -58,7 +58,8 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 
 	$servername = "u418115598_dentalapp";
 	//Name of the table 
-	$clinicName = 'Toa Payoh Family Clinic';
+
+	$clinicName = $_SESSION['clinicAssistantClinicName'];
 	$TableNameAppointment = "appointment";
 	$TableNameClinic = "clinic";
 	$TableNameUseraccount = "useraccount";
