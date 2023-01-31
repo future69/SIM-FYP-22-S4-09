@@ -13,7 +13,7 @@ session_start();
 					<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
 					<img
 					class="d-inline-block align-top"
-					src="images/SuperDentalLogo.png"
+					src="images/superDentalLogo.png"
 					width="50" height="40"/>
 					DiamondDental™
 					</a>
@@ -26,13 +26,13 @@ session_start();
 								<a class="nav-link active" aria-current="page" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBookAppointment">Book Appointment</a>
+								<a class="nav-link" href="potentialPatientBookAppointment.php">Book Appointment</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientView&SearchClinic.php">Clinics</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Bills</a>
+								<a class="nav-link" href="potentialPatientBills.php">Bills</a>
 							</li>
 						</ul>
 					</div>

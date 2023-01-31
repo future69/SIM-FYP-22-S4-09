@@ -37,14 +37,14 @@ session_start();
 					<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
 					<img
 					class="d-inline-block align-top"
-					src="images/SuperDentalLogo.png"
+					src="images/superDentalLogo.png"
 					width="50" height="40"/>
 					DiamondDental™
 					</a>
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" aria-current="page" href="potentialPatientHomepageAftLogin.php">Home</a>
+								<a class="nav-link" href="potentialPatientHomepageAftLogin.php">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link active" aria-current="page" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
