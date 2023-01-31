@@ -153,7 +153,7 @@
 			$errorMessage = "Please complete all fields";
 		} else {
 			try {
-				$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM", $DBName);
+				$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName);
 
 				//Name of the table 
 				$TableName = "useraccount";

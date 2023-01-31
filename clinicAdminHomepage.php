@@ -52,7 +52,7 @@
 	// try block execution upon entering the page
 	try {
 		$DBName = "u418115598_dentalapp";
-		$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM", $DBName);
+		$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName);
 
 		// table name
 		$TableNameClinic = "clinic";
