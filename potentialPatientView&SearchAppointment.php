@@ -72,7 +72,7 @@ session_start();
 		$TableNameAppointment = "appointment";
 		$TableNameClinic = "clinic";
 		//The lines to run in sql (getting all records that match patient nric from session)
-		$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."'";	
+		$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."' ORDER BY str_to_date(apptDate, '%Y-%m-%d'), apptTime";
 		$result = mysqli_query($conn, $SQLstring);	
 		//Executing the sql
 		$queryResult = mysqli_query($conn, $SQLstring);
