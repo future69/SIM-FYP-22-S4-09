@@ -1,54 +1,16 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 	</head>
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<div class="container-fluid">
-					<a class="navbar-brand mb-0 h1" href="">
-					<img
-					class="d-inline-block align-top"
-					src="images/superDentalLogo.png"
-					width="50" height="40"/>
-					DiamondDental™
-					</a>
-					<div class="collapse navbar-collapse" id="navigationBar">
-						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="clinicAdminHomepage.php">Home</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="clinicAdminUserAccounts.php">User Accounts</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="clinicAdminAppointments.php">Appointments</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="clinicAdminServices.php">Services</a>
-							</li>
-						</ul>
-					</div>
-					<div class="me-auto">
-						<ul class="navbar-nav">
-							<li class="nav-item">
-								<span class="navbar-brand text-center">Toa Payoh Dental</span>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="index.php">Logout</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-		</nav>
-	</header>
 	<?php
 	// set session variables from login
-	// $clinicName = $_SESSION["clinicName"];
-	$clinicName = "tempClinicName";
-
+	$clinicName = $_SESSION["clinicName"];
 	// try block execution upon entering the page
 	try {
 		$DBName = "u418115598_dentalapp";
@@ -78,13 +40,52 @@
 		echo "Error in connection";
 	}
 	?>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<div class="container-fluid">
+					<a class="navbar-brand mb-0 h1" href="">
+					<img
+					class="d-inline-block align-top"
+					src="images/superDentalLogo.png"
+					width="50" height="40"/>
+					DiamondDental™
+					</a>
+					<div class="collapse navbar-collapse" id="navigationBar">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="clinicAdminHomepage.php">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="clinicAdminUserAccounts.php">User Accounts</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="clinicAdminAppointments.php">Appointments</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="clinicAdminServices.php">Services</a>
+							</li>
+						</ul>
+					</div>
+					<div class="me-auto">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<span class="navbar-brand text-center"><?php echo $clinicName ?></span>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="index.php">Logout</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+		</nav>
+	</header>
 	<body>
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
 			<!-- Tablehead can put caption-top -->
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="col-md-5 text-center text-md-start">
-					<div class="display-6">Welcome Toa Payoh Dental</div>
+					<div class="display-6">Welcome <?php echo $clinicName ?></div>
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">

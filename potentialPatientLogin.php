@@ -95,8 +95,17 @@ session_start();
 								header("Location:potentialPatientHomepageAftLogin.php");
 								break;
 							case 'clinicAdmin':
-								$_SESSION['clinicName'] = $theResult['nric'];
-								$_SESSION['clinicAdminAcraNum'] = $theResult['acraNum'];
+								$TableNameClinic = 'clinic';
+								$SQLstringClinic = "SELECT * FROM $TableName INNER JOIN $TableNameClinic
+								WHERE useraccount.username = '".$theResult['username']."'";
+				
+								//Executing the sql
+								$queryResultClinic = mysqli_query($conn, $SQLstringClinic);
+								//Make result into array
+								$theResultClinic = mysqli_fetch_assoc($queryResultClinic);
+								
+								$_SESSION['clinicAdminAcraNum'] = $theResultClinic['acraNum'];
+								$_SESSION['clinicName'] = $theResultClinic['clinicName'];
 								header("Location:clinicAdminHomepage.php");
 								break;
 							case 'clinicAssistant':

@@ -16,7 +16,7 @@ session_start();
 	$clinicAssistantNric = $_SESSION['clinicAssistantNric'];
 	$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 	$clinicName = $_SESSION['clinicAssistantClinicName'];
-	$clinicName = "tempClinicName";
+	//$clinicName = "tempClinicName";
 
 	// executing try block
 	try {
