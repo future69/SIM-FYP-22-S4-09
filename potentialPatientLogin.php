@@ -97,8 +97,7 @@ session_start();
 							case 'clinicAdmin':
 								$TableNameClinic = 'clinic';
 								$SQLstringClinic = "SELECT * FROM $TableName INNER JOIN $TableNameClinic
-								WHERE useraccount.username = '".$theResult['username']."'";
-				
+                                ON useraccount.username = clinic.username WHERE useraccount.username = '".$theResult['username']."'";
 								//Executing the sql
 								$queryResultClinic = mysqli_query($conn, $SQLstringClinic);
 								//Make result into array
