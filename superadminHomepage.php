@@ -8,7 +8,7 @@
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
-					<a class="navbar-brand mb-0 h1" href="">
+					<a class="navbar-brand">
 					<img
 					class="d-inline-block align-top"
 					src="images/SuperDentalLogo.png"
@@ -47,8 +47,8 @@
 	<?php
 	//This try block will be execute once the user enters the page
 	try	{
-		$DBName = "dentalhealthapplicationdb";
-		$conn = mysqli_connect("localhost", "root", "",$DBName );
+		$DBName = "u418115598_dentalapp";
+		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 		//Name of the table 
 		$TableNameClinic = "clinic";
 		//The lines to run in sql (get current applications)

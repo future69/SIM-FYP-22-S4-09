@@ -6,8 +6,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
-    <title>superadmin-Clinic account application profile</title>
-</head>
 <header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
@@ -47,8 +45,8 @@
 
 		try	{
 			$applicationAcraNum = $_GET['acraNum'];
-			$DBName = "dentalhealthapplicationdb";
-			$conn = mysqli_connect("localhost", "root", "",$DBName );
+			$DBName = "u418115598_dentalapp";
+			$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 			//Name of the table 
 			$TableNameClinic = "clinic";
 			//The lines to run in sql (get current applications)
