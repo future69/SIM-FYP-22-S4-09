@@ -2,9 +2,8 @@
 session_start();
 
 $DBName = "u418115598_dentalapp";
-$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
+$connect = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
-$connect = mysqli_connect("localhost", "root", "", "dentalhealthapplicationdb");
 $output = '';
 
 //Name of the table 
@@ -87,9 +86,6 @@ if (isset($_POST['dateRange']) & $_POST['dateRange'] != 'all') {
 
     $query .= " AND $dateFilter";
 }
-
-// echo "<br>";
-// echo $query;
 
 $result = mysqli_query($connect, $query);
 

@@ -6,6 +6,7 @@ session_start();
 	<head>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	</head>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -57,117 +58,117 @@ session_start();
 
 		// set current date and time of query
 		date_default_timezone_set("Singapore");
-		$currentTime = date("h:i:sa");
-		$currentDate = date("y-m-d");
+		// $currentTime = date("h:i:sa");
+		// $currentDate = date("y-m-d");
 	
-		//Declaration
-		$errorMessage = "";
-		$errorMessage2 = "";
+		// //Declaration
+		// $errorMessage = "";
+		// $errorMessage2 = "";
 	
-		//This try block will be execute once the user enters the page
-		try	{
-		$DBName = "u418115598_dentalapp";
-		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
-		//Name of the table 
-		$TableNameAppointment = "appointment";
-		$TableNameClinic = "clinic";
-		//The lines to run in sql (getting all records that match patient nric from session)
-		$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."' ORDER BY str_to_date(apptDate, '%Y-%m-%d'), apptTime";
-		$result = mysqli_query($conn, $SQLstring);	
-		//Executing the sql
-		$queryResult = mysqli_query($conn, $SQLstring);
-		} 	
-		catch(mysqli_sql_exception $e) {
-				echo "Error";
-		}
+		// //This try block will be execute once the user enters the page
+		// try	{
+		// $DBName = "u418115598_dentalapp";
+		// $conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
+		// //Name of the table 
+		// $TableNameAppointment = "appointment";
+		// $TableNameClinic = "clinic";
+		// //The lines to run in sql (getting all records that match patient nric from session)
+		// $SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."' ORDER BY str_to_date(apptDate, '%Y-%m-%d'), apptTime";
+		// $result = mysqli_query($conn, $SQLstring);	
+		// //Executing the sql
+		// $queryResult = mysqli_query($conn, $SQLstring);
+		// } 	
+		// catch(mysqli_sql_exception $e) {
+		// 		echo "Error";
+		// }
 		
-		if (isset($_POST['searchAppt'])) {
+		// if (isset($_POST['searchAppt'])) {
 
-			// search by clinic name
-			//Declaring, removing backslashes and whitespaces
-			$searchClinicName = stripslashes($_POST['searchClinicName']);
-			//Remove whitespaces
-			$searchClinicName = trim($_POST['searchClinicName']);
+		// 	// search by clinic name
+		// 	//Declaring, removing backslashes and whitespaces
+		// 	$searchClinicName = stripslashes($_POST['searchClinicName']);
+		// 	//Remove whitespaces
+		// 	$searchClinicName = trim($_POST['searchClinicName']);
 
-			// search by filter period / status
-			//Declare selection values
-			$filterPeriod = $_POST['filterPeriod'];
-			$filterStatus = $_POST['filterStatus'];
-			$filterDateLower = "";
-			$filterDateUpper = "";
+		// 	// search by filter period / status
+		// 	//Declare selection values
+		// 	$filterPeriod = $_POST['filterPeriod'];
+		// 	$filterStatus = $_POST['filterStatus'];
+		// 	$filterDateLower = "";
+		// 	$filterDateUpper = "";
 			
-			if ($GLOBALS['searchClinicName'] == null){
-				$GLOBALS['searchClinicName'] = "%";
-			} else {
-				$GLOBALS['searchClinicName'] = "%" . $GLOBALS['searchClinicName'] . "%";
-			}
+		// 	if ($GLOBALS['searchClinicName'] == null){
+		// 		$GLOBALS['searchClinicName'] = "%";
+		// 	} else {
+		// 		$GLOBALS['searchClinicName'] = "%" . $GLOBALS['searchClinicName'] . "%";
+		// 	}
 			
-			// checking on filter status
-			if ($filterStatus == "flexRadioDefaultCurrent"){
-				//SQL string to search for current appointments
-				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptStatus='current'" ;
-			} 
-			else if ($filterStatus == "flexRadioDefaultPast"){
-				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptStatus='past'" ;
-			}
-			else if ($filterStatus == '1week'){
-				$filterDateLower = date('y-m-d', strtotime('-1 week'));
-				$filterDateUpper = date('y-m-d', strtotime('+1 week'));
-				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
-			}
-			else if ($filterStatus == '1month'){
-				$filterDateLower = date('y-m-d', strtotime('-1 month'));
-				$filterDateUpper = date('y-m-d', strtotime('+1 month'));
-				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
-			}
-			else if ($filterStatus == '3month'){
-				$filterDateLower = date('y-m-d', strtotime('-3 month'));
-				$filterDateUpper = date('y-m-d', strtotime('+3 month'));
-				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
-			}
-			else if ($filterStatus == '6month'){
-				$filterDateLower = date('y-m-d', strtotime('-6 month'));
-				$filterDateUpper = date('y-m-d', strtotime('+6 month'));
-				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
-			}
-			else if ($filterStatus == '1year'){
-				$filterDateLower = date('y-m-d', strtotime('-1 year'));
-				$filterDateUpper = date('y-m-d', strtotime('+1 year'));
-				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
-			}
-			else {
-				$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName";
-			}
+		// 	// checking on filter status
+		// 	if ($filterStatus == "flexRadioDefaultCurrent"){
+		// 		//SQL string to search for current appointments
+		// 		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptStatus='current'" ;
+		// 	} 
+		// 	else if ($filterStatus == "flexRadioDefaultPast"){
+		// 		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptStatus='past'" ;
+		// 	}
+		// 	else if ($filterStatus == '1week'){
+		// 		$filterDateLower = date('y-m-d', strtotime('-1 week'));
+		// 		$filterDateUpper = date('y-m-d', strtotime('+1 week'));
+		// 		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+		// 	}
+		// 	else if ($filterStatus == '1month'){
+		// 		$filterDateLower = date('y-m-d', strtotime('-1 month'));
+		// 		$filterDateUpper = date('y-m-d', strtotime('+1 month'));
+		// 		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+		// 	}
+		// 	else if ($filterStatus == '3month'){
+		// 		$filterDateLower = date('y-m-d', strtotime('-3 month'));
+		// 		$filterDateUpper = date('y-m-d', strtotime('+3 month'));
+		// 		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+		// 	}
+		// 	else if ($filterStatus == '6month'){
+		// 		$filterDateLower = date('y-m-d', strtotime('-6 month'));
+		// 		$filterDateUpper = date('y-m-d', strtotime('+6 month'));
+		// 		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+		// 	}
+		// 	else if ($filterStatus == '1year'){
+		// 		$filterDateLower = date('y-m-d', strtotime('-1 year'));
+		// 		$filterDateUpper = date('y-m-d', strtotime('+1 year'));
+		// 		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptdate BETWEEN CAST('" . $filterDateLower . "' AS DATE) AND CAST('" . $filterDateUpper . "' AS DATE)";
+		// 	}
+		// 	else {
+		// 		$SQLstring = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName";
+		// 	}
 
-			//Executing the sql
-			$queryResult = mysqli_query($conn, $SQLstring);
-			$GLOBALS['searchClinicName'] = "";
-			$filterDateLower = "";
-			$filterDateUpper = "";
-		} 
+		// 	//Executing the sql
+		// 	$queryResult = mysqli_query($conn, $SQLstring);
+		// 	$GLOBALS['searchClinicName'] = "";
+		// 	$filterDateLower = "";
+		// 	$filterDateUpper = "";
+		// } 
 		
-		//to delete appt
-		else if (isset($_POST['deleteAppt'])) {
+		// //to delete appt
+		// else if (isset($_POST['deleteAppt'])) {
 			
-		//Declaring, removing backslashes and whitespaces
-		$apptID = stripslashes($_POST['apptID']);
-		//Remove whitespaces
-		$apptID = trim($_POST['apptID']);
+		// //Declaring, removing backslashes and whitespaces
+		// $apptID = stripslashes($_POST['apptID']);
+		// //Remove whitespaces
+		// $apptID = trim($_POST['apptID']);
 		
-			if (empty($apptID) == false){
-					//The lines to run in sql
-					$SQLdelAppt = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptID ='". $apptID ."'";
-					//Executing the sql
-					$queryResultAppt = mysqli_query($conn, $SQLdelAppt);
+		// 	if (empty($apptID) == false){
+		// 			//The lines to run in sql
+		// 			$SQLdelAppt = "SELECT apptID, clinicName, nric, apptDate, apptTime, serviceName, apptStatus, practitionerNum FROM $TableName" . " where apptID ='". $apptID ."'";
+		// 			//Executing the sql
+		// 			$queryResultAppt = mysqli_query($conn, $SQLdelAppt);
 					
-					if (mysqli_num_rows($queryResultAppt) == 0) {
-						$errorMessage2 = "Appointment does not exist";
-						} 
-					else {
-						header("Location:potentialPatientView&SearchAppointment.php?");
-					}
-			} 
-		}
+		// 			if (mysqli_num_rows($queryResultAppt) == 0) {
+		// 				$errorMessage2 = "Appointment does not exist";
+		// 				} 
+		// 			else {
+		// 				header("Location:potentialPatientView&SearchAppointment.php?");
+		// 			}
+		// 	} 
+		// }
 	?>
 	<body>
 		<div class="container-lg">
@@ -184,12 +185,12 @@ session_start();
 						</div>
 						<div class="row col-2">
 							<select class="form-select" name="timeSlotSL" id="timeSlotSL">
-								<option value="plceaholder">All Dates</option>
-								<option value="plceaholder">1 week</option>
-								<option value="plceaholder">1 month</option>
-								<option value="plceaholder">3 months</option>
-								<option value="plceaholder">6 months</option>
-								<option value="plceaholder">1 year</option>
+								<option value="all">All Dates</option>
+								<option value="1week">1 week</option>
+								<option value="1month">1 month</option>
+								<option value="3month">3 months</option>
+								<option value="6month">6 months</option>
+								<option value="1year">1 year</option>
 							</select>
 						</div>
 				</form>
@@ -199,62 +200,63 @@ session_start();
 					<div class="display-6 pb-3">Your next appointments(s)</div>
 					<div class="row py-3">
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" checked>
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" value="flexRadioDefaultUpcoming" checked>
 						  <label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
 						</div>
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast" value="flexRadioDefaultPast">
 						  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 						</div>
 					</div>
-					<?php
-						if (mysqli_num_rows($result) > 0) 
-						{
-					?>
-					<table class="table table-hover table-secondary table-striped ">
-						<thead>
-							<tr>
-								<th scope="col">Clinic Name</th>
-								<th scope="col">Location</th>
-								<th scope="col">Date</th>
-								<th scope="col">Time</th>
-								<th scope="col">Action</th>
-							<tr>
-						</thead>
-						<tbody>
-							<?php
-								while($row = mysqli_fetch_array($result))
-								{
-							?>
-							<tr>
-								<td><?php echo $row["clinicName"]; ?></td>
-								<td><?php echo $row["clinicAddress"]; ?></td>
-								<td><?php echo $row["apptDate"]; ?></td>
-								<td><?php echo $row["apptTime"]; ?></td>
-								<td>
-									<?php 
-									//Convert appt and current date to datetime format
-									$dateAppt = new DateTime($row["apptDate"]);
-									$dateCurrent = new DateTime(date("Y-m-d"));
-									$dateDiff = $dateAppt->diff($dateCurrent);
-									if ($dateDiff->days > 3){
-									?>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='potentialPatientUpdateAppointment.php?apptID=<?php echo $row['apptID'];?>'">Update Appointment</button>
-								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
-								<?php } ?>
-								</td>
-							</tr>
-							<?php } ?>
-							
-						</tbody>
-					</table>
-					<?php 
-					} 
-					else { 
-						echo "No results found";
-					} ?>
+					<div id="result"></div>
 				</div>
 			</div>
 		</div>
+		<script>
+			$(document).ready(function() {	
+				// Default value for each field
+				let search = $('#searchClinicName').val();
+				let apptStatus = $('input[type="radio"]:checked').val();
+				let dateRange = $('#timeSlotSL').val();
+				
+				load_data(search, apptStatus, dateRange);
+
+				function load_data(search_text, apptStatus, dateRange) {
+					$.ajax({
+						url: "pp-apptstatusfilter.php",
+						method: "POST",
+						data: {
+							search_text: search_text,
+							apptStatus: apptStatus,
+							dateRange: dateRange
+						},
+						success: function(data) {
+							$('#result').html(data);
+						}
+					});
+				}
+
+				// This is for clinic name search box (Clinic name)
+				$('#searchClinicName').keyup(function() {
+					search = $(this).val();
+
+					load_data(search, apptStatus, dateRange);
+				});
+
+				// This is for radio button (Appointment Status)
+				$('input[type="radio"]').change(function() {
+					apptStatus = $('input[type="radio"]:checked').val();
+
+					load_data(search, apptStatus, dateRange);
+				});
+				
+				// This is for drop down (Date Range)
+				$('#timeSlotSL').change(function() {
+					dateRange = $(this).val();
+
+					load_data(search, apptStatus, dateRange);
+				});				
+			});
+		</script>
 	</body>
 </html>
