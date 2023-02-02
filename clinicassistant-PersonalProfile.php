@@ -12,7 +12,13 @@
 </head>
 
 <?php
+$clinicAssistantUsername = $_SESSION['clinicAssistantUsername'];
+$clinicAssistantPassword = $_SESSION['clinicAssistantPassword'];
 $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+$clinicAssistantNric = $_SESSION['clinicAssistantNric'];
+$clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
+$clinicAssistantPhoneNo = $_SESSION['clinicAssistantPhoneNo'];
+$clinicAssistantEmail = $_SESSION['clinicAssistantEmail'];
 ?>
 
 <header>
@@ -72,43 +78,43 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" placeholder="Sam" disabled id="usernameTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantUsername ?>" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" value="12345678" disabled id="passwordTB">
+						  <input type="password" class="form-control" value="<?php echo $clinicAssistantPassword ?>"  disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled placeholder="Sam Fisher" id="usernameTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantUsername ?>" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled placeholder="S12345678I" id="passwordTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantNric ?>" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB"  class="col-lg-1 col-form-label">Clinic Location:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled placeholder="St John Clinic" id="passwordTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantClinicName ?>" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" placeholder="87654321" disabled id="passwordTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantPhoneNo ?>" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" placeholder="John@email.com" disabled id="usernameTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantEmail ?>" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
