@@ -117,9 +117,13 @@ session_start();
 								//Make result into array
 								$theResultClinicAss = mysqli_fetch_assoc($queryResultClinicAss);
 
-								$_SESSION['clinicAssistantNric'] = $theResult['nric'];
+								$_SESSION['clinicAssistantUsername'] = $theResult['username'];
+								$_SESSION['clinicAssistantPassword'] = $theResult['password'];
 								$_SESSION['clinicAssistantFullname'] = $theResult['fullName'];
+								$_SESSION['clinicAssistantNric'] = $theResult['nric'];
 								$_SESSION['clinicAssistantClinicName'] = $theResultClinicAss['clinicName'];
+								$_SESSION['clinicAssistantPhoneNo'] = $theResult['phoneNum'];
+								$_SESSION['clinicAssistantEmail'] = $theResult['email'];
 								header("Location:ClinicAssistant-HomePage.php");
 								break;
 							case 'dentist':
