@@ -56,14 +56,15 @@ $patientNric = $_SESSION["patientNric"];
 
 //This try block will be execute once the user enters the page
 try {
+	$apptStatus = "upcoming";
 	$DBName = "u418115598_dentalapp";
 	$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
-
 	//Name of the table 
 	$TableNameAppointment = "appointment";
 	$TableNameClinic = "clinic";
 	//The lines to run in sql (get current applications)
-	$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."'";	
+	$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic 
+	ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."' AND appointment.apptStatus = '". $apptStatus ."'";	
 	//Executing the sql
 	$queryResult = mysqli_query($conn, $SQLstring);
 } catch (mysqli_sql_exception $e) {
