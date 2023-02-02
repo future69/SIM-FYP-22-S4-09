@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 ?>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@ session_start();
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
-				<img class="d-inline-block align-top" src="images/SuperDentalLogo.png" width="50" height="40" />
+				<img class="d-inline-block align-top" src="images/superDentalLogo.png" width="50" height="40" />
 				DiamondDental™
 			</a>
 			<div class="collapse navbar-collapse" id="navigationBar">
@@ -40,7 +41,7 @@ session_start();
 						<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+						<a class="nav-link" href="index.php">Logout</a>
 					</li>
 				</ul>
 			</div>
@@ -55,8 +56,8 @@ $patientNric = $_SESSION["patientNric"];
 
 //This try block will be execute once the user enters the page
 try {
-	$DBName = "dentalhealthapplicationdb";
-	$conn = mysqli_connect("localhost", "root", "", $DBName);
+	$DBName = "u418115598_dentalapp";
+	$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
 	//Name of the table 
 	$TableNameAppointment = "appointment";

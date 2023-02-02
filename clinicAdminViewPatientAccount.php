@@ -1,3 +1,8 @@
+<?php 
+session_start(); 
+$clinicName = $_SESSION["clinicName"];
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,7 +15,7 @@
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
-					src="images/SuperDentalLogo.png"
+					src="images/superDentalLogo.png"
 					width="50" height="40"/>
 					DiamondDental™
 					</a>
@@ -33,10 +38,10 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<span class="navbar-brand text-center">Toa Payoh Dental</span>
+								<span class="navbar-brand text-center"><?php echo $clinicName ?></span>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+								<a class="nav-link" href="index.php">Logout</a>
 							</li>
 						</ul>
 					</div>

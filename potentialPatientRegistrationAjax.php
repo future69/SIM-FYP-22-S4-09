@@ -4,8 +4,8 @@ try	{
     
     $theNric = $_REQUEST["q"];
 
-    $DBName = "dentalhealthapplicationdb";
-    $conn = mysqli_connect("localhost", "root", "",$DBName);
+    $DBName = "u418115598_dentalapp";
+    $conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
     //Name of the table 
     $TableName = "pasthistory";
     //The lines to run in sql

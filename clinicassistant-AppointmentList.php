@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html lang="en">
 
 <head>
@@ -9,6 +12,9 @@
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
 	<title>clinic Assistant Appointment List</title>
 </head>
+<?php
+$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+?>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
@@ -19,7 +25,7 @@
 			<div id="navbarCollapse" class="collapse navbar-collapse">
 				<ul class="navbar-nav me-auto mb-2 mb-md-0">
 					<li class="nav-item">
-						<a class="nav-link" href="clinicassistant-HomePage.php">Home</a>
+						<a class="nav-link" href="ClinicAssistant-HomePage.php">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="clinicassistant-AppointmentList.php">Appointment</a>
@@ -36,112 +42,177 @@
 				</ul>
 				<ul class="navbar-nav d-flex mb-2 mb-md-0">
 					<li class="nav-item d-flex">
-						<a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
+						<a class="nav-link" href="#">Welcome Clinic Assistant <?php echo $clinicAssistantFullname ?></a>
 					</li>
 					<li class="nav-item d-flex">
 						<a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
 					</li>
 					<li class="nav-item d-flex">
-						<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+						<a class="nav-link" href="index.php">Logout</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<?php
-
-	$servername = "dentalhealthapplicationdb";
-
+	$servername = "u418115598_dentalapp";
 	//Name of the table 
-	$con = mysqli_connect("localhost", "root", "", $servername) or die("Connection Failed");
-	$sqlquery = "SELECT ua.* , appt.* FROM 	useraccount ua, appointment appt WHERE ua.nric = appt.nric";
-	$result = mysqli_query($con, $sqlquery);
 
-	if (isset($_POST['deleteAppt'])) {
-		echo '<script>alert("Appointment Deleted")</script>';
-	} else if (isset($_POST['updateAppt'])) {
-		header("Location:clinicassistant-UpdateAppointment.php");
-	} else if (isset($_POST['CreateATD'])) {
-		header("Location:clinicassistant-ATD.php");
-	} else if (isset($_POST['bookAppointment'])) {
-		header("Location:clinicassistant-CreateAppointment.php");
-	}
+	$clinicName = $_SESSION['clinicAssistantClinicName'];
+	$TableNameAppointment = "appointment";
+	$TableNameClinic = "clinic";
+	$TableNameUseraccount = "useraccount";
+	$con = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $servername) or die("Connection Failed");
+
+	$SQLstring = "SELECT * FROM $TableNameAppointment 
+	INNER JOIN $TableNameClinic 
+	ON appointment.clinicName = clinic.clinicName 
+	INNER JOIN $TableNameUseraccount 
+	ON appointment.nric = useraccount.nric 
+	WHERE clinic.clinicName = '" . $clinicName . "'";
+	$result = mysqli_query($con, $SQLstring);
+
+	if (isset($_GET['apptID'])) {
+	echo $_GET['apptID'];
+	//if the above is able to get the ApptID uncomment the 3 rows below.
+	// $deleteID = $_GET['apptID'];
+	// $deleteSQL = "DELETE from appointment WHERE apptID = $deleteID";
+	// $deleteQuery = mysqli_query($con, $deleteSQL);
+	} 
+
+	//else if (isset($_POST['updateAppt'])) {
+	// 	header("Location:clinicassistant-UpdateAppointment.php");
+	// } else if (isset($_POST['CreateATD'])) {
+	// 	header("Location:clinicassistant-ATD.php");
+	// } else if (isset($_POST['bookAppointment'])) {
+	// 	header("Location:clinicassistant-CreateAppointment.php");
+	// }
 	?>
 </header>
 
 <body>
-	<form method="POST">
-		<div class="container-lg">
-			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
-			<!-- Tablehead can put caption-top -->
-			<div class="row justify-content-center align-items-center pt-5">
-				<div class="col-12 text-start">
-					<div class="display-5">Appointments</div>
-				</div>
-			</div>
-			<div class="row justify-content-center align-items-center pt-5">
-				<div class="row">
-					<label for="searchClinicName" class="row col-2 col-form-label">
-						<h4>Search :</h4>
-					</label>
-					<div class="row col-6">
-						<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Name or NRIC">
-					</div>
-					<div class="col-4 text-end display-6 pb-3">
-						<form class="justify-content-end align-items-end" method="POST">
-							<button type="submit" class="btn btn-warning" name="bookAppointment">Book Appointment</button>
-						</form>
-					</div>
-					<div class="row py-3">
-						<div class="col-2 form-check">
-							<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" checked>
-							<label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
-						</div>
-						<div class="col-2 form-check">
-							<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast">
-							<label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
-						</div>
-					</div>
-					<table class="table table-hover table-secondary table-striped ">
-						<thead>
-							<tr>
-								<th scope="col">Name</th>
-								<th scope="col">NRIC</th>
-								<th scope="col">Date</th>
-								<th scope="col">Time</th>
-								<th scope="col">Phone Number</th>
-								<th scope="col">Reason</th>
-								<th scope="col">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-
-							<?php
-							while ($row = mysqli_fetch_assoc($result)) {
-							?>
-								<tr>
-									<td> <?php echo $row['fullName'] ?> </td>
-									<td> <?php echo $row['nric'] ?> </td>
-									<td> <?php echo $row['apptDate'] ?> </td>
-									<td> <?php echo $row['apptTime'] ?> </td>
-									<td> <?php echo $row['phoneNum'] ?> </td>
-									<td> <?php echo $row['apptReason'] ?> </td>
-									<td>
-										<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
-										<button type="submit" class="btn btn-danger" name="deleteAppt">Deleted Appointment</button>
-										<button type="submit" class="btn btn-success" name="CreateATD" onclick="location.href='clinicassistant-ATD.php'">Update Appointment Treatment Details</button>
-									</td>
-								</tr>
-							<?php
-							}
-							?>
-
-						</tbody>
-					</table>
-				</div>
+	<div class="container-lg">
+		<!-- Put this div outside the center alignment, for the welcome message plus bills -->
+		<!-- Tablehead can put caption-top -->
+		<div class="row justify-content-center align-items-center pt-5">
+			<div class="col-12 text-start">
+				<div class="display-5">Appointments</div>
 			</div>
 		</div>
-	</form>
+		<div class="row justify-content-center align-items-center pt-5">
+			<div class="row">
+				<label for="searchClinicName" class="row col-2 col-form-label">
+					<h4>Search :</h4>
+				</label>
+				<div class="row col-6">
+					<input type="text" class="row col-3 form-control" name="apptSearch" id="searchClinicName" placeholder="Name or NRIC">
+				</div>
+				<div class="col-4 text-end display-6 pb-3">
+					<button type="submit" class="btn btn-warning" name="bookAppointment" onclick="location.href='clinicassistant-CreateAppointment.php'">Book Appointment</button>
+				</div>
+			</div>
+			<div class="row py-3">
+				<div class="col-2 form-check">
+					<input class="form-check-input" type="radio" value="upcoming" name="ApptRadio" id="flexRadioDefaultCurrent" onclick="filterRadio('upcoming')" checked><strong>Current Appointments</strong>
+				</div>
+				<div class="col-2 form-check">
+					<input class="form-check-input" type="radio" value="past" name="ApptRadio" id="flexRadioDefaultPast" onclick="filterRadio('past')"><strong>Past Appointments</strong>
+				</div>
+			</div>
+
+			<div id="radioFilter" class="mb-2"></div>
+
+			<div id="apptResult" class="align-middle"></div>
+
+			<?php
+			if (mysqli_num_rows($result) > 0) {
+			?>
+				<table class="table table-hover table-secondary table-striped ">
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">NRIC</th>
+							<th scope="col">Date</th>
+							<th scope="col">Time</th>
+							<th scope="col">Phone Number</th>
+							<th scope="col">Reason</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						while ($row = mysqli_fetch_array($result)) {
+						?>
+							<tr>
+								<td> <?php echo $row['fullName']; ?> </td>
+								<td> <?php echo $row['nric']; ?> </td>
+								<td> <?php echo $row['apptDate']; ?> </td>
+								<td> <?php echo $row['apptTime']; ?> </td>
+								<td> <?php echo $row['phoneNum']; ?> </td>
+								<td> <?php echo $row['reason']; ?> </td>
+								<td>
+									<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
+									<button type="submit" class="btn btn-danger" name="deleteAppt" onclick="location.href='clinicassistant-AppointmentList.php?apptID=<?php echo $row['apptID']; ?>'">Deleted Appointment</button>
+									<button type="submit" class="btn btn-success" name="CreateATD" onclick="location.href='clinicassistant-ATD.php?apptID=<?php echo $row['apptID']; ?>'">Update Appointment Treatment Details</button>
+								</td>
+							</tr>
+						<?php
+						}
+						?>
+					</tbody>
+				</table>
+			<?php
+			} else {
+				echo "No results found";
+			} ?>
+		</div>
+	</div>
+
+	<script>
+		function load_filter() {
+			fetch('clinicassistant-radiofilter.php?action=filter').then(function(response) {
+				return response.json();
+			}).then(function(responeseData) {
+				if (responeseData.radio) {
+					if (responeseData.radio.length > 0) {
+						var html = '<div class="list-group">';
+
+						for (var i = 0; i < responeseData.radio.length; i++) {
+							html += '<label class="list-group=item">';
+
+							html += ''
+						}
+					}
+				}
+			})
+		}
+
+		$(document).ready(function() {
+
+			load_data();
+
+			function load_data(queryAppt) {
+				$.ajax({
+					url: "ca-livesearch.php",
+					method: "POST",
+					data: {
+						queryAppt: queryAppt
+					},
+					success: function(data) {
+						$('#apptResult').html(data);
+					}
+				});
+			}
+			$('#search_text').keyup(function() {
+				var search = $(this).val();
+				if (search != '') {
+					load_data(search);
+				} else {
+					load_data();
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>

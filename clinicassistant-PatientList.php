@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html lang="en">
 
 <head>
@@ -11,6 +12,10 @@
 
     <title>Clinic Assistant Patient List</title>
 </head>
+<?php
+$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+?>
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -21,7 +26,7 @@
             <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-HomePage.php">Home</a>
+                        <a class="nav-link" href="ClinicAssistant-HomePage.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
@@ -38,13 +43,13 @@
                 </ul>
                 <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
+                        <a class="nav-link" href="#">Welcome Clinic Assistant <?php echo $clinicAssistantFullname ?></a>
                     </li>
                     <li class="nav-item d-flex">
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+                        <a class="nav-link" href="index.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -55,21 +60,20 @@
 <?php
 $servername = "dentalhealthapplicationdb";
 
-//Name of the table 
-$con = mysqli_connect("localhost", "root", "", $servername) or die("Connection Failed");
+//Name of the table
+$DBName = "u418115598_dentalapp"; 
+$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
 $sqlquery = "SELECT ua.* , pp.* FROM useraccount ua, patientprofile pp WHERE ua.nric = pp.nric";
-$result = mysqli_query($con, $sqlquery);
+$result = mysqli_query($conn, $sqlquery);
 
-if (isset($_POST['createPatient'])) {
+if (isset($_GET['createPatient'])) {
     header("Location:clinicassistant-CreatePatient.php");
 }
 
 ?>
 
 <body>
-
-
-    <form method="POST">
+    <form method="GET">
         <div class="container-lg">
             <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Patient Account</div>
             <div class=""></div>
@@ -88,22 +92,23 @@ if (isset($_POST['createPatient'])) {
                                 <button type="submit" class="btn btn-Primary" name="createPatient">Create Patient Account</button>
                             </div>
 
+
                             <!-- Force next columns to break to new line -->
                             <div class="w-100"></div>
-                            <div class="input-group col-3 col-sm-3 mt-4 p-2 border border-2 border-secondary">
-                            <div id="result" class="align-middle"></div>
-
+                            <div class="border border-2 border-secondary">
+                                <div id="result" class="align-middle"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <!--Contatiner control-->
-            </div>
-        </div>
-        </div>
     </form>
+    <div class="col-md-3">
+        <!--Contatiner control-->
+    </div>
+    </div>
+    </div>
+
     <script>
         $(document).ready(function() {
 

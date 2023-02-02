@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 ?>
 <!DOCTYPE html>
@@ -13,13 +14,13 @@ session_start();
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand mb-0 h1" href="">
-				<img class="d-inline-block align-top" src="images/SuperDentalLogo.png" width="50" height="40" />
+				<img class="d-inline-block align-top" src="images/superDentalLogo.png" width="50" height="40" />
 				DiamondDental™
 			</a>
 			<div class="collapse navbar-collapse" id="navigationBar">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="potentialPatientHomepage.php">Home</a>
+						<a class="nav-link" href="index.php">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">About Us</a>
@@ -54,9 +55,9 @@ session_start();
 			if (isset($_POST['submit'])) {
 
 				$errors = 0;
-				$DBName = "dentalhealthapplicationdb";
+				$DBName = "u418115598_dentalapp";
 				try {
-					$conn = mysqli_connect("localhost", "root", "", $DBName);
+					$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
 					//Name of the table 
 					$TableName = "useraccount";
@@ -91,26 +92,49 @@ session_start();
 								$_SESSION['patientUsername'] = $theResult['username'];
 								$_SESSION['patientFullname'] = $theResult['fullName'];
 								$_SESSION['patientNric'] = $theResult['nric'];
-								header("Location:potentialPatientHomepageAftlogin.php?");
+								header("Location:potentialPatientHomepageAftLogin.php");
 								break;
 							case 'clinicAdmin':
-								$_SESSION['clinicName'] = $theResult['nric'];
-								$_SESSION['clinicAdminAcraNum'] = $theResult['acraNum'];
+								$TableNameClinic = 'clinic';
+								$SQLstringClinic = "SELECT * FROM $TableName INNER JOIN $TableNameClinic
+                                ON useraccount.username = clinic.username WHERE useraccount.username = '".$theResult['username']."'";
+								//Executing the sql
+								$queryResultClinic = mysqli_query($conn, $SQLstringClinic);
+								//Make result into array
+								$theResultClinic = mysqli_fetch_assoc($queryResultClinic);
+								
+								$_SESSION['clinicAdminAcraNum'] = $theResultClinic['acraNum'];
+								$_SESSION['clinicName'] = $theResultClinic['clinicName'];
+								header("Location:clinicAdminHomepage.php");
 								break;
 							case 'clinicAssistant':
-								$_SESSION['clinicAssistantNric'] = $theResult['nric'];
+								//SQL statement to get clinic name
+								$TableNameClinicAssistant = 'clinicassistantprofile';
+								$SQLstringClinicAss = "SELECT * FROM $TableName INNER JOIN $TableNameClinicAssistant 
+								ON useraccount.nric = clinicassistantprofile.nric WHERE useraccount.username = '".$theResult['username']."'";
+								//Executing the sql
+								$queryResultClinicAss = mysqli_query($conn, $SQLstringClinicAss);
+								//Make result into array
+								$theResultClinicAss = mysqli_fetch_assoc($queryResultClinicAss);
+
+								$_SESSION['clinicAssistantUsername'] = $theResult['username'];
+								$_SESSION['clinicAssistantPassword'] = $theResult['password'];
 								$_SESSION['clinicAssistantFullname'] = $theResult['fullName'];
-								$_SESSION['clinicAssistantClinicName'] = $theResult['clinicName'];
+								$_SESSION['clinicAssistantNric'] = $theResult['nric'];
+								$_SESSION['clinicAssistantClinicName'] = $theResultClinicAss['clinicName'];
+								$_SESSION['clinicAssistantPhoneNo'] = $theResult['phoneNum'];
+								$_SESSION['clinicAssistantEmail'] = $theResult['email'];
+								header("Location:ClinicAssistant-HomePage.php");
 								break;
 							case 'dentist':
 								$_SESSION['dentistNric'] = $theResult['nric'];
 								$_SESSION['dentistFullname'] = $theResult['fullName'];
 								$_SESSION['dentistPracNum'] = $theResult['practitionerNumber'];
+								header("Location:dentistHomepage.php");
 								break;
-							// case 'superAdmin':
-							// 	$_SESSION['patientNric'] = $theResult['username'];
-							// 	$_SESSION['patientFullname'] = $theResult['nric'];
-							// 	break;
+							case 'superAdmin':
+								header("Location:superadminHomepage.php");
+								break;
 						}
 					}
 				} catch (mysqli_sql_exception $e) {

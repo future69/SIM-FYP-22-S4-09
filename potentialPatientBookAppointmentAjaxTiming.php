@@ -6,15 +6,15 @@ try	{
     $theDentist = $_REQUEST["e"];
     // $theClinic = 'Toa Payoh Family Clinic';
     // $theDate = '2023-05-21';
-    $DBName = "dentalhealthapplicationdb";
-    $conn = mysqli_connect("localhost", "root", "",$DBName);
+    $DBName = "u418115598_dentalapp";
+    $conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
     //Load list of dentists in each clinic
     $TableNameClinic = "clinic";
     $TableNameAppointment = "appointment";
 
     //The lines to run in sql
     $SQLstring = "SELECT * FROM  $TableNameClinic WHERE clinicName = '" . $theClinic . "'";
-    $SQLstring2 = "SELECT apptTime FROM $TableNameAppointment WHERE apptDate = '" . $theDate . "' AND practitionerNum = '" . $theDentist . "'";
+    $SQLstring2 = "SELECT apptTime FROM $TableNameAppointment WHERE apptDate = '" . $theDate . "' AND practitionerNumber = '" . $theDentist . "'";
 
     //Executing the sql
     $queryResult = mysqli_query($conn, $SQLstring);

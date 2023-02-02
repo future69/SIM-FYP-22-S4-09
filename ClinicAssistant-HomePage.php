@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,16 +13,15 @@
 </head>
 <?php
 	//setting session variables
-	//$clinicAssistantNric = $_SESSION['clinicAssistantNric'];
-	//$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
-	//$clinicName = $_SESSION['clinicAssistantClinicName'];
-	$clinicAssistantFullname = "Sam";
-	$clinicName = "tempClinicName";
+	$clinicAssistantNric = $_SESSION['clinicAssistantNric'];
+	$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+	$clinicName = $_SESSION['clinicAssistantClinicName'];
+	//$clinicName = "tempClinicName";
 
 	// executing try block
 	try {
-		$DBName = "dentalhealthapplicationdb";
-		$conn = mysqli_connect("localhost", "root", "", $DBName);
+		$DBName = "u418115598_dentalapp";
+		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
 
 		// setting todayDate
 		date_default_timezone_set('Singapore');
@@ -52,7 +53,7 @@
             <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-HomePage.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="ClinicAssistant-HomePage.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
@@ -75,7 +76,7 @@
                         <a class="nav-link" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+                        <a class="nav-link" href="index.php">Logout</a>
                     </li>
                  </ul>
             </div>

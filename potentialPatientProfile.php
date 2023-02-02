@@ -10,7 +10,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
-				<img class="d-inline-block align-top" src="images/SuperDentalLogo.png" width="50" height="40" />
+				<img class="d-inline-block align-top" src="images/superDentalLogo.png" width="50" height="40" />
 				DiamondDental™
 			</a>
 			<div class="collapse navbar-collapse" id="navigationBar">
@@ -38,7 +38,7 @@
 						<a class="nav-link active" aria-current="page" href="potentialPatientProfile.php">Profile</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+						<a class="nav-link" href="index.php">Logout</a>
 					</li>
 				</ul>
 			</div>

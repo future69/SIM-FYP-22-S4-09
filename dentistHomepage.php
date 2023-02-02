@@ -15,8 +15,8 @@
 
 	// executing try block
 	try {
-		$DBName = "dentalhealthapplicationdb";
-		$conn = mysqli_connect("localhost", "root", "", $DBName);
+		$DBName = "u418115598_dentalapp";
+		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
 
 		// setting todayDate
 		date_default_timezone_set('Singapore');
@@ -74,7 +74,7 @@
 								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage">Logout</a>
+								<a class="nav-link" href="index.php">Logout</a>
 							</li>
 						</ul>
 					</div>

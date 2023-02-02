@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 ?>
 <!DOCTYPE html>
@@ -73,7 +74,7 @@ session_start();
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
-				<img class="d-inline-block align-top" src="images/SuperDentalLogo.png" width="50" height="40" />
+				<img class="d-inline-block align-top" src="images/superDentalLogo.png" width="50" height="40" />
 				DiamondDental™
 			</a>
 			<div class="collapse navbar-collapse" id="navigationBar">
@@ -101,7 +102,7 @@ session_start();
 						<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+						<a class="nav-link" href="index.php">Logout</a>
 					</li>
 				</ul>
 			</div>
@@ -118,8 +119,8 @@ session_start();
 			$errorMessage = "";
 			try {
 				//Load the list of clinics
-				$DBName = "dentalhealthapplicationdb";
-				$conn = mysqli_connect("localhost", "root", "", $DBName);
+				$DBName = "u418115598_dentalapp";
+				$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 				//Name of the table 
 				$TableNameClinic = "clinic";
 				$SQLstring = "SELECT * FROM $TableNameClinic WHERE clinicStatus='approved'";
@@ -193,10 +194,10 @@ session_start();
 					$timeSlot = $_POST['timeSlotSL'];
 					$apptStatus = 'upcoming';
 
-					$conn = mysqli_connect("localhost", "root", "", $DBName);
+					$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 					$TableNameAppointment = "appointment";
 					//Inserts data into DB
-					$SQLstring = "INSERT INTO $TableNameAppointment " . " (apptID, clinicName, nric, apptDate, apptTime, apptStatus, practitionerNum, reason) " . 
+					$SQLstring = "INSERT INTO $TableNameAppointment " . " (apptID, clinicName, nric, apptDate, apptTime, apptStatus, practitionerNumber, reason) " . 
 					" VALUES('$apptID','$clinicName','$patientNric','$date','$timeSlot','$apptStatus','$dentistPracNum','$reason')";
 					mysqli_query($conn, $SQLstring);
 					mysqli_close($conn);

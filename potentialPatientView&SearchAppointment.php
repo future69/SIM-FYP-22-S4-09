@@ -13,7 +13,7 @@ session_start();
 					<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
 					<img
 					class="d-inline-block align-top"
-					src="images/SuperDentalLogo.png"
+					src="images/superDentalLogo.png"
 					width="50" height="40"/>
 					DiamondDental™
 					</a>
@@ -26,13 +26,13 @@ session_start();
 								<a class="nav-link active" aria-current="page" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientBookAppointment">Book Appointment</a>
+								<a class="nav-link" href="potentialPatientBookAppointment.php">Book Appointment</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientView&SearchClinic.php">Clinics</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Bills</a>
+								<a class="nav-link" href="potentialPatientBills.php">Bills</a>
 							</li>
 						</ul>
 					</div>
@@ -42,7 +42,7 @@ session_start();
 								<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+								<a class="nav-link" href="index.php">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -66,13 +66,13 @@ session_start();
 	
 		//This try block will be execute once the user enters the page
 		try	{
-		$DBName = "dentalhealthapplicationdb";
-		$conn = mysqli_connect("localhost", "root", "",$DBName );
+		$DBName = "u418115598_dentalapp";
+		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 		//Name of the table 
 		$TableNameAppointment = "appointment";
 		$TableNameClinic = "clinic";
 		//The lines to run in sql (getting all records that match patient nric from session)
-		$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."'";	
+		$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."' ORDER BY str_to_date(apptDate, '%Y-%m-%d'), apptTime";
 		$result = mysqli_query($conn, $SQLstring);	
 		//Executing the sql
 		$queryResult = mysqli_query($conn, $SQLstring);
@@ -232,8 +232,16 @@ session_start();
 								<td><?php echo $row["apptDate"]; ?></td>
 								<td><?php echo $row["apptTime"]; ?></td>
 								<td>
+									<?php 
+									//Convert appt and current date to datetime format
+									$dateAppt = new DateTime($row["apptDate"]);
+									$dateCurrent = new DateTime(date("Y-m-d"));
+									$dateDiff = $dateAppt->diff($dateCurrent);
+									if ($dateDiff->days > 3){
+									?>
 								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='potentialPatientUpdateAppointment.php?apptID=<?php echo $row['apptID'];?>'">Update Appointment</button>
 								<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+								<?php } ?>
 								</td>
 							</tr>
 							<?php } ?>

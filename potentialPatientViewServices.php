@@ -11,7 +11,7 @@
 					<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
 					<img
 					class="d-inline-block align-top"
-					src="images/SuperDentalLogo.png"
+					src="images/superDentalLogo.png"
 					width="50" height="40"/>
 					DiamondDental™
 					</a>
@@ -40,7 +40,7 @@
 								<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+								<a class="nav-link" href="index.php">Logout</a>
 							</li>
 						</ul>
 					</div>

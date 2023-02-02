@@ -9,14 +9,14 @@
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
-					src="images/SuperDentalLogo.png"
+					src="images/superDentalLogo.png"
 					width="50" height="40"/>
 					DiamondDental™
 					</a>
 					<div class="collapse navbar-collapse" id="navigationBar">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Home</a>
+								<a class="nav-link" href="index.php">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientAboutUs.php">About Us</a>
@@ -25,10 +25,10 @@
 								<a class="nav-link" href="potentialPatientOurPartners.php">Our Partners</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="potentialPatientforPatients.php">For Patients</a>
+								<a class="nav-link active" aria-current="page" href="potentialPatientForPatients.php">For Patients</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientforClinics.php">For Clinics</a>
+								<a class="nav-link" href="potentialPatientForClinics.php">For Clinics</a>
 							</li>
 
 						</ul>
@@ -44,7 +44,7 @@
 						</ul>
 					</div>
 				</div>
-		<nav>
+</nav>
 	</header>
 	<body>
 		<div class="container-lg">

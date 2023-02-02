@@ -1,3 +1,8 @@
+<?php 
+session_start(); 
+$clinicName = $_SESSION["clinicName"];
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -20,7 +25,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand mb-0 h1" href="">
-				<img class="d-inline-block align-top" src="images/SuperDentalLogo.png" width="50" height="40" />
+				<img class="d-inline-block align-top" src="images/superDentalLogo.png" width="50" height="40" />
 				DiamondDental™
 			</a>
 			<div class="collapse navbar-collapse" id="navigationBar">
@@ -42,10 +47,10 @@
 			<div class="me-auto">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<span class="navbar-brand text-center">Toa Payoh Dental</span>
+						<span class="navbar-brand text-center"><?php echo $clinicName ?></span>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+						<a class="nav-link" href="index.php">Logout</a>
 					</li>
 				</ul>
 			</div>
@@ -60,7 +65,7 @@
 
 		//Declaring
 		$errors = 0;
-		$DBName = "dentalhealthapplicationdb";
+		$DBName = "u418115598_dentalapp";
 		$roleName = $_POST['roleSL'];
 		$gender = $_POST['genderSL'];
 		$accStatus = "active";
@@ -131,7 +136,7 @@
 			}
 
 			if (preg_match('/[0-9]{6}/', $GLOBALS['postalCode']) == 0) {
-				$GLOBALS['postalCodeError'] = "Please enter a valid contact number";
+				$GLOBALS['postalCodeError'] = "Please enter a valid postal code";
 				$totalFalseCount++;
 			}
 
@@ -153,12 +158,12 @@
 			$errorMessage = "Please complete all fields";
 		} else {
 			try {
-				$conn = mysqli_connect("localhost", "root", "", $DBName);
+				$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName);
 
 				//Name of the table 
 				$TableName = "useraccount";
-				$TableName2 = "clinicAssistantProfile";
-				$TableName3 = "dentistProfile";
+				$TableName2 = "clinicassistantprofile";
+				$TableName3 = "dentistprofile";
 
 				//See if any existing username
 				$SQLstringCheckUsername = "SELECT username FROM $TableName" . " where username='" . $username . "'";

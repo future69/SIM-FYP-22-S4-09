@@ -26,7 +26,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand mb-0 h1" href="">
-				<img class="d-inline-block align-top" src="images/SuperDentalLogo.png" width="50" height="40" />
+				<img class="d-inline-block align-top" src="images/superDentalLogo.png" width="50" height="40" />
 				DiamondDental™
 			</a>
 			<div class="collapse navbar-collapse" id="navigationBar">
@@ -35,16 +35,16 @@
 						<a class="nav-link" href="potentialPatientHomepage.php">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About Us</a>
+						<a class="nav-link" href="potentialPatientAboutUs.php">About Us</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Our Partners</a>
+						<a class="nav-link" href="potentialPatientOurPartners.php">Our Partners</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">For Patients</a>
+						<a class="nav-link" href="potentialPatientForPatients.php">For Patients</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">For Clinics</a>
+						<a class="nav-link" href="potentialPatientForClinics.php">For Clinics</a>
 					</li>
 
 				</ul>
@@ -68,7 +68,7 @@
 			if (isset($_POST['submitRegistration'])) {
 
 				$errors = 0;
-				$DBName = "dentalhealthapplicationdb";
+				$DBName = "u418115598_dentalapp";
 				$roleName = "patient";
 				$accStatus = "active";
 
@@ -143,7 +143,7 @@
 					}
 
 					if (preg_match('/[0-9]{6}/', $GLOBALS['postalCode']) == 0) {
-						$GLOBALS['postalCodeError'] = "Please enter a valid contact number";
+						$GLOBALS['postalCodeError'] = "Please enter a valid postal code";
 						$totalFalseCount++;
 					}
 
@@ -170,7 +170,7 @@
 					$errorMessage = "Please complete all fields";
 				} else {
 					try {
-						$conn = mysqli_connect("localhost", "root", "", $DBName);
+						$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
 						//Name of the table 
 						$TableName = "useraccount";
@@ -235,7 +235,7 @@
 			} 
 			
 			else if (isset($_POST['back'])) {
-				header("Location:potentialPatientHomepage.php");
+				header("Location:index.php");
 			} 
 			
 			else {

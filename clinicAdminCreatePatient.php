@@ -1,3 +1,8 @@
+<?php 
+session_start(); 
+$clinicName = $_SESSION["clinicName"];
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,7 +15,7 @@
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
 					class="d-inline-block align-top"
-					src="images/SuperDentalLogo.png"
+					src="images/superDentalLogo.png"
 					width="50" height="40"/>
 					DiamondDental™
 					</a>
@@ -33,10 +38,10 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<span class="navbar-brand text-center">Toa Payoh Dental</span>
+								<span class="navbar-brand text-center"><?php echo $clinicName ?></span>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+								<a class="nav-link" href="index.php">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -50,7 +55,7 @@
 			if (isset($_POST['submitRegistration'])) {
 
 				$errors = 0;
-				$DBName = "dentalhealthapplicationdb";
+				$DBName = "u418115598_dentalapp";
 				$roleName = "patient";
 				$accStatus = "active";
 
@@ -125,7 +130,7 @@
 					}
 
 					if (preg_match('/[0-9]{6}/', $GLOBALS['postalCode']) == 0) {
-						$GLOBALS['postalCodeError'] = "Please enter a valid contact number";
+						$GLOBALS['postalCodeError'] = "Please enter a valid postal code";
 						$totalFalseCount++;
 					}
 
@@ -152,7 +157,7 @@
 					$errorMessage = "Please complete all fields";
 				} else {
 					try {
-						$conn = mysqli_connect("localhost", "root", "", $DBName);
+						$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName);
 
 						//Name of the table 
 						$TableName = "useraccount";

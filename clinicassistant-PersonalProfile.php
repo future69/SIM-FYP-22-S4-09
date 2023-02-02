@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +10,17 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
     <title>Clinic Assistant Personal Profile</title>
 </head>
+
+<?php
+$clinicAssistantUsername = $_SESSION['clinicAssistantUsername'];
+$clinicAssistantPassword = $_SESSION['clinicAssistantPassword'];
+$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+$clinicAssistantNric = $_SESSION['clinicAssistantNric'];
+$clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
+$clinicAssistantPhoneNo = $_SESSION['clinicAssistantPhoneNo'];
+$clinicAssistantEmail = $_SESSION['clinicAssistantEmail'];
+?>
+
 <header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -18,7 +31,7 @@
             <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-HomePage.php">Home</a>
+                        <a class="nav-link" href="ClinicAssistant-HomePage.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="clinicassistant-AppointmentList.php">Appointment</a>
@@ -35,13 +48,13 @@
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-						<a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
+						<a class="nav-link" href="#">Welcome Clinic Assistant <?php echo $clinicAssistantFullname ?></a>
                     </li>
 					<li class="nav-item d-flex">
                         <a class="nav-link active" aria-current="page" href="clinicassistant-PersonalProfile.php">Profile</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+                        <a class="nav-link" href="index.php">Logout</a>
                     </li>
                  </ul>
             </div>
@@ -49,7 +62,7 @@
     </nav>
 	<?php 
 			if (isset($_POST['back'])) {
-				header("Location:clinicassistant-Homepage.php");
+				header("Location:ClinicAssistant-HomePage.php");
 			}
 		?>
 </header>
@@ -65,43 +78,43 @@
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" placeholder="Sam" disabled id="usernameTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantUsername ?>" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 						<div class="col-lg-4">
-						  <input type="password" class="form-control" value="12345678" disabled id="passwordTB">
+						  <input type="password" class="form-control" value="<?php echo $clinicAssistantPassword ?>"  disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled placeholder="Sam Fisher" id="usernameTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantUsername ?>" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled placeholder="S12345678I" id="passwordTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantNric ?>" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB"  class="col-lg-1 col-form-label">Clinic Location:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" disabled placeholder="St John Clinic" id="passwordTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantClinicName ?>" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" placeholder="87654321" disabled id="passwordTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantPhoneNo ?>" disabled id="passwordTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" placeholder="John@email.com" disabled id="usernameTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantEmail ?>" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
