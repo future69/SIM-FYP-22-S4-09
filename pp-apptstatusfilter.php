@@ -12,53 +12,6 @@ $TableNameClinic = "clinic";
 
 $patientNric = $_SESSION['patientNric'];
 
-/* Explaination
-This our our base query:
-    SELECT * 
-    FROM $TableNameAppointment 
-    INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName 
-    WHERE appointment.nric = '$patientNric'
-3 possibile condition
-a) Text field aka search box
-b) Radio button aka upcoming or past
-c) Dropdown aka your date range
-
-We use our base as the core store into a string
-
-Example:
-$query = //some base query here
-
-CONDITION A:
-    if (text box got some text)
-        $query .= condition > AND clinicName LIKE %search%
-============================================================
-CONDITION B:
-    if radio button == upcoming
-        $query .= condition > upcoming
-    else if radio button == past
-        $query .= condition > past
-============================================================
-CONDITION C:
-    if date range == 1yeasr
-        $query .= condition > 1year range something
-
-*/
-
-/*
-1. check on change for form
-2. if work - take 3 input data using id and pass to function
-3. if no work - update data in variable then call function
-*/
-// echo "search_text: " . $_POST['search_text'];
-// echo "<br>";
-// echo "apptStatus: " . $_POST['apptStatus'];
-// echo "<br>";
-// echo "apptStatus: " . $_POST['dateRange'];
-
-// search_text: search_text,
-// apptStatus: apptStatus,
-// dateRange: dateRange
-
 $query = "SELECT * 
             FROM $TableNameAppointment 
             INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName 
