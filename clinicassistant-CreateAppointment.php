@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+ob_start();
+session_start();
+?>
 
 <html lang="en">
 
@@ -10,10 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
     <title>Clinic Assistant Create Appointment</title>
+	<script>
+	//AJAX 
+	</script>
 </head>
 
 <?php
 $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+$clinicName = $_SESSION['clinicName'];
 ?>
 
 <header>
@@ -56,17 +63,20 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
         </div>
     </nav>
     <?php
-
-    $servername = "u418115598_dentalapp";
 	
-    //create connection
-	
-    $con = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername) or die("Connection Failed");
-
-    if (!$con) {
-        die(mysqli_error($con));
-    } else {
-    }
+	try {
+	$DBName = "u418115598_dentalapp";
+	$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
+				
+	$TableNameDentistProfile = "dentistprofile";
+	$TableNameUseraccounts = "useraccount";
+	$SQLstring = "SELECT * FROM $TableNameUseraccounts NNER JOIN $TableNameDentistProfile
+	ON useraccount.nric = dentistprofile.nric
+	WHERE useraccount.nric = dentistprofile.nric";
+	$queryResultListOfDentists = mysqli_query($conn, $SQLstring);	
+	} catch (mysqli_sql_exception $e) {
+		echo "Error";
+	}
 
     if (isset($_POST['submitAppt'])) {
 
@@ -89,8 +99,8 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 
         $SQLstring = "INSERT INTO appointment " . " (nric, apptDentist, apptDate, apptTime, apptReason) " . " VALUES( '$nric', '$DentistSlotSL', '$Date', '$timeSlot', '$Reason')";
 
-        mysqli_query($con, $SQLstring);
-        mysqli_close($con);
+        mysqli_query($conn, $SQLstring);
+        mysqli_close($conn);
 
         echo "Appointment Creation Successfully";
     } else if (isset($_POST['back'])) {
@@ -114,7 +124,7 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
                         <div class="row"></div>
                         <div class="col-6 col-sm-3">Patient Name:</div>
                         <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" id="PNameTB" name="PNameTB" placeholder="Patient Name" aria-label="Name" aria-describedby="basic-addon1" disabled>
+                            <input type="text" class="form-control" id="PNameTB" name="PNameTB">
                         </div>
                         <div class="col-6 col-sm-3 pt-3">NRIC:</div>
                         <div class="input-group col-3 col-sm-3">
@@ -122,16 +132,19 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
                         </div>
                         <div class="col-6 col-sm-3 pt-3">Clinic name:</div>
                         <div class="input-group col-3 col-sm-3">
-                            <input type="text" class="form-control" id="ClinicNameTB" name="ClinicNameTB" value="Tan Tock Seng" aria-label="NRIC" aria-describedby="basic-addon1" disabled>
-                            <input type="hidden" id="HiddenCname" name="HiddenCname" value="Tan Tock Seng" />
+                            <input type="text" class="form-control" id="ClinicNameTB" name="ClinicNameTB" value="<?php echo $clinicName ?>" aria-label="NRIC" aria-describedby="basic-addon1" disabled>
                         </div>
                         <div class="col-6 col-sm-3 pt-3">
                             <label for="DentistSlotSL" id="DentistSlotSL" class="col-lg col-form-label">Dentist name:</label>
                             <select class="form-select" id="DentistSlotSL" name="DentistSlotSL">
-                                <option selected>Select Dentist</option>
-                                <option value="John Lee">John Lee</option>
-                                <option value="Mary Doe">Mary Doe</option>
-                                <option value="Sue Strong">Sue Strong</option>
+        							<option value='placeholder'> </option>
+									<?php
+									while ($listofDentists = mysqli_fetch_assoc($queryResultListOfDentists)) {
+									?>
+										<option value="<?php echo $listofDentists['username']; ?>"></option>
+									<?php
+									}
+									?>
                             </select>
                         </div>
 
