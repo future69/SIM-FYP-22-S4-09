@@ -205,7 +205,7 @@ $clinicName = $_SESSION["clinicName"];
 				} 
 				//Checks if the file extention is one of the ones we allow
 				else if (in_array($fileRealExtention,$allowedFileExtention) == false){
-					$errorMessage = "wrong format";
+					$errorMessage = "Please upload only jpg,jpeg,png,pdf";
 				}
 				//Checks if there was an error uploading file 
 				else if ($fileError !== 0){
