@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
     <script>
 		//AJAX function for onclick feature (Get timing)
@@ -65,6 +66,7 @@ session_start();
     </nav>
 </header>
 <?php
+    $errorMessage = null;
 	//This try block will be execute once the user enters the page
 	try	{
 		$DBName = "u418115598_dentalapp";
@@ -80,9 +82,23 @@ session_start();
 				echo "Error";
 	}
     if (isset($_POST['createService'])) {
-	    header("Location:superadminCreateService.php");
+        if($_POST['newServiceName'] != null){
+            //Get Info
+            $serviceName = $_POST['newServiceName'];
+            $serviceStatus = "active";
+
+            //Name of the table 
+            $TableNameService = "service";
+            $DBName = "u418115598_dentalapp";
+            $conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
+            $sql = "INSERT INTO $TableNameService (serviceName, serviceStatus) VALUES ('".$serviceName."', '".$serviceStatus."');";
+            mysqli_query($conn, $sql);
+            echo "<meta http-equiv='refresh' content='0'>";
+        } else{
+            $errorMessage = 'Please input a value';
+        }
     }
-	?>
+?>
 <body>
     <div class="container-lg">
         <div class="row justify-content-center align-items-center pt-5">
@@ -90,12 +106,7 @@ session_start();
         <div class="row justify-content-center align-items-center pt-5">
             <div class="row col-12">
                 <div class="row col-6 display-4">Services</div>
-                <div class="row col-2 justify-content-start align-items-start">
-                    <form method="POST">
-                        <button type="submit" name="createService" class="btn btn-primary">Create Service</button>
-                    </form>
-                </div>
-                <table class="table table-hover table-secondary table-striped ">
+                <table class="table table-hover table-secondary table-striped" id="serviceTable">
                     <thead>
                         <tr>
                             <th scope="col">Service Name</th>
@@ -118,6 +129,15 @@ session_start();
                         <?php
                             }
                         ?>
+                        </tr>
+                        <tr>
+                        <form method="POST" name="addService" id="addService">
+                            <td><input type="text" name="newServiceName" placeholder="Service Name" class="form-control name_list" /></td>  
+                            <td><button type="submit" name="createService" id="createService" class="btn btn-primary">Create Service</button>
+                            <?php echo $errorMessage;?>
+                            </td>
+                        </form>
+                        </tr>
                     </tbody>
                 </table>
             </div>
