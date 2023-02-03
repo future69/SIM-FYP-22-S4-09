@@ -7,11 +7,11 @@
 	</head>
 	<?php 
 	// setting session variables
-	//$dentistNRIC = $_SESSION['dentistNric'];
-	//$dentistFullName = $_SESSION['dentistFullname'];
-	//$dentistPracNum = $_SESSION['dentistPracNum'];
-	$dentistFullName = "Dr. Lee";
-	$dentistPracNum = "T128172";
+	$dentistNRIC = $_SESSION['dentistNric'];
+	$dentistFullName = $_SESSION['dentistFullname'];
+	$dentistPracNum = $_SESSION['dentistPracNum'];
+	// $dentistFullName = "Dr. Lee";
+	// $dentistPracNum = "T128172";
 
 	// executing try block
 	try {
