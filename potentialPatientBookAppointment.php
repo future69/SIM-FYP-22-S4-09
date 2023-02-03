@@ -202,7 +202,10 @@ session_start();
 					mysqli_query($conn, $SQLstring);
 					mysqli_close($conn);
 
-					$errorMessage = "Success!";	
+					echo "<script>
+					alert('Success');
+					window.location.href='potentialPatientView&SearchAppointment.php';
+					</script>";
 				} catch (mysqli_sql_exception $e) {
 					echo "<p>Error: unable to connect/insert record in the database.</p>";
 				}
