@@ -1,7 +1,6 @@
 <?php
 //This try block will be execute once the user enters the page
 try	{
-    
     $theNric = $_REQUEST["q"];
 
     $DBName = "u418115598_dentalapp";
