@@ -128,8 +128,17 @@ session_start();
 								break;
 							case 'dentist':
 								$_SESSION['dentistNric'] = $theResult['nric'];
+
+								//SQL statement to get clinic name
+								$TableNameDentist = 'dentistprofile';
+								$SQLstringDentist = "SELECT * FROM $TableNameDentist WHERE nric = '" . $_SESSION['dentistNric']. "'";
+								//Executing the sql
+								$queryResultDentist = mysqli_query($conn, $SQLstringDentist);
+								//Make result into array
+								$theResultDentist = mysqli_fetch_assoc($queryResultDentist);
+
 								$_SESSION['dentistFullname'] = $theResult['fullName'];
-								$_SESSION['dentistPracNum'] = $theResult['practitionerNumber'];
+								$_SESSION['dentistPracNum'] = $theResultDentist['practitionerNumber'];
 								header("Location:dentistHomepage.php");
 								break;
 							case 'superAdmin':
