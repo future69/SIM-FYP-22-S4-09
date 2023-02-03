@@ -14,7 +14,7 @@
 	// $dentistPracNum = "T128172";
 
 	// executing try block
-	echo $dentistPracNum;
+	echo "PracNum: " . $dentistPracNum;
 	try {
 		$DBName = "u418115598_dentalapp";
 		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
@@ -37,8 +37,7 @@
 
 		// executing sql
 		$queryResult = mysqli_query($conn, $SQLstring);
-
-		echo $SQLstring;
+		
 	} catch (mysqli_sql_exception $e) {
 		echo "Error in retrieving or linking tables";
 	}
