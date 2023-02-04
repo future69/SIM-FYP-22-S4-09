@@ -30,7 +30,7 @@
 		// sql query to get all appointments at clinic
 		$SQLstring = "SELECT * 
 			FROM  $TableNameAppointment INNER JOIN $TableNameUA on useraccount.nric = appointment.nric
-			WHERE appointment.practitionerNum = '$dentistPracNum' 
+			WHERE appointment.practitionerNumber = '$dentistPracNum' 
 			AND useraccount.roleName = 'patient' 
 			AND appointment.apptDate = '$todayDate'";
 
