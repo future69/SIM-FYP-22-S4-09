@@ -165,7 +165,7 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 			$errorMessage = "Please complete all fields";
 		} else {
 			try {
-				$conn = mysqli_connect("localhost", "root", "", $DBName);
+				$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
 
 				//Name of the table 
 				$TableName = "useraccount";
