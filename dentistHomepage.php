@@ -95,7 +95,7 @@
 					<div class="display-6">Welcome <?php echo $dentistFullName ?></div>
 				</div>
 				<div class="col-md-5 text-start pt-4">
-					<h5>You have <?php echo $count ?></strong> appointments today</h5>
+					<h5>You have <strong><?php echo $count ?></strong> appointments today</h5>
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center pt-5">
