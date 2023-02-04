@@ -14,7 +14,7 @@ $patientNric = $_SESSION['patientNric'];
 
 $query = "SELECT * 
             FROM $TableNameAppointment 
-            INNER JOIN $TableNameClinic ON appointment.nric = useraccount.nric 
+            INNER JOIN $TableNameUA ON appointment.nric = useraccount.nric 
             WHERE appointment.nric = '$patientNric'";
 
 // This is for search text
