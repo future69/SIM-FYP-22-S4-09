@@ -31,51 +31,49 @@ if (isset($_POST['apptStatus'])) {
     $query .= " AND appointment.apptStatus = '$apptStatus'";
 }
 
-echo $query;
+$result = mysqli_query($connect, $query);
 
-// $result = mysqli_query($connect, $query);
+if(mysqli_num_rows($result) > 0)
+{
+    $output .= '
+        <table class="table table-hover table-secondary table-striped ">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">NRIC</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thread>
+            <tbody>
+    ';
 
-// if(mysqli_num_rows($result) > 0)
-// {
-//     $output .= '
-//         <table class="table table-hover table-secondary table-striped ">
-//             <thead>
-//                 <tr>
-//                     <th scope="col">Name</th>
-//                     <th scope="col">NRIC</th>
-//                     <th scope="col">Date</th>
-//                     <th scope="col">Time</th>
-//                     <th scope="col">Phone Number</th>
-//                     <th scope="col">Reason</th>
-//                     <th scope="col">Action</th>
-//                 </tr>
-//             </thread>
-//             <tbody>
-//     ';
-
-//     while($row = mysqli_fetch_array($result))
-//     {
-//         $output .= '
-//             <tr>
-//                 <td>' . $row["fullName"] . '</td>
-//                 <td>'. $row["nric"] . '</td>
-//                 <td>' . $row["apptDate"] . '</td>
-//                 <td>' . $row["apptTime"] . '</td>
-//                 <td>'. $row["phoneNum"] . '</td>
-//                 <td>'. $row["reason"] . '</td>
-//                 <td>
-//                     <button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?\'">Update Appointment</button>
-//                     <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
-//                     <button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?\'">Update Appointment Treatment Details</button>
-//                 </td>
-//             </tr>
-//         ';
-//     }
-//     echo $output;
-// }
-// else
-// {
-//     echo "Data not found";
-// }
+    while($row = mysqli_fetch_array($result))
+    {
+        $output .= '
+            <tr>
+                <td>' . $row["fullName"] . '</td>
+                <td>'. $row["nric"] . '</td>
+                <td>' . $row["apptDate"] . '</td>
+                <td>' . $row["apptTime"] . '</td>
+                <td>'. $row["phoneNum"] . '</td>
+                <td>'. $row["reason"] . '</td>
+                <td>
+                    <button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?\'">Update Appointment</button>
+                    <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
+                    <button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?\'">Update Appointment Treatment Details</button>
+                </td>
+            </tr>
+        ';
+    }
+    echo $output;
+}
+else
+{
+    echo "Data not found";
+}
 ?>
 
