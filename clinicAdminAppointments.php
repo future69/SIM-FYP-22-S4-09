@@ -1,13 +1,21 @@
 <?php 
-session_start(); 
-$clinicName = $_SESSION["clinicName"];
-?>
+	// Set session variables from login
+	session_start(); 
+	$clinicName = $_SESSION["clinicName"];
+	$acraNum = $_SESSION['clinicAdminAcraNum'];
 
+	date_default_timezone_set("Singapore");
+?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	</head>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,7 +46,7 @@ $clinicName = $_SESSION["clinicName"];
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<span class="navbar-brand text-center"><?php echo $clinicName ?></span>
+								<span class="navbar-brand text-center"> Welcome <?php echo $clinicName ?></span>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="index.php">Logout</a>
@@ -47,7 +55,8 @@ $clinicName = $_SESSION["clinicName"];
 					</div>
 				</div>
 		</nav>
-		<?php 
+		<!?php 
+			no button for creating employee and patient on this page
 			if (isset($_POST['createNewEmployee'])) {
 				header("Location:clinicAdminCreateEmployee.php");
 			}
@@ -59,6 +68,11 @@ $clinicName = $_SESSION["clinicName"];
 			}
 		?>
 	</header>
+	<?php 
+			if (isset($_POST['bookAppointment'])) {
+				header("Location:clinicAdminBookAppointment.php");
+			}
+	?>
 	<body>
 		<div class="container-lg">
 			<!-- Put this div outside the center alignment, for the welcome message plus bills -->
@@ -83,15 +97,16 @@ $clinicName = $_SESSION["clinicName"];
 					</div>
 					<div class="row py-3">
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" checked>
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" value="flexRadioDefaultUpcoming" checked>
 						  <label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
 						</div>
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast" value="flexRadioDefaultPast" >
 						  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 						</div>
 					</div>
-					<table class="table table-hover table-secondary table-striped ">
+					<div id="result"></div>
+					<!-- <table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
 								<th scope="col">Name</th>
@@ -152,7 +167,43 @@ $clinicName = $_SESSION["clinicName"];
 								</td>
 							</tr>
 						</tbody>
-					</table>
+					</table> -->
+					<script>
+						$(document).ready(function() {	
+							// Default value for each field
+							let search = $('#searchClinicName').val();
+							let apptStatus = $('input[type="radio"]:checked').val();
+							load_data(search, apptStatus);
+
+							function load_data(search_text, apptStatus) {
+								$.ajax({
+									url: "den-apptFilter.php",
+									method: "POST",
+									data: {
+										search_text: search_text,
+										apptStatus: apptStatus
+									},
+									success: function(data) {
+										$('#result').html(data);
+									}
+								});
+							}
+
+							// This is for clinic name search box (Clinic name)
+							$('#searchClinicName').keyup(function() {
+								search = $(this).val();
+
+								load_data(search, apptStatus);
+							});
+
+							// This is for radio button (Appointment Status)
+							$('input[type="radio"]').change(function() {
+								apptStatus = $('input[type="radio"]:checked').val();
+
+								load_data(search, apptStatus);
+							});		
+						});
+					</script>
 				</div>
 			</div>
 		</div>

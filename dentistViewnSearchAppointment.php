@@ -1,3 +1,12 @@
+<?php 
+	// Set session variables from login
+	session_start();
+	$dentistFullname = $_SESSION['dentistFullname'];
+	$dentistPracNum = $_SESSION['dentistPracNum'];
+
+	// set current date and time of query
+	date_default_timezone_set("Singapore");
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,14 +17,6 @@
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
-<?php 
-	// Set session variables from login
-	$dentistFullname = $_SESSION['dentistFullname'];
-	$dentistPracNum = $_SESSION['dentistPracNum'];
-
-	// set current date and time of query
-	date_default_timezone_set("Singapore");
-	?>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
@@ -58,7 +59,6 @@
 				</div>
         </nav>
 	</header>
-	
         <?php 
 			if (isset($_POST['bookAppointment'])) {
 				header("Location:dentistCreateAppointment.php");
