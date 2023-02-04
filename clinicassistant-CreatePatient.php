@@ -138,7 +138,7 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 			}
 
 			if (preg_match('/[0-9]{6}/', $GLOBALS['postalCode']) == 0) {
-				$GLOBALS['postalCodeError'] = "Please enter a valid contact number";
+				$GLOBALS['postalCodeError'] = "Please enter a valid postal code";
 				$totalFalseCount++;
 			}
 
