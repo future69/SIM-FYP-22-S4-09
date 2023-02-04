@@ -111,7 +111,7 @@
 						</thead>
 						<tbody>
 							<?php
-								while ($rows = mysqli_fetch_assoc($queryResult)) {
+								while ($rows = mysqli_fetch_array($queryResult)) {
 							?>
 							<tr>
 								<td> <?php echo $rows['fullName']; ?> </td>
