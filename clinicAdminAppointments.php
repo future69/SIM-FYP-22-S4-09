@@ -177,7 +177,7 @@
 
 							function load_data(search_text, apptStatus) {
 								$.ajax({
-									url: "den-apptFilter.php",
+									url: "ca-apptFilter.php",
 									method: "POST",
 									data: {
 										search_text: search_text,
