@@ -6,9 +6,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
-    <title>Dentist View N Search Appointment</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<?php 
+	// Set session variables from login
+	$dentistFullname = $_SESSION['dentistFullname'];
+	$dentistPracNum = $_SESSION['dentistPracNum'];
+
+	// set current date and time of query
+	date_default_timezone_set("Singapore");
+	?>
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a class="navbar-brand mb-0 h1" href="">
 					<img
@@ -48,6 +57,8 @@
 					</div>
 				</div>
         </nav>
+	</header>
+	
         <?php 
 			if (isset($_POST['bookAppointment'])) {
 				header("Location:dentistCreateAppointment.php");
@@ -77,15 +88,16 @@
 					</div>
 					<div class="row py-3">
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" checked>
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" value="flexRadioDefaultUpcoming" checked>
 						  <label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
 						</div>
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast" value="flexRadioDefaultPast">
 						  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 						</div>
 					</div>
-					<table class="table table-hover table-secondary table-striped ">
+					<div id="result"></div>
+					<!-- <table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
 								<th scope="col">Name</th>
@@ -149,7 +161,43 @@
 								</td>
 							</tr>
 						</tbody>
-					</table>
+					</table> -->
+					<script>
+						$(document).ready(function() {	
+							// Default value for each field
+							let search = $('#searchClinicName').val();
+							let apptStatus = $('input[type="radio"]:checked').val();
+							load_data(search, apptStatus);
+
+							function load_data(search_text, apptStatus) {
+								$.ajax({
+									url: "den-apptFilter.php",
+									method: "POST",
+									data: {
+										search_text: search_text,
+										apptStatus: apptStatus
+									},
+									success: function(data) {
+										$('#result').html(data);
+									}
+								});
+							}
+
+							// This is for clinic name search box (Clinic name)
+							$('#searchClinicName').keyup(function() {
+								search = $(this).val();
+
+								load_data(search, apptStatus);
+							});
+
+							// This is for radio button (Appointment Status)
+							$('input[type="radio"]').change(function() {
+								apptStatus = $('input[type="radio"]:checked').val();
+
+								load_data(search, apptStatus);
+							});		
+						});
+					</script>
 				</div>
 			</div>
 		</div>
