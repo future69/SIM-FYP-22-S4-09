@@ -10,12 +10,13 @@ $output = '';
 $TableNameAppointment = "appointment";
 $TableNameUA = "useraccount";
 
-$patientNric = $_SESSION['patientNric'];
+$dentistFullname = $_SESSION['dentistFullname'];
+$dentistPracNum = $_SESSION['dentistPracNum'];
 
 $query = "SELECT * 
             FROM $TableNameAppointment 
             INNER JOIN $TableNameUA ON appointment.nric = useraccount.nric 
-            WHERE appointment.nric = '$patientNric'";
+            WHERE appointment.practitionerNumber = '$dentistPracNum'";
 
 // This is for search text
 if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
