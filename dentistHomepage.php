@@ -32,7 +32,8 @@
 			FROM  $TableNameAppointment INNER JOIN $TableNameUA on useraccount.nric = appointment.nric
 			WHERE appointment.practitionerNumber = '$dentistPracNum' 
 			AND useraccount.roleName = 'patient' 
-			AND appointment.apptDate = '$todayDate'";
+			AND appointment.apptDate = '$todayDate'
+			ORDER BY appointment.apptTime ASC";
 
 		// executing sql
 		$queryResult = mysqli_query($conn, $SQLstring);
