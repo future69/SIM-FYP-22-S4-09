@@ -36,10 +36,8 @@
 
 		// executing sql
 		$queryResult = mysqli_query($conn, $SQLstring);
-		
-		// $rows = mysqli_fetch_assoc($queryResult);
-		echo $SQLstring;
-		// $count = mysqli_num_rows($queryResult);
+
+		$count = mysqli_num_rows($queryResult);
 	} catch (mysqli_sql_exception $e) {
 		echo "Error in retrieving or linking tables";
 	}
