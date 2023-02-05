@@ -22,7 +22,7 @@ $query = "SELECT *
 if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
     // $search = mysqli_real_escape_string($connect, $_POST['search_text']);
     $query .= " AND useraccount.fullName LIKE '%" . $_POST['search_text'] . "%'
-                OR useraccount.nric LIKE'%" . $_POST['search_text'] . "%'";
+                OR useraccount.nric LIKE '%" . $_POST['search_text'] . "%'";
 }
 
 // This is for radio button (Appt Status)
