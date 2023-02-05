@@ -114,7 +114,7 @@ if(mysqli_num_rows($result) > 0)
                 <td>' . $row["apptDate"] . '</td>
                 <td>' . $row["apptTime"] . '</td>
                 <td>
-                <button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?\'">Update Appointment</button>
+                <button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?apptID='.$row["apptID"].'\'">Update Appointment</button>
                 <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
                 </td>
             </tr>
