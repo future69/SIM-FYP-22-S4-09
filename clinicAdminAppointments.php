@@ -46,7 +46,7 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="#"> Welcome <?php echo $clinicName ?></span>
+								<a class="nav-link" href="#"> Welcome <?php echo $clinicName ?></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="index.php">Logout</a>

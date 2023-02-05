@@ -38,7 +38,7 @@ $clinicName = $_SESSION["clinicName"];
 					<div class="me-auto">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<span class="navbar-brand text-center"><?php echo $clinicName ?></span>
+								<a class="nav-link" href="#"> Welcome <?php echo $clinicName ?></span>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="index.php">Logout</a>
