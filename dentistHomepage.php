@@ -10,9 +10,7 @@
 	$dentistNRIC = $_SESSION['dentistNric'];
 	$dentistFullName = $_SESSION['dentistFullname'];
 	$dentistPracNum = $_SESSION['dentistPracNum'];
-	// $dentistFullName = "Dr. Lee";
-	// $dentistPracNum = "T128172";
-
+	
 	// executing try block
 	try {
 		$DBName = "u418115598_dentalapp";
