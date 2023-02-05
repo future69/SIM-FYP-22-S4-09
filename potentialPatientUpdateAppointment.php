@@ -220,12 +220,6 @@ session_start();
 						  </div>
 						</div>
 					  </div>
-					  <div class="row justify-content-center align-items-center py-2">
-						<label class="col-lg-1 col-form-label" for="emailReminderCB">Receive email reminder:</label>
-						<div class="col-lg-4">
-							<input class="form-check-input" type="checkbox" value="" id="emailReminderCB" checked>
-						</div>
-					  </div>
 					  <div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage;?></div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 						<button class="btn btn-danger" name="back" value="back">Back</button>
