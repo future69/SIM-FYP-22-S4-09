@@ -69,7 +69,7 @@ $clinicName = $_SESSION["clinicName"];
 		$roleName = $_POST['roleSL'];
 		$gender = $_POST['genderSL'];
 		$accStatus = "active";
-		$clinicName = "tempClinicName";
+		//$clinicName = "tempClinicName";
 
 		//Value is at the input boxes incase of wrong entry, dont have to retype 
 		//Declaring, removing backslashes and whitespaces
