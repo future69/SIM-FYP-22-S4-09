@@ -64,7 +64,7 @@ if(mysqli_num_rows($result) > 0)
                 <td>
                     <button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?\'">Update Appointment</button>
                     <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
-                    <button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?\'">Update Appointment Treatment Details</button>
+                    <button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
                 </td>
             </tr>
         ';
