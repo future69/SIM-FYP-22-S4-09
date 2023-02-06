@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>superadmin-ClinicAccountApp</title>
 </head>
 <body>
@@ -56,19 +57,20 @@
 					<div class="row py-1">
 					<div class="col-1 form-check fw-bold">Sort By :</div>
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultEmployeeAcc" checked>
-						  <label class="form-check-label" for="flexRadioDefaultEmployeeAcc"><strong>In-Review</strong></label>
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultInReviewAcc" value="inreview" checked>
+						  <label class="form-check-label" for="flexRadioDefaultInReviewAcc"><strong>In-Review</strong></label>
 						</div>
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPatientAcc">
-						  <label class="form-check-label" for="flexRadioDefaultPatientAcc"><strong>Approved</strong></label>
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultApproveAcc" value="approved">
+						  <label class="form-check-label" for="flexRadioDefaultApproveAcc"><strong>Approved</strong></label>
 						</div>
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPatientAcc">
-						  <label class="form-check-label" for="flexRadioDefaultPatientAcc"><strong>Rejected</strong></label>
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultRejectAcc" value="rejected">
+						  <label class="form-check-label" for="flexRadioDefaultRejectAcc"><strong>Rejected</strong></label>
 						</div>
 					</div>
-					<table class="table table-hover table-secondary table-striped ">
+					<div id="result"></div>
+					<!-- <table class="table table-hover table-secondary table-striped ">
 						<thead>
 							<tr>
 								<th scope="col">Username</th>
@@ -87,7 +89,34 @@
 								<td>
 								</td>
 							</tr>
-						</tbody>
+						</tbody>-->
+					<script>
+						$(document).ready(function() {	
+							// Default value for each field
+							let clinicStatus = $('input[type="radio"]:checked').val();
+							load_data(clinicStatus);
+
+							function load_data(clinicStatus) {
+								$.ajax({
+									url: "sa-CAAAppFilter.php",
+									method: "POST",
+									data: {
+										clinicStatus: clinicStatus
+									},
+									success: function(data) {
+										$('#result').html(data);
+									}
+								});
+							}
+
+							// This is for radio button (Clinic Acc Status)
+							$('input[type="radio"]').change(function() {
+								clinicStatus = $('input[type="radio"]:checked').val();
+
+								load_data(clinicStatus);
+							});		
+						});
+					</script>
 				</div>
 			</div>
 		</div>
