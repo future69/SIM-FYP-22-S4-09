@@ -78,7 +78,7 @@ if(mysqli_num_rows($result) > 0)
             {
                 $output .= '';
             }*/
-            $abs_diff = $$todayDate->diff($apptDate)->format("%a"); //3
+            $abs_diff = $todayDate->diff($apptDate)->format("%a"); //3
             //$dateDiff = $todayDate - $apptDate;
             
             //$output .= "echo "
