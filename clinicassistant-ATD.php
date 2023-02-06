@@ -182,7 +182,7 @@ if (isset($_POST['btnUpdate'])) {
 		$appStatus = 'past';
 		//Gets selected services array and adds them together to form a string 
 		$selectedServices = implode(" ",$_POST['serviceSL']);
-		$selectedAssistants = implode(" ",$_POST['assistantSL']);
+		$selectedAssistants = implode(",",$_POST['assistantSL']);
 
 		//Get old medical history and combine with new treatment notes
 		$SQLstring3 = "SELECT medHistory FROM $TableNameAppointment INNER JOIN $TableNamePatientProfile ON appointment.nric = patientprofile.nric WHERE apptID = '".$apptID."'";
