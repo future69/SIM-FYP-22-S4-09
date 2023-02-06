@@ -84,10 +84,10 @@ if(mysqli_num_rows($result) > 0)
             $output .= '<button type="submit" class="btn btn-secondary" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>
                 ';
         }
-        $output .= 'echo $dateDiff;
+        $output .= '
                     </td>
             </tr>
-        ';
+        ' . $dateDiff;
         // <button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?\'">Update Appointment</button>
         // <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
     }
