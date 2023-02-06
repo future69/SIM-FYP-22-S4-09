@@ -1,5 +1,6 @@
 <?php 
 session_start(); 
+ob_start();
 $clinicName = $_SESSION["clinicName"];
 ?>
 
@@ -47,87 +48,162 @@ $clinicName = $_SESSION["clinicName"];
 					</div>
 				</div>
 		</nav>
-		<?php 
-			if (isset($_POST['submit'])) {
-				echo '<script>alert("Appointment updated!")</script>';
-			}
-			else if (isset($_POST['back'])) {
-				header("Location:clinicAdminAppointments.php");
-			}
-		?>
+		<?php
+
+//$clinicName = 'tempClinicName'; //get this from session in the future
+$clinicName = $_SESSION["clinicAssistantClinicName"];
+//$apptID = $_GET['apptID'];
+$apptID = 'S9999999G2023-01-2511:12:11';
+$servername = "u418115598_dentalapp";
+
+//create connection
+$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername);
+$TableNameAppointment = 'appointment';
+$TableNameDentist = 'dentistprofile';
+$TableNameUseraccount = 'useraccount';
+$TableNamePatientProfile = 'patientprofile';
+$TableNameClinic = 'clinic';
+$TableNameClinicAssistant = 'clinicassistantprofile';
+
+//The lines to run in sql (get dentist info)
+$SQLstring = "SELECT * FROM $TableNameAppointment 
+INNER JOIN $TableNameDentist 
+ON appointment.practitionerNumber = dentistprofile.practitionerNumber 
+INNER JOIN $TableNameUseraccount 
+ON dentistprofile.nric = useraccount.nric 
+WHERE appointment.apptID = '". $apptID ."'";
+
+//The lines to run in sql (get patient info)
+$SQLstring2 = "SELECT * FROM $TableNameAppointment 
+INNER JOIN $TableNamePatientProfile 
+ON appointment.nric = patientprofile.nric 
+INNER JOIN $TableNameUseraccount 
+ON appointment.nric = useraccount.nric 
+WHERE appointment.apptID = '". $apptID ."'";
+
+//The lines to run in sql (get allergies and med history)
+$SQLstring3 = "SELECT * FROM $TableNameAppointment 
+INNER JOIN $TableNamePatientProfile 
+ON appointment.nric = patientprofile.nric 
+INNER JOIN $TableNameUseraccount 
+ON appointment.nric = useraccount.nric 
+WHERE appointment.apptID = '". $apptID ."'";
+
+//query results for dentist and patient info tables
+$queryResult = mysqli_query($conn, $SQLstring);
+$queryResult2 = mysqli_query($conn, $SQLstring2);
+
+//query results for allergies and med history
+$queryResult3 = mysqli_query($conn, $SQLstring3);
+$rowPatientInfo = mysqli_fetch_assoc($queryResult3);
+
+if (isset($_POST['btnBack'])){
+	header("Location:clinicAdminAppointments.php");
+}
+
+?>
 	</header>
 	<body>
-		<div class="registrationBoxPatient container">
+	<div class="registrationBoxPatient container">
+		<form method="POST">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
-					<div class="display-6">Appointment treatment details for name3</div>
+					<div class="display-6">Past Appointment Treatment Details</div>
 				</div>
 				<div class="row col-7">
 					<table class="table caption-top table-hover table-secondary table-striped ">
-					<caption>Appointment Details</caption>
+						<caption>Appointment Details</caption>
 						<thead>
 							<tr>
 								<th scope="col">Date</th>
 								<th scope="col">Time</th>
-								<th scope="col">Reason</th>
-								<th scope="col">Service(s) provided</th>
+								<th scope="col">Dentist</th>
 							<tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td> 20/11/2022 </td>
-								<td> 15:00 </td>
-								<td> smelly breath and dirty teeth </td>
-								<td> Polishing, Fillings </td>
-							</tr>
+							<?php
+							while ($row = mysqli_fetch_assoc($queryResult)) {
+								?>
+								<tr>
+									<td><?php echo $row['apptDate']?></td>
+									<td><?php echo $row['apptTime']?></td>
+									<td><?php echo $row['fullName']?></td>
+								</tr>
+								<?php
+							}
+							?>
 						</tbody>
 					</table>
 					<table class="table caption-top table-hover table-secondary table-striped ">
-					<caption>Patient Details</caption>
+						<caption>Patient Details</caption>
 						<thead>
 							<tr>
 								<th scope="col">Name</th>
 								<th scope="col">NRIC</th>
-								<th scope="col">Age</th>
+								<th scope="col">DOB</th>
 								<th scope="col">Gender</th>
-								<th scope="col">Medical History</th>
+								<th scope="col">X-Ray</th>
 							<tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td> name3 </td>
-								<td> S2234567C </td>
-								<td> 34 </td>
-								<td> Male </td>
-								<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
-							</tr>
+						<?php
+							while ($row = mysqli_fetch_assoc($queryResult2)) {
+								?>
+								<tr>
+									<td><?php echo $row['fullName']?></td>
+									<td><?php echo $row['nric']?></td>
+									<td><?php echo $row['dob']?></td>
+									<td><?php echo $row['gender']?></td>
+									<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
+								</tr>
+								<?php
+							}
+							?>
 						</tbody>
 					</table>
-					<form method="POST" class="row justify-content-center align-items-center">
+					<div class="row col-2 py-2">
+						<label for="medhistoryTB" class="col-2 col-form-label">Medical History: </label>
+					</div>
+					<div class="col-10 mt-2">
+						<textarea class="form-control" id="medhistoryTB" name="medhistoryTB" disabled><?php echo str_replace('~', "\r\n",$rowPatientInfo['medHistory']);?></textarea>
+					</div>
 					<div class="row col-6 align-items-center py-2">
-						<label for="dentistTB" class="col-2 col-form-label">Dentist:</label>
-						<div class="col-6">
-							<input type="text" class="form-control" id="dentistTB" value="Dr. John Tan" disabled>
+						<label for="serviceSL" class="col-3 col-form-label">Services:</label>
+						<div class="col-7">
+							<textarea class="form-control" id="servicesTA" name="servicesTA" disabled><?php echo str_replace(' ',",",$rowPatientInfo['serviceName']);?></textarea>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
-						<label for="assistantTB" class="col-3 col-form-label">Assistant(s):</label>
+						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
-							<input type="text" class="form-control" id="assistantTB" value="Cory Lee, Michelle Yeo" disabled>
+text						<textarea class="form-control" id="assistantTA" name="assistantTA" disabled><?php echo str_replace(',',"\r\n",$rowPatientInfo['assistant']);?></textarea>
 						</div>
 					</div>
-					<div class="row col-12  py-2">
-						<label for="remarksTA" class="col-1 col-form-label">Remarks:</label>
-						<div class="col-10">
-							<textarea class="form-control" aria-label="With textarea" id="remarksTA" disabled> Polishing went as usual. Filling involved back 4 molars. </textarea>
+					<div class="row col-6 align-items-center py-2">
+						<label for="allergiesLabel" class="col-3 col-form-label">Allergies:</label>
+						<div class="col-7">
+							<textarea class="form-control" id="allergiesTB" name="allergiesTB" size="3" disabled><?php echo $rowPatientInfo['allergies']?></textarea>
 						</div>
 					</div>
+					<div class="row col-6 align-items-center py-2">
+						<label for="materialSL" class="col-3 col-form-label">Materials:</label>
+						<div class="col-7">
+							<textarea class="form-control" id="materialsTB" name="materialsTB" size="3" disabled><?php echo $rowPatientInfo['materialsUsed']?></textarea>
+						</div>
+					</div>
+					<div class="row col-2 py-2">
+						<label for="treatmentNotesTB" class="col-2 col-form-label">Treatment Notes:</label>
+					</div>
+					<div class="col-10 mt-2">
+						<textarea class="form-control" id="treatmentNotesTB" name="treatmentNotesTB" disabled><?php echo $rowPatientInfo['treatmentNotes']?></textarea>
+					</div>
+					<div class="row errorMessage justify-content-center align-items-center py-2"></div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
-						<button class="btn btn-danger" name="back" value="back">Back</button>
+						<button class="btn btn-danger" id="btnBack" name="btnBack" value="btnBack">Back</button>
 					</div>
-					</form>
 				</div>
 			</div>
-		</div>
-	</body>
+		</form>
+	</div>
+</body>
 </html>

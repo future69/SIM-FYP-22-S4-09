@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -63,7 +64,6 @@
 
             if (isset($_POST['updateClinicStatus'])) {
 				$cbValue = $_POST['flexRadioDefault1'];
-				echo $cbValue;
 				$DBName = "u418115598_dentalapp";
 				$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
@@ -80,16 +80,25 @@
 					$SQLstring2 = "UPDATE $TableNameUseraccount SET accStatus='" . $accStatus . "' WHERE username='" . $username . "'";
 					mysqli_query($conn, $SQLstring);
 					mysqli_query($conn, $SQLstring2);
-					$errorMessage = "Application approved!";
+					echo "<script>
+					alert('Application approved!');
+					window.location.href='superadminClinicAccountApplication.php';
+					</script>";
 				}
 				else if($cbValue == "checkboxReject"){
 					$clinicStatus = 'rejected';
 					$SQLstring = "UPDATE $TableNameClinic SET clinicStatus='" . $clinicStatus . "' WHERE acraNum='" . $applicationAcraNum . "'";
 					mysqli_query($conn, $SQLstring);
-					$errorMessage = "Application rejected!";
+					echo "<script>
+					alert('Application rejected!');
+					window.location.href='superadminClinicAccountApplication.php';
+					</script>";
 				}
 				else {
-					$errorMessage = "No changes made";
+					echo "<script>
+					alert('No changes made!');
+					window.location.href='superadminClinicAccountApplication.php';
+					</script>";
 				}
 			}
 			if (isset($_POST['back'])) {
