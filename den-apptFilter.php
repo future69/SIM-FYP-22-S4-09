@@ -77,6 +77,7 @@ if(mysqli_num_rows($result) > 0)
                 $output .= '';
             }*/
             $dateDiff = $todayDate - $row['apptDate'];
+            
             //$output .= "echo "
 
         } else {
@@ -91,6 +92,7 @@ if(mysqli_num_rows($result) > 0)
         // <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
     }
     echo $output;
+    echo $dateDiff;
 }
 else
 {
