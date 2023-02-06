@@ -30,7 +30,7 @@ if(mysqli_num_rows($result_admin) > 0)
   <div class="table-responsive ">
    <table class="table table bordered">
     <tr>
-     <th>Clinic Name Account</th>
+     <th>Clinic Account Username</th>
      <th>Status</th>
     </tr>
  ';
@@ -38,7 +38,7 @@ if(mysqli_num_rows($result_admin) > 0)
  {
   $output_admin .= '
    <tr>
-    <td><a href="superadminUpdateCAAcount.php?clinicName='.$row["username"].'">'.$row["username"].'</a></td>
+    <td><a href="superadminUpdateCAAccount.php?clinicAccountUsername='.$row["username"].'">'.$row["username"].'</a></td>
     <td>'.$row["accStatus"].'</td>
    </tr>
   ';

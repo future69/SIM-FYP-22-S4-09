@@ -46,7 +46,7 @@
 					<div class="me-auto">
 						<ul class="navbar-nav">
 						<li class="nav-item">
-								<a class="nav-link" href="#">Welcome <?php echo $dentistFullName ?></a>
+								<a class="nav-link" href="#">Welcome <?php echo $dentistFullname ?></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link"  href="dentistPersonalProfile.php">Profile</a>

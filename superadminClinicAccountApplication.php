@@ -35,7 +35,7 @@
                         <a class="nav-link" href="#">Welcome Superadmin</a>
                     </li>
                     <li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
+                        <a class="nav-link" href="index.php">Logout</a>
                      </li>
                  </ul>
             </div>
