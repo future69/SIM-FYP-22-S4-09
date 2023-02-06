@@ -72,8 +72,8 @@ if(mysqli_num_rows($result) > 0)
             $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
                 ';
 
-            $todayDate = new DateTime($todayDate);
-            $apptDate = new DateTime($row['apptDate']);
+            //$todayDate = new DateTime($todayDate);
+            //$apptDate = new DateTime($row['apptDate']);
             /*if ()
             {
                 $output .= '';
