@@ -78,7 +78,7 @@ if(mysqli_num_rows($result) > 0)
             {
                 $output .= '';
             }*/
-            $abs_diff = $todayDate->diff($apptDate)->format("%a"); //3
+            // $abs_diff = $todayDate->diff($apptDate)->format("%a"); //3
             //$dateDiff = $todayDate - $apptDate;
             
             //$output .= "echo "
@@ -87,7 +87,7 @@ if(mysqli_num_rows($result) > 0)
             $output .= '<button type="submit" class="btn btn-secondary" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>
                 ';
         }
-        $output .= $abs_diff . '
+        $output .= '
                     </td>
             </tr>
         ' ;
