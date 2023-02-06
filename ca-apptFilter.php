@@ -62,12 +62,12 @@ if(mysqli_num_rows($result) > 0)
                 <td>'. $row["phoneNum"] . '</td>
                 <td>'. $row["reason"] . '</td>
                 <td>
-                    <button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'clinicAdminUpdateAppointment.php?apptID='.$row["apptID"].'\'">Update Appointment</button>
-                    <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
                     <button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
                 </td>
             </tr>
         ';
+                    //<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'clinicAdminUpdateAppointment.php?apptID='.$row["apptID"].'\'">Update Appointment</button>
+                    //<button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
     }
     echo $output;
 }
