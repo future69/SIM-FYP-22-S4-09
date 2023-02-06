@@ -70,7 +70,7 @@ if(mysqli_num_rows($result) > 0)
         $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
                 ';
         } else {
-            $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>
+            $output .= '<button type="submit" class="btn btn-secondary" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>
                 ';
         }
         $output .= '
