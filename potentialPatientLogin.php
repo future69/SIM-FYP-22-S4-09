@@ -47,7 +47,7 @@ session_start();
 			</ul>
 		</div>
 	</div>
-	<nav>
+</nav>
 	<?php
 	$errorMessage = "";
 	if (isset($_POST['submit'])) {
