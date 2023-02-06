@@ -16,7 +16,19 @@ $query = "SELECT * FROM $TableNameClinic";
 
 // This is for radio button (Clinic Acc Status)
 if (isset($_POST['clinicStatus'])) {
-    $clinicStatus = $_POST['clinicStatus'];
+    if ($_POST['clinicStatus'] == 'inreview')
+    {
+        $clinicStatus = "inreview";
+    }
+    else if ($_POST['clinicStatus'] == 'approved')
+    {
+        $clinicStatus = "approved";
+    }
+    else  if ($_POST['clinicStatus'] == 'rejected')
+    {
+        $clinicStatus = "rejected";
+    }
+    
 
     $query .= " WHERE clinicStatus = '$clinicStatus'";
 }
