@@ -81,6 +81,9 @@ session_start();
 			else if (mysqli_num_rows($queryResult) == 0 || password_verify($password, $theResult['password']) == false) {
 				$errorMessage = "Username/password is incorrect";
 			} 
+			else if ($theResult['accStatus'] == 'suspended'){
+				$errorMessage = "Account is suspended";
+			}
 		
 			else {
 				switch ($theResult['roleName']) {
