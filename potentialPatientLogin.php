@@ -130,12 +130,19 @@ session_start();
 
 						//SQL statement to get clinic name
 						$TableNameDentist = 'dentistprofile';
-						$SQLstringDentist = "SELECT * FROM $TableNameDentist WHERE nric = '" . $_SESSION['dentistNric']. "'";
+						$SQLstringDentist = "SELECT * FROM $TableName INNER JOIN $TableNameDentist ON useraccount.nric = dentistprofile.nric WHERE dentistprofile.nric = '" . $_SESSION['dentistNric']. "'";
+						//$SQLstringDentist = "SELECT * FROM $TableNameDentist WHERE nric = '" . $_SESSION['dentistNric']. "'";
 						//Executing the sql
 						$queryResultDentist = mysqli_query($conn, $SQLstringDentist);
 						//Make result into array
 						$theResultDentist = mysqli_fetch_assoc($queryResultDentist);
-
+						//details for dentist profile
+						$_SESSION['dentistUsername'] = $theResult['username'];
+						$_SESSION['dentistPassword'] = $theResult['password'];
+						$_SESSION['dentistNric'] = $theResult['nric'];
+						$_SESSION['dentistClinicName'] = $theResultClinicAss['clinicName'];
+						$_SESSION['dentistPhoneNo'] = $theResult['phoneNum'];
+						$_SESSION['dentistEmail'] = $theResult['email'];
 						$_SESSION['dentistFullname'] = $theResult['fullName'];
 						$_SESSION['dentistPracNum'] = $theResultDentist['practitionerNumber'];
 						header("Location:dentistHomepage.php");
