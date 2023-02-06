@@ -4,6 +4,8 @@ session_start();
 $DBName = "u418115598_dentalapp";
 $connect = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
+date_default_timezone_set("Singapore");
+$todayDate = date('Y-m-d'); 
 $output = '';
 
 //Name of the table 
@@ -67,8 +69,16 @@ if(mysqli_num_rows($result) > 0)
 
         if ($row["apptStatus"] == "upcoming")
         {
-        $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
+            $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
                 ';
+
+            /*if ()
+            {
+                $output .= '';
+            }*/
+            $dateDiff = $todayDate - $row['apptDate'];
+            //$output .= "echo "
+
         } else {
             $output .= '<button type="submit" class="btn btn-secondary" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>
                 ';
