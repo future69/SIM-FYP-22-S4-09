@@ -18,19 +18,18 @@ $query = "SELECT * FROM $TableNameClinic";
 if (isset($_POST['clinicStatus'])) {
     if ($_POST['clinicStatus'] == 'inreview')
     {
-        $clinicStatus = "inreview";
+        $query .= " WHERE clinicStatus = 'inreview'";
     }
     else if ($_POST['clinicStatus'] == 'approved')
     {
-        $clinicStatus = "approved";
+        $query .= " WHERE clinicStatus = 'approved'";
     }
     else  if ($_POST['clinicStatus'] == 'rejected')
     {
-        $clinicStatus = "rejected";
+        $query .= " WHERE clinicStatus = 'rejected'";
     }
-    
 
-    $query .= " WHERE clinicStatus = '$clinicStatus'";
+    //$query .= " WHERE clinicStatus = '$clinicStatus'";
 }
 
 $result = mysqli_query($connect, $query);
