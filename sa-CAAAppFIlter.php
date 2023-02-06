@@ -11,8 +11,7 @@ $TableNameClinic = "clinic";
 
 //$clinicName = $_SESSION["clinicName"];
 
-$query = "SELECT * FROM $TableNameClinic
-            WHERE clinicStatus = 'inreview'";
+$query = "SELECT * FROM $TableNameClinic";
 
 
 // This is for radio button (Clinic Acc Status)
