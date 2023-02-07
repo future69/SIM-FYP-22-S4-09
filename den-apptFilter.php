@@ -75,7 +75,8 @@ if(mysqli_num_rows($result) > 0)
             $todayDate = date_create(date('Y-m-d')); 
             $apptDate = date_create($row['apptDate']);
             $dateDiff = date_diff($todayDate, $apptDate);
-            echo $dateDiff->format("%a days");
+            $dateDiff->format("%a");
+            echo $dateDiff;
             /*if ($dateDiff > 2)
             {
                 $output .= '<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?\'">Update Appointment</button>
