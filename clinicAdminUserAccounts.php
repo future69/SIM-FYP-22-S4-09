@@ -8,6 +8,7 @@ $clinicName = $_SESSION["clinicName"];
 	<head>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	</head>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -69,9 +70,9 @@ $clinicName = $_SESSION["clinicName"];
 			<div class="row justify-content-center align-items-center pt-5">
 				<div class="row">
 					<form class="row col-8 justify-content-start align-items-center" method="POST">
-						<label for="searchClinicName" class="row col-2 col-form-label"><h4>Search :</h4></label>
+						<label for="searchUsername" class="row col-2 col-form-label"><h4>Search :</h4></label>
 							<div class="row col-6">
-								<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Name or NRIC">
+								<input type="text" class="row col-3 form-control" id="searchUsername" placeholder="Name or NRIC">
 							</div>
 					</form>
 					<div class="col-4 text-end display-6 pb-3">
@@ -82,61 +83,52 @@ $clinicName = $_SESSION["clinicName"];
 					</div>
 					<div class="row py-3">
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultEmployeeAcc" checked>
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultEmployeeAcc" value="employee" checked>
 						  <label class="form-check-label" for="flexRadioDefaultEmployeeAcc"><strong>Employees</strong></label>
 						</div>
 						<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPatientAcc">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPatientAcc" value="patient">
 						  <label class="form-check-label" for="flexRadioDefaultPatientAcc"><strong>Patients</strong></label>
 						</div>
 					</div>
-					<table class="table table-hover table-secondary table-striped ">
-						<thead>
-							<tr>
-								<th scope="col">Name</th>
-								<th scope="col">NRIC</th>
-								<th scope="col">Role</th>
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-							<tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td> Kenneth Toh </td>
-								<td> S6523836H </td>
-								<td> Clinic Assistant </td>
-								<td> Active </td>
-								<td><button type="submit" class="btn btn-primary" name="submit" onclick="location.href='clinicAdminView&UpdateEmployeeAccount.php'">View Account Details</button></td>
-							</tr>
-							<tr>
-								<td> Christian Dior </td>
-								<td> S1234567C </td>
-								<td> Clinic Assistant </td>
-								<td> Suspended </td>
-								<td class="col-6">
-								<button type="submit" class="btn btn-primary" name="submit">View Account Details</button>
-								</td>
-							</tr>
-							<tr>
-								<td> Michael Myers </td>
-								<td> S3334567C </td>
-								<td> Dentist </td>
-								<td> Active </td>
-								<td class="col-6">
-								<button type="submit" class="btn btn-primary" name="submit">View Account Details</button>
-								</td>
-							</tr>
-							<tr>
-								<td> James Loh </td>
-								<td> S8795156G </td>
-								<td> Patient </td>
-								<td> Active </td>
-								<td class="col-6">
-								<button type="submit" class="btn btn-primary" name="submit" onclick="location.href='clinicAdminViewPatientAccount.php'">View Account Details</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+
+					<div id="result"></div>
+					<script>
+						$(document).ready(function() {	
+							// Default value for each field
+							let search = $('#searchUsername').val();
+							let userType = $('input[type="radio"]:checked').val();
+							load_data(search, userType);
+
+							function load_data(search_text, userType) {
+								$.ajax({
+									url: "clinicAdminUserAccountsJQuery.php",
+									method: "POST",
+									data: {
+										search_text: search_text,
+										userType: userType
+									},
+									success: function(data) {
+										$('#result').html(data);
+									}
+								});
+							}
+
+							// This is for user name/nric search box (name/nric)
+							$('#searchUsername').keyup(function() {
+								search = $(this).val();
+
+								load_data(search, userType);
+							});
+
+							// This is for radio button (user type)
+							$('input[type="radio"]').change(function() {
+								userType = $('input[type="radio"]:checked').val();
+
+								load_data(search, userType);
+							});		
+						});
+					</script>
 				</div>
 			</div>
 		</div>
