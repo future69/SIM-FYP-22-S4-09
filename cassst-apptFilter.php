@@ -8,14 +8,14 @@ $output = '';
 
 //Name of the table 
 $TableNameAppointment = "appointment";
-$TableNameCAP = "clinicassistantprofile";
+$TableNameUA = "useraccount";
 
 $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 
 
 $query = "SELECT * 
             FROM $TableNameAppointment 
-            INNER JOIN $TableNameCAP ON appointment.clinicName = clinicassistantprofile.clinicName 
+            INNER JOIN $TableNameUA ON appointment.nric = useraccount.nric 
             WHERE appointment.clinicName = '$clinicAssistantClinicName'";
 
 // This is for search text
