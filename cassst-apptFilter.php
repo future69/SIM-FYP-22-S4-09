@@ -10,13 +10,12 @@ $output = '';
 $TableNameAppointment = "appointment";
 $TableNameUA = "useraccount";
 
-$clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
-
+$clinicName = $_SESSION["clinicAssistantClinicName"];
 
 $query = "SELECT * 
             FROM $TableNameAppointment 
             INNER JOIN $TableNameUA ON appointment.nric = useraccount.nric 
-            WHERE appointment.clinicName = '$clinicAssistantClinicName'";
+            WHERE appointment.clinicName = '$clinicName'";
 
 // This is for search text
 if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
