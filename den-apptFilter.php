@@ -76,11 +76,11 @@ if(mysqli_num_rows($result) > 0)
             
             if (($dateDiff->format("%a")) > 2)
             {
-                $output .= '<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?\'">Update Appointment</button>
+                $output .= '<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'dentistUpdateAppointment.php?apptID='.$row["apptID"].'\'">Update Appointment</button>
                 <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>';
             }
 
-            $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistUpdateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
+            $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
                 ';
         } else {
             $output .= '<button type="submit" class="btn btn-secondary" name="viewApptTreatmentDetails" onclick="location.href=\'dentistViewATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>

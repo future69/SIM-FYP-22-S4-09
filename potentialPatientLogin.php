@@ -91,6 +91,7 @@ session_start();
 						$_SESSION['patientUsername'] = $theResult['username'];
 						$_SESSION['patientFullname'] = $theResult['fullName'];
 						$_SESSION['patientNric'] = $theResult['nric'];
+						$_SESSION['patientEmail'] = $theResult['email'];
 						header("Location:potentialPatientHomepageAftLogin.php");
 						break;
 					case 'clinicAdmin':
@@ -130,8 +131,8 @@ session_start();
 
 						//SQL statement to get clinic name
 						$TableNameDentist = 'dentistprofile';
-						$SQLstringDentist = "SELECT * FROM $TableName INNER JOIN $TableNameDentist ON useraccount.nric = dentistprofile.nric WHERE dentistprofile.nric = '" . $_SESSION['dentistNric']. "'";
-						//$SQLstringDentist = "SELECT * FROM $TableNameDentist WHERE nric = '" . $_SESSION['dentistNric']. "'";
+						$SQLstringDentist = "SELECT * FROM $TableName INNER JOIN $TableNameDentist 
+						ON useraccount.nric = dentistprofile.nric WHERE dentistprofile.nric = '" . $_SESSION['dentistNric']. "'";
 						//Executing the sql
 						$queryResultDentist = mysqli_query($conn, $SQLstringDentist);
 						//Make result into array
@@ -140,7 +141,7 @@ session_start();
 						$_SESSION['dentistUsername'] = $theResult['username'];
 						$_SESSION['dentistPassword'] = $theResult['password'];
 						$_SESSION['dentistNric'] = $theResult['nric'];
-						$_SESSION['dentistClinicName'] = $theResultClinicAss['clinicName'];
+						$_SESSION['dentistClinicName'] = $theResultDentist['clinicName'];
 						$_SESSION['dentistPhoneNo'] = $theResult['phoneNum'];
 						$_SESSION['dentistEmail'] = $theResult['email'];
 						$_SESSION['dentistFullname'] = $theResult['fullName'];

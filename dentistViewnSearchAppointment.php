@@ -1,11 +1,11 @@
 <?php 
-	// Set session variables from login
-	session_start();
-	$dentistFullname = $_SESSION['dentistFullname'];
-	$dentistPracNum = $_SESSION['dentistPracNum'];
-
-	// set current date and time of query
-	date_default_timezone_set("Singapore");
+// Set session variables from login
+session_start();
+$dentistFullname = $_SESSION['dentistFullname'];
+$dentistPracNum = $_SESSION['dentistPracNum'];
+$clinicName = $_SESSION['dentistClinicName'];
+// set current date and time of query
+date_default_timezone_set("Singapore");
 ?>
 <html lang="en">
 <head>
@@ -97,71 +97,6 @@
 						</div>
 					</div>
 					<div id="result"></div>
-					<!-- <table class="table table-hover table-secondary table-striped ">
-						<thead>
-							<tr>
-								<th scope="col">Name</th>
-								<th scope="col">NRIC</th>
-								<th scope="col">Date</th>
-								<th scope="col">Time</th>
-								<th scope="col">Phone Number</th>
-								<th scope="col">Reason</th>
-								<th scope="col">Action</th>
-							<tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td> name1 </td>
-								<td> S2234567C </td>
-								<td> 20/11/2022 </td>
-								<td> 15:00 </td>
-								<td> 12345678 </td>
-								<td> Dirty teeth </td>
-								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
-								<a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistCreateATD.php'">Update Appointment Treatment Details</button>
-								</td>
-							</tr>
-							<tr>
-								<td> name2 </td>
-								<td> S5847913C </td>
-								<td> 23/11/2022 </td>
-								<td> 17:00 </td>
-								<td> 12345678 </td>
-								<td> Toothache in molar </td>
-								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
-								<a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistCreateATD.php'">Update Appointment Treatment Details</button>
-								</td>
-							</tr>
-							<tr>
-								<td> name3 </td>
-								<td> S8825463G </td>
-								<td> 20/12/2022 </td>
-								<td> 20:00 </td>
-								<td> 12345678 </td>
-								<td> Bad breath </td>
-								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistUpdateAppointment.php'">Update Appointment</button>
-								<a class="btn btn-danger"  href="dentistViewnSearchAppointment.php"  onclick="alert('Appointment Deleted!')">Delete Appointment</a>
-								<button type="submit" class="btn btn-success mt-2" name="CreateATD" onclick="location.href='dentistCreateATD.php'">Update Appointment Treatment Details</button>
-								</td>
-							</tr>
-							<tr>
-								<td> name3(past appointment) </td>
-								<td> S8825463G </td>
-								<td> 10/12/2022 </td>
-								<td> 20:00 </td>
-								<td> 12345678 </td>
-								<td class="overflow-auto"> smelly breath and dirty teeth</td>
-								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='dentistViewATD.php'">View Appointment Treatment Details</button>
-								</td>
-							</tr>
-						</tbody>
-					</table> -->
 					<script>
 						$(document).ready(function() {	
 							// Default value for each field

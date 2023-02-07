@@ -219,7 +219,7 @@ if (isset($_POST['btnUpdate'])) {
 		<form method="POST">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
-					<div class="display-6">Appointment treatment details for name3</div>
+					<div class="display-6">Appointment treatment details</div>
 				</div>
 				<div class="row col-7">
 					<table class="table caption-top table-hover table-secondary table-striped ">
@@ -276,7 +276,7 @@ if (isset($_POST['btnUpdate'])) {
 						<label for="medhistoryTB" class="col-2 col-form-label">Medical History: </label>
 					</div>
 					<div class="col-10 mt-2">
-						<textarea class="form-control" id="medhistoryTB" name="medhistoryTB" readonly><?php echo $rowPatientInfo['medHistory']?></textarea>
+						<textarea class="form-control" id="medhistoryTB" name="medhistoryTB" readonly><?php echo str_replace('~', "\r\n",$rowPatientInfo['medHistory']);?></textarea>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-3 col-form-label">Services:</label>

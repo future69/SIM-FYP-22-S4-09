@@ -165,6 +165,13 @@ session_start();
                 $apptID = $patientNric . date("Y-m-dH:i:s");
                 $timeSlot = $_POST['timeSlotSL'];
                 $apptStatus = 'upcoming';
+                $TableNameUseraccounts = "useraccount";
+
+				//Get patient email
+				$SQLstringPatient = "SELECT * FROM $TableNameUseraccounts WHERE nric ='".$patientNric."'";
+				$queryResultPatient = mysqli_query($conn, $SQLstringPatient);
+				$rows = mysqli_fetch_assoc($queryResultPatient);
+				$patientEmail = $rows['email'];
 
                 $conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
                 $TableNameAppointment = "appointment";
@@ -173,6 +180,10 @@ session_start();
                 " VALUES('$apptID','$clinicName','$patientNric','$date','$timeSlot','$apptStatus','$dentistPracNum','$reason')";
                 mysqli_query($conn, $SQLstring);
                 mysqli_close($conn);
+
+                //Email booking confirmation
+				require "emails.php";
+				bookAppointmentEmail($patientEmail, $patientFullname ,$clinicName, $date, $timeSlot);
 
                 echo "<script>
                 alert('Success');

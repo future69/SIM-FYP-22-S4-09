@@ -115,7 +115,7 @@ session_start();
 			$patientUsername = $_SESSION["patientUsername"];
 			$patientFullname = $_SESSION["patientFullname"];
 			$patientNric = $_SESSION["patientNric"];
-
+			$patientEmail = $_SESSION["patientEmail"];
 			$errorMessage = "";
 			try {
 				//Load the list of clinics
@@ -201,6 +201,10 @@ session_start();
 					" VALUES('$apptID','$clinicName','$patientNric','$date','$timeSlot','$apptStatus','$dentistPracNum','$reason')";
 					mysqli_query($conn, $SQLstring);
 					mysqli_close($conn);
+
+					//Email booking confirmation
+					require "emails.php";
+					bookAppointmentEmail($patientEmail, $patientFullname ,$clinicName, $date, $timeSlot);
 
 					echo "<script>
 					alert('Success');

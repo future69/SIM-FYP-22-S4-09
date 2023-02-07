@@ -48,12 +48,9 @@ $clinicName = $_SESSION["clinicName"];
 					</div>
 				</div>
 		</nav>
-		<?php
-
-//$clinicName = 'tempClinicName'; //get this from session in the future
-$clinicName = $_SESSION["clinicAssistantClinicName"];
-//$apptID = $_GET['apptID'];
-$apptID = 'S9999999G2023-01-2511:12:11';
+<?php
+$clinicName = $_SESSION["clinicAdminClinicName"];
+$apptID = $_GET['apptID'];
 $servername = "u418115598_dentalapp";
 
 //create connection
@@ -176,7 +173,7 @@ if (isset($_POST['btnBack'])){
 					<div class="row col-6 align-items-center py-2">
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
-text						<textarea class="form-control" id="assistantTA" name="assistantTA" disabled><?php echo str_replace(',',"\r\n",$rowPatientInfo['assistant']);?></textarea>
+						<textarea class="form-control" id="assistantTA" name="assistantTA" disabled><?php echo str_replace(',',"\r\n",$rowPatientInfo['assistant']);?></textarea>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">

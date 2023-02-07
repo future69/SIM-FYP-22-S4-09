@@ -161,11 +161,23 @@ $clinicName = $_SESSION["clinicName"];
 
                 $conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
                 $TableNameAppointment = "appointment";
+				$TableNameUseraccounts = "useraccount";
+
+				//Get patient email
+				$SQLstringPatient = "SELECT * FROM $TableNameUseraccounts WHERE nric ='".$patientNric."'";
+				$queryResultPatient = mysqli_query($conn, $SQLstringPatient);
+				$rows = mysqli_fetch_assoc($queryResultPatient);
+				$patientEmail = $rows['email'];
+
                 //Inserts data into DB
                 $SQLstring = "INSERT INTO $TableNameAppointment " . " (apptID, clinicName, nric, apptDate, apptTime, apptStatus, practitionerNumber, reason) " . 
                 " VALUES('$apptID','$clinicName','$patientNric','$date','$timeSlot','$apptStatus','$dentistPracNum','$reason')";
                 mysqli_query($conn, $SQLstring);
                 mysqli_close($conn);
+
+				//Email booking confirmation
+				require "emails.php";
+				bookAppointmentEmail($patientEmail, $patientFullname ,$clinicName, $date, $timeSlot);
 
                 echo "<script>
                 alert('Success');
