@@ -75,7 +75,7 @@ if(mysqli_num_rows($result) > 0)
             $todayDate = date_create(date('Y-m-d')); 
             $apptDate = date_create($row['apptDate']);
             $dateDiff = date_diff($todayDate, $apptDate);
-            echo $dateDiff->format("%R%a days");
+            echo $dateDiff->format("%a days");
             /*if ()
             {
                 $output .= '';
