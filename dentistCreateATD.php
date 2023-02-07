@@ -1,6 +1,7 @@
 <?php
 ob_start();
 session_start();
+$clinicName = $_SESSION['dentistClinicName'];
 ?>
 <html lang="en">
 <head>
@@ -41,7 +42,7 @@ session_start();
 					<div class="me-auto">
 						<ul class="navbar-nav">
 						<li class="nav-item">
-								<a class="nav-link" href="#">Welcome Dr. Lee</a>
+								<a class="nav-link" href="#">Welcome <?php echo $dentistFullName ?></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
@@ -212,7 +213,7 @@ if (isset($_POST['btnUpdate'])) {
 		<form method="POST">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
-					<div class="display-6">Appointment treatment details for name3</div>
+					<div class="display-6">Appointment treatment details</div>
 				</div>
 				<div class="row col-7">
 					<table class="table caption-top table-hover table-secondary table-striped ">

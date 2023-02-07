@@ -219,7 +219,7 @@ if (isset($_POST['btnUpdate'])) {
 		<form method="POST">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
-					<div class="display-6">Appointment treatment details for name3</div>
+					<div class="display-6">Appointment treatment details</div>
 				</div>
 				<div class="row col-7">
 					<table class="table caption-top table-hover table-secondary table-striped ">
