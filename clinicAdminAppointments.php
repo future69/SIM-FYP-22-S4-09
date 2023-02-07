@@ -1,8 +1,10 @@
 <?php 
 	// Set session variables from login
 	session_start(); 
-	$clinicName = $_SESSION["clinicName"];
+	//$clinicName = $_SESSION["clinicName"];
 	$acraNum = $_SESSION['clinicAdminAcraNum'];
+	$clinicName = $_SESSION["clinicAssistantClinicName"];
+	echo $clinicName;
 
 	date_default_timezone_set("Singapore");
 ?>
