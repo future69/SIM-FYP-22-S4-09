@@ -1,7 +1,10 @@
 <?php
 session_start();
-// $clinicName = $_SESSION["clinicAssistantClinicName"];
-// echo $clinicName;
+$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+$clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
+
+//echo $clinicAssistantFullname;
+//echo $clinicAssistantClinicName;
 ?>
 <html lang="en">
 
@@ -15,13 +18,6 @@ session_start();
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<title>clinic Assistant Appointment List</title>
 </head>
-<?php
-$clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
-$clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
-
-echo $clinicAssistantFullname;
-echo $clinicAssistantClinicName;
-?>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
@@ -108,12 +104,12 @@ echo $clinicAssistantClinicName;
 		</div>
 		<div class="row justify-content-center align-items-center pt-5">
 			<div class="row">
-				<label for="searchClinicName" class="row col-2 col-form-label">
-					<h4>Search :</h4>
-				</label>
+			<form class="row col-8 justify-content-start align-items-center" method="POST">
+				<label for="searchClinicName" class="row col-2 col-form-label"><h4>Search :</h4></label>
 				<div class="row col-6">
 					<input type="text" class="row col-3 form-control" name="apptSearch" id="searchClinicName" placeholder="Name or NRIC">
 				</div>
+			</form>
 				<div class="col-4 text-end display-6 pb-3">
 					<button type="submit" class="btn btn-warning" name="bookAppointment" onclick="location.href='clinicassistant-CreateAppointment.php'">Book Appointment</button>
 				</div>
