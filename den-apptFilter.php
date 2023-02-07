@@ -75,16 +75,12 @@ if(mysqli_num_rows($result) > 0)
             $todayDate = date_create(date('Y-m-d')); 
             $apptDate = date_create($row['apptDate']);
             $dateDiff = date_diff($todayDate, $apptDate);
-            echo $dateDiff->format("%a days");
-            /*if ()
+            //echo $dateDiff->format("%a days");
+            if ($dateDiff > 2)
             {
-                $output .= '';
-            }*/
-            // $abs_diff = $todayDate->diff($apptDate)->format("%a"); //3
-            //$dateDiff = $todayDate - $apptDate;
-            
-            //$output .= "echo "
-
+                $output .= '<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?\'">Update Appointment</button>
+                <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>';
+            }
         } else {
             $output .= '<button type="submit" class="btn btn-secondary" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>
                 ';
