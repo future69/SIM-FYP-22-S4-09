@@ -10,10 +10,12 @@ session_start();
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<title>clinic Assistant Appointment List</title>
 </head>
 <?php
 $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+$clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName']
 ?>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -55,30 +57,30 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 		</div>
 	</nav>
 	<?php
-	$servername = "u418115598_dentalapp";
-	//Name of the table 
+	// $servername = "u418115598_dentalapp";
+	// //Name of the table 
 
-	$clinicName = $_SESSION['clinicAssistantClinicName'];
-	$TableNameAppointment = "appointment";
-	$TableNameClinic = "clinic";
-	$TableNameUseraccount = "useraccount";
-	$con = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $servername) or die("Connection Failed");
+	// $clinicName = $_SESSION['clinicAssistantClinicName'];
+	// $TableNameAppointment = "appointment";
+	// $TableNameClinic = "clinic";
+	// $TableNameUseraccount = "useraccount";
+	// $con = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $servername) or die("Connection Failed");
 
-	$SQLstring = "SELECT * FROM $TableNameAppointment 
-	INNER JOIN $TableNameClinic 
-	ON appointment.clinicName = clinic.clinicName 
-	INNER JOIN $TableNameUseraccount 
-	ON appointment.nric = useraccount.nric 
-	WHERE clinic.clinicName = '" . $clinicName . "'";
-	$result = mysqli_query($con, $SQLstring);
+	// $SQLstring = "SELECT * FROM $TableNameAppointment 
+	// INNER JOIN $TableNameClinic 
+	// ON appointment.clinicName = clinic.clinicName 
+	// INNER JOIN $TableNameUseraccount 
+	// ON appointment.nric = useraccount.nric 
+	// WHERE clinic.clinicName = '" . $clinicName . "'";
+	// $result = mysqli_query($con, $SQLstring);
 
-	if (isset($_GET['apptID'])) {
-	echo $_GET['apptID'];
+	// if (isset($_GET['apptID'])) {
+	// echo $_GET['apptID'];
 	//if the above is able to get the ApptID uncomment the 3 rows below.
 	// $deleteID = $_GET['apptID'];
 	// $deleteSQL = "DELETE from appointment WHERE apptID = $deleteID";
 	// $deleteQuery = mysqli_query($con, $deleteSQL);
-	} 
+	//} 
 
 	//else if (isset($_POST['updateAppt'])) {
 	// 	header("Location:clinicassistant-UpdateAppointment.php");
@@ -113,106 +115,52 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 			</div>
 			<div class="row py-3">
 				<div class="col-2 form-check">
-					<input class="form-check-input" type="radio" value="upcoming" name="ApptRadio" id="flexRadioDefaultCurrent" onclick="filterRadio('upcoming')" checked><strong>Current Appointments</strong>
+					<input class="form-check-input" type="radio" value="upcoming" name="ApptRadio" id="flexRadioDefaultCurrent" value="flexRadioDefaultUpcoming" checked><strong>Current Appointments</strong>
 				</div>
 				<div class="col-2 form-check">
-					<input class="form-check-input" type="radio" value="past" name="ApptRadio" id="flexRadioDefaultPast" onclick="filterRadio('past')"><strong>Past Appointments</strong>
+					<input class="form-check-input" type="radio" value="past" name="ApptRadio" id="flexRadioDefaultPast" value="flexRadioDefaultPast"><strong>Past Appointments</strong>
 				</div>
 			</div>
+			<div id="result"></div>
 
-			<div id="radioFilter" class="mb-2"></div>
+			<script>
+						$(document).ready(function() {	
+							// Default value for each field
+							let search = $('#searchClinicName').val();
+							let apptStatus = $('input[type="radio"]:checked').val();
+							load_data(search, apptStatus);
 
-			<div id="apptResult" class="align-middle"></div>
+							function load_data(search_text, apptStatus) {
+								$.ajax({
+									url: "casst-apptFilter.php",
+									method: "POST",
+									data: {
+										search_text: search_text,
+										apptStatus: apptStatus
+									},
+									success: function(data) {
+										$('#result').html(data);
+									}
+								});
+							}
 
-			<?php
-			if (mysqli_num_rows($result) > 0) {
-			?>
-				<table class="table table-hover table-secondary table-striped ">
-					<thead>
-						<tr>
-							<th scope="col">Name</th>
-							<th scope="col">NRIC</th>
-							<th scope="col">Date</th>
-							<th scope="col">Time</th>
-							<th scope="col">Phone Number</th>
-							<th scope="col">Reason</th>
-							<th scope="col">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-						while ($row = mysqli_fetch_array($result)) {
-						?>
-							<tr>
-								<td> <?php echo $row['fullName']; ?> </td>
-								<td> <?php echo $row['nric']; ?> </td>
-								<td> <?php echo $row['apptDate']; ?> </td>
-								<td> <?php echo $row['apptTime']; ?> </td>
-								<td> <?php echo $row['phoneNum']; ?> </td>
-								<td> <?php echo $row['reason']; ?> </td>
-								<td>
-									<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-UpdateAppointment.php'">Update Appointment</button>
-									<button type="submit" class="btn btn-danger" name="deleteAppt" onclick="location.href='clinicassistant-AppointmentList.php?apptID=<?php echo $row['apptID']; ?>'">Deleted Appointment</button>
-									<button type="submit" class="btn btn-success" name="CreateATD" onclick="location.href='clinicassistant-ATD.php?apptID=<?php echo $row['apptID']; ?>'">Update Appointment Treatment Details</button>
-								</td>
-							</tr>
-						<?php
-						}
-						?>
-					</tbody>
-				</table>
-			<?php
-			} else {
-				echo "No results found";
-			} ?>
+							// This is for clinic name search box (Clinic name)
+							$('#searchClinicName').keyup(function() {
+								search = $(this).val();
+
+								load_data(search, apptStatus);
+							});
+
+							// This is for radio button (Appointment Status)
+							$('input[type="radio"]').change(function() {
+								apptStatus = $('input[type="radio"]:checked').val();
+
+								load_data(search, apptStatus);
+							});		
+						});
+					</script>
 		</div>
 	</div>
-
-	<script>
-		function load_filter() {
-			fetch('clinicassistant-radiofilter.php?action=filter').then(function(response) {
-				return response.json();
-			}).then(function(responeseData) {
-				if (responeseData.radio) {
-					if (responeseData.radio.length > 0) {
-						var html = '<div class="list-group">';
-
-						for (var i = 0; i < responeseData.radio.length; i++) {
-							html += '<label class="list-group=item">';
-
-							html += ''
-						}
-					}
-				}
-			})
-		}
-
-		$(document).ready(function() {
-
-			load_data();
-
-			function load_data(queryAppt) {
-				$.ajax({
-					url: "ca-livesearch.php",
-					method: "POST",
-					data: {
-						queryAppt: queryAppt
-					},
-					success: function(data) {
-						$('#apptResult').html(data);
-					}
-				});
-			}
-			$('#search_text').keyup(function() {
-				var search = $(this).val();
-				if (search != '') {
-					load_data(search);
-				} else {
-					load_data();
-				}
-			});
-		});
-	</script>
 </body>
 
 </html>
