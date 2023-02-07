@@ -3,30 +3,27 @@
 $DBName = "u418115598_dentalapp";
 $conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 $output = '';
-$output_admin = '';
 
-
-//this is for superadmin
 //this will get the value from the search bar and will run the filtering 
-if(isset($_POST["query_admin"]))
+if(isset($_POST["query"]))
 {
- $search_admin = mysqli_real_escape_string($conn, $_POST["query_admin"]);
- $query_admin = "
-  SELECT * from useraccount INNER JOIN clinic ON useraccount.username = clinic.username;
-  WHERE useraccount.username LIKE '%".$search_admin."%'
+ $search = mysqli_real_escape_string($conn, $_POST["query"]);
+ $query = "
+  SELECT * FROM useraccount INNER JOIN clinic ON useraccount.username = clinic.username
+  WHERE useraccount.username LIKE '%".$search."%'
  ";
 }
 else
 {
 //when search bar is empty show to whole table 
- $query_admin = "
- SELECT * from useraccount INNER JOIN clinic ON useraccount.username = clinic.username;
+ $query = "
+ SELECT * from useraccount INNER JOIN clinic ON useraccount.username = clinic.username
  ";
 }
-$result_admin = mysqli_query($conn, $query_admin);
-if(mysqli_num_rows($result_admin) > 0)
+$result = mysqli_query($conn, $query);
+if(mysqli_num_rows($result) > 0)
 {
- $output_admin .= '
+ $output .= '
   <div class="table-responsive ">
    <table class="table table bordered">
     <tr>
@@ -34,9 +31,9 @@ if(mysqli_num_rows($result_admin) > 0)
      <th>Status</th>
     </tr>
  ';
- while($row = mysqli_fetch_array($result_admin))
+ while($row = mysqli_fetch_array($result))
  {
-  $output_admin .= '
+  $output .= '
    <tr>
     <td><a href="superadminUpdateCAAccount.php?clinicAccountUsername='.$row["username"].'">'.$row["username"].'</a></td>
     <td>'.$row["accStatus"].'</td>
@@ -44,7 +41,7 @@ if(mysqli_num_rows($result_admin) > 0)
   ';
   
  }
- echo $output_admin;
+ echo $output;
 }
 else
 {
