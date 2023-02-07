@@ -123,9 +123,9 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 						  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 					</div>
 				</div>
-			<div id="result"></div>
+				<div id="result"></div>
 
-			<script>
+				<script>
 						$(document).ready(function() {	
 							// Default value for each field
 							let search = $('#searchClinicName').val();
@@ -134,7 +134,7 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 
 							function load_data(search_text, apptStatus) {
 								$.ajax({
-									url: "casst-apptFilter.php",
+									url: "cassst-apptFilter.php",
 									method: "POST",
 									data: {
 										search_text: search_text,
@@ -160,8 +160,8 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 								load_data(search, apptStatus);
 							});		
 						});
-					</script>
-		</div>
+				</script>
+			</div>
 	</div>
 </body>
 
