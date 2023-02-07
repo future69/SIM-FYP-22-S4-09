@@ -5,7 +5,7 @@ function bookAppointmentEmail($rEmail, $patientName ,$clinicName, $apptDate, $ap
     $from = "noreply@diamonddentalclinics.com";
     $to = $rEmail;
     $subject = "Booking at " . $clinicName . " " . $apptDate;
-    $message = "Dear " . $patientName . ". This is a confirmation email for you rbooking at " .$clinicName. " on ".$apptDate." ". $apptTime . " . Thank you for booking.";
+    $message = "Dear " . $patientName . ". This is a confirmation email for your booking at " .$clinicName. " on ".$apptDate." ". $apptTime . " . Thank you for booking.";
     $headers = "From:" . $from;
     if(mail($to,$subject,$message, $headers)) {
         echo "The email message was sent.";
