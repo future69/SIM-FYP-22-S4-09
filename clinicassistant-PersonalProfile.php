@@ -90,7 +90,7 @@ $clinicAssistantEmail = $_SESSION['clinicAssistantEmail'];
 					  <div class="row justify-content-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" value="<?php echo $clinicAssistantUsername ?>" disabled id="usernameTB">
+						  <input class="form-control" value="<?php echo $clinicAssistantFullname ?>" disabled id="usernameTB">
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
