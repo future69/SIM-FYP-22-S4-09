@@ -104,24 +104,25 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 		</div>
 		<div class="row justify-content-center align-items-center pt-5">
 			<div class="row">
-			<form class="row col-8 justify-content-start align-items-center" method="POST">
-				<label for="searchClinicName" class="row col-2 col-form-label"><h4>Search :</h4></label>
-				<div class="row col-6">
-					<input type="text" class="row col-3 form-control" name="apptSearch" id="searchClinicName" placeholder="Name or NRIC">
-				</div>
-			</form>
+				<form class="row col-8 justify-content-start align-items-center" method="POST">
+					<label for="searchClinicName" class="row col-2 col-form-label"><h4>Search :</h4></label>
+					<div class="row col-6">
+						<input type="text" class="row col-3 form-control" name="apptSearch" id="searchClinicName" placeholder="Name or NRIC">
+					</div>
+				</form>
 				<div class="col-4 text-end display-6 pb-3">
 					<button type="submit" class="btn btn-warning" name="bookAppointment" onclick="location.href='clinicassistant-CreateAppointment.php'">Book Appointment</button>
 				</div>
-			</div>
-			<div class="row py-3">
-				<div class="col-2 form-check">
-					<input class="form-check-input" type="radio" value="upcoming" name="ApptRadio" id="flexRadioDefaultCurrent" value="flexRadioDefaultUpcoming" checked><strong>Current Appointments</strong>
+				<div class="row py-3">
+					<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" value="flexRadioDefaultUpcoming" checked>
+						  <label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
+					</div>
+					<div class="col-2 form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast" value="flexRadioDefaultPast" >
+						  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
+					</div>
 				</div>
-				<div class="col-2 form-check">
-					<input class="form-check-input" type="radio" value="past" name="ApptRadio" id="flexRadioDefaultPast" value="flexRadioDefaultPast"><strong>Past Appointments</strong>
-				</div>
-			</div>
 			<div id="result"></div>
 
 			<script>
