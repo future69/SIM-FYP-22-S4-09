@@ -72,8 +72,10 @@ if(mysqli_num_rows($result) > 0)
             $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistCreateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
                 ';
 
-            //$todayDate = new DateTime($todayDate);
-            //$apptDate = new DateTime($row['apptDate']);
+            $todayDate = date_create(date('Y-m-d')); 
+            $apptDate = date_create($row['apptDate']);
+            $dateDiff = date_diff($todayDate, $apptDate);
+            echo $dateDiff->format("%R%a days");
             /*if ()
             {
                 $output .= '';
