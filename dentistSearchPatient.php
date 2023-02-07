@@ -1,6 +1,6 @@
 <?php
 session_start();
-$dentistFullname = $_SESSION['dentistFullname'];
+$dentistFullName = $_SESSION['dentistFullname'];
 $dentistPracNum = $_SESSION['dentistPracNum'];
 ?>
 
@@ -41,7 +41,7 @@ $dentistPracNum = $_SESSION['dentistPracNum'];
         <div class="me-auto">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Welcome Dr. Lee</a>
+                    <a class="nav-link" href="#">Welcome <?php echo $dentistFullName ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="dentistPersonalProfile.php">Profile</a>

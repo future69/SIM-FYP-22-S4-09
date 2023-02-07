@@ -1,6 +1,6 @@
 <?php 
-session_start();
-ob_start();
+session_start(); 
+$dentistFullName = $_SESSION['dentistFullname'];
 ?>
 <html lang="en">
 <head>
@@ -84,7 +84,7 @@ ob_start();
 					<div class="me-auto">
 						<ul class="navbar-nav">
 						<li class="nav-item">
-								<a class="nav-link" href="#">Welcome Dr. Lee</a>
+								<a class="nav-link" href="#">Welcome <?php echo $dentistFullName ?></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>

@@ -1,6 +1,5 @@
 <?php 
 session_start(); 
-$clinicName = $_SESSION['dentistClinicName'];
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,7 +1,6 @@
-<?php
-ob_start();
-session_start();
-$clinicName = $_SESSION['dentistClinicName'];
+<?php 
+session_start(); 
+$dentistFullName = $_SESSION['dentistFullname'];
 ?>
 <html lang="en">
 <head>
