@@ -1,5 +1,7 @@
 <?php
 session_start();
+// $clinicName = $_SESSION["clinicAssistantClinicName"];
+// echo $clinicName;
 ?>
 <html lang="en">
 
@@ -15,7 +17,10 @@ session_start();
 </head>
 <?php
 $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
-$clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName']
+$clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
+
+echo $clinicAssistantFullname;
+echo $clinicAssistantClinicName;
 ?>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
