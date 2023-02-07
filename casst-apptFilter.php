@@ -6,7 +6,6 @@ $connect = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBNam
 
 $output = '';
 
-echo "test";
 //Name of the table 
 $TableNameAppointment = "appointment";
 $TableNameUA = "useraccount";
@@ -74,14 +73,14 @@ if(mysqli_num_rows($result) > 0)
             
             if (($dateDiff->format("%a")) > 2)
             {
-                $output .= '<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'clinicAdminUpdateAppointment.php?apptID='.$row["apptID"].'\'">Update Appointment</button>
+                $output .= '<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'clinicassistant-UpdateAppointment.php?apptID='.$row["apptID"].'\'">Update Appointment</button>
                 <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>';
             }
 
-            $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'dentistUpdateATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
+            $output .= '<button type="submit" class="btn btn-success" name="updateApptTreatmentDetails" onclick="location.href=\'clinicassistant-ATD.php?apptID='.$row["apptID"].'\'">Update Appointment Treatment Details</button>
                 ';
         } else {
-            $output .= '<button type="submit" class="btn btn-secondary" name="viewApptTreatmentDetails" onclick="location.href=\'dentistViewATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>
+            $output .= '<button type="submit" class="btn btn-secondary" name="viewApptTreatmentDetails" onclick="location.href=\'clinicassistant-ViewATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>
                 ';
         }
         $output .= '
