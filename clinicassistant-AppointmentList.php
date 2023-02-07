@@ -134,7 +134,7 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 
 							function load_data(search_text, apptStatus) {
 								$.ajax({
-									url: "cassst-apptFilter.php",
+									url: "casst-apptFilter.php",
 									method: "POST",
 									data: {
 										search_text: search_text,
