@@ -276,7 +276,7 @@ if (isset($_POST['btnUpdate'])) {
 						<label for="medhistoryTB" class="col-2 col-form-label">Medical History: </label>
 					</div>
 					<div class="col-10 mt-2">
-						<textarea class="form-control" id="medhistoryTB" name="medhistoryTB" readonly><?php echo $rowPatientInfo['medHistory']?></textarea>
+						<textarea class="form-control" id="medhistoryTB" name="medhistoryTB" readonly><?php echo str_replace('~', "\r\n",$rowPatientInfo['medHistory']);?></textarea>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-3 col-form-label">Services:</label>
