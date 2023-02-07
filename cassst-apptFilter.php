@@ -6,6 +6,7 @@ $connect = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBNam
 
 $output = '';
 
+echo "test";
 //Name of the table 
 $TableNameAppointment = "appointment";
 $TableNameUA = "useraccount";
