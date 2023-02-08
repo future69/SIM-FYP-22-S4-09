@@ -292,7 +292,7 @@ $clinicName = $_SESSION["clinicName"];
 				<div class="row justify-content-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
 					<div class="col-lg-4">
-						<input type="password" class="form-control" name="passwordTB" id="passwordTB" value="<?php echo $password;?>">
+						<input type="password" class="form-control" name="passwordTB" id="passwordTB" value="<?php echo $password;?>" placeholder="8 characters containing 1 letter and 1 number">
 						<div class="errorMessage">
 							<?php echo $passwordError;?>
 						</div>
