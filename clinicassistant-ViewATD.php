@@ -1,3 +1,7 @@
+<?php 
+session_start(); 
+$CAFullName = $_SESSION['clinicAssistantFullname'];
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,7 +38,7 @@
                  </ul>
                  <ul class="navbar-nav d-flex mb-2 mb-md-0">
                     <li class="nav-item d-flex">
-						<a class="nav-link" href="#">Welcome Clinic Assistant Sam</a>
+						<a class="nav-link" href="#">Welcome Clinic Assistant <?php echo $CAFullName; ?></a>
                     </li>
 					<li class="nav-item d-flex">
                         <a class="nav-link " href="clinicassistant-PersonalProfile.php">Profile</a>
@@ -46,24 +50,67 @@
             </div>
         </div>
     </nav>
-	<?php 
-			if (isset($_POST['submit'])) {
-				echo '<script>alert("Appointment updated!")</script>';
-			}
-			else if (isset($_POST['back'])) {
-				header("Location:clinicassistant-AppointmentList.php");
-			}
-		?>
+	<?php
+$clinicName = $_SESSION["clinicAssistantClinicName"];
+$apptID = $_GET['apptID'];
+$servername = "u418115598_dentalapp";
+
+//create connection
+$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername);
+$TableNameAppointment = 'appointment';
+$TableNameDentist = 'dentistprofile';
+$TableNameUseraccount = 'useraccount';
+$TableNamePatientProfile = 'patientprofile';
+$TableNameClinic = 'clinic';
+$TableNameClinicAssistant = 'clinicassistantprofile';
+
+//The lines to run in sql (get dentist info)
+$SQLstring = "SELECT * FROM $TableNameAppointment 
+INNER JOIN $TableNameDentist 
+ON appointment.practitionerNumber = dentistprofile.practitionerNumber 
+INNER JOIN $TableNameUseraccount 
+ON dentistprofile.nric = useraccount.nric 
+WHERE appointment.apptID = '". $apptID ."'";
+
+//The lines to run in sql (get patient info)
+$SQLstring2 = "SELECT * FROM $TableNameAppointment 
+INNER JOIN $TableNamePatientProfile 
+ON appointment.nric = patientprofile.nric 
+INNER JOIN $TableNameUseraccount 
+ON appointment.nric = useraccount.nric 
+WHERE appointment.apptID = '". $apptID ."'";
+
+//The lines to run in sql (get allergies and med history)
+$SQLstring3 = "SELECT * FROM $TableNameAppointment 
+INNER JOIN $TableNamePatientProfile 
+ON appointment.nric = patientprofile.nric 
+INNER JOIN $TableNameUseraccount 
+ON appointment.nric = useraccount.nric 
+WHERE appointment.apptID = '". $apptID ."'";
+
+//query results for dentist and patient info tables
+$queryResult = mysqli_query($conn, $SQLstring);
+$queryResult2 = mysqli_query($conn, $SQLstring2);
+
+//query results for allergies and med history
+$queryResult3 = mysqli_query($conn, $SQLstring3);
+$rowPatientInfo = mysqli_fetch_assoc($queryResult3);
+
+if (isset($_POST['btnBack'])){
+	header("Location:clinicassistant-AppointmentList.php");
+}
+
+?>
 <body>
-<div class="registrationBoxPatient container">
-<form method="POST">
+	<div class="registrationBoxPatient container">
+		<form method="POST">
 			<div class="row justify-content-center align-items-center">
 				<div class="row col-12 text-center pb-5">
-					<div class="display-6">Appointment treatment details for name3</div>
+					<div class="display-6">Past Appointment Treatment Details</div>
 				</div>
 				<div class="row col-7">
 					<table class="table caption-top table-hover table-secondary table-striped ">
-					<caption>Appointment Details</caption>
+						<caption>Appointment Details</caption>
 						<thead>
 							<tr>
 								<th scope="col">Date</th>
@@ -72,83 +119,89 @@
 							<tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td> 20/11/2022 </td>
-								<td> 15:00 </td>
-								<td> Dr. John Tan </td>
-							</tr>
+							<?php
+							while ($row = mysqli_fetch_assoc($queryResult)) {
+								?>
+								<tr>
+									<td><?php echo $row['apptDate']?></td>
+									<td><?php echo $row['apptTime']?></td>
+									<td><?php echo $row['fullName']?></td>
+								</tr>
+								<?php
+							}
+							?>
 						</tbody>
 					</table>
 					<table class="table caption-top table-hover table-secondary table-striped ">
-					<caption>Patient Details</caption>
+						<caption>Patient Details</caption>
 						<thead>
 							<tr>
 								<th scope="col">Name</th>
 								<th scope="col">NRIC</th>
-								<th scope="col">Age</th>
+								<th scope="col">DOB</th>
 								<th scope="col">Gender</th>
 								<th scope="col">X-Ray</th>
 							<tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td> name3 </td>
-								<td> S2234567C </td>
-								<td> 34 </td>
-								<td> Male </td>
-								<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
-							</tr>
+						<?php
+							while ($row = mysqli_fetch_assoc($queryResult2)) {
+								?>
+								<tr>
+									<td><?php echo $row['fullName']?></td>
+									<td><?php echo $row['nric']?></td>
+									<td><?php echo $row['dob']?></td>
+									<td><?php echo $row['gender']?></td>
+									<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
+								</tr>
+								<?php
+							}
+							?>
 						</tbody>
 					</table>
-
+					<div class="row col-2 py-2">
+						<label for="medhistoryTB" class="col-2 col-form-label">Medical History: </label>
+					</div>
+					<div class="col-10 mt-2">
+						<textarea class="form-control" id="medhistoryTB" name="medhistoryTB" disabled><?php echo str_replace('~', "\r\n",$rowPatientInfo['medHistory']);?></textarea>
+					</div>
 					<div class="row col-6 align-items-center py-2">
-						<label for="serviceSL" class="col-3 col-form-label">Service:</label>
+						<label for="serviceSL" class="col-3 col-form-label">Services:</label>
 						<div class="col-7">
-						  <select class="form-select" name="serviceSL" id="serviceSL" disabled size="2" multiple>
-						    <option value="plceaholder">Decay Remover</option>
-							<option value="plceaholder">Polishing</option>
-							<option value="plceaholder">Tooth Remover</option>
-						  </select>
+							<textarea class="form-control" id="servicesTA" name="servicesTA" disabled><?php echo str_replace(' ',",",$rowPatientInfo['serviceName']);?></textarea>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
-						  <select class="form-select" name="assistantSL" id="assistantSL" disabled size="2" multiple>
-						    <option value="plceaholder">Jacob Lee</option>
-							<option value="plceaholder">John Adams</option>
-							<option value="plceaholder">Michelle Lee</option>
-						  </select>
+						<textarea class="form-control" id="assistantTA" name="assistantTA" disabled><?php echo str_replace(',',"\r\n",$rowPatientInfo['assistant']);?></textarea>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
-						<label for="serviceSL" class="col-3 col-form-label">Allergies:</label>
+						<label for="allergiesLabel" class="col-3 col-form-label">Allergies:</label>
 						<div class="col-7">
-						<textarea class="form-control" aria-label="With textarea" id="remarksTA" disabled size="3" ></textarea>
+							<textarea class="form-control" id="allergiesTB" name="allergiesTB" size="3" disabled><?php echo $rowPatientInfo['allergies']?></textarea>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
-						<label for="assistantSL" class="col-3 col-form-label">Materials:</label>
-						<div class="col-9">
-						  <select class="form-select" name="assistantSL" id="assistantSL" size="3" disabled multiple>
-						    <option value="plceaholder">Resin composites</option>
-							<option value="plceaholder">Amalgam alloys</option>
-							<option value="plceaholder">Glass ionomers</option>
-						  </select>
+						<label for="materialSL" class="col-3 col-form-label">Materials:</label>
+						<div class="col-7">
+							<textarea class="form-control" id="materialsTB" name="materialsTB" size="3" disabled><?php echo $rowPatientInfo['materialsUsed']?></textarea>
 						</div>
 					</div>
 					<div class="row col-2 py-2">
-						<label for="remarksTA" class="col-2 col-form-label">Medical History:</label>
+						<label for="treatmentNotesTB" class="col-2 col-form-label">Treatment Notes:</label>
 					</div>
 					<div class="col-10 mt-2">
-							<textarea class="form-control" aria-label="With textarea" disabled id="remarksTA"></textarea>
-						</div>
+						<textarea class="form-control" id="treatmentNotesTB" name="treatmentNotesTB" disabled><?php echo $rowPatientInfo['treatmentNotes']?></textarea>
+					</div>
+					<div class="row errorMessage justify-content-center align-items-center py-2"></div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
-						<button class="btn btn-danger" name="back" value="back">Back</button>s
+						<button class="btn btn-danger" id="btnBack" name="btnBack" value="btnBack">Back</button>
 					</div>
 				</div>
 			</div>
 		</form>
-		</div>
+	</div>
 </body>
 </html>
