@@ -28,7 +28,6 @@ if (isset($_POST['userType'])) {
 if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
     $query .= " AND (fullName LIKE '%" . $_POST['search_text'] . "%'
                 OR nric LIKE '%" . $_POST['search_text'] . "%')";
-                echo $query;
 }
 
 $result = mysqli_query($connect, $query);
