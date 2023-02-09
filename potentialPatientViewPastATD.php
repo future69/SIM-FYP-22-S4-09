@@ -1,56 +1,69 @@
-<?php 
-session_start(); 
-$CAFullName = $_SESSION['clinicAssistantFullname'];
+<?php
+session_start();
 ?>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
-</head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="images/superDentalLogo.png" alt="" width="50" height="40" class="d-inline-block align-text-top">
-                DiamondDental™
-            </a>
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="ClinicAssistant-HomePage.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="clinicassistant-AppointmentList.php">Appointment</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-PatientList.php">View Patient</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"  href="clinicassistant-ViewService.php">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="clinicassistant-bills.php">Billing</a>
-                    </li>
-                 </ul>
-                 <ul class="navbar-nav d-flex mb-2 mb-md-0">
-                    <li class="nav-item d-flex">
-						<a class="nav-link" href="#">Welcome Clinic Assistant <?php echo $CAFullName; ?></a>
-                    </li>
-					<li class="nav-item d-flex">
-                        <a class="nav-link " href="clinicassistant-PersonalProfile.php">Profile</a>
-                    </li>
-					<li class="nav-item d-flex">
-                        <a class="nav-link" href="potentialPatientHomepage.php">Logout</a>
-                    </li>
-                 </ul>
-            </div>
-        </div>
-    </nav>
-	<?php
-$clinicName = $_SESSION["clinicAssistantClinicName"];
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script>
+		//AJAX function for onclick feature (Get delete appointment)
+		function deleteAppointment(apptID){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200){
+					location.reload();
+				}
+			};
+			xmlhttp.open("GET", "deleteAppointments.php?q=" + apptID, true);
+			xmlhttp.send();
+	}
+	</script>
+	</head>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<div class="container-fluid">
+					<a class="navbar-brand mb-0 h1" href="potentialPatientHomepageAftLogin.php">
+					<img
+					class="d-inline-block align-top"
+					src="images/superDentalLogo.png"
+					width="50" height="40"/>
+					DiamondDental™
+					</a>
+					<div class="collapse navbar-collapse" id="navigationBar">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link" href="potentialPatientHomepageAftLogin.php">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="potentialPatientView&SearchAppointment.php">View Appointment(s)</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="potentialPatientBookAppointment.php">Book Appointment</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="potentialPatientView&SearchClinic.php">Clinics</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="potentialPatientBills.php">Bills</a>
+							</li>
+						</ul>
+					</div>
+					<div class="me-auto">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="index.php">Logout</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+		</nav>	
+	</header>
+    <?php
 $apptID = $_GET['apptID'];
 $servername = "u418115598_dentalapp";
 
@@ -96,11 +109,11 @@ $queryResult3 = mysqli_query($conn, $SQLstring3);
 $rowPatientInfo = mysqli_fetch_assoc($queryResult3);
 
 if (isset($_POST['btnBack'])){
-	header("Location:clinicassistant-AppointmentList.php");
+	header("Location:potentialPatientView&SearchAppointment.php");
 }
 
 ?>
-<body>
+	<body>
 	<div class="registrationBoxPatient container">
 		<form method="POST">
 			<div class="row justify-content-center align-items-center">

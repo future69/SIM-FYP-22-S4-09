@@ -3,8 +3,6 @@
 	session_start(); 
 	$clinicName = $_SESSION["clinicName"];
 	$acraNum = $_SESSION['clinicAdminAcraNum'];
-	
-
 	date_default_timezone_set("Singapore");
 ?>
 <!DOCTYPE html>
@@ -17,6 +15,19 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script>
+		//AJAX function for onclick feature (Get delete appointment)
+		function deleteAppointment(apptID){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200){
+					location.reload();
+				}
+			};
+			xmlhttp.open("GET", "deleteAppointments.php?q=" + apptID, true);
+			xmlhttp.send();
+	}
+	</script>
 	</head>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">

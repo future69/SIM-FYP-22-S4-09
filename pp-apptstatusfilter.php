@@ -96,7 +96,7 @@ if(mysqli_num_rows($result) > 0)
             <thead>
                 <tr>
                     <th scope="col">Clinic Name</th>
-                    <th scope="col">Location</th>
+                    <th scope="col">Address</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
                     <th scope="col">Action</th>
@@ -114,11 +114,28 @@ if(mysqli_num_rows($result) > 0)
                 <td>' . $row["apptDate"] . '</td>
                 <td>' . $row["apptTime"] . '</td>
                 <td>
-                <button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?apptID='.$row["apptID"].'\'">Update Appointment</button>
-                <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
-                </td>
-            </tr>
         ';
+        
+        if ($row["apptStatus"] == "upcoming")
+        {
+            $todayDate = date_create(date('Y-m-d')); 
+            $apptDate = date_create($row['apptDate']);
+            $dateDiff = date_diff($todayDate, $apptDate);
+            //echo $dateDiff->format("%a");
+            
+            if (($dateDiff->format("%a")) > 2)
+            {
+                $output .= '<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?apptID='.$row["apptID"].'\'">Update Appointment</button>
+                <button type="submit" class="btn btn-danger" onclick="deleteAppointment(this.value)" value='.$row["apptID"].' name="deleteAppt">Delete Appointment</button>';
+            }
+        } else {
+            $output .= '<button type="submit" class="btn btn-secondary" name="viewApptTreatmentDetails" onclick="location.href=\'potentialPatientViewPastATD.php?apptID='.$row["apptID"].'\'">View Past Appointment Treatment Details</button>
+                ';
+        }
+        $output .= '
+                    </td>
+            </tr>
+        ' ;
     }
     echo $output;
 }

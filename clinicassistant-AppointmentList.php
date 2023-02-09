@@ -2,9 +2,6 @@
 session_start();
 $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
-
-//echo $clinicAssistantFullname;
-//echo $clinicAssistantClinicName;
 ?>
 <html lang="en">
 
@@ -16,7 +13,19 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<title>clinic Assistant Appointment List</title>
+	<script>
+		//AJAX function for onclick feature (Get delete appointment)
+		function deleteAppointment(apptID){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200){
+					location.reload();
+				}
+			};
+			xmlhttp.open("GET", "deleteAppointments.php?q=" + apptID, true);
+			xmlhttp.send();
+	}
+	</script>
 </head>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -57,40 +66,6 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 			</div>
 		</div>
 	</nav>
-	<?php
-	// $servername = "u418115598_dentalapp";
-	// //Name of the table 
-
-	// $clinicName = $_SESSION['clinicAssistantClinicName'];
-	// $TableNameAppointment = "appointment";
-	// $TableNameClinic = "clinic";
-	// $TableNameUseraccount = "useraccount";
-	// $con = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $servername) or die("Connection Failed");
-
-	// $SQLstring = "SELECT * FROM $TableNameAppointment 
-	// INNER JOIN $TableNameClinic 
-	// ON appointment.clinicName = clinic.clinicName 
-	// INNER JOIN $TableNameUseraccount 
-	// ON appointment.nric = useraccount.nric 
-	// WHERE clinic.clinicName = '" . $clinicName . "'";
-	// $result = mysqli_query($con, $SQLstring);
-
-	// if (isset($_GET['apptID'])) {
-	// echo $_GET['apptID'];
-	//if the above is able to get the ApptID uncomment the 3 rows below.
-	// $deleteID = $_GET['apptID'];
-	// $deleteSQL = "DELETE from appointment WHERE apptID = $deleteID";
-	// $deleteQuery = mysqli_query($con, $deleteSQL);
-	//} 
-
-	//else if (isset($_POST['updateAppt'])) {
-	// 	header("Location:clinicassistant-UpdateAppointment.php");
-	// } else if (isset($_POST['CreateATD'])) {
-	// 	header("Location:clinicassistant-ATD.php");
-	// } else if (isset($_POST['bookAppointment'])) {
-	// 	header("Location:clinicassistant-CreateAppointment.php");
-	// }
-	?>
 </header>
 
 <body>

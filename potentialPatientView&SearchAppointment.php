@@ -7,6 +7,19 @@ session_start();
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script>
+		//AJAX function for onclick feature (Get delete appointment)
+		function deleteAppointment(apptID){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200){
+					location.reload();
+				}
+			};
+			xmlhttp.open("GET", "deleteAppointments.php?q=" + apptID, true);
+			xmlhttp.send();
+	}
+	</script>
 	</head>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
