@@ -17,7 +17,7 @@ if (isset($_POST['userType'])) {
     if ($theValue == 'employee'){
         $userType = 'dentist';
         $userType2 = 'clinicAssistant';
-        $query .= " roleName = '".$userType."' OR roleName = '".$userType2."'";
+        $query .= " (roleName = '".$userType."' OR roleName = '".$userType2."')";
     } else {
         $userType = 'patient';
         $query .= " roleName = '$userType'";
@@ -28,7 +28,7 @@ if (isset($_POST['userType'])) {
 if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
     $query .= " AND (fullName LIKE '%" . $_POST['search_text'] . "%'
                 OR nric LIKE '%" . $_POST['search_text'] . "%')";
-    echo $query;
+                echo $query;
 }
 
 $result = mysqli_query($connect, $query);
