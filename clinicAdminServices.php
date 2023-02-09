@@ -80,6 +80,12 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 					</form>
 				</div>
 				<table class="table table-hover table-secondary table-striped ">
+					<thead>
+						<tr>
+							<th>Service Name</th>
+						</tr>
+					</thead>
+					<tbody>
 					<?php
 					$datas = array();
 					if (mysqli_num_rows($resultservice) > 0) {
@@ -99,8 +105,8 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 							}
 						}
 					}
-
 					?>
+					</tbody>
 				</table>
 			</div>
 		</div>
