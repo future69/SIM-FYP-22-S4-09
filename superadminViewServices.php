@@ -125,6 +125,7 @@ session_start();
                         <select class="form-select" name="serviceStatus" id="serviceStatus" onclick="setServiceStatus(this.value)">
                             <option value="<?php echo $rows['serviceName'];?>,active" <?php if($rows['serviceStatus'] == 'active'){ echo ' selected';} ?>>Active</option>
                             <option value="<?php echo $rows['serviceName'];?>,suspended" <?php if($rows['serviceStatus'] == 'suspended'){ echo ' selected';} ?>>Suspended</option>
+                        </select>
                         </td>
                         <?php
                             }

@@ -92,6 +92,7 @@ $clinicName = $_SESSION["clinicName"];
 		$errors = 0;
 		$DBName = "u418115598_dentalapp";
 		$accStatus = "active";
+		$accountStatus = $_POST['accStatusSL'];
 
 		//Declaring, removing backslashes and whitespaces
 		$password = stripslashes($_POST['passwordTB']);
@@ -153,7 +154,7 @@ $clinicName = $_SESSION["clinicName"];
 				$encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 				$SQLstring = "UPDATE $TableNameUserAccount
-				SET password = '".$encryptedPassword."', email = '".$email."', phoneNum = '".$phoneNum."', address = '".$address."', postal = '".$postalCode."'
+				SET password = '".$encryptedPassword."', email = '".$email."', phoneNum = '".$phoneNum."', address = '".$address."', postal = '".$postalCode."', accStatus = '".$accountStatus."'
 				WHERE nric = '".$userNric."'";
 
 				mysqli_query($conn, $SQLstring);
@@ -269,6 +270,15 @@ $clinicName = $_SESSION["clinicName"];
 					<label for="roleSL" class="col-lg-1 col-form-label">Role:</label>
 					<div class="col-lg-4">
 						<input class="form-control" name="roleTB" id="roleTB" value="<?php echo $rows['roleName'] ?>" disabled>
+					</div>
+				</div>
+				<div class="row justify-content-center align-items-center py-2">
+					<label for="roleSL" class="col-lg-1 col-form-label">Account Status:</label>
+					<div class="col-lg-4">
+					<select class="form-select" name="accStatusSL" id="accStatusSL">
+						<option value="active" <?php if($rows['accStatus'] == 'active'){ echo ' selected';} ?>>Active</option>
+						<option value="suspended" <?php if($rows['accStatus'] == 'suspended'){ echo ' selected';} ?>>Suspended</option>
+					</select>
 					</div>
 				</div>
 				<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage;?></div>
