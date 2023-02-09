@@ -1,6 +1,7 @@
 <?php
 session_start();
 $clinicName = $_SESSION["clinicName"];
+$clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +53,10 @@ $clinicName = $_SESSION["clinicName"];
 
 	$DBName = "u418115598_dentalapp";
 	$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName) or die("Connection Failed");
+	$DBclinic = 'clinic';
+	$DBServiceoffered = 'servicesoffered';
 	$DBService = 'service';
-	$sqlservice = "SELECT * FROM  $DBService";
+	$sqlservice = "SELECT * FROM $DBclinic WHERE acraNum = '$clinicAcraNum'";
 	$resultservice = mysqli_query($conn, $sqlservice);
 
 	?>
@@ -78,30 +81,26 @@ $clinicName = $_SESSION["clinicName"];
 				</div>
 				<table class="table table-hover table-secondary table-striped ">
 					<?php
+					$datas = array();
 					if (mysqli_num_rows($resultservice) > 0) {
-						echo "
-							<thead>
-							<tr>
-							<th>Service Name</th>
-							<th>Price</th>
-							<th>Service Status</th>
-							<th></td>
-							</tr>
-							</thead>";
-
-						while ($rows = mysqli_fetch_array($resultservice)) {
-							echo "<tbody>
-								<tr>
-									<td>" . $rows['serviceName'] . "</td>
-									<td></td>
-									<td>" . $rows['serviceStatus'] . "</td>
-									<td></td>
-								</tr>
-								</tbody>";
+						//converts string into array
+						while ($rows = mysqli_fetch_assoc($resultservice)) {
+							$datas[] = $rows;
+							//print_r($datas);
+							foreach ($datas as $data) {
+								$strExplode = explode(" ", $data['servicesSelected']);
+								//print_r($strExplode);
+							}
+							//puts the arrays details into tables
+							foreach ($strExplode as $test) {
+								echo "<tr>".
+								"<td>" . $test . "</td>" .
+								"</tr>";
+							}
 						}
 					}
-					?>
 
+					?>
 				</table>
 			</div>
 		</div>
