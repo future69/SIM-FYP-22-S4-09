@@ -58,6 +58,7 @@ session_start();
 </head>
 <?php
     $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
+    date_default_timezone_set("Asia/Singapore");
 ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -244,6 +245,12 @@ session_start();
 						<div class="errorMessage">
 							<?php echo $dentistNameError;?>
 						</div>
+					</div>
+				</div>
+                <div class="row justify-content-center py-2">
+					<label for="clinicNameTB" class="col-lg-1 col-form-label">Current Date:</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="clinicNameTB" name="clinicNameTB" value="<?php echo date('m-d-Y h:i a'); ?>" readonly >
 					</div>
 				</div>
 				<div class="row justify-content-center py-2">
