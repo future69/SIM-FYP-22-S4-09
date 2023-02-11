@@ -8,26 +8,47 @@ $output = '';
 
 //Name of the table 
 $TableNameUA = "useraccount";
+$TableNameClinicAssistant = "clinicassistantprofile";
+$TableNameDentist = "dentistprofile";
 
-$query = "SELECT * FROM $TableNameUA WHERE";
+$query = "";
+//Get the clinic name of the clinic admin
+$clinicName = $_POST['sessionVal'];
+
 
 // This is for radio button (usertype/rolename)
 if (isset($_POST['userType'])) {
     $theValue = $_POST['userType'];
     if ($theValue == 'employee'){
-        $userType = 'dentist';
-        $userType2 = 'clinicAssistant';
-        $query .= " (roleName = '".$userType."' OR roleName = '".$userType2."')";
+        $userTypeDentist = 'dentist';
+        $userTypeClinicAssistant = 'clinicAssistant';
+
+        $query .= 
+        "SELECT useraccount.fullName, useraccount.roleName, useraccount.accStatus, useraccount.nric, clinicassistantprofile.clinicName FROM $TableNameUA
+        LEFT JOIN $TableNameClinicAssistant ON useraccount.nric = clinicassistantprofile.nric
+        WHERE (useraccount.roleName = '$userTypeClinicAssistant') AND (clinicassistantprofile.clinicName = '$clinicName')";
+
+        if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
+            $query .= " AND (useraccount.fullName LIKE '%" . $_POST['search_text'] . "%'
+                        OR useraccount.nric LIKE '%" . $_POST['search_text'] . "%')";
+        }
+
+        $query .=
+        "UNION
+        SELECT useraccount.fullName, useraccount.roleName, useraccount.accStatus, useraccount.nric, dentistprofile.clinicName FROM $TableNameUA
+        RIGHT JOIN $TableNameDentist ON useraccount.nric = dentistprofile.nric
+        WHERE (useraccount.roleName = '$userTypeDentist') AND (dentistprofile.clinicName = '$clinicName')
+        ";
     } else {
-        $userType = 'patient';
-        $query .= " roleName = '$userType'";
+        $userTypePatient = 'patient';
+        $query .= "SELECT * FROM $TableNameUA WHERE (roleName = '$userTypePatient')";
     }
 }
 
 // This is for search text
 if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
-    $query .= " AND (fullName LIKE '%" . $_POST['search_text'] . "%'
-                OR nric LIKE '%" . $_POST['search_text'] . "%')";
+    $query .= " AND (useraccount.fullName LIKE '%" . $_POST['search_text'] . "%'
+                OR useraccount.nric LIKE '%" . $_POST['search_text'] . "%')";
 }
 
 $result = mysqli_query($connect, $query);
