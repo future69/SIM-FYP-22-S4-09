@@ -15,7 +15,7 @@ $patientNric = $_SESSION['patientNric'];
 $query = "SELECT * 
             FROM $TableNameAppointment 
             INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName 
-            WHERE appointment.nric = '$patientNric' ORDER BY appointment.apptDate";
+            WHERE appointment.nric = '$patientNric'";
 
 // This is for search text
 if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
@@ -84,7 +84,7 @@ if (isset($_POST['dateRange']) & $_POST['dateRange'] != 'all') {
             break;
     }
 
-    $query .= " AND $dateFilter";
+    $query .= " AND $dateFilter ORDER BY appointment.apptDate";
 }
 
 $result = mysqli_query($connect, $query);
