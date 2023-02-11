@@ -69,7 +69,7 @@ try {
 	$TableNameClinic = "clinic";
 	//The lines to run in sql (get current applications)
 	$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameClinic 
-	ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."' AND appointment.apptStatus = '". $apptStatus ."'";	
+	ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."' AND appointment.apptStatus = '". $apptStatus ."' ORDER BY appointment.apptDate";	
 	//Executing the sql
 	$queryResult = mysqli_query($conn, $SQLstring);
 } catch (mysqli_sql_exception $e) {
