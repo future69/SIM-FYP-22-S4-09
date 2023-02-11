@@ -33,6 +33,7 @@ if (isset($_POST['apptStatus'])) {
 
     $query .= " AND appointment.apptStatus = '$apptStatus'";
 }
+$query .= " ORDER BY appointment.apptDate";
 
 $result = mysqli_query($connect, $query);
 
