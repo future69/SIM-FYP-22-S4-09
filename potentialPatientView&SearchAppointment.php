@@ -53,10 +53,10 @@ $ppFullName = $_SESSION['patientFullname'];
 						</ul>
 					</div>
 					<div class="me-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="#">Welcome <?php echo $ppFullName ?></a>
-						</li>
 						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link" href="#">Welcome <?php echo $ppFullName ?></a>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 							</li>
