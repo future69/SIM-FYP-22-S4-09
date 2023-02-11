@@ -15,7 +15,7 @@ $patientNric = $_SESSION['patientNric'];
 $query = "SELECT * 
             FROM $TableNameAppointment 
             INNER JOIN $TableNameClinic ON appointment.clinicName = clinic.clinicName 
-            WHERE appointment.nric = '$patientNric'";
+            WHERE appointment.nric = '$patientNric' ORDER BY appointment.apptDate";
 
 // This is for search text
 if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
