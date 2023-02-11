@@ -55,6 +55,7 @@
         //Executing the sql
         $queryResult = mysqli_query($conn, $SQLstring);
         $rows = mysqli_fetch_array($queryResult);
+
         } 	
         catch(mysqli_sql_exception $e) 
         {
@@ -67,18 +68,29 @@
 			$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
 
             $TableNameUseraccount = "useraccount";
+            $TableNameClinic = "clinic";
 
             if($cbValue == "checkboxApprove") {
                 $accStatus = 'active';
+                $clinicStatus = 'approved';
+                // Set clinic admin account to active
                 $SQLstring = "UPDATE $TableNameUseraccount SET accStatus='" . $accStatus . "' WHERE username='" . $clinicAccountUsername . "'";
                 mysqli_query($conn, $SQLstring);
+                //Set clinic status to approved, so clinic assistant and dentist can log in
+                $SQLstring2 = "UPDATE $TableNameClinic SET clinicStatus='" . $clinicStatus . "' WHERE username='" . $clinicAccountUsername . "'";
+                mysqli_query($conn, $SQLstring2);
                 echo "<meta http-equiv='refresh' content='0'>";
                 echo "<script>alert('Status Updated');</script>";
             }
             else if($cbValue == "checkboxReject"){
                 $accStatus = 'suspended';
+                $clinicStatus = 'suspended';
+                // Set clinic admin account to suspended
                 $SQLstring = "UPDATE $TableNameUseraccount SET accStatus='" . $accStatus . "' WHERE username='" . $clinicAccountUsername . "'";
                 mysqli_query($conn, $SQLstring);
+                //Set clinic status to suspended, so clinic assistant and dentist cannot log in, plus patients can no longer book that clinic
+                $SQLstring2 = "UPDATE $TableNameClinic SET clinicStatus='" . $clinicStatus . "' WHERE username='" . $clinicAccountUsername . "'";
+                mysqli_query($conn, $SQLstring2);
                 echo "<meta http-equiv='refresh' content='0'>";
                 echo "<script>alert('Status Updated');</script>";
             }

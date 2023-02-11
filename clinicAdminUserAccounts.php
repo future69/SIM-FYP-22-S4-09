@@ -91,6 +91,7 @@ $clinicName = $_SESSION["clinicName"];
 						  <label class="form-check-label" for="flexRadioDefaultPatientAcc"><strong>Patients</strong></label>
 						</div>
 					</div>
+					<input type="hidden" id="hiddenSession" value="<?php echo $clinicName ?>">
 
 					<div id="result"></div>
 					<script>
@@ -98,15 +99,17 @@ $clinicName = $_SESSION["clinicName"];
 							// Default value for each field
 							let search = $('#searchUsername').val();
 							let userType = $('input[type="radio"]:checked').val();
-							load_data(search, userType);
+							let sessionVal = $('#hiddenSession').val();
+							load_data(search, userType, sessionVal);
 
-							function load_data(search_text, userType) {
+							function load_data(search_text, userType, sessionVal) {
 								$.ajax({
 									url: "clinicAdminUserAccountsJQuery.php",
 									method: "POST",
 									data: {
 										search_text: search_text,
-										userType: userType
+										userType: userType,
+										sessionVal: sessionVal
 									},
 									success: function(data) {
 										$('#result').html(data);
@@ -117,15 +120,15 @@ $clinicName = $_SESSION["clinicName"];
 							// This is for user name/nric search box (name/nric)
 							$('#searchUsername').keyup(function() {
 								search = $(this).val();
-
-								load_data(search, userType);
+								let sessionVal = $('#hiddenSession').val();
+								load_data(search, userType, sessionVal);
 							});
 
 							// This is for radio button (user type)
 							$('input[type="radio"]').change(function() {
 								userType = $('input[type="radio"]:checked').val();
-
-								load_data(search, userType);
+								let sessionVal = $('#hiddenSession').val();
+								load_data(search, userType, sessionVal);
 							});		
 						});
 					</script>

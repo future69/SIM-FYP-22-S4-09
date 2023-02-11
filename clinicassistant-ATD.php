@@ -342,7 +342,7 @@ if (isset($_POST['btnUpdate'])) {
 					<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage;?></div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
 						<button class="btn btn-danger" id="btnBack" name="btnBack" value="btnBack">Back</button>
-						<button class="btn btn-Primary" id=btnUpdate name="btnUpdate" value="btnUpdate">Update</button>
+						<button class="btn btn-Primary" id="btnUpdate" name="btnUpdate" value="btnUpdate">Update</button>
 					</div>
 				</div>
 			</div>

@@ -96,8 +96,10 @@ session_start();
 						break;
 					case 'clinicAdmin':
 						$TableNameClinic = 'clinic';
-						$SQLstringClinic = "SELECT * FROM $TableName INNER JOIN $TableNameClinic
-						ON useraccount.username = clinic.username WHERE useraccount.username = '".$theResult['username']."'";
+						$SQLstringClinic = "SELECT * FROM $TableName 
+						INNER JOIN $TableNameClinic
+						ON useraccount.username = clinic.username 
+						WHERE useraccount.username = '".$theResult['username']."'";
 						//Executing the sql
 						$queryResultClinic = mysqli_query($conn, $SQLstringClinic);
 						//Make result into array
@@ -110,44 +112,62 @@ session_start();
 					case 'clinicAssistant':
 						//SQL statement to get clinic name
 						$TableNameClinicAssistant = 'clinicassistantprofile';
-						$SQLstringClinicAss = "SELECT * FROM $TableName INNER JOIN $TableNameClinicAssistant 
-						ON useraccount.nric = clinicassistantprofile.nric WHERE useraccount.username = '".$theResult['username']."'";
+						$TableNameClinic = 'clinic';
+						$SQLstringClinicAss = "SELECT * FROM $TableName 
+						INNER JOIN $TableNameClinicAssistant 
+						ON useraccount.nric = clinicassistantprofile.nric 
+						INNER JOIN $TableNameClinic
+						ON clinicassistantprofile.clinicName = clinic.clinicName 
+						WHERE useraccount.username = '".$theResult['username']."'";
 						//Executing the sql
 						$queryResultClinicAss = mysqli_query($conn, $SQLstringClinicAss);
 						//Make result into array
 						$theResultClinicAss = mysqli_fetch_assoc($queryResultClinicAss);
 
-						$_SESSION['clinicAssistantUsername'] = $theResult['username'];
-						$_SESSION['clinicAssistantPassword'] = $theResult['password'];
-						$_SESSION['clinicAssistantFullname'] = $theResult['fullName'];
-						$_SESSION['clinicAssistantNric'] = $theResult['nric'];
-						$_SESSION['clinicAssistantClinicName'] = $theResultClinicAss['clinicName'];
-						$_SESSION['clinicAssistantPhoneNo'] = $theResult['phoneNum'];
-						$_SESSION['clinicAssistantEmail'] = $theResult['email'];
-						header("Location:ClinicAssistant-HomePage.php");
-						break;
+						if ($theResultClinicAss['clinicStatus'] == 'suspended') {
+							$errorMessage = 'Clinic is currently suspended';
+							break;
+						} else{
+							$_SESSION['clinicAssistantUsername'] = $theResult['username'];
+							$_SESSION['clinicAssistantPassword'] = $theResult['password'];
+							$_SESSION['clinicAssistantFullname'] = $theResult['fullName'];
+							$_SESSION['clinicAssistantNric'] = $theResult['nric'];
+							$_SESSION['clinicAssistantClinicName'] = $theResultClinicAss['clinicName'];
+							$_SESSION['clinicAssistantPhoneNo'] = $theResult['phoneNum'];
+							$_SESSION['clinicAssistantEmail'] = $theResult['email'];
+							header("Location:ClinicAssistant-HomePage.php");
+							break;
+						}
 					case 'dentist':
-						$_SESSION['dentistNric'] = $theResult['nric'];
-
 						//SQL statement to get clinic name
 						$TableNameDentist = 'dentistprofile';
-						$SQLstringDentist = "SELECT * FROM $TableName INNER JOIN $TableNameDentist 
-						ON useraccount.nric = dentistprofile.nric WHERE dentistprofile.nric = '" . $_SESSION['dentistNric']. "'";
+						$TableNameClinic = 'clinic';
+						$SQLstringDentist = "SELECT * FROM $TableName 
+						INNER JOIN $TableNameDentist 
+						ON useraccount.nric = dentistprofile.nric 
+						INNER JOIN $TableNameClinic 
+						ON clinic.clinicName = dentistprofile.clinicName 
+						WHERE dentistprofile.nric = '" . $_SESSION['dentistNric']. "'";
 						//Executing the sql
 						$queryResultDentist = mysqli_query($conn, $SQLstringDentist);
 						//Make result into array
 						$theResultDentist = mysqli_fetch_assoc($queryResultDentist);
-						//details for dentist profile
-						$_SESSION['dentistUsername'] = $theResult['username'];
-						$_SESSION['dentistPassword'] = $theResult['password'];
-						$_SESSION['dentistNric'] = $theResult['nric'];
-						$_SESSION['dentistClinicName'] = $theResultDentist['clinicName'];
-						$_SESSION['dentistPhoneNo'] = $theResult['phoneNum'];
-						$_SESSION['dentistEmail'] = $theResult['email'];
-						$_SESSION['dentistFullname'] = $theResult['fullName'];
-						$_SESSION['dentistPracNum'] = $theResultDentist['practitionerNumber'];
-						header("Location:dentistHomepage.php");
-						break;
+						if ($theResultDentist['clinicStatus'] == 'suspended') {
+							$errorMessage = 'Clinic is currently suspended';
+							break;
+						} else{
+							//details for dentist profile
+							$_SESSION['dentistUsername'] = $theResult['username'];
+							$_SESSION['dentistPassword'] = $theResult['password'];
+							$_SESSION['dentistNric'] = $theResult['nric'];
+							$_SESSION['dentistClinicName'] = $theResultDentist['clinicName'];
+							$_SESSION['dentistPhoneNo'] = $theResult['phoneNum'];
+							$_SESSION['dentistEmail'] = $theResult['email'];
+							$_SESSION['dentistFullname'] = $theResult['fullName'];
+							$_SESSION['dentistPracNum'] = $theResultDentist['practitionerNumber'];
+							header("Location:dentistHomepage.php");
+							break;
+						}
 					case 'superAdmin':
 						header("Location:superadminHomepage.php");
 						break;

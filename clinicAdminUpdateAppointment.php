@@ -199,6 +199,11 @@ $clinicName = $_SESSION["clinicName"];
 						</div>
 					  </div>
 					  <div class="row justify-content-center py-2">
+						<label for="passwordTB" class="col-lg-1 col-form-label">Current Date and Time:</label>
+						<div class="col-lg-4">
+						<input type="text" class="form-control" id="nricTB" value="<?php echo $rows2['apptDate'] ,"&nbsp;", $rows2['apptTime']; ?>" disabled>
+						</div>
+					  <div class="row justify-content-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Date:</label>
 						<div class="col-lg-4">
 						  <input type="date" class="form-control" name="datePicker" id="datePicker" oninput="getTimings(this.value)" min="<?php echo date('Y-m-d'); ?>">

@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
     <title>clinic Assistant Appointment List</title>
 </head>
 
@@ -81,46 +82,35 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 								<input type="text" class="row col-3 form-control" id="searchClinicName" placeholder="Name or NRIC">
 							</div>
 					</form>
-					<table class="table table-hover table-secondary table-striped ">
-						<thead>
-							<tr>
-								<th scope="col">Name</th>
-								<th scope="col">NRIC</th>
-								<th scope="col">Date</th>
-								<th scope="col">Time</th>
-								<th scope="col">Action</th>
-							<tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td> name3 </td>
-								<td> S8825463G </td>
-								<td> 10/12/2022 </td>
-								<td> 20:00 </td>
-								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-createBilling.php'">Create Bills</button>
-								</td>
-							</tr>
-							<tr>
-								<td> name2 </td>
-								<td> S9923536G </td>
-								<td> 15/12/2022 </td>
-								<td> 18:00 </td>
-								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-createBilling.php'">Create Bills</button>
-								</td>
-							</tr>
-							<tr>
-								<td> name1 </td>
-								<td> S9623634G </td>
-								<td> 20/12/2022 </td>
-								<td> 14:00 </td>
-								<td>
-								<button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href='clinicassistant-createBilling.php'">Create Bills</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+
+					<div id="result"></div>
+					<script>
+						$(document).ready(function() {	
+							// Default value for each field
+							let search = $('#searchClinicName').val();
+							load_data(search);
+
+							function load_data(search_text) {
+								$.ajax({
+									url: "clinicassistant-billsJQuery.php",
+									method: "POST",
+									data: {
+										search_text: search_text,
+									},
+									success: function(data) {
+										$('#result').html(data);
+									}
+								});
+							}
+
+							// This is for user name/nric search box (name/nric)
+							$('#searchClinicName').keyup(function() {
+								search = $(this).val();
+
+								load_data(search);
+							});
+						});
+					</script>
 				</div>
 			</div>
 		</div>
