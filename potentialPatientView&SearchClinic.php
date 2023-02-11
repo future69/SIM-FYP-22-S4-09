@@ -1,3 +1,8 @@
+<?php
+session_start();
+$ppFullName = $_SESSION['patientFullname'];
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -35,6 +40,9 @@
 					</div>
 					<div class="me-auto">
 						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link" href="#">Welcome <?php echo $ppFullName ?></a>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 							</li>
