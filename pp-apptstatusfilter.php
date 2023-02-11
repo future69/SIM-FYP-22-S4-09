@@ -85,9 +85,9 @@ if (isset($_POST['dateRange']) & $_POST['dateRange'] != 'all') {
     }
 
     $query .= "$dateFilter";
-    $query .= " ORDER BY appointment.apptDate";
 }
 
+$query .= " ORDER BY appointment.apptDate";
 $result = mysqli_query($connect, $query);
 
 if(mysqli_num_rows($result) > 0)
