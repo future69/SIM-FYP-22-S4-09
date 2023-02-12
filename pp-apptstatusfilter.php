@@ -40,53 +40,54 @@ if (isset($_POST['dateRange']) & $_POST['dateRange'] != 'all') {
         case '1week':
             $dateRange = date('Y-m-d', strtotime($plusMinus . '1 week'));
             if (($_POST['apptStatus'] == 'flexRadioDefaultUpcoming')) {
-                $dateFilter = "apptdate BETWEEN '$todayDate' AND '$dateRange'";
+                $dateFilter = " AND apptdate BETWEEN '$todayDate' AND '$dateRange'";
             }
             else {
-                $dateFilter = "apptdate BETWEEN '$dateRange' AND '$todayDate'";
+                $dateFilter = " AND apptdate BETWEEN '$dateRange' AND '$todayDate'";
             }
             break;
         case '1month':
             $dateRange = date('Y-m-d', strtotime($plusMinus . '1 month'));
             if (($_POST['apptStatus'] == 'flexRadioDefaultUpcoming')) {
-                $dateFilter = "apptdate BETWEEN '$todayDate' AND '$dateRange'";
+                $dateFilter = " AND apptdate BETWEEN '$todayDate' AND '$dateRange'";
             }
             else {
-                $dateFilter = "apptdate BETWEEN '$dateRange' AND '$todayDate'";
+                $dateFilter = " AND apptdate BETWEEN '$dateRange' AND '$todayDate'";
             }
             break;
         case '3month':
             $dateRange = date('Y-m-d', strtotime($plusMinus . '3 month'));
             if (($_POST['apptStatus'] == 'flexRadioDefaultUpcoming')) {
-                $dateFilter = "apptdate BETWEEN '$todayDate' AND '$dateRange'";
+                $dateFilter = " AND apptdate BETWEEN '$todayDate' AND '$dateRange'";
             }
             else {
-                $dateFilter = "apptdate BETWEEN '$dateRange' AND '$todayDate'";
+                $dateFilter = " AND apptdate BETWEEN '$dateRange' AND '$todayDate'";
             }
             break;
         case '6month':
             $dateRange = date('Y-m-d', strtotime($plusMinus . '6 month'));
             if (($_POST['apptStatus'] == 'flexRadioDefaultUpcoming')) {
-                $dateFilter = "apptdate BETWEEN '$todayDate' AND '$dateRange'";
+                $dateFilter = " AND apptdate BETWEEN '$todayDate' AND '$dateRange'";
             }
             else {
-                $dateFilter = "apptdate BETWEEN '$dateRange' AND '$todayDate'";
+                $dateFilter = " AND apptdate BETWEEN '$dateRange' AND '$todayDate'";
             }
             break;
         case '1year':
             $dateRange = date('Y-m-d', strtotime($plusMinus . '1 year'));
             if (($_POST['apptStatus'] == 'flexRadioDefaultUpcoming')) {
-                $dateFilter = "apptdate BETWEEN '$todayDate' AND '$dateRange'";
+                $dateFilter = " AND apptdate BETWEEN '$todayDate' AND '$dateRange'";
             }
             else {
-                $dateFilter = "apptdate BETWEEN '$dateRange' AND '$todayDate'";
+                $dateFilter = " AND apptdate BETWEEN '$dateRange' AND '$todayDate'";
             }
             break;
     }
 
-    $query .= " AND $dateFilter";
+    $query .= "$dateFilter";
 }
 
+$query .= " ORDER BY appointment.apptDate";
 $result = mysqli_query($connect, $query);
 
 if(mysqli_num_rows($result) > 0)
