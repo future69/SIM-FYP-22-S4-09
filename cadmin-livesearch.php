@@ -10,7 +10,7 @@ if(isset($_POST["query"]))
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
  $query = "
   SELECT * FROM useraccount INNER JOIN clinic ON useraccount.username = clinic.username
-  WHERE useraccount.username LIKE '%".$search."%'
+  WHERE clinic.clinicName LIKE '%".$search."%'
  ";
 }
 else
@@ -35,7 +35,7 @@ if(mysqli_num_rows($result) > 0)
  {
   $output .= '
    <tr>
-    <td><a href="superadminUpdateCAAccount.php?clinicAccountUsername='.$row["username"].'">'.$row["username"].'</a></td>
+    <td><a href="superadminUpdateCAAccount.php?clinicAccountUsername='.$row["username"].'">'.$row["clinicName"].'</a></td>
     <td>'.$row["accStatus"].'</td>
    </tr>
   ';
