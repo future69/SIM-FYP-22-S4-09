@@ -35,7 +35,8 @@ session_start();
 
 		// sql query to get all appointments at clinic
 		$SQLstring = "SELECT * FROM $TableNameAppointment INNER JOIN $TableNameUA ON useraccount.nric = appointment.nric
-		WHERE clinicName = '" . $clinicName . "' AND (useraccount.roleName = 'patient') AND (appointment.apptDate = '" . $todayDate ."')";
+		WHERE clinicName = '" . $clinicName . "' AND (useraccount.roleName = 'patient') AND (appointment.apptDate = '" . $todayDate ."') 
+		ORDER BY appointment.apptTime";
 
 		// executing sql
 		$queryResult = mysqli_query($conn, $SQLstring);
