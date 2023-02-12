@@ -11,16 +11,19 @@ $TableNameClinic = 'clinic';
 $approved = 'approved';
 
 $query = "SELECT * FROM $TableNameClinic WHERE (clinicStatus = '$approved')";
-
-// This is for search text
-if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
-    $query .= " AND (clinicName LIKE '%" . $_POST['search_text'] . "%')";
-    if ($_POST['area'] != 'allAreas'){
+do{
+    // This is for search text
+    if (isset($_POST['search_text']) && $_POST['search_text'] != '') {
+        $query .= " AND (clinicName LIKE '%" . $_POST['search_text'] . "%')";
+        if ($_POST['area'] != 'allAreas'){
+            $query .= " AND (clinicArea = '" . $_POST['area'] . "')";
+            break;
+        }
+    } else if ($_POST['area'] != 'allAreas'){
         $query .= " AND (clinicArea = '" . $_POST['area'] . "')";
     }
-}
-echo $query;
-//echo $query;
+} while(0);
+
 $result = mysqli_query($connect, $query);
 
 if(mysqli_num_rows($result) > 0)
