@@ -94,12 +94,12 @@
 
             load_data();
 
-            function load_data(query_admin) {
+            function load_data(query) {
                 $.ajax({
                     url: "cadmin-livesearch.php",
                     method: "POST",
                     data: {
-                        query_admin: query_admin
+                        query: query
                     },
                     success: function(data) {
                         $('#result_admin').html(data);
