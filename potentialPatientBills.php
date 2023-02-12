@@ -8,6 +8,26 @@ $ppFullName = $_SESSION['patientFullname'];
 	<head>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script>
+		//AJAX function for onclick feature (Get timing)
+		function setBillStatus(billStatus){
+            //Get apptID followed by bill status, etc S9999999G1, paid
+            //Proceed to split them and assign them to different variables
+            const billArray = billStatus.split(",");
+            var apptID = billArray[0];
+            var billStatus = billArray[1];
+			var xmlhttp = new XMLHttpRequest();
+			
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200){
+				}
+			};
+			xmlhttp.open("GET", "potentialPatientBillsAjax.php?q=" + apptID + "&w=" + billStatus, true);
+			xmlhttp.send();
+
+		}
+    </script>
 	</head>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -67,44 +87,40 @@ $ppFullName = $_SESSION['patientFullname'];
 				<div class="row">
 					<div class="col-12 display-6 pb-3">List of bill(s)</div>
 					<div class="col-2 form-check">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrentBills" checked>
+					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrentBills" value="unpaid" checked>
 					  <label class="form-check-label" for="flexRadioDefaultCurrentBills"><strong>Current Bills</strong></label>
 					</div>
 					<div class="col-2 form-check pb-2">
-					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPastBills">
+					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPastBills" value="paid">
 					  <label class="form-check-label" for="flexRadioDefaultPastBills"><strong>Past Bills</strong></label>
 					</div>
-					<table class="table table-hover table-secondary table-striped">
-						<thead>
-							<tr>
-								<th scope="col">Amount Owed</th>
-								<th scope="col">Clinic Name</th>
-								<th scope="col">Date</th>
-								<th scope="col">Service Provided</th>
-								<th scope="col">Description</th>
-								<th scope="col">Status (Paid/Unpaid)</th>
-							<tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td> $100 </td>
-								<td> Lim's Clinic </td>
-								<td> 28/7/22 </td>
-								<td> Fillings, Polishing </td>
-								<td> Nil </td>
-								<td> Unpaid </td>
-							</tr>
-							<tr>
-								<td> $200 </td>
-								<td> Lim's Clinic </td>
-								<td> 08/04/22 </td>
-								<td> Extraction </td>
-								<td> Nil </td>
-								<td> Unpaid </td>
-							</tr>
-						</tbody>
-				</div>
-			</div>
 		</div>
+		<div id="result"></div>
+		<script>
+			$(document).ready(function() {	
+
+				let billStatus = $('input[type="radio"]:checked').val();
+				
+				load_data(billStatus);
+
+				function load_data(billStatus) {
+					$.ajax({
+						url: "potentialPatientBillsJQuery.php",
+						method: "POST",
+						data: {
+							billStatus: billStatus
+						},
+						success: function(data) {
+							$('#result').html(data);
+						}
+					});
+				}
+				// This is for radio button (Appointment Status)
+				$('input[type="radio"]').change(function() {
+					billStatus = $('input[type="radio"]:checked').val();
+					load_data(billStatus);
+				});
+			});
+		</script>
 	</body>
 </html>
