@@ -1,8 +1,9 @@
 <?php
 session_start();
+ob_start();
 $ppFullName = $_SESSION['patientFullname'];
-
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -55,17 +56,49 @@ $ppFullName = $_SESSION['patientFullname'];
 				</div>
 				</div>
 		<nav>
-		<?php 
-			if (isset($_POST['submit'])) {
-				
-			}
-			else if (isset($_POST['back'])) {
-				header("Location:potentialPatientView&SearchClinic.php");
-			}
-			else if (isset($_POST['book'])) {
-				header("Location:potentialPatientBookAppointment.php");
-			}
-		?>
+	<?php
+	try{
+		$acra = $_GET['acra'];
+		$DBName = "u418115598_dentalapp";
+		$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName);
+
+		//Table name
+		$TableNameUserAccount = "useraccount";
+		$TableNameClinic = "clinic";
+		$TableNameDentist = "dentistprofile";
+
+		$SQLstring = "SELECT * FROM $TableNameClinic WHERE acraNum = '". $acra ."'";
+		$queryResult = mysqli_query($conn, $SQLstring);
+		$row = mysqli_fetch_assoc($queryResult);
+
+		//Get clinic name
+		$clinicName = $row['clinicName'];
+		//Get all dentists under the clinic
+		$SQLstringDentist = "SELECT * FROM $TableNameDentist
+		INNER JOIN $TableNameUserAccount ON dentistprofile.nric = useraccount.nric 
+		WHERE clinicName = '". $clinicName ."'";
+
+		$queryResultDentist = mysqli_query($conn, $SQLstringDentist);
+		$allDentists = "";
+		//Loop all dentists into a string to be displayed
+		while ($rowDentist = mysqli_fetch_assoc($queryResultDentist)){
+			$allDentists .=  "Dr. " . $rowDentist['fullName'] . " , ";
+		}
+
+	}catch (mysqli_sql_exception $e) {
+		echo "Error";
+	}
+	//Declare error messages
+	$passwordError = $phoneNumError = $emailError = $addressError = $postalCodeError = null;
+	$errorMessage = null;
+
+	if (isset($_POST['backBth'])) {
+		header("Location:potentialPatientView&SearchClinic.php");
+	} else if (isset($_POST['bookBth'])) {
+		header("Location:potentialPatientBookAppointment.php");
+	}
+
+	?>
 	</header>
 	<body>
 		<div class="registrationBoxPatient container">
@@ -79,36 +112,36 @@ $ppFullName = $_SESSION['patientFullname'];
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Name of Clinic:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB" value="Charlie's Clinic" disabled>
+						  <input class="form-control" id="usernameTB" value="<?php echo $clinicName;?>" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Location:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="Hougang Ave 7 567234" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $row['clinicAddress'];?>" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label" >Operating hours:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB" value="08:30-20:00" disabled>
+						  <input class="form-control" id="usernameTB" value="<?php echo $row['clinicOpeningHour'] . "-"; echo $row['clinicClosingHour'];?>" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="passwordTB" class="col-lg-1 col-form-label">Dentist(s):</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="passwordTB" value="Dr.Charlie Chaplin" disabled>
+						  <input class="form-control" id="passwordTB" value="<?php echo $allDentists;?>" disabled>
 						</div>
 					  </div>
 					  <div class="row justify-content-center align-items-center py-2">
 						<label for="usernameTB" class="col-lg-1 col-form-label">Services Offered:</label>
 						<div class="col-lg-4">
-						  <input class="form-control" id="usernameTB" value="Polishing, Wisdom tooth extraction, Fillings" disabled>
+						  <input class="form-control" id="usernameTB" value="<?php echo $row['servicesSelected'];?>" disabled>
 						</div>
 					  </div>
 					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
-						<button class="btn btn-danger" name="back" value="back">Back</button>
-						<button class="btn btn-primary" name="book" value="book">Book Appointment</button>
+						<button class="btn btn-danger" name="backBth" value="back">Back</button>
+						<button class="btn btn-primary" name="bookBth" value="book">Book Appointment</button>
 					  </div>
 					</form>
 				</div>

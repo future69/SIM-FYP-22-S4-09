@@ -1,7 +1,7 @@
 <?php
 session_start();
+ob_start();
 $ppFullName = $_SESSION['patientFullname'];
-
 ?>
 <!DOCTYPE html>
 <html>
