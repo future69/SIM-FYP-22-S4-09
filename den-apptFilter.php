@@ -33,7 +33,7 @@ if (isset($_POST['apptStatus'])) {
 
     $query .= " AND appointment.apptStatus = '$apptStatus'";
 }
-$query .= " ORDER BY appointment.apptDate";
+$query .= " ORDER BY appointment.apptDate, appointment.apptTime";
 
 $result = mysqli_query($connect, $query);
 
@@ -91,8 +91,6 @@ if(mysqli_num_rows($result) > 0)
                     </td>
             </tr>
         ' ;
-        // <button type="submit" class="btn btn-primary" name="updateAppt" onclick="location.href=\'potentialPatientUpdateAppointment.php?\'">Update Appointment</button>
-        // <button type="submit" class="btn btn-danger" name="deleteAppt">Delete Appointment</button>
     }
     echo $output;
     
