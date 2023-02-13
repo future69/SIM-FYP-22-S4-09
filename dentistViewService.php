@@ -79,7 +79,6 @@ $resultservice = mysqli_query($conn, $sqlservice);
 							<thead>
 							<tr>
 							<th>Service Name</th>
-							<th>Price</th>
 							<th>Service Status</th>
 							<th></td>
 							</tr>
@@ -90,7 +89,7 @@ $resultservice = mysqli_query($conn, $sqlservice);
 								<tr>
 									<td>" . $rows['serviceName'] . "</td>
 									<td></td>
-									<td>" . $rows['serviceStatus'] . "</td>
+									<td>" . "selected" . "</td>
 									<td></td>
 								</tr>
 								</tbody>";
