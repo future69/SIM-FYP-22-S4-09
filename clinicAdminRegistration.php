@@ -187,7 +187,7 @@
 				$data = json_decode($getUrlContent);
 
 				//Gets selected services array and adds them together to form a string 
-				$selectedServices = implode(" ",$_POST['dentalServicesSL']);
+				$selectedServices = implode(",",$_POST['dentalServicesSL']);
 
 				//If there are no results means no login info matches, good thing
 				if (mysqli_num_rows($queryResultCheckUsername) > 0) {

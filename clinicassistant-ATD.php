@@ -121,7 +121,7 @@ $rowPatientInfo = mysqli_fetch_assoc($queryResult3);
 //Convert string from database to array
 $queryResultClinicServices = mysqli_query($conn, $SQLstring4);
 $rowClinicServices = mysqli_fetch_assoc($queryResultClinicServices);
-$listOfServices = explode(" ", $rowClinicServices['servicesSelected']);
+$listOfServices = explode(",", $rowClinicServices['servicesSelected']);
 
 //query results for clinic assistants name
 $queryResult4 = mysqli_query($conn, $SQLstring5);

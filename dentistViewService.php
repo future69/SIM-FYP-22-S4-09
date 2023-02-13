@@ -88,7 +88,7 @@ try {
                                 <tbody>
                                     <?php
                                         $rows = mysqli_fetch_assoc($resultservice);
-                                        $servicesOffered = explode(" ", $rows['servicesSelected']);
+                                        $servicesOffered = explode(",", $rows['servicesSelected']);
                                         //echo $rows['servicesSelected'];
                                         //while ($rows = mysqli_fetch_array($resultservice)) {
                                         foreach($servicesOffered as $i =>$key) {
