@@ -58,9 +58,8 @@ try {
     $conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName) or die("Connection Failed");
     $DBService = 'service';
     $DBclinic = 'clinic';
-    $sqlservice = "SELECT servicesSelected FROM  $clinic WHERE clinicName = '$dentistClinicName'";
+    $sqlservice = "SELECT servicesSelected FROM $DBclinic WHERE clinicName = '$dentistClinicName'";
     $resultservice = mysqli_query($conn, $sqlservice);
-    //$count = mysqli_num_rows($resultservice);
 } catch (mysqli_sql_exception $e) {
 		echo "Error in retrieving from table";
 }
@@ -88,10 +87,14 @@ try {
                                 </thead>
                                 <tbody>
                                     <?php
-                                        while ($rows = mysqli_fetch_array($resultservice)) {
+                                        $rows = mysqli_fetch_assoc($resultservice);
+                                        $servicesOffered = explode(" ", $rows['servicesSelected']);
+                                        //echo $rows['servicesSelected'];
+                                        //while ($rows = mysqli_fetch_array($resultservice)) {
+                                        foreach($servicesOffered as $i =>$key) {
                                     ?>
 								    <tr>
-                                        <td><?php echo $rows['servicesSelected']; ?></td>
+                                        <td><?php echo $key; ?></td>
                                         <td><?php echo "selected"; ?></td>
 								    </tr>
                                     <?php } ?>
