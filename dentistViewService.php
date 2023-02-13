@@ -87,13 +87,15 @@ try {
                                 </thead>
                                 <tbody>
                                     <?php
-                                        while ($rows = mysqli_fetch_array($resultservice)) {
+                                        $rows = mysqli_fetch_assoc($resultservice);
+                                        echo $rows['servicesSelected'];
+                                        //while ($rows = mysqli_fetch_array($resultservice)) {
                                     ?>
 								    <tr>
                                         <td><?php echo $rows['servicesSelected']; ?></td>
                                         <td><?php echo "selected"; ?></td>
 								    </tr>
-                                    <?php } ?>
+                                    <?php //} ?>
 								</tbody>
                             </table>
                         </div>
