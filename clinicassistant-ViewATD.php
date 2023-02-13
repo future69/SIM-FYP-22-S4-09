@@ -50,56 +50,56 @@ $CAFullName = $_SESSION['clinicAssistantFullname'];
         </div>
     </nav>
 	<?php
-$clinicName = $_SESSION["clinicAssistantClinicName"];
-$apptID = $_GET['apptID'];
-$servername = "u418115598_dentalapp";
+	$clinicName = $_SESSION["clinicAssistantClinicName"];
+	$apptID = $_GET['apptID'];
+	$servername = "u418115598_dentalapp";
 
-//create connection
-$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername);
-$TableNameAppointment = 'appointment';
-$TableNameDentist = 'dentistprofile';
-$TableNameUseraccount = 'useraccount';
-$TableNamePatientProfile = 'patientprofile';
-$TableNameClinic = 'clinic';
-$TableNameClinicAssistant = 'clinicassistantprofile';
+	//create connection
+	$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername);
+	$TableNameAppointment = 'appointment';
+	$TableNameDentist = 'dentistprofile';
+	$TableNameUseraccount = 'useraccount';
+	$TableNamePatientProfile = 'patientprofile';
+	$TableNameClinic = 'clinic';
+	$TableNameClinicAssistant = 'clinicassistantprofile';
 
-//The lines to run in sql (get dentist info)
-$SQLstring = "SELECT * FROM $TableNameAppointment 
-INNER JOIN $TableNameDentist 
-ON appointment.practitionerNumber = dentistprofile.practitionerNumber 
-INNER JOIN $TableNameUseraccount 
-ON dentistprofile.nric = useraccount.nric 
-WHERE appointment.apptID = '". $apptID ."'";
+	//The lines to run in sql (get dentist info)
+	$SQLstring = "SELECT * FROM $TableNameAppointment 
+	INNER JOIN $TableNameDentist 
+	ON appointment.practitionerNumber = dentistprofile.practitionerNumber 
+	INNER JOIN $TableNameUseraccount 
+	ON dentistprofile.nric = useraccount.nric 
+	WHERE appointment.apptID = '". $apptID ."'";
 
-//The lines to run in sql (get patient info)
-$SQLstring2 = "SELECT * FROM $TableNameAppointment 
-INNER JOIN $TableNamePatientProfile 
-ON appointment.nric = patientprofile.nric 
-INNER JOIN $TableNameUseraccount 
-ON appointment.nric = useraccount.nric 
-WHERE appointment.apptID = '". $apptID ."'";
+	//The lines to run in sql (get patient info)
+	$SQLstring2 = "SELECT * FROM $TableNameAppointment 
+	INNER JOIN $TableNamePatientProfile 
+	ON appointment.nric = patientprofile.nric 
+	INNER JOIN $TableNameUseraccount 
+	ON appointment.nric = useraccount.nric 
+	WHERE appointment.apptID = '". $apptID ."'";
 
-//The lines to run in sql (get allergies and med history)
-$SQLstring3 = "SELECT * FROM $TableNameAppointment 
-INNER JOIN $TableNamePatientProfile 
-ON appointment.nric = patientprofile.nric 
-INNER JOIN $TableNameUseraccount 
-ON appointment.nric = useraccount.nric 
-WHERE appointment.apptID = '". $apptID ."'";
+	//The lines to run in sql (get allergies and med history)
+	$SQLstring3 = "SELECT * FROM $TableNameAppointment 
+	INNER JOIN $TableNamePatientProfile 
+	ON appointment.nric = patientprofile.nric 
+	INNER JOIN $TableNameUseraccount 
+	ON appointment.nric = useraccount.nric 
+	WHERE appointment.apptID = '". $apptID ."'";
 
-//query results for dentist and patient info tables
-$queryResult = mysqli_query($conn, $SQLstring);
-$queryResult2 = mysqli_query($conn, $SQLstring2);
+	//query results for dentist and patient info tables
+	$queryResult = mysqli_query($conn, $SQLstring);
+	$queryResult2 = mysqli_query($conn, $SQLstring2);
 
-//query results for allergies and med history
-$queryResult3 = mysqli_query($conn, $SQLstring3);
-$rowPatientInfo = mysqli_fetch_assoc($queryResult3);
+	//query results for allergies and med history
+	$queryResult3 = mysqli_query($conn, $SQLstring3);
+	$rowPatientInfo = mysqli_fetch_assoc($queryResult3);
 
-if (isset($_POST['btnBack'])){
-	header("Location:clinicassistant-AppointmentList.php");
-}
+	if (isset($_POST['btnBack'])){
+		header("Location:clinicassistant-AppointmentList.php");
+	}
 
-?>
+	?>
 <body>
 	<div class="registrationBoxPatient container">
 		<form method="POST">
