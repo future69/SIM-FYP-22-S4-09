@@ -67,61 +67,55 @@ $clinicAssistantEmail = $_SESSION['clinicAssistantEmail'];
 		?>
 </header>
     <body>
-<div class="container">
-			<div class="row justify-content-center align-items-center border border-5 m-3">
-				<form method="POST">
-					<div class="row justify-content-center ps-5">
-						<div class="col-4">
-							<h1>Personal Profile</h1>
-						</div>
-					</div>
-					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" value="<?php echo $clinicAssistantUsername ?>" disabled id="usernameTB">
-						</div>
-					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Password:</label>
-						<div class="col-lg-4">
-						  <input type="password" class="form-control" value="<?php echo $clinicAssistantPassword ?>"  disabled id="passwordTB">
-						</div>
-					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" value="<?php echo $clinicAssistantFullname ?>" disabled id="usernameTB">
-						</div>
-					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" value="<?php echo $clinicAssistantNric ?>" disabled id="passwordTB">
-						</div>
-					  </div>
-					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB"  class="col-lg-1 col-form-label">Clinic Location:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" value="<?php echo $clinicAssistantClinicName ?>" disabled id="passwordTB">
-						</div>
-					  </div>
-					  <div class="row justify-content-center align-items-center py-2">
-						<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" value="<?php echo $clinicAssistantPhoneNo ?>" disabled id="passwordTB">
-						</div>
-					  </div>
-					  <div class="row justify-content-center py-2">
-						<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
-						<div class="col-lg-4">
-						  <input class="form-control" value="<?php echo $clinicAssistantEmail ?>" disabled id="usernameTB">
-						</div>
-					  </div>
-					  <div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
-						<button class="btn btn-danger" name="back" value="back">Return</button>
-					  </div>
-					</form>
+<div class="registrationBoxPatient container">
+	<div class="row justify-content-center align-items-center m-3">
+		<form method="POST">
+			<div class="row justify-content-center ps-5">
+				<div class="col-4">
+					<h1>Personal Profile</h1>
 				</div>
 			</div>
+				<div class="row justify-content-center py-2">
+				<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $clinicAssistantUsername ?>" disabled id="usernameTB">
+				</div>
+				</div>
+				<div class="row justify-content-center py-2">
+				<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $clinicAssistantFullname ?>" disabled id="usernameTB">
+				</div>
+				</div>
+				<div class="row justify-content-center py-2">
+				<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $clinicAssistantNric ?>" disabled id="passwordTB">
+				</div>
+				</div>
+				<div class="row justify-content-center align-items-center py-2">
+				<label for="passwordTB"  class="col-lg-1 col-form-label">Clinic Location:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $clinicAssistantClinicName ?>" disabled id="passwordTB">
+				</div>
+				</div>
+				<div class="row justify-content-center align-items-center py-2">
+				<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $clinicAssistantPhoneNo ?>" disabled id="passwordTB">
+				</div>
+				</div>
+				<div class="row justify-content-center py-2">
+				<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $clinicAssistantEmail ?>" disabled id="usernameTB">
+				</div>
+				</div>
+				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
+				<button class="btn btn-danger" name="back" value="back">Return</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

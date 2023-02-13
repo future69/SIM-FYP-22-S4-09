@@ -52,15 +52,27 @@ if(mysqli_num_rows($result) > 0)
 
     while($row = mysqli_fetch_array($result))
     {
+        if ($row["clinicStatus"] == 'inreview'){
         $output .= '
             <tr>
-                <td>' . $row["username"] . '</td>
+                <td><a href="superadminClinicAAProfile.php?acraNum='. $row['acraNum']. '">' . $row["username"] . '</a></td>
                 <td>'. $row["clinicName"] . '</td>
                 <td>' . $row["acraNum"] . '</td>
                 <td>' . $row["clinicArea"] . '</td>
                 <td>'. $row["clinicStatus"] . '</td>
             </tr>
         ';
+        } else {
+            $output .= '
+            <tr>
+                <td>'. $row["username"] . '</td>
+                <td>'. $row["clinicName"] . '</td>
+                <td>' . $row["acraNum"] . '</td>
+                <td>' . $row["clinicArea"] . '</td>
+                <td>'. $row["clinicStatus"] . '</td>
+            </tr>
+        ';
+        }
     }
     echo $output;
 }
@@ -69,4 +81,3 @@ else
     echo "Data not found";
 }
 ?>
-
