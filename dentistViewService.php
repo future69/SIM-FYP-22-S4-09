@@ -88,14 +88,16 @@ try {
                                 <tbody>
                                     <?php
                                         $rows = mysqli_fetch_assoc($resultservice);
-                                        echo $rows['servicesSelected'];
+                                        $servicesOffered = explode(" ", $rows['servicesSelected']);
+                                        //echo $rows['servicesSelected'];
                                         //while ($rows = mysqli_fetch_array($resultservice)) {
+                                        foreach($servicesOffered as $i =>$key) {
                                     ?>
 								    <tr>
-                                        <td><?php echo $rows['servicesSelected']; ?></td>
+                                        <td><?php echo $key; ?></td>
                                         <td><?php echo "selected"; ?></td>
 								    </tr>
-                                    <?php //} ?>
+                                    <?php } ?>
 								</tbody>
                             </table>
                         </div>
