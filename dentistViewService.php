@@ -53,12 +53,18 @@ $dentistClinicName = $_SESSION['dentistClinicName'];
     </div>
 </nav>
 <?php
-$DBName = "u418115598_dentalapp";
-$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName) or die("Connection Failed");
-$DBService = 'service';
-$DBclinic = 'clinic';
-$sqlservice = "SELECT servicesSelected FROM  $clinic WHERE clinicName = $dentistClinicName";
-$resultservice = mysqli_query($conn, $sqlservice);
+try {
+    $DBName = "u418115598_dentalapp";
+    $conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName) or die("Connection Failed");
+    $DBService = 'service';
+    $DBclinic = 'clinic';
+    $sqlservice = "SELECT servicesSelected FROM  $clinic WHERE clinicName = $dentistClinicName";
+    $resultservice = mysqli_query($conn, $sqlservice);
+
+    //$count = mysqli_num_rows($resultservice);
+} catch (mysqli_sql_exception $e) {
+		echo "Error in retrieving from table";
+}
 
 ?>
 
@@ -77,23 +83,13 @@ $resultservice = mysqli_query($conn, $sqlservice);
                             <table class="table table-hover table-secondary table-striped ">
                                 <thead>
                                     <tr>
-                                        <th>Service Name</th>
-							            <th>Service Status</th>
+                                        <th scope="col">Service Name</th>
+							            <th scope="col">Service Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                            //     if (mysqli_num_rows($resultservice) > 0) {
-                            //         echo "
-							// <thead>
-							// <tr>
-							// <th>Service Name</th>
-							// <th>Service Status</th>
-							// </td>
-							// </tr>
-							// </thead>";
-
-                                    while ($rows = mysqli_fetch_array($resultservice)) {
+                                    <?php
+                                        while ($rows = mysqli_fetch_array($resultservice)) {
                                     ?>
 								    <tr>
                                         <td><?php echo $rows['serviceName']; ?></td>
