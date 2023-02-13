@@ -103,7 +103,7 @@
 			//Keep track of total false, the number represents the numbers of inputs failed
 			$totalFalseCount = 0;
 
-			if (empty($GLOBALS['username'])) {
+			if (preg_match('/\s/', $GLOBALS['username']) OR empty($GLOBALS['username'])) {
 				$GLOBALS['usernameError'] = "Please enter a value";
 				$totalFalseCount++;
 			}
