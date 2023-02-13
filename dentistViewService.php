@@ -58,9 +58,8 @@ try {
     $conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName) or die("Connection Failed");
     $DBService = 'service';
     $DBclinic = 'clinic';
-    $sqlservice = "SELECT servicesSelected FROM  $clinic WHERE clinicName = $dentistClinicName";
+    $sqlservice = "SELECT servicesSelected FROM  $clinic WHERE clinicName = '$dentistClinicName'";
     $resultservice = mysqli_query($conn, $sqlservice);
-    echo $dentistClinicName;
     //$count = mysqli_num_rows($resultservice);
 } catch (mysqli_sql_exception $e) {
 		echo "Error in retrieving from table";
