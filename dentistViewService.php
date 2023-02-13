@@ -60,6 +60,7 @@ try {
     $DBclinic = 'clinic';
     $sqlservice = "SELECT servicesSelected FROM  $clinic WHERE clinicName = '$dentistClinicName'";
     $resultservice = mysqli_query($conn, $sqlservice);
+    echo $sqlservice;
     //$count = mysqli_num_rows($resultservice);
 } catch (mysqli_sql_exception $e) {
 		echo "Error in retrieving from table";
