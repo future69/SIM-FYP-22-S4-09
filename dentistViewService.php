@@ -1,6 +1,7 @@
 <?php
 session_start();
 $dentistFullName = $_SESSION['dentistFullname'];
+$dentistClinicName = $_SESSION['dentistClinicName'];
 ?>
 
 <html lang="en">
@@ -52,11 +53,16 @@ $dentistFullName = $_SESSION['dentistFullname'];
     </div>
 </nav>
 <?php
-$DBName = "u418115598_dentalapp";
-$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName) or die("Connection Failed");
-$DBService = 'service';
-$sqlservice = "SELECT * FROM  $DBService";
-$resultservice = mysqli_query($conn, $sqlservice);
+try {
+    $DBName = "u418115598_dentalapp";
+    $conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName) or die("Connection Failed");
+    $DBService = 'service';
+    $DBclinic = 'clinic';
+    $sqlservice = "SELECT servicesSelected FROM $DBclinic WHERE clinicName = '$dentistClinicName'";
+    $resultservice = mysqli_query($conn, $sqlservice);
+} catch (mysqli_sql_exception $e) {
+		echo "Error in retrieving from table";
+}
 
 ?>
 
@@ -73,31 +79,26 @@ $resultservice = mysqli_query($conn, $sqlservice);
                         <!-- Force next columns to break to new line -->
                         <div class="input-group col-3 col-sm-3 ">
                             <table class="table table-hover table-secondary table-striped ">
-                                <?php
-                                if (mysqli_num_rows($resultservice) > 0) {
-                                    echo "
-							<thead>
-							<tr>
-							<th>Service Name</th>
-							<th>Price</th>
-							<th>Service Status</th>
-							<th></td>
-							</tr>
-							</thead>";
-
-                                    while ($rows = mysqli_fetch_array($resultservice)) {
-                                        echo "<tbody>
-								<tr>
-									<td>" . $rows['serviceName'] . "</td>
-									<td></td>
-									<td>" . $rows['serviceStatus'] . "</td>
-									<td></td>
-								</tr>
-								</tbody>";
-                                    }
-                                }
-                                ?>
-
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Service Name</th>
+							            <th scope="col">Service Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $rows = mysqli_fetch_assoc($resultservice);
+                                        $servicesOffered = explode(" ", $rows['servicesSelected']);
+                                        //echo $rows['servicesSelected'];
+                                        //while ($rows = mysqli_fetch_array($resultservice)) {
+                                        foreach($servicesOffered as $i =>$key) {
+                                    ?>
+								    <tr>
+                                        <td><?php echo $key; ?></td>
+                                        <td><?php echo "selected"; ?></td>
+								    </tr>
+                                    <?php } ?>
+								</tbody>
                             </table>
                         </div>
                     </div>

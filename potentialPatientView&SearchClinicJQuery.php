@@ -50,7 +50,6 @@ if(mysqli_num_rows($result) > 0)
                 <td>' . $row["clinicOpeningHour"] . '-' . $row["clinicClosingHour"] . '</td>
                 <td><button type="submit" class="btn btn-secondary" name="viewServices" 
                 onclick="location.href=\'potentialPatientViewServices.php?acra='.$row["acraNum"].'\'">View Services</button></td>
-                <td>
                 </tbody>
         ';
     }

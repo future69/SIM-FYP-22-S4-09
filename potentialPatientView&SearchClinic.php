@@ -86,8 +86,8 @@ $ppFullName = $_SESSION['patientFullname'];
 					<table class="table table-hover table-secondary table-striped ">
 				</div>
 			</div>
+			<div id="result"></div>
 		</div>
-		<div id="result"></div>
 			<script>
 				$(document).ready(function() {	
 					// Default value for each field
