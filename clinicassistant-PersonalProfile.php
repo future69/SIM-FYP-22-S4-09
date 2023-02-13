@@ -60,11 +60,29 @@ $clinicAssistantEmail = $_SESSION['clinicAssistantEmail'];
             </div>
         </div>
     </nav>
-	<?php 
-			if (isset($_POST['back'])) {
-				header("Location:ClinicAssistant-HomePage.php");
-			}
-		?>
+	<?php
+	//This try block will be execute once the user enters the page
+	try	{
+
+		$DBName = "u418115598_dentalapp";
+		$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
+		//Name of the table 
+		$TableNameClinicAssistant = "clinicassistantprofile";
+		$TableNameUserAccount = "useraccount";
+		
+		$SQLstring = "SELECT * FROM $TableNameUserAccount 
+		INNER JOIN $TableNameClinicAssistant ON useraccount.nric = clinicassistantprofile.nric
+		WHERE useraccount.nric='$clinicAssistantNric'";
+		//Executing the sql
+		$queryResult = mysqli_query($conn, $SQLstring);
+		$rows = mysqli_fetch_assoc($queryResult);
+
+		} 	
+		catch(mysqli_sql_exception $e) {
+				echo "Error";
+		}
+
+	?>
 </header>
     <body>
 <div class="registrationBoxPatient container">
@@ -72,9 +90,15 @@ $clinicAssistantEmail = $_SESSION['clinicAssistantEmail'];
 		<form method="POST">
 			<div class="row justify-content-center ps-5">
 				<div class="col-4">
-					<h1>Personal Profile</h1>
+					<h1>Clinic Assistant Profile</h1>
 				</div>
 			</div>
+				<div class="row justify-content-center align-items-center py-2">
+				<label for="passwordTB"  class="col-lg-1 col-form-label">Clinic Name:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $clinicAssistantClinicName ?>" disabled id="passwordTB">
+				</div>
+				</div>
 				<div class="row justify-content-center py-2">
 				<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 				<div class="col-lg-4">
@@ -84,35 +108,52 @@ $clinicAssistantEmail = $_SESSION['clinicAssistantEmail'];
 				<div class="row justify-content-center py-2">
 				<label for="usernameTB" class="col-lg-1 col-form-label">Full Name:</label>
 				<div class="col-lg-4">
-					<input class="form-control" value="<?php echo $clinicAssistantFullname ?>" disabled id="usernameTB">
+					<input class="form-control" value="<?php echo $rows['fullName']; ?>" disabled id="usernameTB">
+				</div>
+				</div>
+				<div class="row justify-content-center py-2">
+				<label for="usernameTB" class="col-lg-1 col-form-label">Gender:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $rows['gender']; ?>" disabled id="usernameTB">
 				</div>
 				</div>
 				<div class="row justify-content-center py-2">
 				<label for="passwordTB" class="col-lg-1 col-form-label">NRIC:</label>
 				<div class="col-lg-4">
-					<input class="form-control" value="<?php echo $clinicAssistantNric ?>" disabled id="passwordTB">
-				</div>
-				</div>
-				<div class="row justify-content-center align-items-center py-2">
-				<label for="passwordTB"  class="col-lg-1 col-form-label">Clinic Location:</label>
-				<div class="col-lg-4">
-					<input class="form-control" value="<?php echo $clinicAssistantClinicName ?>" disabled id="passwordTB">
+					<input class="form-control" value="<?php echo $rows['nric']; ?>" disabled id="passwordTB">
 				</div>
 				</div>
 				<div class="row justify-content-center align-items-center py-2">
 				<label for="passwordTB" class="col-lg-1 col-form-label">Phone Number:</label>
 				<div class="col-lg-4">
-					<input class="form-control" value="<?php echo $clinicAssistantPhoneNo ?>" disabled id="passwordTB">
+					<input class="form-control" value="<?php echo $rows['phoneNum']; ?>" disabled id="passwordTB">
+				</div>
+				</div>
+				<div class="row justify-content-center align-items-center py-2">
+				<label for="passwordTB" class="col-lg-1 col-form-label">Address:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $rows['address']; ?>" disabled id="passwordTB">
+				</div>
+				</div>
+				<div class="row justify-content-center align-items-center py-2">
+				<label for="passwordTB" class="col-lg-1 col-form-label">Postal Code:</label>
+				<div class="col-lg-4">
+					<input class="form-control" value="<?php echo $rows['postal']; ?>" disabled id="passwordTB">
 				</div>
 				</div>
 				<div class="row justify-content-center py-2">
 				<label for="usernameTB" class="col-lg-1 col-form-label">Email:</label>
 				<div class="col-lg-4">
-					<input class="form-control" value="<?php echo $clinicAssistantEmail ?>" disabled id="usernameTB">
+					<input class="form-control" value="<?php echo $rows['email']; ?>" disabled id="usernameTB">
+				</div>
+				</div>
+				<div class="row justify-content-center py-2">
+				<label for="usernameTB" class="col-lg-1 col-form-label">Qualification:</label>
+				<div class="col-lg-4">
+					<a href="staffQualificationsFiles/<?php echo $rows['qualification']; ?>" target="_blank">Download </a>
 				</div>
 				</div>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
-				<button class="btn btn-danger" name="back" value="back">Return</button>
 				</div>
 			</form>
 		</div>
