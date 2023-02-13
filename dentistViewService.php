@@ -92,7 +92,7 @@ try {
                                         while ($rows = mysqli_fetch_array($resultservice)) {
                                     ?>
 								    <tr>
-                                        <td><?php echo $rows['serviceName']; ?></td>
+                                        <td><?php echo $rows['servicesSelected']; ?></td>
                                         <td><?php echo "selected"; ?></td>
 								    </tr>
                                     <?php } ?>
