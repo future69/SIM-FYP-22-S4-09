@@ -11,7 +11,6 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
 </head>
 <style>
 	body {
@@ -106,15 +105,21 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 	if (isset($_POST['updateService'])) {
 		$serviceStatusArr = array();
 		$serviceStatusArr = $_POST["serviceStatus"];
+		$confirmation = "Services has been updated";
 		$string = "";
+
 		for ($i = 0; $i < count($serviceStatusArr); $i++) {
-			if ($serviceStatusArr[$i] !== "suspended") {
+			if ($serviceStatusArr[$i] == "choseServices") {
+				echo "Please Select an option";
+				break;
+			} elseif ($serviceStatusArr[$i] !== "suspended" && $serviceStatusArr[$i] !== "choseServices") {
 				$string .= $serviceStatusArr[$i] . ",";
+				$stringtrim = rtrim($string, ",");
+
+				$sqlupdate = "UPDATE $DBclinic SET servicesSelected = '$stringtrim' WHERE clinic.acraNum = '" . $clinicAcraNum . "'";
+				$insertupdate = mysqli_query($conn, $sqlupdate);
 			}
 		}
-		$sqlupdate = "UPDATE $DBclinic SET servicesSelected = '$string' WHERE clinic.acraNum = '" . $clinicAcraNum . "'";
-		$insertupdate = mysqli_query($conn, $sqlupdate);
-		echo "Services has been updated";
 	}
 	$datas = array();
 	if (mysqli_num_rows($resultservice) > 0) {
@@ -141,10 +146,10 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 				<div class="display-6"></div>
 			</div>
 		</div>
-		<div class="col-6 display-6 pb-3">Services(s)</div>
+		<div class="col-6 display-6 pb-3">Services</div>
 
 		<div class="tab">
-			<button class="tablinks" onclick="openservice(event, 'selectServices')">Selecting Services</button>
+			<button class="tablinks" onclick="openservice(event, 'selectServices') ">Selecting Services</button>
 			<button class="tablinks" onclick="openservice(event, 'currentServices')">Current Services</button>
 		</div>
 
@@ -171,6 +176,7 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 										<td><?php echo $rows['serviceName']; ?></td>
 										<td>
 											<select class="form-select" name="serviceStatus[]" id="serviceStatus">
+												<option value="choseServices">Select Services</option>
 												<option value="<?php echo $rows['serviceName']; ?>">Active</option>
 												<option value="suspended">Suspended</option>
 										</td>
