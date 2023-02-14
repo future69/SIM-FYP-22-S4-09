@@ -110,7 +110,11 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 
 		for ($i = 0; $i < count($serviceStatusArr); $i++) {
 			if ($serviceStatusArr[$i] == "choseServices") {
-				echo "Please Select an option";
+	?>
+				<div class="errorMessage">
+					<?php echo "You must select an option in the select service tab"; ?>
+				</div>
+	<?php
 				break;
 			} elseif ($serviceStatusArr[$i] !== "suspended" && $serviceStatusArr[$i] !== "choseServices") {
 				$string .= $serviceStatusArr[$i] . ",";
@@ -149,7 +153,7 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 		<div class="col-6 display-6 pb-3">Services</div>
 
 		<div class="tab">
-			<button class="tablinks" onclick="openservice(event, 'selectServices') ">Selecting Services</button>
+			<button class="tablinks" onclick="openservice(event, 'selectServices') ">Select Services</button>
 			<button class="tablinks" onclick="openservice(event, 'currentServices')">Current Services</button>
 		</div>
 
@@ -224,6 +228,7 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 				document.getElementById(cityName).style.display = "block";
 				evt.currentTarget.className += " active";
 			}
+			function_alert("One of the option is not selected");
 		</script>
 	</div>
 </body>

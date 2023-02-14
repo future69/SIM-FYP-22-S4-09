@@ -27,7 +27,7 @@ if(mysqli_num_rows($result) > 0)
   <div class="table-responsive ">
    <table class="table table bordered">
     <tr>
-     <th>Clinic Account Username</th>
+     <th>Clinic Account Clinic Name</th>
      <th>Status</th>
     </tr>
  ';

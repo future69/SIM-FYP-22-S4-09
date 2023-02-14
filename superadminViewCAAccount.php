@@ -66,7 +66,7 @@
                             <div class="row">
                                 <div class="col-6 col-sm-5">Search Clinic Admin Account:</div>
                                 <div class="input-group col-3 col-sm-3">
-                                    <input type="text" class="search_admin form-control" id="search_admin" placeholder="Search by Name" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="search_admin form-control" id="search_admin" placeholder="Search by Clinic name" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
 
                                 <!-- Force next columns to break to new line -->
