@@ -157,12 +157,14 @@ $ppFullName = $_SESSION['patientFullname'];
 					INNER JOIN $TableNamePatient ON useraccount.nric = patientprofile.nric
 					SET password = '".$encryptedPassword."', email = '".$email."', 
 					phoneNum = '".$phoneNum."', address = '".$address."', postal = '".$postalCode."', allergies = '".$allergies."'
-					WHERE nric = '".$patientNric."'";
+					WHERE useraccount.nric = '".$patientNric."'";
 
 					mysqli_query($conn, $SQLstring);
 					echo "<meta http-equiv='refresh' content='0'>";
 
-					$errorMessage = "Success!";
+					echo "<script>
+					alert('Success');
+					</script>";
 
 					//Reset values after success
 					$password = "";
