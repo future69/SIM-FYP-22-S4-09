@@ -149,12 +149,14 @@ $ppFullName = $_SESSION['patientFullname'];
 
 					//Name of the table 
 					$TableNameUserAccount = "useraccount";
+					$TableNamePatient = "patientprofile";
 					//Encrypt password
 					$encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 					$SQLstring = "UPDATE $TableNameUserAccount
+					INNER JOIN $TableNamePatient ON useraccount.nric = patientprofile.nric
 					SET password = '".$encryptedPassword."', email = '".$email."', 
-					phoneNum = '".$phoneNum."', address = '".$address."', postal = '".$postalCode."'
+					phoneNum = '".$phoneNum."', address = '".$address."', postal = '".$postalCode."', allergies = '".$allergies."'
 					WHERE nric = '".$patientNric."'";
 
 					mysqli_query($conn, $SQLstring);
