@@ -72,6 +72,14 @@ try {
 	ON appointment.clinicName = clinic.clinicName WHERE appointment.nric = '". $patientNric ."' AND appointment.apptStatus = '". $apptStatus ."' ORDER BY appointment.apptDate, appointment.apptTime";	
 	//Executing the sql
 	$queryResult = mysqli_query($conn, $SQLstring);
+
+	//SQL to count payments due
+	$TableNameBill = "bill";
+	$billStatus = "unpaid";
+	$SQLstringBill = "SELECT COUNT(*) as totalBills FROM $TableNameBill WHERE nric='".$patientNric."' AND billStatus='".$billStatus."'";
+	$queryResultBill = mysqli_query($conn, $SQLstringBill);
+	$billCount = mysqli_fetch_assoc($queryResultBill);
+
 } catch (mysqli_sql_exception $e) {
 	echo "Error";
 }
@@ -86,7 +94,7 @@ try {
 				<div class="display-6">Welcome <?php echo $patientFullname ?></div>
 			</div>
 			<div class="col-md-5 text-start pt-4">
-				<h5>You have <strong>2</strong> outstanding payments</h5>
+				<h5>You have <?php echo $billCount['totalBills']; ?> outstanding payments</h5>
 			</div>
 		</div>
 		<div class="row justify-content-center align-items-center pt-5">
