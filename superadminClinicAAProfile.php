@@ -56,6 +56,11 @@
 			//Executing the sql
 			$queryResult = mysqli_query($conn, $SQLstring);
 			$rows = mysqli_fetch_array($queryResult);
+
+			//Declaring variables
+			$clinicUsername = $rows['username'];
+			$clinicEmail = $rows['clinicEmail'];
+			$clinicName = $rows['clinicName'];
 			} 	
 			catch(mysqli_sql_exception $e) 
 			{
@@ -80,6 +85,12 @@
 					$SQLstring2 = "UPDATE $TableNameUseraccount SET accStatus='" . $accStatus . "' WHERE username='" . $username . "'";
 					mysqli_query($conn, $SQLstring);
 					mysqli_query($conn, $SQLstring2);
+
+
+					//Email clinic application confirmation
+					require "emails.php";
+					clinicAdminApplicationEmail($clinicEmail, $clinicUsername ,$clinicName, $clinicStatus);
+
 					echo "<script>
 					alert('Application approved!');
 					window.location.href='superadminClinicAccountApplication.php';
@@ -89,6 +100,11 @@
 					$clinicStatus = 'rejected';
 					$SQLstring = "UPDATE $TableNameClinic SET clinicStatus='" . $clinicStatus . "' WHERE acraNum='" . $applicationAcraNum . "'";
 					mysqli_query($conn, $SQLstring);
+
+					//Email clinic application confirmation
+					require "emails.php";
+					clinicAdminApplicationEmail($clinicEmail, $clinicUsername ,$clinicName, $clinicStatus);
+
 					echo "<script>
 					alert('Application rejected!');
 					window.location.href='superadminClinicAccountApplication.php';
@@ -117,13 +133,13 @@
 					<div class="row justify-content-center align-items-center py-2">
 					<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="usernameTB" value="<?php echo $rows['username'];?>" disabled>
+						<input class="form-control" id="usernameTB" value="<?php echo $clinicUsername;?>" disabled>
 					</div>
 					</div>
 					<div class="row justify-content-center align-items-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Clinic Name:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="passwordTB" value="<?php echo $rows['clinicName'];?>" disabled>
+						<input class="form-control" id="passwordTB" value="<?php echo $clinicName;?>" disabled>
 					</div>
 					</div>
 					<div class="row justify-content-center align-items-center py-2">
@@ -153,7 +169,7 @@
 					<div class="row justify-content-center align-items-center py-2">
 					<label for="passwordTB" class="col-lg-1 col-form-label">Clinic Email:</label>
 					<div class="col-lg-4">
-						<input class="form-control" id="passwordTB" value="<?php echo $rows['clinicEmail'];?>" disabled>
+						<input class="form-control" id="passwordTB" value="<?php echo $clinicEmail;?>" disabled>
 					</div>
 					</div>
 					<div class="row justify-content-center align-items-center py-2">

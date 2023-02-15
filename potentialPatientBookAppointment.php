@@ -208,7 +208,7 @@ $ppFullName = $_SESSION['patientFullname'];
 
 					//Email booking confirmation
 					require "emails.php";
-					bookAppointmentEmail($patientEmail, $patientFullname ,$clinicName, $date, $timeSlot);
+					clinicAdminApplicationEmail($patientEmail, $patientFullname ,$clinicName, $date, $timeSlot);
 
 					echo "<script>
 					alert('Success');
