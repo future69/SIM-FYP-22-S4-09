@@ -108,19 +108,17 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 		$confirmation = "Services has been updated";
 		$string = "";
 
-		for ($i = 0; $i < count($serviceStatusArr); $i++) {
-			if ($serviceStatusArr[$i] == "choseServices") {
-				echo "Please Select an option";
-				break;
-			} elseif ($serviceStatusArr[$i] !== "suspended" && $serviceStatusArr[$i] !== "choseServices") {
-				$string .= $serviceStatusArr[$i] . ",";
-				$stringtrim = rtrim($string, ",");
 
-				$sqlupdate = "UPDATE $DBclinic SET servicesSelected = '$stringtrim' WHERE clinic.acraNum = '" . $clinicAcraNum . "'";
-				$insertupdate = mysqli_query($conn, $sqlupdate);
+		for ($i = 0; $i < count($serviceStatusArr); $i++) {
+			if ($serviceStatusArr[$i] !== "suspended") {
+				$string .= $serviceStatusArr[$i] . ",";
 			}
 		}
+		$string = rtrim($string, ",");
+		$sqlupdate = "UPDATE $DBclinic SET servicesSelected = '$string' WHERE clinic.acraNum = '" . $clinicAcraNum . "'";
+		$insertupdate = mysqli_query($conn, $sqlupdate);
 	}
+
 	$datas = array();
 	if (mysqli_num_rows($resultservice) > 0) {
 		//converts string into array
@@ -132,6 +130,8 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 				//print_r($strExplode);
 			}
 		}
+
+
 	}
 
 	?>
@@ -149,7 +149,7 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 		<div class="col-6 display-6 pb-3">Services</div>
 
 		<div class="tab">
-			<button class="tablinks" onclick="openservice(event, 'selectServices') ">Selecting Services</button>
+			<button class="tablinks" onclick="openservice(event, 'selectServices') ">Select Services</button>
 			<button class="tablinks" onclick="openservice(event, 'currentServices')">Current Services</button>
 		</div>
 
@@ -175,8 +175,8 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 									<tr>
 										<td><?php echo $rows['serviceName']; ?></td>
 										<td>
-											<select class="form-select" name="serviceStatus[]" id="serviceStatus">
-												<option value="choseServices">Select Services</option>
+											<select class="form-select" name="serviceStatus[]" id="serviceStatus" required>
+												<option value="">Select Services</option>
 												<option value="<?php echo $rows['serviceName']; ?>">Active</option>
 												<option value="suspended">Suspended</option>
 										</td>
@@ -199,7 +199,6 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 				</thead>
 				<tbody>
 					<?php
-					//puts the arrays details into tables
 					foreach ($strExplode as $CurrentService) {
 						echo "<tr>" .
 							"<td>" . $CurrentService . "</td>" .
@@ -224,6 +223,7 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 				document.getElementById(cityName).style.display = "block";
 				evt.currentTarget.className += " active";
 			}
+			function_alert("One of the option is not selected");
 		</script>
 	</div>
 </body>
