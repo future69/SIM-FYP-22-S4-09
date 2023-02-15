@@ -73,7 +73,7 @@
 				</div>
 				<div class="row col-6 text-center justify-content-center align-items-center pb-5">
 					<img class="col-6 w-25 img-fluid" src="images/peopleQueue.png">
-					<p class="col-6 text-center fst-italic fs-3">Gain access to database of 3000 customers</p>
+					<p class="col-6 text-center fst-italic fs-3">Gain access to database of customers</p>
 				</div>
 				<div class="row col-6 text-center justify-content-center align-items-center pb-5">
 					<img class="col-6 w-25 img-fluid" src="images/pastAppt.png">
