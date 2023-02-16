@@ -214,7 +214,6 @@ $clinicName = $_SESSION["clinicName"];
 				//Checks if file size too big
 				else if ($fileSize > 10000000){
 					$errorMessage = "File too big, max 10mb";
-					printf($file);
 				}
 				else {
 					//Store file in staffQualificationsFiles (folder in local directory)

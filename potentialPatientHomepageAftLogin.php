@@ -2,7 +2,6 @@
 ob_start();
 session_start();
 $ppFullName = $_SESSION['patientFullname'];
-
 ?>
 <!DOCTYPE html>
 <html>

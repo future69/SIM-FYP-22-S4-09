@@ -1,7 +1,7 @@
 <?php
 session_start();
 $ppFullName = $_SESSION['patientFullname'];
-
+$patientNric = $_SESSION['patientFullname'];
 ?>
 <!DOCTYPE html>
 <html>
