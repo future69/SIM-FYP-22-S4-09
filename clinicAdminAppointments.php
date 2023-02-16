@@ -4,6 +4,10 @@
 	$clinicName = $_SESSION["clinicName"];
 	$acraNum = $_SESSION['clinicAdminAcraNum'];
 	date_default_timezone_set("Singapore");
+	if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
+		header("Location:index.php");
+		die();
+	}
 ?>
 <!DOCTYPE html>
 <html>

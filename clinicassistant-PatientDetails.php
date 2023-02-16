@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if (empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == '') {
+	header("Location:index.php");
+	die();
+}
+?>
 <html lang="en">
 
 <head>
@@ -55,7 +61,7 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 <?php
 //fetch.php
 $DBName = "u418115598_dentalapp";
-$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
+$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName) or die("Connection Failed");
 
 
 if (isset($_POST['back'])) {
@@ -64,10 +70,11 @@ if (isset($_POST['back'])) {
 
 $Patientnric = $_GET['Patientnric'];
 
-$sqlquery = "SELECT * FROM useraccount INNER JOIN patientprofile ON useraccount.nric = patientprofile.nric WHERE useraccount.nric = '".$Patientnric."'";
+$sqlquery = "SELECT * FROM useraccount INNER JOIN patientprofile ON useraccount.nric = patientprofile.nric WHERE useraccount.nric = '" . $Patientnric . "'";
 $result = mysqli_query($conn, $sqlquery);
 $row = mysqli_fetch_assoc($result);
 ?>
+
 <body>
 	<!--This is for Personal Details-->
 	<div class="clinicassistant container">
@@ -122,7 +129,7 @@ $row = mysqli_fetch_assoc($result);
 			<div class="row justify-content-center align-items-center py-2">
 				<label for="passwordTB" disabled class="col-lg-1 col-form-label">Gender:</label>
 				<div class="col-lg-4">
-				<input class="form-control" placeholder="352467" disabled id="usernameTB" value="<?php echo $row['gender'] ?>">
+					<input class="form-control" placeholder="352467" disabled id="usernameTB" value="<?php echo $row['gender'] ?>">
 				</div>
 			</div>
 			<div class="row justify-content-center align-items-center py-2">

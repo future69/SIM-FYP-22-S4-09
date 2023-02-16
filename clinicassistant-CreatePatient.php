@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if (empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == '') {
+	header("Location:index.php");
+	die();
+}
+?>
 
 <html lang="en">
 
@@ -166,7 +172,7 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 			$errorMessage = "Please complete all fields";
 		} else {
 			try {
-				$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
+				$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName);
 
 				//Name of the table 
 				$TableName = "useraccount";

@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
+    header("Location:index.php");
+    die();
+}
 
 $DBName = "u418115598_dentalapp";
 $connect = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName);
@@ -59,4 +63,3 @@ else
 {
     echo "Data not found";
 }
-?>

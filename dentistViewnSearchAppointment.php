@@ -6,6 +6,10 @@ $dentistPracNum = $_SESSION['dentistPracNum'];
 $clinicName = $_SESSION['dentistClinicName'];
 // set current date and time of query
 date_default_timezone_set("Singapore");
+if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
+    header("Location:index.php");
+    die();
+}
 ?>
 <html lang="en">
 <head>

@@ -1,58 +1,60 @@
-<?php 
-session_start(); 
+<?php
+session_start();
 $dentistFullName = $_SESSION['dentistFullname'];
+if (empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == '') {
+	header("Location:index.php");
+	die();
+}
 ?>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css"/>
-    <title>Dentist Create Appointment Treatment Details</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="CSS/loginCSS.css" type="text/css" />
+	<title>Dentist Create Appointment Treatment Details</title>
 </head>
 <header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<div class="container-fluid">
-					<a class="navbar-brand mb-0 h1" href="">
-					<img
-					class="d-inline-block align-top"
-					src="images/superDentalLogo.png"
-					width="50" height="40"/>
-					DiamondDental™
-					</a>
-					<div class="collapse navbar-collapse" id="navigationBar">
-						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a class="nav-link" href="dentistHomepage.php">Home</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link active"  aria-current="page" href="dentistViewnSearchAppointment.php">Appointment</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link"  href="dentistSearchPatient.php">Patient</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="dentistViewService.php">Services</a>
-							</li>
-						</ul>
-					</div>
-					<div class="me-auto">
-						<ul class="navbar-nav">
-						<li class="nav-item">
-								<a class="nav-link" href="#">Welcome <?php echo $dentistFullName ?></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="index.php">Logout</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-        </nav>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand mb-0 h1" href="">
+				<img class="d-inline-block align-top" src="images/superDentalLogo.png" width="50" height="40" />
+				DiamondDental™
+			</a>
+			<div class="collapse navbar-collapse" id="navigationBar">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="dentistHomepage.php">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="dentistViewnSearchAppointment.php">Appointment</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="dentistSearchPatient.php">Patient</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="dentistViewService.php">Services</a>
+					</li>
+				</ul>
+			</div>
+			<div class="me-auto">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Welcome <?php echo $dentistFullName ?></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="dentistPersonalProfile.php">Profile</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="index.php">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </header>
 <?php
 //Declare error message
@@ -63,7 +65,7 @@ $apptID = $_GET['apptID'];
 $servername = "u418115598_dentalapp";
 
 //create connection
-$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $servername);
+$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $servername);
 $TableNameAppointment = 'appointment';
 $TableNameDentist = 'dentistprofile';
 $TableNameUseraccount = 'useraccount';
@@ -77,7 +79,7 @@ INNER JOIN $TableNameDentist
 ON appointment.practitionerNumber = dentistprofile.practitionerNumber 
 INNER JOIN $TableNameUseraccount 
 ON dentistprofile.nric = useraccount.nric 
-WHERE appointment.apptID = '". $apptID ."'";
+WHERE appointment.apptID = '" . $apptID . "'";
 
 //The lines to run in sql (get patient info)
 $SQLstring2 = "SELECT * FROM $TableNameAppointment 
@@ -85,7 +87,7 @@ INNER JOIN $TableNamePatientProfile
 ON appointment.nric = patientprofile.nric 
 INNER JOIN $TableNameUseraccount 
 ON appointment.nric = useraccount.nric 
-WHERE appointment.apptID = '". $apptID ."'";
+WHERE appointment.apptID = '" . $apptID . "'";
 
 //The lines to run in sql (get allergies and med history)
 $SQLstring3 = "SELECT * FROM $TableNameAppointment 
@@ -93,17 +95,17 @@ INNER JOIN $TableNamePatientProfile
 ON appointment.nric = patientprofile.nric 
 INNER JOIN $TableNameUseraccount 
 ON appointment.nric = useraccount.nric 
-WHERE appointment.apptID = '". $apptID ."'";
+WHERE appointment.apptID = '" . $apptID . "'";
 
 //The lines to run in sql (get services)
 $SQLstring4 = "SELECT servicesSelected FROM $TableNameClinic 
-WHERE clinicName = '". $clinicName ."'";
+WHERE clinicName = '" . $clinicName . "'";
 
 //The lines to run in sql (get clinic assistants)
 $SQLstring5 = "SELECT * FROM $TableNameClinicAssistant 
 INNER JOIN $TableNameUseraccount 
 ON clinicassistantprofile.nric = useraccount.nric 
-WHERE clinicassistantprofile.clinicName = '". $clinicName ."'";
+WHERE clinicassistantprofile.clinicName = '" . $clinicName . "'";
 
 //query results for dentist and patient info tables
 $queryResult = mysqli_query($conn, $SQLstring);
@@ -173,29 +175,29 @@ if (isset($_POST['btnUpdate'])) {
 		$errorMessage = "Please complete all fields";
 	} else {
 		try {
-		$todaysDate = date("Y-m-d");
-		$appStatus = 'past';
-		//Gets selected services array and adds them together to form a string 
-		$selectedServices = implode(" ",$_POST['serviceSL']);
-		$selectedAssistants = implode(",",$_POST['assistantSL']);
+			$todaysDate = date("Y-m-d");
+			$appStatus = 'past';
+			//Gets selected services array and adds them together to form a string 
+			$selectedServices = implode(" ", $_POST['serviceSL']);
+			$selectedAssistants = implode(",", $_POST['assistantSL']);
 
-		//Get old medical history and combine with new treatment notes
-		$SQLstring3 = "SELECT medHistory FROM $TableNameAppointment INNER JOIN $TableNamePatientProfile ON appointment.nric = patientprofile.nric WHERE apptID = '".$apptID."'";
-		$queryResultPastMedicalHistory = mysqli_query($conn, $SQLstring3);
-		$rowPastMedicalHistory = mysqli_fetch_assoc($queryResultPastMedicalHistory);
-		//combine with new treatment notes
-		$pastMedHistory = $rowPastMedicalHistory['medHistory'];
-		$newMedHistory = $pastMedHistory . '~~' . $todaysDate . '~' . $treatmentNotes;
+			//Get old medical history and combine with new treatment notes
+			$SQLstring3 = "SELECT medHistory FROM $TableNameAppointment INNER JOIN $TableNamePatientProfile ON appointment.nric = patientprofile.nric WHERE apptID = '" . $apptID . "'";
+			$queryResultPastMedicalHistory = mysqli_query($conn, $SQLstring3);
+			$rowPastMedicalHistory = mysqli_fetch_assoc($queryResultPastMedicalHistory);
+			//combine with new treatment notes
+			$pastMedHistory = $rowPastMedicalHistory['medHistory'];
+			$newMedHistory = $pastMedHistory . '~~' . $todaysDate . '~' . $treatmentNotes;
 
-		//Update appointment table and patient table
-		$SQLstring = "UPDATE $TableNameAppointment SET serviceName='".$selectedServices."', apptStatus='".$appStatus."', assistant='".$selectedAssistants."', treatmentNotes='".$treatmentNotes."', materialsUsed='".$material."' WHERE apptID = '".$apptID."'";
-		$SQLstring2 = "UPDATE $TableNameAppointment INNER JOIN $TableNamePatientProfile ON appointment.nric = patientprofile.nric SET medHistory='".$newMedHistory."', allergies='".$allergies."' WHERE apptID = '".$apptID."'";
+			//Update appointment table and patient table
+			$SQLstring = "UPDATE $TableNameAppointment SET serviceName='" . $selectedServices . "', apptStatus='" . $appStatus . "', assistant='" . $selectedAssistants . "', treatmentNotes='" . $treatmentNotes . "', materialsUsed='" . $material . "' WHERE apptID = '" . $apptID . "'";
+			$SQLstring2 = "UPDATE $TableNameAppointment INNER JOIN $TableNamePatientProfile ON appointment.nric = patientprofile.nric SET medHistory='" . $newMedHistory . "', allergies='" . $allergies . "' WHERE apptID = '" . $apptID . "'";
 
-		mysqli_query($conn, $SQLstring);
-		mysqli_query($conn, $SQLstring2);
-		mysqli_close($conn);
+			mysqli_query($conn, $SQLstring);
+			mysqli_query($conn, $SQLstring2);
+			mysqli_close($conn);
 
-		echo "<script>
+			echo "<script>
 		alert('Success');
 		window.location.href='dentistViewnSearchAppointment.php';
 		</script>";
@@ -203,10 +205,11 @@ if (isset($_POST['btnUpdate'])) {
 			echo "<p>Error: unable to connect/insert record in the database.</p>";
 		}
 	}
-} else if (isset($_POST['btnBack'])){
+} else if (isset($_POST['btnBack'])) {
 	header("Location:dentistViewnSearchAppointment.php");
 }
 ?>
+
 <body>
 	<div class="registrationBoxPatient container">
 		<form method="POST">
@@ -227,13 +230,13 @@ if (isset($_POST['btnUpdate'])) {
 						<tbody>
 							<?php
 							while ($row = mysqli_fetch_assoc($queryResult)) {
-								?>
+							?>
 								<tr>
-									<td><?php echo $row['apptDate']?></td>
-									<td><?php echo $row['apptTime']?></td>
-									<td><?php echo $row['fullName']?></td>
+									<td><?php echo $row['apptDate'] ?></td>
+									<td><?php echo $row['apptTime'] ?></td>
+									<td><?php echo $row['fullName'] ?></td>
 								</tr>
-								<?php
+							<?php
 							}
 							?>
 						</tbody>
@@ -249,16 +252,16 @@ if (isset($_POST['btnUpdate'])) {
 							<tr>
 						</thead>
 						<tbody>
-						<?php
+							<?php
 							while ($row = mysqli_fetch_assoc($queryResult2)) {
-								?>
+							?>
 								<tr>
-									<td><?php echo $row['fullName']?></td>
-									<td><?php echo $row['nric']?></td>
-									<td><?php echo $row['dob']?></td>
-									<td><?php echo $row['gender']?></td>
+									<td><?php echo $row['fullName'] ?></td>
+									<td><?php echo $row['nric'] ?></td>
+									<td><?php echo $row['dob'] ?></td>
+									<td><?php echo $row['gender'] ?></td>
 								</tr>
-								<?php
+							<?php
 							}
 							?>
 						</tbody>
@@ -267,22 +270,22 @@ if (isset($_POST['btnUpdate'])) {
 						<label for="medhistoryTB" class="col-2 col-form-label">Medical History: </label>
 					</div>
 					<div class="col-10 mt-2">
-						<textarea class="form-control" id="medhistoryTB" name="medhistoryTB" readonly><?php echo str_replace('~', "\r\n",$rowPatientInfo['medHistory']);?></textarea>
+						<textarea class="form-control" id="medhistoryTB" name="medhistoryTB" readonly><?php echo str_replace('~', "\r\n", $rowPatientInfo['medHistory']); ?></textarea>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="serviceSL" class="col-3 col-form-label">Services:</label>
 						<div class="col-7">
 							<select class="form-select" name="serviceSL[]" id="serviceSL" size="2" multiple>
-							<?php
-							foreach($listOfServices as $serviceName) {
-							?>
-								<option value="<?php echo $serviceName;?>"><?php echo $serviceName;?></option>
-							<?php
-							}
-							?>
+								<?php
+								foreach ($listOfServices as $serviceName) {
+								?>
+									<option value="<?php echo $serviceName; ?>"><?php echo $serviceName; ?></option>
+								<?php
+								}
+								?>
 							</select>
 							<div class="errorMessage">
-								<?php echo $serviceError;?>
+								<?php echo $serviceError; ?>
 							</div>
 						</div>
 					</div>
@@ -290,26 +293,26 @@ if (isset($_POST['btnUpdate'])) {
 						<label for="assistantSL" class="col-3 col-form-label">Assistant(s):</label>
 						<div class="col-9">
 							<select class="form-select" name="assistantSL[]" id="assistantSL" size="2" multiple>
-							<?php
-							while ($assistantNames = mysqli_fetch_assoc($queryResult4)) {
-							?>
-								<option value="<?php echo $assistantNames['fullName'], ' '. $assistantNames['nric'];?>"><?php echo $assistantNames['fullName'], ' '. $assistantNames['nric'];?></option>
-							<?php
-							}
-							?>
+								<?php
+								while ($assistantNames = mysqli_fetch_assoc($queryResult4)) {
+								?>
+									<option value="<?php echo $assistantNames['fullName'], ' ' . $assistantNames['nric']; ?>"><?php echo $assistantNames['fullName'], ' ' . $assistantNames['nric']; ?></option>
+								<?php
+								}
+								?>
 							</select>
 							<div class="errorMessage">
-								<?php echo $assistantError;?>
+								<?php echo $assistantError; ?>
 							</div>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
 						<label for="allergiesLabel" class="col-3 col-form-label">Allergies:</label>
 						<div class="col-7">
-							<textarea class="form-control" id="allergiesTB" name="allergiesTB" size="3"><?php echo $rowPatientInfo['allergies']?></textarea>
+							<textarea class="form-control" id="allergiesTB" name="allergiesTB" size="3"><?php echo $rowPatientInfo['allergies'] ?></textarea>
 						</div>
 						<div class="errorMessage">
-							<?php echo $allergiesError;?>
+							<?php echo $allergiesError; ?>
 						</div>
 					</div>
 					<div class="row col-6 align-items-center py-2">
@@ -317,7 +320,7 @@ if (isset($_POST['btnUpdate'])) {
 						<div class="col-7">
 							<textarea class="form-control" id="materialsTB" name="materialsTB" size="3"></textarea>
 							<div class="errorMessage">
-								<?php echo $materialError;?>
+								<?php echo $materialError; ?>
 							</div>
 						</div>
 					</div>
@@ -327,10 +330,10 @@ if (isset($_POST['btnUpdate'])) {
 					<div class="col-10 mt-2">
 						<textarea class="form-control" id="treatmentNotesTB" name="treatmentNotesTB"></textarea>
 						<div class="errorMessage">
-							<?php echo $treatmentNotesError;?>
+							<?php echo $treatmentNotesError; ?>
 						</div>
 					</div>
-					<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage;?></div>
+					<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage; ?></div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center pt-5">
 						<button class="btn btn-danger" id="btnBack" name="btnBack" value="btnBack">Back</button>
 						<button class="btn btn-Primary" id=btnUpdate name="btnUpdate" value="btnUpdate">Update</button>

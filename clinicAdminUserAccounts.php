@@ -1,6 +1,10 @@
 <?php 
 session_start(); 
 $clinicName = $_SESSION["clinicName"];
+if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
+    header("Location:index.php");
+    die();
+}
 ?>
 
 <!DOCTYPE html>

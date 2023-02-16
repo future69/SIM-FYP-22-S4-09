@@ -2,6 +2,10 @@
 session_start();
 $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
+if (empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == '') {
+	header("Location:index.php");
+	die();
+}
 ?>
 <html lang="en">
 
@@ -15,16 +19,16 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script>
 		//AJAX function for onclick feature (Get delete appointment)
-		function deleteAppointment(apptID){
+		function deleteAppointment(apptID) {
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200){
+				if (this.readyState == 4 && this.status == 200) {
 					location.reload();
 				}
 			};
 			xmlhttp.open("GET", "deleteAppointments.php?q=" + apptID, true);
 			xmlhttp.send();
-	}
+		}
 	</script>
 </head>
 <header>
@@ -80,7 +84,9 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 		<div class="row justify-content-center align-items-center pt-5">
 			<div class="row">
 				<form class="row col-8 justify-content-start align-items-center" method="POST">
-					<label for="searchClinicName" class="row col-2 col-form-label"><h4>Search :</h4></label>
+					<label for="searchClinicName" class="row col-2 col-form-label">
+						<h4>Search :</h4>
+					</label>
 					<div class="row col-6">
 						<input type="text" class="row col-3 form-control" name="apptSearch" id="searchClinicName" placeholder="Name or NRIC">
 					</div>
@@ -90,54 +96,54 @@ $clinicAssistantClinicName = $_SESSION['clinicAssistantClinicName'];
 				</div>
 				<div class="row py-3">
 					<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" value="flexRadioDefaultUpcoming" checked>
-						  <label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
+						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultCurrent" value="flexRadioDefaultUpcoming" checked>
+						<label class="form-check-label" for="flexRadioDefaultCurrent"><strong>Current Appointments</strong></label>
 					</div>
 					<div class="col-2 form-check">
-						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast" value="flexRadioDefaultPast" >
-						  <label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
+						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPast" value="flexRadioDefaultPast">
+						<label class="form-check-label" for="flexRadioDefaultPast"><strong>Past Appointments</strong></label>
 					</div>
 				</div>
 				<div id="result"></div>
 
 				<script>
-						$(document).ready(function() {	
-							// Default value for each field
-							let search = $('#searchClinicName').val();
-							let apptStatus = $('input[type="radio"]:checked').val();
-							load_data(search, apptStatus);
+					$(document).ready(function() {
+						// Default value for each field
+						let search = $('#searchClinicName').val();
+						let apptStatus = $('input[type="radio"]:checked').val();
+						load_data(search, apptStatus);
 
-							function load_data(search_text, apptStatus) {
-								$.ajax({
-									url: "casst-apptFilter.php",
-									method: "POST",
-									data: {
-										search_text: search_text,
-										apptStatus: apptStatus
-									},
-									success: function(data) {
-										$('#result').html(data);
-									}
-								});
-							}
-
-							// This is for clinic name search box (Clinic name)
-							$('#searchClinicName').keyup(function() {
-								search = $(this).val();
-
-								load_data(search, apptStatus);
+						function load_data(search_text, apptStatus) {
+							$.ajax({
+								url: "casst-apptFilter.php",
+								method: "POST",
+								data: {
+									search_text: search_text,
+									apptStatus: apptStatus
+								},
+								success: function(data) {
+									$('#result').html(data);
+								}
 							});
+						}
 
-							// This is for radio button (Appointment Status)
-							$('input[type="radio"]').change(function() {
-								apptStatus = $('input[type="radio"]:checked').val();
+						// This is for clinic name search box (Clinic name)
+						$('#searchClinicName').keyup(function() {
+							search = $(this).val();
 
-								load_data(search, apptStatus);
-							});		
+							load_data(search, apptStatus);
 						});
+
+						// This is for radio button (Appointment Status)
+						$('input[type="radio"]').change(function() {
+							apptStatus = $('input[type="radio"]:checked').val();
+
+							load_data(search, apptStatus);
+						});
+					});
 				</script>
 			</div>
-	</div>
+		</div>
 </body>
 
 </html>

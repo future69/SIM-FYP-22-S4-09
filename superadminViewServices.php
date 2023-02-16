@@ -1,6 +1,10 @@
 <?php
 ob_start();
 session_start();
+if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
+    header("Location:index.php");
+    die();
+}
 ?>
 <html lang="en">
 <head>

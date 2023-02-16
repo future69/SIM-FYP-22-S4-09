@@ -2,6 +2,10 @@
 session_start();
 $dentistFullName = $_SESSION['dentistFullname'];
 $dentistClinicName = $_SESSION['dentistClinicName'];
+if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
+    header("Location:index.php");
+    die();
+}
 ?>
 
 <html lang="en">

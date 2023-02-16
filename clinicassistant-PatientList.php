@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if (empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == '') {
+    header("Location:index.php");
+    die();
+}
+?>
 <html lang="en">
 
 <head>
@@ -61,8 +67,8 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 $servername = "dentalhealthapplicationdb";
 
 //Name of the table
-$DBName = "u418115598_dentalapp"; 
-$conn = mysqli_connect("localhost","u418115598_superuser","HjOSN8hM*", $DBName) or die("Connection Failed");
+$DBName = "u418115598_dentalapp";
+$conn = mysqli_connect("localhost", "u418115598_superuser", "HjOSN8hM*", $DBName) or die("Connection Failed");
 $sqlquery = "SELECT ua.* , pp.* FROM useraccount ua, patientprofile pp WHERE ua.nric = pp.nric";
 $result = mysqli_query($conn, $sqlquery);
 

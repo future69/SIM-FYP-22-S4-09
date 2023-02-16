@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start(); 
+if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
+    header("Location:index.php");
+    die();
+}
+?>
 
 <html lang="en">
 

@@ -92,7 +92,6 @@ session_start();
 						$_SESSION['patientFullname'] = $theResult['fullName'];
 						$_SESSION['patientNric'] = $theResult['nric'];
 						$_SESSION['patientEmail'] = $theResult['email'];
-						$_SESSION['loggedIn'] = "true";
  						header("Location:potentialPatientHomepageAftLogin.php");
 						break;
 					case 'clinicAdmin':
@@ -108,7 +107,6 @@ session_start();
 						
 						$_SESSION['clinicAdminAcraNum'] = $theResultClinic['acraNum'];
 						$_SESSION['clinicName'] = $theResultClinic['clinicName'];
-						$_SESSION['loggedIn'] = "true";
 						header("Location:clinicAdminHomepage.php");
 						break;
 					case 'clinicAssistant':
@@ -137,7 +135,6 @@ session_start();
 							$_SESSION['clinicAssistantClinicName'] = $theResultClinicAss['clinicName'];
 							$_SESSION['clinicAssistantPhoneNo'] = $theResultClinicAss['phoneNum'];
 							$_SESSION['clinicAssistantEmail'] = $theResultClinicAss['email'];
-							$_SESSION['loggedIn'] = "true";
 							header("Location:ClinicAssistant-HomePage.php");
 							break;
 						}
@@ -168,12 +165,10 @@ session_start();
 							$_SESSION['dentistEmail'] = $theResult['email'];
 							$_SESSION['dentistFullname'] = $theResult['fullName'];
 							$_SESSION['dentistPracNum'] = $theResultDentist['practitionerNumber'];
-							$_SESSION['loggedIn'] = "true";
 							header("Location:dentistHomepage.php");
 							break;
 						}
 					case 'superAdmin':
-						$_SESSION['loggedIn'] = "true";
 						header("Location:superadminHomepage.php");
 						break;
 				}

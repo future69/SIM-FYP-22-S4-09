@@ -4,7 +4,7 @@ session_start();
 $ppFullName = $_SESSION['patientFullname'];
 if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
     header("Location:index.php");
-	die();
+    die();
 }
 ?>
 <!DOCTYPE html>
