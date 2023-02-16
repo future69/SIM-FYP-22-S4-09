@@ -177,8 +177,8 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 										<td>
 											<select class="form-select" name="serviceStatus[]" id="serviceStatus" required>
 												<option value="">Select Services</option>
-												<option value="<?php echo $rows['serviceName']; ?>">Active</option>
-												<option value="suspended">Suspended</option>
+												<option value="<?php echo $rows['serviceName']; ?>">Enable</option>
+												<option value="suspended">Disable</option>
 										</td>
 									<?php
 								}
