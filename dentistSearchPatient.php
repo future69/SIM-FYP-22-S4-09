@@ -78,7 +78,7 @@ $result = mysqli_query($conn, $sqlquery);
                         <div class="row">
                             <div class="col-6 col-sm-3">Search:</div>
                             <div class="input-group col-3 col-sm-3">
-                                <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
+                                <input type="text" name="search_text" id="search_text" placeholder="Search by Patient Name or Nric" class="form-control" />
                             </div>
 
                             <!-- Force next columns to break to new line -->

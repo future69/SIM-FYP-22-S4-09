@@ -86,7 +86,7 @@ if (isset($_GET['createPatient'])) {
                         <div class="row">
                             <div class="col-6 col-sm-3">Search:</div>
                             <div class="input-group col-3 col-sm-3">
-                                <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
+                                <input type="text" name="search_text" id="search_text" placeholder="Search by Patient Name or NRIC" class="form-control" />
                             </div>
                             <div class="mt-4 text-center p-3">
                                 <button type="submit" class="btn btn-Primary" name="createPatient">Create Patient Account</button>

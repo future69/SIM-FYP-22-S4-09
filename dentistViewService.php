@@ -70,10 +70,10 @@ try {
     <div class="container-lg">
         <div class="row justify-content-center align-items-center pb-3 p-2 display-6 fw-bold">Services</div>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <!--Contatiner control-->
             </div>
-            <div class="col-md-6 p-3 justify-content-center d-flex">
+            <div class="col-md-4 p-3 justify-content-center d-flex">
                 <div class="container">
                     <div class="row">
                         <!-- Force next columns to break to new line -->
@@ -82,7 +82,6 @@ try {
                                 <thead>
                                     <tr>
                                         <th scope="col">Service Name</th>
-							            <th scope="col">Service Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,7 +94,6 @@ try {
                                     ?>
 								    <tr>
                                         <td><?php echo $key; ?></td>
-                                        <td><?php echo "selected"; ?></td>
 								    </tr>
                                     <?php } ?>
 								</tbody>
@@ -105,7 +103,7 @@ try {
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <!--Contatiner control-->
         </div>
     </div>

@@ -117,6 +117,8 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 		$string = rtrim($string, ",");
 		$sqlupdate = "UPDATE $DBclinic SET servicesSelected = '$string' WHERE clinic.acraNum = '" . $clinicAcraNum . "'";
 		$insertupdate = mysqli_query($conn, $sqlupdate);
+
+		echo "<meta http-equiv='refresh' content='0'>";
 	}
 
 	$datas = array();
@@ -130,8 +132,6 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 				//print_r($strExplode);
 			}
 		}
-
-
 	}
 
 	?>
@@ -177,8 +177,8 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 										<td>
 											<select class="form-select" name="serviceStatus[]" id="serviceStatus" required>
 												<option value="">Select Services</option>
-												<option value="<?php echo $rows['serviceName']; ?>">Active</option>
-												<option value="suspended">Suspended</option>
+												<option value="<?php echo $rows['serviceName']; ?>">Enable</option>
+												<option value="suspended">Disable</option>
 										</td>
 									<?php
 								}
@@ -199,18 +199,24 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 				</thead>
 				<tbody>
 					<?php
+					if (mysqli_num_rows($resultservice) == 0) {
+						echo "<tr>" .
+							"<td>Empty</td>" .
+							"</tr>";
+					}else{
 					foreach ($strExplode as $CurrentService) {
 						echo "<tr>" .
 							"<td>" . $CurrentService . "</td>" .
 							"</tr>";
 					}
+				}			
 					?>
 				</tbody>
 			</table>
 		</div>
 
 		<script>
-			function openservice(evt, cityName) {
+			function openservice(evt, serviceName) {
 				var i, tabcontent, tablinks;
 				tabcontent = document.getElementsByClassName("tabcontent");
 				for (i = 0; i < tabcontent.length; i++) {
@@ -220,7 +226,7 @@ $clinicAcraNum = $_SESSION["clinicAdminAcraNum"];
 				for (i = 0; i < tablinks.length; i++) {
 					tablinks[i].className = tablinks[i].className.replace(" active", "");
 				}
-				document.getElementById(cityName).style.display = "block";
+				document.getElementById(serviceName).style.display = "block";
 				evt.currentTarget.className += " active";
 			}
 			function_alert("One of the option is not selected");
