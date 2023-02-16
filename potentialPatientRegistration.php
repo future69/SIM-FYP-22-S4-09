@@ -305,7 +305,7 @@
 				<div class="row justify-content-center py-2">
 					<label for="dobTB" class="col-lg-1 col-form-label">DOB:</label>
 					<div class="col-lg-4">
-						<input type="date" class="form-control" id="dobTB" name="dobTB" value="<?php echo $dob;?>">
+						<input type="date" class="form-control" id="dobTB" name="dobTB" value="<?php echo $dob;?>" max="<?php echo date('Y-m-d'); ?>">
 						<div class="errorMessage">
 							<?php echo $dobError;?>
 						</div>

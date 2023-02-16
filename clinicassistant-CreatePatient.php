@@ -183,21 +183,11 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 				//Encrypt password
 				$encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-				//gCpatCha
-				$secretKey = "6LcZnF0jAAAAAK8eSCd4rAmkhkhNZ6hF4FKgLfLq";
-				$ip = $_SERVER['REMOTE_ADDR'];
-				$response = $_POST['g-recaptcha-response'];
-				$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$ip";
-				$getUrlContent = file_get_contents($url);
-				$data = json_decode($getUrlContent);
-
 				//If there are no results means no login info matches, good thing
 				if (mysqli_num_rows($queryResultCheckUsername) > 0) {
 					$errorMessage = "The username is already in use, please try another";
 				} else if (mysqli_num_rows($queryResultCheckNRIC) > 0) {
 					$errorMessage = "The nric is already in use, please try another";
-				} else if ($data->success == false) {
-					$errorMessage = "Please do recaptcha";
 				} else {
 					//Inserts data into DB
 					$SQLstring = "INSERT INTO $TableName " . " (username, password, nric, fullName, roleName, phoneNum, email, address, postal, gender, accStatus) " . " VALUES( '$username', '$encryptedPassword', '$nric', '$fullName', '$roleName', '$phoneNum', '$email', '$address', '$postalCode', '$gender', '$accStatus' )";
@@ -292,7 +282,7 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 				<div class="row justify-content-center py-2">
 					<label for="dobTB" class="col-lg-1 col-form-label">DOB:</label>
 					<div class="col-lg-4">
-						<input type="date" class="form-control" id="dobTB" name="dobTB" value="<?php echo $dob; ?>">
+						<input type="date" class="form-control" id="dobTB" name="dobTB" value="<?php echo $dob; ?>" max="<?php echo date('Y-m-d'); ?>">
 						<div class="errorMessage">
 							<?php echo $dobError; ?>
 						</div>
@@ -363,8 +353,6 @@ $clinicAssistantFullname = $_SESSION['clinicAssistantFullname'];
 					</div>
 				</div>
 				<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage; ?></div>
-				<div class="row justify-content-center align-items-center g-recaptcha" name="gCaptCha" data-sitekey="6LcZnF0jAAAAAMSnSnEJF4o3T4K9QWsM29jnFUJQ"></div>
-				<?php echo $gCaptChaError; ?>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					<button class="btn btn-danger" name="back" value="back">Back</button>
 					<button type="submit" class="btn btn-primary" name="submitRegistration" value="submit">Confirm</button>
