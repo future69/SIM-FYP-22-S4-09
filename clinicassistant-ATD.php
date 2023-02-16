@@ -253,7 +253,6 @@ if (isset($_POST['btnUpdate'])) {
 								<th scope="col">NRIC</th>
 								<th scope="col">DOB</th>
 								<th scope="col">Gender</th>
-								<th scope="col">X-Ray</th>
 							<tr>
 						</thead>
 						<tbody>
@@ -265,7 +264,6 @@ if (isset($_POST['btnUpdate'])) {
 									<td><?php echo $row['nric']?></td>
 									<td><?php echo $row['dob']?></td>
 									<td><?php echo $row['gender']?></td>
-									<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
 								</tr>
 								<?php
 							}
