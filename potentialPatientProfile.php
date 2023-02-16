@@ -286,21 +286,6 @@ $ppFullName = $_SESSION['patientFullname'];
 						</div>
 					</div>
 				</div>
-				<div class="row justify-content-center align-items-center py-2">
-					<label for="familyMembersTB" class="col-lg-1 col-form-label">Family Members:</label>
-					<div class="col-lg-4">
-						<input class="form-control" id="familyMembersTB" value="STATIC DATA" disabled>
-					</div>
-				</div>
-				<div class="input-group col-4 justify-content-center align-items-center py-2">
-					<div class="input-group-prepend">
-						<button class="btn btn-primary" type="button">+</button>
-						<button class="btn btn-danger" type="button">-</button>
-					</div>
-					<div class="col-lg-4 ps-2">
-						<input type="text" class="form-control" placeholder="Family Member (NRIC)">
-					</div>
-				</div>
 				<div class="row errorMessage justify-content-center align-items-center py-2"><?php echo $errorMessage;?></div>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					<button type="submit" class="btn btn-primary" name="updatePatient" value="submit">Update</button>

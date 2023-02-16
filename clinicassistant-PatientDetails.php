@@ -144,55 +144,6 @@ $row = mysqli_fetch_assoc($result);
 				</div>
 			</div>
 			<div></div>
-			<!--This is for family members -->
-			<div class="container mt-3">
-				<div class="row">
-					<div class="col text-end">
-						<label>Family Members:</label>
-					</div>
-					<div class="col-8 border border-2 border-secondary">
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th scope="col">Name</th>
-									<th scope="col">NRIC</th>
-									<th scope="col">Date of Birth</th>
-									<th scope="col">Relation</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<a href="clinicassistant-PatientDetails.php">John</a>
-									</td>
-									<td>S12345678C</td>
-									<td>12-05-1996</td>
-									<td>Father</td>
-								</tr>
-								<tr>
-									<td>
-										<a href="clinicassistant-PatientDetails.php">Mary</a>
-									</td>
-									<td>S98765432G</td>
-									<td>23-03-1992</td>
-									<td>Mother</td>
-								</tr>
-								<tr>
-									<td>
-										<a href="clinicassistant-PatientDetails.php">Doe</a>
-									</td>
-									<td>S85643721H</td>
-									<td>15-09-1992</td>
-									<td>Brother</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="col">
-
-					</div>
-				</div>
-			</div>
 			<form method="POST">
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					<button class="btn btn-danger" name="back" value="back">Return</button>
