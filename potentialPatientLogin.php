@@ -147,7 +147,7 @@ session_start();
 						ON useraccount.nric = dentistprofile.nric 
 						INNER JOIN $TableNameClinic 
 						ON clinic.clinicName = dentistprofile.clinicName 
-						WHERE dentistprofile.nric = '" . $_SESSION['dentistNric']. "'";
+						WHERE useraccount.username = '".$theResult['username']."'";
 						//Executing the sql
 						$queryResultDentist = mysqli_query($conn, $SQLstringDentist);
 						//Make result into array

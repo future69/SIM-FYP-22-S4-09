@@ -100,13 +100,13 @@ $dentistPracNum = $_SESSION['dentistPracNum'];
 				<div class="row justify-content-center align-items-center py-2">
 				<label for="passwordTB"  class="col-lg-1 col-form-label">Clinic Name:</label>
 				<div class="col-lg-4">
-					<input class="form-control" value="<?php echo $dentistClinicName ?>" disabled id="passwordTB">
+					<input class="form-control" value="<?php echo $dentistClinicName; ?>" disabled id="passwordTB">
 				</div>
 				</div>
 				<div class="row justify-content-center py-2">
 				<label for="usernameTB" class="col-lg-1 col-form-label">Username:</label>
 				<div class="col-lg-4">
-					<input class="form-control" value="<?php echo $dentistUsername ?>" disabled id="usernameTB">
+					<input class="form-control" value="<?php echo $dentistUsername; ?>" disabled id="usernameTB">
 				</div>
 				</div>
 				<div class="row justify-content-center py-2">
