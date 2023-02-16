@@ -1,7 +1,7 @@
 <?php
 session_start();
 $ppFullName = $_SESSION['patientFullname'];
-$patientNric = $_SESSION['patientFullname'];
+$patientNric = $_SESSION['patientNric'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,21 +94,24 @@ $patientNric = $_SESSION['patientFullname'];
 					  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultPastBills" value="paid">
 					  <label class="form-check-label" for="flexRadioDefaultPastBills"><strong>Past Bills</strong></label>
 					</div>
-		</div>
+				</div>
+				<input type="hidden" id="patientNric" value="<?php echo $patientNric; ?>" />
 		<div id="result"></div>
 		<script>
 			$(document).ready(function() {	
 
 				let billStatus = $('input[type="radio"]:checked').val();
-				
-				load_data(billStatus);
+				let patientNric = $('#patientNric').val();
+
+				load_data(billStatus,patientNric);
 
 				function load_data(billStatus) {
 					$.ajax({
 						url: "potentialPatientBillsJQuery.php",
 						method: "POST",
 						data: {
-							billStatus: billStatus
+							billStatus: billStatus,
+							patientNric: patientNric
 						},
 						success: function(data) {
 							$('#result').html(data);
@@ -118,7 +121,9 @@ $patientNric = $_SESSION['patientFullname'];
 				// This is for radio button (Appointment Status)
 				$('input[type="radio"]').change(function() {
 					billStatus = $('input[type="radio"]:checked').val();
-					load_data(billStatus);
+					let patientNric = $('patientNric').val();
+
+					load_data(billStatus,patientNric);
 				});
 			});
 		</script>

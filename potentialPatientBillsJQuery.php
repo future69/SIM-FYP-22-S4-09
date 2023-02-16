@@ -9,9 +9,11 @@ $output = '';
 $TableNameBill = 'bill';
 $TableNameAppointment = 'appointment';
 
+$try = $_POST['patientNric'];
+
 $query = "SELECT * FROM $TableNameBill 
 INNER JOIN $TableNameAppointment ON bill.apptID = appointment.apptID
-WHERE (billStatus = '". $_POST['billStatus'] ."')";
+WHERE (bill.billStatus = '". $_POST['billStatus'] ."' AND bill.nric = '". $_POST['patientNric'] ."')";
 
 $result = mysqli_query($connect, $query);
 
