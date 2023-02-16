@@ -1,5 +1,5 @@
 <?php
-ob_start();
+session_unset();
 session_start();
 ?>
 <!DOCTYPE html>
@@ -128,13 +128,13 @@ session_start();
 							$errorMessage = 'Clinic is currently suspended';
 							break;
 						} else{
-							$_SESSION['clinicAssistantUsername'] = $theResult['username'];
-							$_SESSION['clinicAssistantPassword'] = $theResult['password'];
-							$_SESSION['clinicAssistantFullname'] = $theResult['fullName'];
-							$_SESSION['clinicAssistantNric'] = $theResult['nric'];
+							$_SESSION['clinicAssistantUsername'] = $theResultClinicAss['username'];
+							$_SESSION['clinicAssistantPassword'] = $theResultClinicAss['password'];
+							$_SESSION['clinicAssistantFullname'] = $theResultClinicAss['fullName'];
+							$_SESSION['clinicAssistantNric'] = $theResultClinicAss['nric'];
 							$_SESSION['clinicAssistantClinicName'] = $theResultClinicAss['clinicName'];
-							$_SESSION['clinicAssistantPhoneNo'] = $theResult['phoneNum'];
-							$_SESSION['clinicAssistantEmail'] = $theResult['email'];
+							$_SESSION['clinicAssistantPhoneNo'] = $theResultClinicAss['phoneNum'];
+							$_SESSION['clinicAssistantEmail'] = $theResultClinicAss['email'];
 							header("Location:ClinicAssistant-HomePage.php");
 							break;
 						}

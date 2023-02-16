@@ -12,7 +12,6 @@ session_start();
 	$dentistNRIC = $_SESSION['dentistNric'];
 	$dentistFullName = $_SESSION['dentistFullname'];
 	$dentistPracNum = $_SESSION['dentistPracNum'];
-	
 	// executing try block
 	try {
 		$DBName = "u418115598_dentalapp";
