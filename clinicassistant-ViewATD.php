@@ -139,7 +139,6 @@ $CAFullName = $_SESSION['clinicAssistantFullname'];
 								<th scope="col">NRIC</th>
 								<th scope="col">DOB</th>
 								<th scope="col">Gender</th>
-								<th scope="col">X-Ray</th>
 							<tr>
 						</thead>
 						<tbody>
@@ -151,7 +150,6 @@ $CAFullName = $_SESSION['clinicAssistantFullname'];
 									<td><?php echo $row['nric']?></td>
 									<td><?php echo $row['dob']?></td>
 									<td><?php echo $row['gender']?></td>
-									<td><button type="submit" class="btn btn-primary" name="downloadFile">Download</button></td>
 								</tr>
 								<?php
 							}
