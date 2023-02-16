@@ -2,6 +2,10 @@
 ob_start();
 session_start();
 $ppFullName = $_SESSION['patientFullname'];
+if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
+    header("Location:index.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +49,7 @@ $ppFullName = $_SESSION['patientFullname'];
 						<a class="nav-link" href="potentialPatientProfile.php">Profile</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="index.php">Logout</a>
+						<a class="nav-link" href="logout.php">Logout</a>
 					</li>
 				</ul>
 			</div>

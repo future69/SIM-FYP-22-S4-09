@@ -92,6 +92,7 @@ session_start();
 						$_SESSION['patientFullname'] = $theResult['fullName'];
 						$_SESSION['patientNric'] = $theResult['nric'];
 						$_SESSION['patientEmail'] = $theResult['email'];
+						$_SESSION['loggedIn'] = "true";
  						header("Location:potentialPatientHomepageAftLogin.php");
 						break;
 					case 'clinicAdmin':
