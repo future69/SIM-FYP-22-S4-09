@@ -141,12 +141,6 @@ $row = mysqli_fetch_assoc($result);
 						<input class="form-control" placeholder="John@email.com" disabled id="usernameTB" value="<?php echo $row['email'] ?>">
 					</div>
 				</div>
-				<div class="row justify-content-center align-items-center py-2">
-					<label for="formFileMedicalHistory" class="col-1 col-form-label">X-Ray:</label>
-					<div class="col-lg-4">
-						<button type="submit" class="btn btn-primary col-md-3" name="uploadFile">Upload</button>
-					</div>
-				</div>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center py-2">
 					<button class="btn btn-danger" name="back" value="back">Return</button>
 				</div>
