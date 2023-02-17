@@ -2,6 +2,10 @@
 session_start();
 $ppFullName = $_SESSION['patientFullname'];
 $patientNric = $_SESSION['patientNric'];
+if(empty($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == ''){
+    header("Location:index.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <html>
